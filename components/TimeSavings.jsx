@@ -1,225 +1,402 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Clock, X, TrendingUp, Zap } from 'lucide-react';
+import React, { useLayoutEffect, useRef, useState } from "react";
+import { Zap, ChevronDown } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TimeSavings = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const modalRef = useRef(null);
-  const closeBtnRef = useRef(null);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const accordionRef = useRef(null);
 
-  useEffect(() => {
-    if (!isModalOpen) return;
+  // Prepare accordion container
+  useLayoutEffect(() => {
+    if (accordionRef.current) {
+      gsap.set(accordionRef.current, {
+        height: 0,
+        opacity: 0,
+        overflow: "hidden",
+      });
+    }
+  }, []);
 
-    const focusableSelectors = [
-      'a[href]',
-      'button:not([disabled])',
-      'textarea',
-      'input[type="text"]',
-      'input[type="radio"]',
-      'input[type="checkbox"]',
-      'select',
-      '[tabindex]:not([tabindex="-1"])'
-    ].join(',');
+  // Animations: title wave + cards entrances
+  const rootRef = useRef(null);
+  const titleRef = useRef(null);
+  const titleTextRef = useRef(null);
+  // Bars data (seconds) for comparison chart
+  const barsData = [
+    {
+      label: "Manual editing",
+      timeLabel: "48 min",
+      seconds: 48 * 60,
+      color: "from-red-400 to-rose-500",
+    },
+    {
+      label: "Other tools",
+      timeLabel: "20 min",
+      seconds: 20 * 60,
+      color: "from-amber-400 to-orange-500",
+    },
+    {
+      label: "AutoTrim",
+      timeLabel: "1 min 40 s",
+      seconds: 100,
+      color: "from-primary-500 to-primary-600",
+    },
+  ];
 
-    const modalEl = modalRef.current;
-    const focusables = modalEl ? Array.from(modalEl.querySelectorAll(focusableSelectors)) : [];
-    const firstEl = focusables[0];
-    const lastEl = focusables[focusables.length - 1];
+  useLayoutEffect(() => {
+    // Hoisted reference for cleanup
+    let splitInst = null;
 
-    // Focus the close button by default
-    closeBtnRef.current?.focus();
+    const ctx = gsap.context(() => {
+      // Helper: build a paused bars timeline; play when ready
+      const buildBarsTimeline = () => {
+        const stage = rootRef.current?.querySelector(
+          '[data-animate="ts-stage"]'
+        );
+        if (!stage) return null;
+        const rows = gsap.utils.toArray(
+          stage.querySelectorAll('[data-animate="bar-row"]')
+        );
+        const max = Math.max(...barsData.map((b) => b.seconds));
+        const tl = gsap.timeline({ paused: true });
+        rows.forEach((row, i) => {
+          const bar = row.querySelector('[data-animate="bar-fill"]');
+          const val = row.querySelector('[data-animate="bar-value"]');
+          const pct = Math.max(4, (barsData[i].seconds / max) * 100);
+          gsap.set(bar, { width: 0 });
+          tl.to(
+            bar,
+            { width: `${pct}%`, duration: 1.0, ease: "power3.out" },
+            i * 0.12
+          );
+          tl.fromTo(
+            val,
+            { opacity: 0, y: 8 },
+            { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
+            i * 0.12 + 0.15
+          );
+        });
+        // Bars timeline intentionally has no own ScrollTrigger.
+        // It will be played by the title wave timeline (or its fallback),
+        // ensuring bars fill only after the title finishes revealing.
+        return tl;
+      };
 
-    const onKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        setIsModalOpen(false);
-      } else if (e.key === 'Tab') {
-        if (focusables.length === 0) return;
-        if (e.shiftKey) {
-          if (document.activeElement === firstEl) {
-            e.preventDefault();
-            lastEl?.focus();
-          }
-        } else {
-          if (document.activeElement === lastEl) {
-            e.preventDefault();
-            firstEl?.focus();
-          }
-        }
+      let barsTl = buildBarsTimeline();
+      // Title: SplitText wave with line masking (single split: lines + words)
+      if (titleRef.current && titleTextRef.current) {
+        const sectionTrigger = rootRef.current;
+        // Prepare for SSR hidden; wave on enter
+        gsap.set(titleRef.current, { y: 24, willChange: "transform" });
+        ScrollTrigger.create({
+          trigger: sectionTrigger,
+          start: "top 85%",
+          once: true,
+          onEnter: async () => {
+            try {
+              const mod = await import("@activetheory/split-text");
+              const SplitText = mod.default || mod;
+              // Single split call to get lines and words
+              splitInst = new SplitText(titleTextRef.current, {
+                type: "lines, words",
+              });
+              const lines = splitInst.lines || [];
+              gsap.set(lines, { overflow: "hidden", display: "block" });
+              // Collect words per line by querying within each line
+              const perLineWords = lines.map((ln) =>
+                Array.from(ln.querySelectorAll("span"))
+              );
+              const allWords = perLineWords.flat();
+              gsap.set(allWords, {
+                yPercent: 160,
+                display: "inline-block",
+                willChange: "transform",
+                force3D: true,
+              });
+
+              // Reveal title wrapper then animate words line by line for a wave
+              gsap.set(titleRef.current, {
+                opacity: 1,
+                visibility: "visible",
+                y: 0,
+              });
+              const tl = gsap.timeline();
+              perLineWords.forEach((words, i) => {
+                tl.to(
+                  words,
+                  {
+                    yPercent: 0,
+                    duration: 1.05,
+                    ease: "power4.out",
+                    stagger: { each: 0.08, from: "start" },
+                  },
+                  i * 0.08
+                );
+              });
+              // When the title wave completes, play bars after a slight delay
+              tl.call(
+                () => {
+                  barsTl && barsTl.play();
+                },
+                null,
+                ">+0.15"
+              );
+            } catch (e) {
+              // Fallback: simple fade/slide
+              gsap.to(titleRef.current, {
+                opacity: 1,
+                visibility: "visible",
+                y: 0,
+                duration: 0.9,
+                ease: "power3.out",
+              });
+              // Also play bars in fallback after a small delay
+              if (barsTl) gsap.delayedCall(0.15, () => barsTl.play());
+            }
+          },
+        });
       }
-    };
 
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [isModalOpen]);
+      // Old cards trigger removed; handled by barsTl built above
+    }, rootRef);
+
+    return () => {
+      try {
+        splitInst?.revert && splitInst.revert();
+      } catch {}
+      ctx.revert();
+    };
+  }, []);
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section
+      ref={rootRef}
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
-            AutoTrim saves you time. A lot of time.
+        <div className="text-center mb-16">
+          <h2
+            ref={titleRef}
+            className="text-4xl sm:text-5xl font-bold text-gray-900 mx-auto"
+            style={{ opacity: 0, visibility: "hidden", overflow: "hidden" }}
+          >
+            <span ref={titleTextRef} className="inline-block">
+              AutoTrim saves you time. A lot of time.
+            </span>
           </h2>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="mt-4 text-sm text-primary-600 hover:text-primary-700 underline underline-offset-2"
-          >
-            How we measured
-          </button>
         </div>
 
-        {/* Asymmetric cards layout */}
-        <div className="relative h-[400px] max-w-6xl mx-auto mb-24">
-          {/* Radial gradient background for hero stat */}
+        {/* Comparison bars stage */}
+        <div data-animate="ts-stage" className="relative max-w-3xl mx-auto">
+          {/* Radial gradient background for subtle depth */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px]" style={{ background: 'radial-gradient(circle, rgba(14, 165, 233, 0.3) 0%, rgba(14, 165, 233, 0.15) 30%, rgba(56, 189, 248, 0.05) 60%, transparent 80%)' }}></div>
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-70"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(14,165,233,0.20) 0%, rgba(14,165,233,0.10) 40%, rgba(56,189,248,0.04) 65%, transparent 85%)",
+              }}
+            />
           </div>
-          {/* Main central card - Hero stat */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
-            <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl p-12 shadow-2xl hover:shadow-3xl transition-all duration-300 text-center">
-              <div className="text-7xl sm:text-8xl font-black text-white mb-4 flex items-baseline justify-center gap-0">
-                <span>29</span>
-                <X className="h-10 w-10 sm:h-12 sm:w-12 inline-block -ml-1" strokeWidth={4} style={{ marginBottom: '0.1em' }} />
+
+          <div className="relative space-y-8">
+            {barsData.map((d) => (
+              <div key={d.label} data-animate="bar-row">
+                <div className="flex items-baseline justify-between mb-2">
+                  <div className="text-sm font-medium text-gray-900">
+                    {d.label}
+                  </div>
+                  <div
+                    data-animate="bar-value"
+                    className="text-sm font-semibold text-gray-700"
+                  >
+                    {d.timeLabel}
+                  </div>
+                </div>
+                <div className="w-full h-4 rounded-full bg-gray-200/70 overflow-hidden">
+                  <div
+                    data-animate="bar-fill"
+                    className={`h-full rounded-full bg-gradient-to-r ${d.color}`}
+                    style={{ width: 0 }}
+                  />
+                </div>
               </div>
-              <div className="text-2xl font-bold text-white mb-2">
-                Faster
-              </div>
-              <p className="text-primary-100 text-lg max-w-xs mx-auto">
-                AutoTrim processes your footage 29× faster than manual editing.
-              </p>
-              <p className="text-primary-200 text-sm mt-4">
-                1 min 40 sec vs 48 min for 30 min of video
-              </p>
-            </div>
+            ))}
           </div>
 
-          {/* Left card - Manual editing */}
-          <div className="absolute top-16 left-0 transform rotate-[-3deg] hover:rotate-0 transition-all duration-300 z-10">
-            <div className="bg-white rounded-2xl p-8 shadow-lg max-w-[280px]">
-              <Clock className="h-8 w-8 text-red-500 mb-4" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                Manual Editing
-              </h3>
-              <p className="text-3xl font-bold text-red-500 mb-2">
-                48 min
-              </p>
-              <p className="text-gray-600 text-sm">
-                30 min = 48 min of trimming
-              </p>
-              <p className="text-red-600 text-sm font-semibold mt-2">
-                That's 96% wasted time.
-              </p>
-            </div>
+          <div className="mt-6 text-xs text-gray-600 text-center relative">
+            <button
+              type="button"
+              className="mx-auto inline-flex items-center gap-2 hover:text-gray-800"
+              aria-expanded={isAccordionOpen}
+              aria-controls="ts-accordion"
+              onClick={() => {
+                const open = !isAccordionOpen;
+                setIsAccordionOpen(open);
+                if (!accordionRef.current) return;
+                if (open) {
+                  gsap.to(accordionRef.current, {
+                    height: "auto",
+                    opacity: 1,
+                    duration: 0.4,
+                    ease: "power2.out",
+                  });
+                } else {
+                  gsap.to(accordionRef.current, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: "power2.inOut",
+                  });
+                }
+              }}
+            >
+              <span>Based on a real client case: 30 min of raw footage</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform ${
+                  isAccordionOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
           </div>
 
-          {/* Right card - With AutoTrim */}
-          <div className="absolute top-16 right-0 transform rotate-[3deg] hover:rotate-0 transition-all duration-300 z-10">
-            <div className="bg-white rounded-2xl p-8 shadow-lg max-w-[280px]">
-              <TrendingUp className="h-8 w-8 text-green-500 mb-4" />
-              <h3 className="text-lg font-bold text-gray-900 mb-2">
-                With AutoTrim
-              </h3>
-              <p className="text-3xl font-bold text-green-500 mb-2">
-                250+ hours
-              </p>
-              <p className="text-gray-600 text-sm">
-                saved per year
-              </p>
-              <p className="text-green-600 text-sm font-semibold mt-2">
-                If you edit 5h/week.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center">
-          <p className="text-2xl font-semibold text-gray-900 mb-8">
-            What would you do with 250 extra hours?
-          </p>
-          <a 
-            href="#pricing" 
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl group"
+          <div
+            id="ts-accordion"
+            ref={accordionRef}
+            className={`mt-4 max-w-3xl mx-auto text-left overflow-hidden ${
+              !isAccordionOpen ? "pointer-events-none" : ""
+            }`}
+            aria-hidden={!isAccordionOpen}
+            style={{ height: 0, opacity: 0, overflow: "hidden" }}
           >
-            <Zap className="h-5 w-5 group-hover:animate-pulse" />
-            <span>Save Time Now</span>
-          </a>
+            <div className="bg-white/70 backdrop-blur-[1px] rounded-xl border border-gray-100 p-4 sm:p-6 text-gray-800">
+              {/* Section: Real test case */}
+              <div className="space-y-3">
+                <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">
+                  Real test case
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">Raw clip</div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      1 min 33 s
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">
+                      Manual (FCP)
+                    </div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      2 min 30 s (150 s)
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">AutoTrim</div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      8 s
+                    </div>
+                  </div>
+                </div>
+                <div className="text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-md px-3 py-2 inline-block">
+                  ≈ 19× faster
+                </div>
+              </div>
+
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+              {/* Section: Client scenario */}
+              <div className="space-y-4">
+                <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">
+                  Realistic scenario (client case)
+                </div>
+                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                  <li>
+                    6 clips of 5 min ={" "}
+                    <span className="font-semibold text-gray-900">30 min raw</span>
+                  </li>
+                  <li>
+                    Manual (FCP): 30 min × 1.61 ≈{" "}
+                    <span className="font-semibold text-gray-900">48 min 18 s</span>
+                  </li>
+                  <li>
+                    AutoTrim: batch processing on 30 min raw ={" "}
+                    <span className="font-semibold text-gray-900">1 min total</span>
+                  </li>
+                </ul>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">
+                      Manual total
+                    </div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      48 min 18 s
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">
+                      AutoTrim total
+                    </div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      1 min
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
+                    <div className="text-[11px] text-gray-500">Time saved</div>
+                    <div className="text-sm font-semibold text-gray-900">
+                      ~47 min 18 s
+                    </div>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-800">
+                  <span className="font-semibold">~97.9% reduction</span> —{" "}
+                  <span className="font-semibold">≈ 48× faster</span>
+                </div>
+              </div>
+
+              <div className="my-6 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+
+              {/* Section: Vs. other tools */}
+              <div className="space-y-4">
+                <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">
+                  Vs. other tools
+                </div>
+                <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+                  <li>Similar per‑clip processing speed (~50 s)</li>
+                  <li>
+                    <span className="font-semibold">
+                      No parallel processing
+                    </span>
+                  </li>
+                  <li>
+                    <span className="font-semibold">One XML per clip</span> →
+                    manual merge in FCP
+                  </li>
+                </ul>
+                <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-amber-900 text-sm">
+                  Sequential: 6 × 50 s ={" "}
+                  <span className="font-semibold">5 min</span> + merge 6 × 2 min
+                  30 s = <span className="font-semibold">15 min</span> →{" "}
+                  <span className="font-semibold">20 min total</span>
+                  <br />
+                  AutoTrim: <span className="font-semibold">1 min</span> + single XML → <span className="font-semibold">no merge</span>
+                  <br />
+                  <span className="font-semibold">Gain:</span> ~19 min —{" "}
+                  <span className="font-semibold">95% reduction</span> —{" "}
+                  <span className="font-semibold">≈ 20× faster</span>
+                </div>
+              </div>
+
+              <p className="mt-6 text-[11px] text-gray-500">
+                Notes: tests réalisés sur des rushs parlés, timings variables
+                selon machine, source audio et paramètres.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* How we measured modal */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="how-measured-title"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setIsModalOpen(false);
-          }}
-        >
-          <div className="absolute inset-0 bg-black/50" />
-          <div
-            ref={modalRef}
-            className="relative z-10 w-[90vw] max-w-2xl max-h-[85vh] overflow-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-8"
-          >
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <h3 id="how-measured-title" className="text-xl font-bold text-gray-900">
-                How we measured
-              </h3>
-              <button
-                ref={closeBtnRef}
-                onClick={() => setIsModalOpen(false)}
-                aria-label="Close"
-                className="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-
-            <div className="prose prose-sm sm:prose text-gray-700">
-              <h4 className="mt-0">Real test case</h4>
-              <ul>
-                <li>Raw clip: 1 min 33 s</li>
-                <li>Manual derush in Final Cut: <strong>2 min 30 s</strong> (150 s)</li>
-                <li>With AutoTrim: <strong>25 s</strong></li>
-              </ul>
-              <p><strong>≈ 6× faster</strong></p>
-
-              <hr />
-
-              <h4>Realistic scenario (client case)</h4>
-              <ul>
-                <li>6 clips of 5 min = <strong>30 min raw</strong></li>
-                <li>Manual (FCP): 30 min × 1.61 ≈ <strong>48 min 18 s</strong></li>
-                <li>AutoTrim: parallel processing ×4, 6 clips in 2 waves of 50 s = <strong>1 min 40 s</strong></li>
-              </ul>
-              <p>
-                <strong>Time saved:</strong> ~46 min 38 s — <strong>96.4% reduction</strong> — <strong>≈ 29× faster</strong>
-              </p>
-
-              <hr />
-
-              <h4>Vs. other tools</h4>
-              <ul>
-                <li>Similar per‑clip processing speed (~50 s)</li>
-                <li><strong>No parallel processing</strong></li>
-                <li><strong>One XML per clip</strong> → manual merge in FCP</li>
-              </ul>
-              <p>
-                Sequential: 6 × 50 s = <strong>5 min</strong> + manual merge 6 × 2 min 30 s = <strong>15 min</strong> → <strong>20 min total</strong>
-                <br />
-                AutoTrim: <strong>1 min 40 s</strong> + single XML → <strong>no merge</strong>
-                <br />
-                <strong>Gain:</strong> ~18 min 20 s — <strong>91.6% reduction</strong> — <strong>≈ 12× faster</strong>
-              </p>
-
-              <p className="mt-6 text-xs text-gray-500">
-                Notes: tests réalisés sur des rushs parlés, timings variables selon machine, source audio et paramètres.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

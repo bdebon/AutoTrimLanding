@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef } from "react";
 import {
   Upload,
   Cpu,
@@ -10,8 +11,11 @@ import {
   Globe,
   Zap,
 } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const PerksGrid = () => {
+  const sectionRef = useRef(null);
   const perks = [
     {
       icon: Upload,
@@ -90,13 +94,40 @@ const PerksGrid = () => {
     },
   ];
 
+  useEffect(() => {
+    if (!sectionRef.current) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      const titleEl = sectionRef.current.querySelector('[data-animate="perks-title"]');
+      const descEl = sectionRef.current.querySelector('[data-animate="perks-desc"]');
+      const cardEls = gsap.utils.toArray(sectionRef.current.querySelectorAll('[data-animate="perks-card"]'));
+
+      if (titleEl) {
+        gsap.fromTo(titleEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out", overwrite: "auto", scrollTrigger: { trigger: titleEl, start: "top 90%", once: true } });
+      }
+      if (descEl) {
+        gsap.fromTo(descEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.65, delay: 0.1, ease: "power3.out", overwrite: "auto", scrollTrigger: { trigger: descEl, start: "top 90%", once: true } });
+      }
+      if (cardEls.length) {
+        cardEls.forEach((el, i) => {
+          gsap.fromTo(el, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", delay: i * 0.06, overwrite: "auto", scrollTrigger: { trigger: el, start: "top 95%", once: true } });
+        });
+      }
+    }, sectionRef);
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="features" className="bg-gradient-to-b from-white to-gray-50 py-24">
+    <section
+      ref={sectionRef}
+      id="features"
+      className="bg-gradient-to-b from-white to-gray-50 py-24"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center">
+        <h2 data-animate="perks-title" className="text-3xl font-bold text-center">
           Why creators never go back.
         </h2>
-        <p className="text-lg text-gray-600 text-center mt-4">
+        <p data-animate="perks-desc" className="text-lg text-gray-600 text-center mt-4">
           From drag-and-drop to clean XML, AutoTrim is packed with features that
           save time — and sanity.
         </p>
@@ -105,14 +136,14 @@ const PerksGrid = () => {
           {perks.map((perk, index) => (
             <div
               key={index}
+              data-animate="perks-card"
               className={`
-                group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 
+                group bg-white rounded-2xl shadow-sm hover:shadow-xl
                 border border-gray-100 hover:border-primary-200 overflow-hidden
                 ${perk.size === "large" ? "lg:col-span-2 lg:row-span-2" : ""}
               `}
             >
               {perk.gifPath && perk.size === "large" ? (
-                // Large card with GIF
                 <div className="flex flex-col h-full">
                   <div className="relative h-48 lg:h-64 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                     <img
@@ -126,13 +157,8 @@ const PerksGrid = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/20 to-transparent"></div>
                   </div>
                   <div className="p-8 flex-1 flex flex-col">
-                    <div
-                      className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} self-start`}
-                    >
-                      <perk.icon
-                        className={`w-8 h-8 ${perk.iconColor}`}
-                        strokeWidth={1.5}
-                      />
+                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} self-start`}>
+                      <perk.icon className={`w-8 h-8 ${perk.iconColor}`} strokeWidth={1.5} />
                     </div>
                     <h3 className="mt-6 text-xl font-bold text-gray-900">
                       {perk.title}
@@ -142,21 +168,13 @@ const PerksGrid = () => {
                         </span>
                       )}
                     </h3>
-                    <p className="mt-3 text-base text-gray-600 leading-relaxed">
-                      {perk.desc}
-                    </p>
+                    <p className="mt-3 text-base text-gray-600 leading-relaxed">{perk.desc}</p>
                   </div>
                 </div>
               ) : (
-                // Normal card
                 <div className="p-8">
-                  <div
-                    className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} transition-all duration-300 group-hover:scale-110`}
-                  >
-                    <perk.icon
-                      className={`w-8 h-8 ${perk.iconColor}`}
-                      strokeWidth={1.5}
-                    />
+                  <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} transition-all duration-300 group-hover:scale-110`}>
+                    <perk.icon className={`w-8 h-8 ${perk.iconColor}`} strokeWidth={1.5} />
                   </div>
                   <h3 className="mt-6 text-lg font-semibold text-gray-900">
                     {perk.title}
@@ -166,9 +184,7 @@ const PerksGrid = () => {
                       </span>
                     )}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                    {perk.desc}
-                  </p>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">{perk.desc}</p>
                 </div>
               )}
             </div>
