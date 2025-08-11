@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Landing page for AutoTrim app",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "vite:dev": "vite",
+    "vite:build": "vite build",
+    "vite:preview": "vite preview"
   },
   "dependencies": {
     "gsap": "^3.13.0",
