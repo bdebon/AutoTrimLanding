@@ -1,0 +1,54 @@
+# Node
+node_modules/
+
+# Build outputs
+/dist/
+/build/
+/.vite/
+/.cache/
+/.tmp/
+coverage/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# TypeScript
+*.tsbuildinfo
+
+# Package managers
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# Deployment / hosting
+.vercel/
+.netlify/
+
+# Local caches
+node_modules/.cache/
+
+# Git data backups (safety)
+*.orig
+
+# App-specific
+trimly-app/
