@@ -1,54 +1,41 @@
-# Node
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Build outputs
-/dist/
-/build/
-/.vite/
-/.cache/
-/.tmp/
-coverage/
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Logs
-logs/
-*.log
-*.log.*
+# testing
+/coverage
 
-# OS / Editor
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
 .DS_Store
-Thumbs.db
-.idea/
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.swp
-*.swo
+*.pem
 
-# Env files
-.env
-.env.*
-!.env.example
-
-# TypeScript
-*.tsbuildinfo
-
-# Package managers
-pnpm-debug.log*
+# debug
+npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-npm-debug.log*
+.pnpm-debug.log*
 
-# Deployment / hosting
-.vercel/
-.netlify/
+# env files (can opt-in for committing if needed)
+.env*
 
-# Local caches
-node_modules/.cache/
+# vercel
+.vercel
 
-# Git data backups (safety)
-*.orig
-
-# App-specific
-trimly-app/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
