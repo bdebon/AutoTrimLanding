@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Zap, ArrowRight } from 'lucide-react';
+import { Clock, Zap, ArrowRight, Brain, Hourglass, Check } from 'lucide-react';
 
 const FinalCTA = () => {
   return (
@@ -11,9 +11,11 @@ const FinalCTA = () => {
       </div>
       
       <div className="relative max-w-4xl mx-auto">
-        {/* Header with emoji */}
+        {/* Header */}
         <div className="text-center mb-12">
-          <div className="text-6xl mb-4">🧠</div>
+          <div className="mb-4 flex justify-center">
+            <Brain className="w-14 h-14 text-white/90" />
+          </div>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-2">
             Still Not Sure?
           </h2>
@@ -24,7 +26,9 @@ const FinalCTA = () => {
           {/* Current situation */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
             <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">⌛</div>
+              <div className="text-3xl flex-shrink-0">
+                <Hourglass className="w-7 h-7 text-gray-200" />
+              </div>
               <div>
                 <p className="text-lg text-gray-300 mb-2">
                   You're spending <span className="text-white font-bold">5 hours/week</span> trimming videos.
@@ -39,7 +43,9 @@ const FinalCTA = () => {
           {/* With AutoTrim */}
           <div className="bg-gradient-to-br from-primary-500/10 to-primary-600/10 backdrop-blur-sm rounded-2xl p-8 border border-primary-400/20">
             <div className="flex items-start gap-4">
-              <div className="text-3xl flex-shrink-0">⚡</div>
+              <div className="text-3xl flex-shrink-0">
+                <Zap className="w-7 h-7 text-primary-300" />
+              </div>
               <div>
                 <p className="text-lg text-gray-300 mb-2">
                   With AutoTrim, you get <span className="text-white font-bold">96% of that time back</span>.
@@ -76,19 +82,19 @@ const FinalCTA = () => {
         {/* Trust indicators */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm">
           <div className="flex items-center gap-2">
-            <span className="text-green-400">✓</span>
+            <Check className="w-4 h-4 text-green-400" />
             <span>Free to try</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-400">✓</span>
+            <Check className="w-4 h-4 text-green-400" />
             <span>14-day money back</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-400">✓</span>
+            <Check className="w-4 h-4 text-green-400" />
             <span>One-time payment</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-green-400">✓</span>
+            <Check className="w-4 h-4 text-green-400" />
             <span>100% local & private</span>
           </div>
         </div>

@@ -51,7 +51,9 @@ const WhoIsItFor = () => {
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <div className="text-5xl mb-4">👥</div>
+          <div className="mb-4 flex justify-center">
+            <Users className="h-12 w-12 text-gray-900" />
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             AutoTrim is Made For
           </h2>

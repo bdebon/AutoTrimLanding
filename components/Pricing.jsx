@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, Shield, Zap, Download } from "lucide-react";
+import { Check, Shield, Zap, Download, Flame, Gem, FlaskConical, Lock, BadgeDollarSign } from "lucide-react";
 import { useTranslation } from "../hooks/useTranslation";
 
 const Pricing = () => {
@@ -23,10 +23,12 @@ const Pricing = () => {
         {/* Single centered pricing card */}
         <div className="max-w-lg mx-auto">
           <div className="relative">
-            {/* Early bird badge */}
+            {/* Early bird badge */
+            }
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg">
-                🔥 Early Bird
+              <span className="bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-lg inline-flex items-center gap-1">
+                <Flame className="w-4 h-4" />
+                Early Bird
               </span>
             </div>
 
@@ -35,7 +37,10 @@ const Pricing = () => {
               <div className="p-8 sm:p-10">
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    💎 Lifetime License
+                    <span className="inline-flex items-center gap-2">
+                      <Gem className="w-5 h-5 text-primary-600" />
+                      Lifetime License
+                    </span>
                   </h3>
                   <div className="flex items-baseline justify-center gap-2">
                     <span className="text-6xl font-black text-gray-900">
@@ -96,21 +101,22 @@ const Pricing = () => {
         {/* Trial & Trust indicators */}
         <div className="mt-16 text-center space-y-4 max-w-2xl mx-auto">
           <div className="flex items-center justify-center gap-2 text-gray-600">
-            <span className="text-2xl">🧪</span>
+            <FlaskConical className="w-6 h-6" />
             <p className="text-lg">
               <span className="font-semibold">Free to try</span> — process your
               files, preview your cuts.
             </p>
           </div>
           <div className="flex items-center justify-center gap-2 text-gray-600">
-            <span className="text-2xl">🔐</span>
+            <Lock className="w-6 h-6" />
             <p className="text-lg">
               Pay only to export your final XML or timeline.
             </p>
           </div>
           <div className="pt-4 border-t border-gray-200">
-            <p className="text-lg text-gray-700 font-medium">
-              💰 14-day money-back guarantee.
+            <p className="text-lg text-gray-700 font-medium inline-flex items-center gap-2">
+              <BadgeDollarSign className="w-5 h-5 text-green-600" />
+              14-day money-back guarantee.
             </p>
           </div>
         </div>

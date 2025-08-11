@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, X } from 'lucide-react';
+import { Play, X, Film } from 'lucide-react';
 
 const VideoDemo = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,7 +15,9 @@ const VideoDemo = () => {
       <div id="demo" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <div className="text-5xl mb-4">🎥</div>
+            <div className="mb-4 flex justify-center">
+              <Film className="h-12 w-12 text-white/90" />
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               See AutoTrim in Action
             </h2>

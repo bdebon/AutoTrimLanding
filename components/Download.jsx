@@ -34,7 +34,9 @@ const Download = () => {
       className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-4xl mx-auto text-center">
-        <div className="text-5xl mb-4">⬇️</div>
+        <div className="mb-4 flex justify-center">
+          <DownloadIcon className="h-12 w-12 text-gray-900" />
+        </div>
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           Download AutoTrim
         </h2>

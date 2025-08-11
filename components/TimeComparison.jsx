@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, Zap, FileText } from 'lucide-react';
+import { Clock, Zap, FileText, Hourglass, Timer, Check, XCircle } from 'lucide-react';
 import { useTranslation } from '../hooks/useTranslation';
 
 const TimeComparison = () => {
@@ -87,21 +87,63 @@ const TimeComparison = () => {
               <tbody className="divide-y divide-gray-100">
                 <tr>
                   <td className="px-6 py-4 font-medium text-gray-700">Processing time</td>
-                  <td className="px-6 py-4 text-center">⏳ 48 min</td>
-                  <td className="px-6 py-4 text-center">⏱ ~20 min</td>
-                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">⚡️ 1m 40s</td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Hourglass className="w-4 h-4 text-gray-600" />
+                      <span>48 min</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Timer className="w-4 h-4 text-gray-600" />
+                      <span>~20 min</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Zap className="w-4 h-4 text-primary-600" />
+                      <span>1m 40s</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 font-medium text-gray-700">Timeline Output</td>
-                  <td className="px-6 py-4 text-center">❌ Many files</td>
-                  <td className="px-6 py-4 text-center">❌ Puzzle</td>
-                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">✅ One XML</td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <XCircle className="w-4 h-4 text-red-500" />
+                      <span>Many files</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <XCircle className="w-4 h-4 text-red-500" />
+                      <span>Puzzle</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      <span>One XML</span>
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 font-medium text-gray-700">Privacy</td>
-                  <td className="px-6 py-4 text-center">✅</td>
-                  <td className="px-6 py-4 text-center">❌ Often Cloud</td>
-                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">✅ 100% Local</td>
+                  <td className="px-6 py-4 text-center">
+                    <Check className="w-4 h-4 inline-block text-green-600" />
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <XCircle className="w-4 h-4 text-red-500" />
+                      <span>Often Cloud</span>
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-center bg-primary-50 font-semibold">
+                    <span className="inline-flex items-center justify-center gap-2">
+                      <Check className="w-4 h-4 text-green-600" />
+                      <span>100% Local</span>
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
