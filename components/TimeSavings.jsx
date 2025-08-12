@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { Zap, ChevronDown } from "lucide-react";
+import { Clock, ChevronDown, Activity, Gauge, Zap } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -28,21 +28,37 @@ const TimeSavings = () => {
   const barsData = [
     {
       label: "Manual editing",
+      subtitle: "Traditional workflow",
       timeLabel: "48 min",
       seconds: 48 * 60,
-      color: "from-red-400 to-rose-500",
+      color: "from-gray-600 to-gray-700",
+      bgColor: "from-gray-50 to-gray-100",
+      Icon: Clock,
+      speed: "1×",
+      percentage: 100,
     },
     {
       label: "Other tools",
+      subtitle: "Semi-automated",
       timeLabel: "20 min",
       seconds: 20 * 60,
-      color: "from-amber-400 to-orange-500",
+      color: "from-gray-500 to-gray-600",
+      bgColor: "from-gray-50 to-gray-100",
+      Icon: Activity,
+      speed: "2.4× faster",
+      percentage: 42,
     },
     {
       label: "AutoTrim",
-      timeLabel: "1 min 40 s",
-      seconds: 100,
-      color: "from-primary-500 to-primary-600",
+      subtitle: "Fully automated",
+      timeLabel: "1 min",
+      seconds: 60,
+      color: "from-emerald-500 to-green-600",
+      bgColor: "from-emerald-50 via-green-50 to-emerald-100",
+      Icon: Zap,
+      speed: "48× faster",
+      percentage: 2.1,
+      highlight: true,
     },
   ];
 
@@ -51,6 +67,45 @@ const TimeSavings = () => {
     let splitInst = null;
 
     const ctx = gsap.context(() => {
+      const icon = rootRef.current?.querySelector('[data-animate="ts-icon"]');
+      const subtitle = rootRef.current?.querySelector(
+        '[data-animate="ts-subtitle"]'
+      );
+
+      // Icon animation
+      if (icon) {
+        gsap.set(icon, { scale: 0, rotate: -180, opacity: 0 });
+        gsap.to(icon, {
+          scale: 1,
+          rotate: 0,
+          opacity: 0.9,
+          duration: 0.8,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      }
+
+      // Subtitle animation
+      if (subtitle) {
+        gsap.set(subtitle, { y: 20, opacity: 0 });
+        gsap.to(subtitle, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 85%",
+            once: true,
+          },
+          delay: 0.5,
+        });
+      }
+
       // Helper: build a paused bars timeline; play when ready
       const buildBarsTimeline = () => {
         const stage = rootRef.current?.querySelector(
@@ -62,35 +117,82 @@ const TimeSavings = () => {
         );
         const max = Math.max(...barsData.map((b) => b.seconds));
         const tl = gsap.timeline({ paused: true });
+
         rows.forEach((row, i) => {
+          const card = row.querySelector('[data-animate="bar-card"]');
           const bar = row.querySelector('[data-animate="bar-fill"]');
           const val = row.querySelector('[data-animate="bar-value"]');
+          const speed = row.querySelector('[data-animate="bar-speed"]');
+          const icon = row.querySelector('[data-animate="bar-icon"]');
           const pct = Math.max(4, (barsData[i].seconds / max) * 100);
+
+          // Initial states
+          gsap.set(card, { opacity: 0, y: 40, scale: 0.9 });
           gsap.set(bar, { width: 0 });
+          if (icon) gsap.set(icon, { scale: 0, rotate: -180 });
+          if (speed) gsap.set(speed, { opacity: 0, x: -20 });
+
+          // Card entrance
+          tl.to(
+            card,
+            { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" },
+            i * 0.15
+          );
+
+          // Icon animation
+          if (icon) {
+            tl.to(
+              icon,
+              { scale: 1, rotate: 0, duration: 0.5, ease: "back.out(1.4)" },
+              i * 0.15 + 0.1
+            );
+          }
+
+          // Bar fill with more dramatic effect
           tl.to(
             bar,
-            { width: `${pct}%`, duration: 1.0, ease: "power3.out" },
-            i * 0.12
+            {
+              width: `${pct}%`,
+              duration: 1.2,
+              ease: "power3.inOut",
+              onUpdate: function () {
+                // Add glow effect during animation for AutoTrim
+                if (barsData[i].highlight && this.progress() > 0.5) {
+                  gsap.set(bar, {
+                    boxShadow: "0 0 20px rgba(14,165,233,0.5)",
+                  });
+                }
+              },
+            },
+            i * 0.15 + 0.2
           );
+
+          // Value and speed appear
           tl.fromTo(
             val,
-            { opacity: 0, y: 8 },
-            { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" },
-            i * 0.12 + 0.15
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" },
+            i * 0.15 + 0.4
           );
+
+          if (speed) {
+            tl.to(
+              speed,
+              { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" },
+              i * 0.15 + 0.6
+            );
+          }
         });
-        // Bars timeline intentionally has no own ScrollTrigger.
-        // It will be played by the title wave timeline (or its fallback),
-        // ensuring bars fill only after the title finishes revealing.
+
         return tl;
       };
 
       let barsTl = buildBarsTimeline();
-      // Title: SplitText wave with line masking (single split: lines + words)
+      // Title: SplitText wave with proper centering
       if (titleRef.current && titleTextRef.current) {
         const sectionTrigger = rootRef.current;
-        // Prepare for SSR hidden; wave on enter
-        gsap.set(titleRef.current, { y: 24, willChange: "transform" });
+        gsap.set(titleRef.current, { y: 30 });
+
         ScrollTrigger.create({
           trigger: sectionTrigger,
           start: "top 85%",
@@ -99,62 +201,42 @@ const TimeSavings = () => {
             try {
               const mod = await import("@activetheory/split-text");
               const SplitText = mod.default || mod;
-              // Single split call to get lines and words
               splitInst = new SplitText(titleTextRef.current, {
-                type: "lines, words",
+                type: "words",
               });
-              const lines = splitInst.lines || [];
-              gsap.set(lines, { overflow: "hidden", display: "block" });
-              // Collect words per line by querying within each line
-              const perLineWords = lines.map((ln) =>
-                Array.from(ln.querySelectorAll("span"))
-              );
-              const allWords = perLineWords.flat();
-              gsap.set(allWords, {
-                yPercent: 160,
+              const words = splitInst.words;
+
+              gsap.set(words, {
+                yPercent: 130,
                 display: "inline-block",
                 willChange: "transform",
                 force3D: true,
               });
 
-              // Reveal title wrapper then animate words line by line for a wave
-              gsap.set(titleRef.current, {
-                opacity: 1,
-                visibility: "visible",
-                y: 0,
-              });
-              const tl = gsap.timeline();
-              perLineWords.forEach((words, i) => {
-                tl.to(
-                  words,
-                  {
-                    yPercent: 0,
-                    duration: 1.05,
-                    ease: "power4.out",
-                    stagger: { each: 0.08, from: "start" },
-                  },
-                  i * 0.08
-                );
-              });
-              // When the title wave completes, play bars after a slight delay
-              tl.call(
-                () => {
+              gsap.set(titleRef.current, { opacity: 1, y: 0 });
+
+              gsap.to(words, {
+                yPercent: 0,
+                duration: 0.9,
+                ease: "power4.out",
+                stagger: { each: 0.06, from: "start" },
+                delay: 0.3,
+                onComplete: () => {
                   barsTl && barsTl.play();
                 },
-                null,
-                ">+0.15"
-              );
+              });
             } catch (e) {
-              // Fallback: simple fade/slide
+              // Fallback animation
               gsap.to(titleRef.current, {
                 opacity: 1,
-                visibility: "visible",
                 y: 0,
                 duration: 0.9,
                 ease: "power3.out",
+                delay: 0.3,
+                onComplete: () => {
+                  barsTl && barsTl.play();
+                },
               });
-              // Also play bars in fallback after a small delay
-              if (barsTl) gsap.delayedCall(0.15, () => barsTl.play());
             }
           },
         });
@@ -174,60 +256,129 @@ const TimeSavings = () => {
   return (
     <section
       ref={rootRef}
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <div data-animate="ts-icon" className="mb-4 flex justify-center">
+            <div className="p-3 bg-gradient-to-br from-primary-100 to-primary-200 rounded-2xl">
+              <Clock className="h-8 w-8 text-primary-600" />
+            </div>
+          </div>
           <h2
             ref={titleRef}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mx-auto"
-            style={{ opacity: 0, visibility: "hidden", overflow: "hidden" }}
+            className="text-4xl sm:text-5xl font-bold text-gray-900 mx-auto mb-4 overflow-hidden"
+            style={{ opacity: 0 }}
           >
-            <span ref={titleTextRef} className="inline-block">
+            <span ref={titleTextRef}>
               AutoTrim saves you time. A lot of time.
             </span>
           </h2>
+          <p
+            data-animate="ts-subtitle"
+            className="text-xl text-gray-600 max-w-2xl mx-auto"
+          >
+            See how much faster your workflow becomes
+          </p>
         </div>
 
-        {/* Comparison bars stage */}
-        <div data-animate="ts-stage" className="relative max-w-3xl mx-auto">
-          {/* Radial gradient background for subtle depth */}
+        {/* Comparison visualization */}
+        <div data-animate="ts-stage" className="relative max-w-5xl mx-auto">
+          {/* Background decoration */}
           <div className="absolute inset-0 pointer-events-none">
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] opacity-70"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(14,165,233,0.20) 0%, rgba(14,165,233,0.10) 40%, rgba(56,189,248,0.04) 65%, transparent 85%)",
-              }}
-            />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary-100/20 to-blue-100/20 rounded-full blur-3xl" />
           </div>
 
-          <div className="relative space-y-8">
+          <div className="relative grid gap-6">
             {barsData.map((d) => (
-              <div key={d.label} data-animate="bar-row">
-                <div className="flex items-baseline justify-between mb-2">
-                  <div className="text-sm font-medium text-gray-900">
-                    {d.label}
+              <div key={d.label} data-animate="bar-row" className="relative">
+                <div
+                  data-animate="bar-card"
+                  className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${
+                    d.bgColor
+                  } ${
+                    d.highlight
+                      ? "ring-2 ring-emerald-400 ring-offset-2 shadow-2xl"
+                      : "shadow-xl"
+                  }`}
+                >
+                  {/* Inner content */}
+                  <div className="relative p-8">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-start gap-4">
+                        <div
+                          data-animate="bar-icon"
+                          className={`p-3 rounded-xl bg-white shadow-md ${
+                            d.highlight ? "ring-2 ring-emerald-200" : ""
+                          }`}
+                        >
+                          <d.Icon
+                            className={`w-6 h-6 ${
+                              d.highlight ? "text-emerald-600" : "text-gray-700"
+                            }`}
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900">
+                            {d.label}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1">
+                            {d.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="text-right">
+                        <div
+                          data-animate="bar-value"
+                          className={`text-2xl font-black ${
+                            d.highlight
+                              ? "text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-700"
+                              : "text-gray-900"
+                          }`}
+                        >
+                          {d.timeLabel}
+                        </div>
+                        <div
+                          data-animate="bar-speed"
+                          className={`text-sm font-medium mt-1 ${
+                            d.highlight ? "text-emerald-600" : "text-gray-500"
+                          }`}
+                        >
+                          {d.speed}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Progress bar */}
+                    <div className="relative">
+                      <div className="w-full h-2 rounded-full bg-white/50 overflow-hidden">
+                        <div
+                          data-animate="bar-fill"
+                          className={`h-full rounded-full bg-gradient-to-r ${d.color}`}
+                          style={{ width: 0 }}
+                        />
+                      </div>
+                      {/* Percentage indicator */}
+                      <div className="flex justify-between items-center mt-2">
+                        <span className="text-xs text-gray-500">0 min</span>
+                        <span
+                          className={`text-xs font-semibold ${
+                            d.highlight ? "text-emerald-600" : "text-gray-600"
+                          }`}
+                        >
+                          {d.percentage}% of manual time
+                        </span>
+                        <span className="text-xs text-gray-500">48 min</span>
+                      </div>
+                    </div>
                   </div>
-                  <div
-                    data-animate="bar-value"
-                    className="text-sm font-semibold text-gray-700"
-                  >
-                    {d.timeLabel}
-                  </div>
-                </div>
-                <div className="w-full h-4 rounded-full bg-gray-200/70 overflow-hidden">
-                  <div
-                    data-animate="bar-fill"
-                    className={`h-full rounded-full bg-gradient-to-r ${d.color}`}
-                    style={{ width: 0 }}
-                  />
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 text-xs text-gray-600 text-center relative">
+          <div className="mt-12 text-xs text-gray-600 text-center relative">
             <button
               type="button"
               className="mx-auto inline-flex items-center gap-2 hover:text-gray-800"
@@ -315,15 +466,21 @@ const TimeSavings = () => {
                 <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
                   <li>
                     6 clips of 5 min ={" "}
-                    <span className="font-semibold text-gray-900">30 min raw</span>
+                    <span className="font-semibold text-gray-900">
+                      30 min raw
+                    </span>
                   </li>
                   <li>
                     Manual (FCP): 30 min × 1.61 ≈{" "}
-                    <span className="font-semibold text-gray-900">48 min 18 s</span>
+                    <span className="font-semibold text-gray-900">
+                      48 min 18 s
+                    </span>
                   </li>
                   <li>
                     AutoTrim: batch processing on 30 min raw ={" "}
-                    <span className="font-semibold text-gray-900">1 min total</span>
+                    <span className="font-semibold text-gray-900">
+                      1 min total
+                    </span>
                   </li>
                 </ul>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -381,7 +538,8 @@ const TimeSavings = () => {
                   30 s = <span className="font-semibold">15 min</span> →{" "}
                   <span className="font-semibold">20 min total</span>
                   <br />
-                  AutoTrim: <span className="font-semibold">1 min</span> + single XML → <span className="font-semibold">no merge</span>
+                  AutoTrim: <span className="font-semibold">1 min</span> +
+                  single XML → <span className="font-semibold">no merge</span>
                   <br />
                   <span className="font-semibold">Gain:</span> ~19 min —{" "}
                   <span className="font-semibold">95% reduction</span> —{" "}
