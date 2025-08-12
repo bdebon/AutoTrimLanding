@@ -18,230 +18,324 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const { t } = useTranslation();
-  const step1Ref = useRef(null);
-  const step2Ref = useRef(null);
-  const step3Ref = useRef(null);
-  const arrow1Ref = useRef(null);
-  const arrow2Ref = useRef(null);
-  const heroContentRef = useRef(null);
-  const badgeRef = useRef(null);
+  const rootRef = useRef(null);
   const titleRef = useRef(null);
-  const titleLine1Ref = useRef(null);
-  const titleLine2Ref = useRef(null);
-  const descriptionRef = useRef(null);
-  const ctaRef = useRef(null);
-  const statsRef = useRef(null);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const setup = async () => {
-        // Hide title container to avoid flash until prepared
-        gsap.set(titleRef.current, { opacity: 0 });
+    let splitInst1 = null;
+    let splitInst2 = null;
 
-        // Init non-title elements with fade+lift
-        gsap.set([badgeRef.current, descriptionRef.current, ctaRef.current], {
-          opacity: 0,
-          y: 30,
+    const ctx = gsap.context(() => {
+      // Hero elements
+      const badge = rootRef.current?.querySelector(
+        '[data-animate="hero-badge"]'
+      );
+      const titleLine1 = rootRef.current?.querySelector(
+        '[data-animate="hero-title-line1"]'
+      );
+      const titleLine2 = rootRef.current?.querySelector(
+        '[data-animate="hero-title-line2"]'
+      );
+      const description = rootRef.current?.querySelector(
+        '[data-animate="hero-description"]'
+      );
+      const buttons = rootRef.current?.querySelectorAll(
+        '[data-animate="hero-button"]'
+      );
+
+      // Badge animation with sparkle icon
+      if (badge) {
+        const icon = badge.querySelector('[data-animate="hero-badge-icon"]');
+        gsap.set(badge, { opacity: 0, y: 20, scale: 0.9 });
+        if (icon) gsap.set(icon, { rotate: -360, scale: 0 });
+
+        gsap.to(badge, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "back.out(1.4)",
+          delay: 0.2,
         });
 
-        // Try to use ActiveTheory SplitText for word-by-word reveal
-        let words1 = null;
-        let words2 = null;
+        if (icon) {
+          gsap.to(icon, {
+            rotate: 0,
+            scale: 1,
+            duration: 1,
+            ease: "back.out(2.5)",
+            delay: 0.3,
+          });
+        }
+      }
+
+      // Title animation with proper wave effect
+      const animateTitle = async () => {
         try {
           const mod = await import("@activetheory/split-text");
           const SplitText = mod.default || mod;
-          const split1 = new SplitText(titleLine1Ref.current, {
-            type: "words",
-          });
-          const split2 = new SplitText(titleLine2Ref.current, {
-            type: "words",
-          });
-          words1 = split1.words;
-          words2 = split2.words;
-          // If line 2 contained gradient text classes, copy them to each word span
-          const gradientEl =
-            titleLine2Ref.current.querySelector(".bg-clip-text");
-          if (gradientEl) {
-            const gradientClasses = gradientEl.className;
-            words2.forEach((w) => {
-              // Preserve existing classes and append gradient styles
-              w.className = `${w.className} ${gradientClasses}`.trim();
+
+          // Split both lines into words
+          if (titleLine1) {
+            splitInst1 = new SplitText(titleLine1, { type: "words" });
+            const words1 = splitInst1.words;
+
+            gsap.set(words1, {
+              yPercent: 120,
+              display: "inline-block",
+              willChange: "transform",
+              force3D: true,
+            });
+
+            // Show title container
+            gsap.set(titleRef.current, { opacity: 1, y: 0 });
+
+            // Animate first line words
+            gsap.to(words1, {
+              yPercent: 0,
+              duration: 0.9,
+              ease: "power4.out",
+              stagger: 0.05,
+              delay: 0.4,
             });
           }
-          // Prepare words for masked reveal (stronger wave)
-          gsap.set([words1, words2], {
-            yPercent: 160,
-            display: "inline-block",
-            willChange: "transform",
-            force3D: true,
-          });
-        } catch (e) {
-          // Fallback to line-based masked reveal
-          gsap.set([titleLine1Ref.current, titleLine2Ref.current], {
-            yPercent: 160,
-            willChange: "transform",
-            force3D: true,
-          });
-        }
 
-        // Build main hero timeline
-        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        // Reveal title container now that elements are ready
-        tl.set(titleRef.current, { opacity: 1 });
+          if (titleLine2) {
+            splitInst2 = new SplitText(titleLine2, { type: "words" });
+            const words2 = splitInst2.words;
 
-        if (words1 && words2) {
-          // Wave reveal per word with stagger
-          tl.to(words1, {
-            yPercent: 0,
-            duration: 1.05,
-            ease: "power4.out",
-            stagger: { each: 0.1, from: "start" },
-          }).to(
-            words2,
-            {
+            // Preserve gradient classes
+            words2.forEach((word) => {
+              word.classList.add(
+                "bg-gradient-to-r",
+                "from-primary-500",
+                "to-primary-600",
+                "bg-clip-text",
+                "text-transparent"
+              );
+            });
+
+            gsap.set(words2, {
+              yPercent: 120,
+              display: "inline-block",
+              willChange: "transform",
+              force3D: true,
+            });
+
+            // Animate second line words with overlap
+            gsap.to(words2, {
               yPercent: 0,
-              duration: 1.05,
+              duration: 0.9,
               ease: "power4.out",
-              stagger: { each: 0.1, from: "start" },
-            },
-            "-=0.8"
-          );
-        } else {
-          // Fallback: line-by-line masked reveal
-          tl.fromTo(
-            titleLine1Ref.current,
-            { yPercent: 160 },
-            { yPercent: 0, duration: 1.1, ease: "power4.out" }
-          ).fromTo(
-            titleLine2Ref.current,
-            { yPercent: 160 },
-            { yPercent: 0, duration: 1.1, ease: "power4.out" },
-            "-=0.8"
-          );
-        }
-
-        // Description overlaps after title
-        tl.to(
-          descriptionRef.current,
-          { opacity: 1, y: 0, duration: 0.9 },
-          "-=0.7"
-        )
-          // Badge overlaps description
-          .to(badgeRef.current, { opacity: 1, y: 0, duration: 0.7 }, "-=0.8")
-          // CTAs overlap both desc and badge
-          .to(ctaRef.current, { opacity: 1, y: 0, duration: 1.2 }, "-=0.6")
-          // Step 1 appears with slight overlap to keep flow
-          .fromTo(
-            step1Ref.current,
-            { opacity: 0, y: 40 },
-            { opacity: 1, y: 0, duration: 1.4 },
-            ">-.4"
-          );
-
-        // Independent reveals for Step 2 and Step 3 when they enter viewport (top 90%)
-        gsap.fromTo(
-          step2Ref.current,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            overwrite: "auto",
-            scrollTrigger: {
-              trigger: step2Ref.current,
-              start: "top 90%",
-              once: true,
-            },
+              stagger: 0.05,
+              delay: 0.6, // Start before first line finishes for wave effect
+            });
           }
-        );
-
-        gsap.fromTo(
-          step3Ref.current,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            overwrite: "auto",
-            scrollTrigger: {
-              trigger: step3Ref.current,
-              start: "top 90%",
-              once: true,
-            },
-          }
-        );
-
-        // Arrows tied to their respective steps
-        gsap.fromTo(
-          arrow1Ref.current,
-          { opacity: 0, scale: 0, rotation: -180 },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.5,
-            ease: "back.out(1.7)",
-            overwrite: "auto",
-            scrollTrigger: {
-              trigger: step2Ref.current,
-              start: "top 90%",
-              once: true,
-            },
-          }
-        );
-
-        gsap.fromTo(
-          arrow2Ref.current,
-          { opacity: 0, scale: 0, rotation: -180 },
-          {
-            opacity: 1,
-            scale: 1,
-            rotation: 0,
-            duration: 0.5,
-            ease: "back.out(1.7)",
-            overwrite: "auto",
-            scrollTrigger: {
-              trigger: step3Ref.current,
-              start: "top 90%",
-              once: true,
-            },
-          }
-        );
-
-        // Stats reveal
-        if (statsRef.current?.children) {
+        } catch (e) {
+          // Fallback without SplitText
+          gsap.set(titleRef.current, { opacity: 1 });
           gsap.fromTo(
-            statsRef.current.children,
-            { opacity: 0, y: 30, scale: 0.95 },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.7,
-              ease: "power3.out",
-              stagger: { each: 0.1, from: "center" },
-              overwrite: "auto",
-              scrollTrigger: {
-                trigger: statsRef.current,
-                start: "top 85%",
-                once: true,
-              },
-            }
+            titleLine1,
+            { yPercent: 100 },
+            { yPercent: 0, duration: 0.9, ease: "power4.out", delay: 0.4 }
+          );
+          gsap.fromTo(
+            titleLine2,
+            { yPercent: 100 },
+            { yPercent: 0, duration: 0.9, ease: "power4.out", delay: 0.6 }
           );
         }
       };
 
-      // Run async setup
-      setup();
-    }, heroContentRef);
+      if (titleRef.current) {
+        gsap.set(titleRef.current, { opacity: 0 });
+        animateTitle();
+      }
 
-    return () => ctx.revert();
+      // Description animation
+      if (description) {
+        gsap.set(description, { opacity: 0, y: 30 });
+        gsap.to(description, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          delay: 1,
+        });
+      }
+
+      // Buttons animation with bounce
+      if (buttons.length) {
+        gsap.set(buttons, { opacity: 0, y: 30, scale: 0.9 });
+        gsap.to(buttons, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "back.out(1.5)",
+          stagger: 0.1,
+          delay: 1.2,
+        });
+      }
+
+      // Steps
+      const steps = gsap.utils.toArray(
+        rootRef.current?.querySelectorAll('[data-animate="hero-step"]')
+      );
+      const arrows = gsap.utils.toArray(
+        rootRef.current?.querySelectorAll('[data-animate="hero-arrow"]')
+      );
+
+      // Steps animation with sophisticated reveals
+      steps.forEach((step, i) => {
+        const badge = step.querySelector('[data-animate="step-badge"]');
+        const title = step.querySelector('[data-animate="step-title"]');
+        const logos = step.querySelectorAll('[data-animate="step-logo"]');
+        const image = step.querySelector('[data-animate="step-image"]');
+        const glow = step.querySelector('[data-animate="step-glow"]');
+
+        // Initial states
+        gsap.set(step, { opacity: 0, y: 60 });
+        if (badge) gsap.set(badge, { scale: 0, rotate: -180 });
+        if (title) gsap.set(title, { x: -30, opacity: 0 });
+        if (logos.length) gsap.set(logos, { scale: 0, rotate: -90 });
+        if (image) gsap.set(image, { scale: 0.9, opacity: 0 });
+        if (glow) gsap.set(glow, { opacity: 0 });
+
+        // Step entrance
+        ScrollTrigger.create({
+          trigger: step,
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            const tl = gsap.timeline();
+
+            // Main step container
+            tl.to(step, {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+
+            // Badge animation
+            if (badge) {
+              tl.to(
+                badge,
+                {
+                  scale: 1,
+                  rotate: 0,
+                  duration: 0.6,
+                  ease: "back.out(2)",
+                },
+                "-=0.6"
+              );
+            }
+
+            // Title slide
+            if (title) {
+              tl.to(
+                title,
+                {
+                  x: 0,
+                  opacity: 1,
+                  duration: 0.6,
+                  ease: "power3.out",
+                },
+                "-=0.5"
+              );
+            }
+
+            // Logos animation
+            if (logos.length) {
+              tl.to(
+                logos,
+                {
+                  scale: 1,
+                  rotate: 0,
+                  duration: 0.4,
+                  ease: "back.out(1.7)",
+                  stagger: 0.05,
+                },
+                "-=0.4"
+              );
+            }
+
+            // Image reveal with scale
+            if (image) {
+              tl.to(
+                image,
+                {
+                  scale: 1,
+                  opacity: 1,
+                  duration: 0.8,
+                  ease: "power2.out",
+                },
+                "-=0.3"
+              );
+            }
+
+            // Glow effect
+            if (glow) {
+              tl.to(
+                glow,
+                {
+                  opacity: 0.5,
+                  duration: 1.2,
+                  ease: "power2.inOut",
+                },
+                "-=0.8"
+              );
+            }
+          },
+        });
+
+        // Arrow animation (appears after step)
+        if (arrows[i]) {
+          gsap.set(arrows[i], { opacity: 0, y: -20, scale: 0 });
+
+          ScrollTrigger.create({
+            trigger: arrows[i],
+            start: "top 90%",
+            once: true,
+            onEnter: () => {
+              gsap.to(arrows[i], {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 0.5,
+                ease: "back.out(1.7)",
+              });
+
+              // Add subtle bounce animation
+              gsap.to(arrows[i], {
+                y: 10,
+                duration: 1,
+                ease: "power1.inOut",
+                repeat: -1,
+                yoyo: true,
+                delay: 0.5,
+              });
+            },
+          });
+        }
+      });
+    }, rootRef);
+
+    return () => {
+      try {
+        splitInst1?.revert && splitInst1.revert();
+        splitInst2?.revert && splitInst2.revert();
+      } catch {}
+      ctx.revert();
+    };
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section
+      ref={rootRef}
+      className="relative min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
       {/* Background gradients */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-primary-300/50 via-primary-200/30 to-transparent rounded-full blur-3xl opacity-70"></div>
@@ -249,17 +343,16 @@ const Hero = () => {
         <div className="hidden sm:block absolute top-1/3 left-0 w-[420px] h-[420px] bg-gradient-to-r from-emerald-300/35 to-transparent rounded-full blur-2xl opacity-40"></div>
       </div>
 
-      <div
-        ref={heroContentRef}
-        className="relative max-w-7xl mx-auto text-center"
-      >
+      <div className="relative max-w-7xl mx-auto text-center">
         <div>
           <div
-            ref={badgeRef}
+            data-animate="hero-badge"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 mb-8"
-            style={{ opacity: 0 }}
           >
-            <Sparkles className="w-4 h-4 text-primary-600" />
+            <Sparkles
+              data-animate="hero-badge-icon"
+              className="w-4 h-4 text-primary-600"
+            />
             <span className="text-sm font-medium text-primary-700">
               Save 96% of your editing time
             </span>
@@ -267,39 +360,37 @@ const Hero = () => {
 
           <h1
             ref={titleRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight tracking-tight"
+            data-animate="hero-title"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight tracking-tight mx-auto"
             style={{ opacity: 0 }}
           >
-            <span style={{ display: "block", overflow: "hidden" }}>
-              <span ref={titleLine1Ref} style={{ display: "inline-block" }}>
+            <span className="block overflow-hidden">
+              <span data-animate="hero-title-line1" className="inline-block">
                 Stop wasting hours
               </span>
             </span>
-            <span style={{ display: "block", overflow: "hidden" }}>
-              <span ref={titleLine2Ref} style={{ display: "inline-block" }}>
-                <span className="bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
-                  trimming silence.
-                </span>
+            <span className="block overflow-hidden">
+              <span
+                data-animate="hero-title-line2"
+                className="inline-block bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent"
+              >
+                trimming silence.
               </span>
             </span>
           </h1>
 
           <p
-            ref={descriptionRef}
+            data-animate="hero-description"
             className="mt-6 text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-            style={{ opacity: 0 }}
           >
             {t("hero.description")}
           </p>
 
-          <div
-            ref={ctaRef}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-            style={{ opacity: 0 }}
-          >
+          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
+              data-animate="hero-button"
               href="/download"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl"
             >
               <Zap className="w-4 h-4 mr-2" />
               {t("hero.cta.main")}
@@ -307,8 +398,9 @@ const Hero = () => {
             </a>
 
             <a
+              data-animate="hero-button"
               href="#demo"
-              className="group inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-md hover:shadow-lg border border-gray-200"
+              className="group inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 shadow-md hover:shadow-lg border border-gray-200"
             >
               <Play className="w-4 h-4 mr-2" />
               {t("hero.cta.secondary")}
@@ -321,12 +413,18 @@ const Hero = () => {
           <div className="relative max-w-5xl mx-auto">
             <div className="space-y-12">
               {/* Step 1 */}
-              <div ref={step1Ref} className="space-y-4" style={{ opacity: 0 }}>
+              <div data-animate="hero-step" className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full font-bold shadow-lg">
+                  <div
+                    data-animate="step-badge"
+                    className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-full font-bold shadow-lg"
+                  >
                     1
                   </div>
-                  <h3 className="text-lg text-gray-900">
+                  <h3
+                    data-animate="step-title"
+                    className="text-lg text-gray-900"
+                  >
                     <span className="font-semibold">
                       {t("hero.steps.step1.prefix")}
                     </span>{" "}
@@ -334,9 +432,13 @@ const Hero = () => {
                   </h3>
                 </div>
                 <div className="relative group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-primary-100 to-primary-50 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
-                  <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                  <div
+                    data-animate="step-glow"
+                    className="absolute rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
+                  ></div>
+                  <div className="relative bg-white rounded-xl overflow-hidden">
                     <img
+                      data-animate="step-image"
                       src="/assets/img/hero-step-1.jpg"
                       alt="Raw footage with silences"
                       className="w-full"
@@ -347,20 +449,25 @@ const Hero = () => {
 
               {/* Animated Arrow 1 */}
               <div
-                ref={arrow1Ref}
+                data-animate="hero-arrow"
                 className="flex justify-center items-center gap-3 -my-4"
-                style={{ opacity: 0 }}
               >
                 <ArrowDown className="w-8 h-8 text-primary-500" />
               </div>
 
               {/* Step 2 */}
-              <div ref={step2Ref} className="space-y-4" style={{ opacity: 0 }}>
+              <div data-animate="hero-step" className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-secondary-500 to-secondary-600 text-white rounded-full font-bold shadow-lg">
+                  <div
+                    data-animate="step-badge"
+                    className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-secondary-500 to-secondary-600 text-white rounded-full font-bold shadow-lg"
+                  >
                     2
                   </div>
-                  <h3 className="text-lg text-gray-900 flex items-center gap-2">
+                  <h3
+                    data-animate="step-title"
+                    className="text-lg text-gray-900 flex items-center gap-2"
+                  >
                     <span>
                       <span className="font-semibold">
                         {t("hero.steps.step2.prefix")}
@@ -368,6 +475,7 @@ const Hero = () => {
                       {t("hero.steps.step2.title")}
                     </span>
                     <img
+                      data-animate="step-logo"
                       src="/assets/img/logo-autotrim.svg"
                       alt="AutoTrim"
                       className="h-5 w-auto"
@@ -375,9 +483,13 @@ const Hero = () => {
                   </h3>
                 </div>
                 <div className="relative group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-secondary-100 to-secondary-50 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
-                  <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                  <div
+                    data-animate="step-glow"
+                    className="absolute from-secondary-100 to-secondary-50 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
+                  ></div>
+                  <div className="relative bg-white rounded-xl overflow-hidden">
                     <img
+                      data-animate="step-image"
                       src="/assets/img/hero-step-2.jpg"
                       alt="Trimly processing"
                       className="w-full"
@@ -388,20 +500,25 @@ const Hero = () => {
 
               {/* Animated Arrow 2 */}
               <div
-                ref={arrow2Ref}
+                data-animate="hero-arrow"
                 className="flex justify-center items-center gap-3 -my-4"
-                style={{ opacity: 0 }}
               >
                 <ArrowDown className="w-8 h-8 text-secondary-500" />
               </div>
 
               {/* Step 3 */}
-              <div ref={step3Ref} className="space-y-4" style={{ opacity: 0 }}>
+              <div data-animate="hero-step" className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full font-bold shadow-lg">
+                  <div
+                    data-animate="step-badge"
+                    className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full font-bold shadow-lg"
+                  >
                     3
                   </div>
-                  <h3 className="text-lg text-gray-900 flex items-center gap-2">
+                  <h3
+                    data-animate="step-title"
+                    className="text-lg text-gray-900 flex items-center gap-2"
+                  >
                     <span>
                       <span className="font-semibold">
                         {t("hero.steps.step3.prefix")}
@@ -410,16 +527,19 @@ const Hero = () => {
                     </span>
                     <div className="flex items-center gap-1">
                       <img
+                        data-animate="step-logo"
                         src="/assets/img/fcpx-icon.png"
                         alt="Final Cut Pro"
                         className="h-4 w-auto"
                       />
                       <img
+                        data-animate="step-logo"
                         src="/assets/img/premiere-icon.svg"
                         alt="Adobe Premiere"
                         className="h-4 w-auto"
                       />
                       <img
+                        data-animate="step-logo"
                         src="/assets/img/resolve-icon.svg"
                         alt="DaVinci Resolve"
                         className="h-4 w-auto"
@@ -428,9 +548,13 @@ const Hero = () => {
                   </h3>
                 </div>
                 <div className="relative group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-green-100 to-green-50 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"></div>
-                  <div className="relative bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                  <div
+                    data-animate="step-glow"
+                    className="absolute rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
+                  ></div>
+                  <div className="relative bg-white rounded-xl overflow-hidden">
                     <img
+                      data-animate="step-image"
                       src="/assets/img/hero-step-3.jpg"
                       alt="Clean XML timeline"
                       className="w-full"
