@@ -199,16 +199,24 @@ const Hero = () => {
         if (badge) gsap.set(badge, { scale: 0, rotate: -180 });
         if (title) gsap.set(title, { x: -30, opacity: 0 });
         if (logos.length) gsap.set(logos, { scale: 0, rotate: -90 });
-        if (image) gsap.set(image, { scale: 0.9, opacity: 0 });
+        if (image) {
+          gsap.set(image, { 
+            opacity: 0,
+            y: 20,
+            filter: "blur(10px)"
+          });
+        }
         if (glow) gsap.set(glow, { opacity: 0 });
 
-        // Step entrance
+        // Step entrance - delay first step to appear after hero CTA animation
         ScrollTrigger.create({
           trigger: step,
           start: "top 85%",
           once: true,
           onEnter: () => {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({
+              delay: i === 0 ? 1.4 : 0 // First step waits for hero animations to finish
+            });
 
             // Main step container
             tl.to(step, {
@@ -261,13 +269,14 @@ const Hero = () => {
               );
             }
 
-            // Image reveal with scale
+            // Image reveal with blur and slide
             if (image) {
               tl.to(
                 image,
                 {
-                  scale: 1,
                   opacity: 1,
+                  y: 0,
+                  filter: "blur(0px)",
                   duration: 0.8,
                   ease: "power2.out",
                 },
