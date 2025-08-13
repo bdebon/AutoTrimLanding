@@ -362,7 +362,7 @@ const Hero = () => {
         <div>
           <div
             data-animate="hero-badge"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 mb-8"
+            className="opacity-0 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 mb-8"
           >
             <Sparkles
               data-animate="hero-badge-icon"
@@ -396,7 +396,7 @@ const Hero = () => {
 
           <p
             data-animate="hero-description"
-            className="mt-6 text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            className="opacity-0 mt-6 text-lg sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
           >
             {t("hero.description")}
           </p>
@@ -405,7 +405,7 @@ const Hero = () => {
             <a
               data-animate="hero-button"
               href="/download"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl"
+              className="opacity-0 inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl"
             >
               <Zap className="w-4 h-4 mr-2" />
               {t("hero.cta.main")}
@@ -415,7 +415,7 @@ const Hero = () => {
             <a
               data-animate="hero-button"
               href="#demo"
-              className="group inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 shadow-md hover:shadow-lg border border-gray-200"
+              className="opacity-0 group inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 shadow-md hover:shadow-lg border border-gray-200"
             >
               <Play className="w-4 h-4 mr-2" />
               {t("hero.cta.secondary")}
@@ -428,7 +428,7 @@ const Hero = () => {
           <div className="relative max-w-5xl mx-auto">
             <div className="space-y-12">
               {/* Step 1 */}
-              <div data-animate="hero-step" className="space-y-4">
+              <div data-animate="hero-step" className="opacity-0 space-y-4">
                 <div className="flex items-center gap-4">
                   <div
                     data-animate="step-badge"
@@ -465,13 +465,13 @@ const Hero = () => {
               {/* Animated Arrow 1 */}
               <div
                 data-animate="hero-arrow"
-                className="flex justify-center items-center gap-3 -my-4"
+                className="opacity-0 flex justify-center items-center gap-3 -my-4"
               >
                 <ArrowDown className="w-8 h-8 text-primary-500" />
               </div>
 
               {/* Step 2 */}
-              <div data-animate="hero-step" className="space-y-4">
+              <div data-animate="hero-step" className="opacity-0 space-y-4">
                 <div className="flex items-center gap-4">
                   <div
                     data-animate="step-badge"
@@ -516,13 +516,13 @@ const Hero = () => {
               {/* Animated Arrow 2 */}
               <div
                 data-animate="hero-arrow"
-                className="flex justify-center items-center gap-3 -my-4"
+                className="opacity-0 flex justify-center items-center gap-3 -my-4"
               >
                 <ArrowDown className="w-8 h-8 text-secondary-500" />
               </div>
 
               {/* Step 3 */}
-              <div data-animate="hero-step" className="space-y-4">
+              <div data-animate="hero-step" className="opacity-0 space-y-4">
                 <div className="flex items-center gap-4">
                   <div
                     data-animate="step-badge"

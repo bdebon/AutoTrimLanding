@@ -258,7 +258,7 @@ const ProcessSteps = () => {
             <div
               key={index}
               data-animate="how-card"
-              className={`relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+              className={`opacity-0 relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
                 index % 2 === 1 ? "lg:direction-rtl" : ""
               }`}
             >
@@ -272,12 +272,12 @@ const ProcessSteps = () => {
                     data-animate="how-gif"
                     src={step.gif}
                     alt={step.alt}
-                    className="w-full h-full object-cover"
+                    className="opacity-0 w-full h-full object-cover"
                   />
                   {/* Floating step number */}
                   <div
                     data-animate="how-badge"
-                    className="absolute top-6 left-6 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-2xl shadow-xl"
+                    className="opacity-0 absolute top-6 left-6 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-2xl shadow-xl"
                   >
                     {step.number}
                   </div>
@@ -289,13 +289,13 @@ const ProcessSteps = () => {
                 <div className="space-y-6">
                   <h3
                     data-animate="how-h3"
-                    className="text-3xl lg:text-4xl font-bold text-gray-900"
+                    className="opacity-0 text-3xl lg:text-4xl font-bold text-gray-900"
                   >
                     {step.title}
                   </h3>
                   <p
                     data-animate="how-p"
-                    className="text-lg lg:text-xl text-gray-600 leading-relaxed"
+                    className="opacity-0 text-lg lg:text-xl text-gray-600 leading-relaxed"
                   >
                     {step.description}
                   </p>
@@ -303,7 +303,7 @@ const ProcessSteps = () => {
                   {/* Visual enhancement */}
                   <div
                     data-animate="how-accent"
-                    className="flex items-center gap-3 pt-4"
+                    className="opacity-0 flex items-center gap-3 pt-4"
                   >
                     <div className="h-1 w-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
                     <span className="text-sm font-medium text-primary-600 uppercase tracking-wider">
