@@ -6,7 +6,6 @@ import * as THREE from 'three'
 
 function WaveGrid() {
   const meshRef = useRef<THREE.Mesh>(null)
-  const materialRef = useRef<THREE.ShaderMaterial>(null)
   const [fadeIn, setFadeIn] = useState(0)
 
   useEffect(() => {
@@ -129,7 +128,6 @@ function FloatingParticles() {
       const time = state.clock.elapsedTime
       
       for (let i = 0; i < positions.count; i++) {
-        const x = positions.getX(i)
         const baseY = particles[i * 3 + 1]
         positions.setY(i, baseY + Math.sin(time + i) * 0.5)
       }
@@ -148,9 +146,7 @@ function FloatingParticles() {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={particles.length / 3}
-          array={particles}
-          itemSize={3}
+          args={[particles, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
