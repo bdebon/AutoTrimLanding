@@ -10,7 +10,7 @@ export const en = {
     title: "Stop wasting hours trimming silence.",
     subtitle: "Get your editing done in seconds.",
     description:
-      "AutoTrim automatically cuts silences, filler words, and repetition from your raw footage—and exports a single, clean timeline to Final Cut Pro, Premiere, or Resolve.",
+      "AutoTrim cuts silences, filler words, and repetition from all your clips at once — processing them in parallel and exporting a single, clean timeline ready to edit in Final Cut Pro, Premiere, or Resolve.",
     cta: {
       main: "Try AutoTrim for free",
       secondary: "Watch a 60s Demo",
@@ -114,6 +114,11 @@ export const en = {
     conclusion:
       "Done. Go have a coffee, or start your next task. You just got your day back.",
     demoCta: "Watch a 60s Demo",
+    comparison: {
+      title: "Compared to other tools:",
+      autoTrim: "With AutoTrim, you drop all your files in, they process in parallel, and you get one finished timeline.",
+      otherTools: "With other tools, you process files one-by-one, export one XML per clip, and manually stitch everything together — wasting minutes on every project.",
+    },
   },
   ai: {
     title: "Next-level AI (coming soon!)",
@@ -156,6 +161,54 @@ export const en = {
       description: "14 days, 100% refund",
     },
     cta: "Buy Now",
+    note: "No recurring server fees. You own the tool — and all the speed that comes with it.",
+  },
+  whyFaster: {
+    title: "Why AutoTrim beats every other silence-cutting tool",
+    table: {
+      headers: {
+        feature: "Feature",
+        autoTrim: "AutoTrim",
+        otherTools: "Other Tools",
+      },
+      rows: {
+        import: {
+          label: "Import",
+          autoTrim: "Drag & drop all files at once",
+          otherTools: "Import one file at a time",
+        },
+        processing: {
+          label: "Processing",
+          autoTrim: "Parallel multi-clip processing",
+          otherTools: "Sequential clip-by-clip",
+        },
+        result: {
+          label: "Result",
+          autoTrim: "One clean timeline ready to edit",
+          otherTools: "Multiple timelines to merge manually",
+        },
+        speed: {
+          label: "Real-world speed",
+          autoTrim: "48× faster on multi-clip projects",
+          otherTools: "Time multiplied by number of clips",
+        },
+        aiCost: {
+          label: "AI & Cost",
+          autoTrim: "Runs entirely on your computer — no extra cost, no recurring payment",
+          otherTools: "Requires subscription to access AI features, recurring fees",
+        },
+      },
+    },
+    cta: "Try AutoTrim for free — see how much faster your workflow becomes.",
+    comparisons: {
+      title: "See detailed comparisons:",
+      links: {
+        timebolt: "AutoTrim vs TimeBolt",
+        autocut: "AutoTrim vs AutoCut",
+        descript: "AutoTrim vs Descript",
+        premierePro: "AutoTrim vs Premiere Pro",
+      },
+    },
   },
   about: {
     title: "Who Built AutoTrim?",
@@ -220,6 +273,211 @@ export const en = {
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       contact: "Contact",
+    },
+    comparisons: {
+      title: "Comparisons",
+      timebolt: "AutoTrim vs TimeBolt",
+      autocut: "AutoTrim vs AutoCut", 
+      descript: "AutoTrim vs Descript",
+      premierePro: "AutoTrim vs Premiere Pro",
+    },
+    resources: {
+      title: "Resources",
+      download: "Download",
+      pricing: "Pricing",
+      faq: "FAQ",
+      blog: "Blog",
+    },
+  },
+  compareTimebolt: {
+    title: "AutoTrim vs TimeBolt: The Ultimate Comparison",
+    subtitle: "See why professionals are switching from TimeBolt to AutoTrim for faster, simpler video editing",
+    table: {
+      headers: {
+        feature: "Feature",
+        autoTrim: "AutoTrim",
+        timebolt: "TimeBolt",
+      },
+      rows: {
+        importWorkflow: {
+          label: "Import Workflow",
+          autoTrim: "Drag & drop all clips at once",
+          timebolt: "Import one clip at a time",
+        },
+        processing: {
+          label: "Processing",
+          autoTrim: "Parallel multi-clip processing — all files at once",
+          timebolt: "Sequential processing — one clip at a time",
+        },
+        finalOutput: {
+          label: "Final Output",
+          autoTrim: "One clean, fully-assembled timeline ready to edit",
+          timebolt: "One XML per clip — manual merge required in Final Cut / Premiere",
+        },
+        realWorldSpeed: {
+          label: "Real-World Speed",
+          autoTrim: "48× faster on multi-clip projects (1 min for 30 min of footage)",
+          timebolt: "Time multiplied by the number of clips (20+ minutes for same project)",
+        },
+        userExperience: {
+          label: "User Experience (UX)",
+          autoTrim: "Minimal clicks, friction-free workflow",
+          timebolt: "Repetitive steps for every single clip — tedious for large projects",
+        },
+        interface: {
+          label: "Interface (UI)",
+          autoTrim: "Modern, clean, intuitive — easy to learn in minutes",
+          timebolt: "Outdated, cluttered interface — over 10 years old",
+        },
+        featureQuality: {
+          label: "Feature Quality",
+          autoTrim: "Fewer features, but all highly optimized and reliable (works perfectly in English, Spanish, Chinese and any languages)",
+          timebolt: "Many features, but several poorly implemented (e.g., HumCheck unreliable in French, FastForward/PunchZoom inconsistent)",
+        },
+        aiCost: {
+          label: "AI & Cost",
+          autoTrim: "Runs entirely on your computer — no extra cost, no subscriptions",
+          timebolt: "Requires subscription to access AI features, ongoing fees",
+        },
+        developedBy: {
+          label: "Developed by",
+          autoTrim: "A YouTuber with 10 years experience editing his videos",
+          timebolt: "Software company",
+        },
+        bestFor: {
+          label: "Best For",
+          autoTrim: "Professionals and creators who value speed, simplicity, and consistent results",
+          timebolt: "Users willing to manage slower workflows and more manual assembly",
+        },
+      },
+    },
+    winner: {
+      title: "The Clear Winner for Professional Video Editing",
+      description: "AutoTrim delivers what matters most: speed, simplicity, and reliability. While TimeBolt offers more features, AutoTrim's focused approach saves you hours on every project.",
+    },
+    cta: {
+      title: "Ready to work 48× faster?",
+      button: "Try AutoTrim Free",
+      subtext: "No credit card required. See the difference in minutes.",
+    },
+  },
+  compareAutocut: {
+    title: "AutoTrim vs AutoCut: Clear, cost-effective speed wins",
+    subtitle: "AutoTrim is a standalone tool built for editors: fast, predictable, and simple. In comparison, AutoCut is an editor plugin that hides its AI behind a subscription and adds complexity. See how speed, cost, and clarity stack up.",
+    table: {
+      headers: {
+        feature: "Feature",
+        autoTrim: "AutoTrim",
+        autocut: "AutoCut (Extension)",
+      },
+      rows: {
+        platform: {
+          label: "Platform & Integration",
+          autoTrim: "Stand‑alone app — works with Final Cut, Premiere, Resolve (once exported)",
+          autocut: "Plugin/extension for Premiere Pro and DaVinci Resolve only — no Final Cut, no standalone version",
+        },
+        workflow: {
+          label: "Workflow Simplicity",
+          autoTrim: "Drag-and-drop all clips, parallel processing, one unified timeline export",
+          autocut: "Complex setup inside host editor — more steps and learning curve to master",
+        },
+        aiPerformance: {
+          label: "AI Performance",
+          autoTrim: "Runs entirely on your computer — uses your CPU/GPU, no cloud round-trip",
+          autocut: "AI runs on their servers — requires upload/download, slower, dependent on connection",
+        },
+        pricing: {
+          label: "Pricing & Cost Model",
+          autoTrim: "Free trial; buy once (annual or lifetime)—no hidden recurring fees",
+          autocut: "Subscription-only model: Basic (€79/year) limited features; full AI plan (€179/year) required for full AI suite",
+        },
+        features: {
+          label: "Feature Focus",
+          autoTrim: "Core editing features only (silence, filler, repetition) — high reliability and speed",
+          autocut: "Many features (captions, auto-zoom, B-roll, chapters etc.) but often less polished or slower",
+        },
+        learningCurve: {
+          label: "Learning Curve & UX",
+          autoTrim: "Clean, intuitive interface — built for editors, minimal friction",
+          autocut: "Plugin UI within Premiere/Resolve—more complex, steeper onboarding",
+        },
+        bestFor: {
+          label: "Best Suited For",
+          autoTrim: "Editors who want maximum speed, simplicity, and control without subscriptions",
+          autocut: "Users who prefer rich, automated effects inside Premiere/Resolve and don't mind ongoing costs",
+        },
+      },
+    },
+    winner: {
+      title: "Why AutoTrim Wins for Professional Editors",
+      description: "Being a standalone app makes AutoTrim easier to adopt across any editing software. With local AI processing, transparent pricing, and a focus on core features that work perfectly, AutoTrim delivers what matters most: speed, simplicity, and reliability.",
+    },
+    cta: {
+      title: "Ready for faster, simpler editing?",
+      button: "Try AutoTrim Free",
+      subtext: "No credit card required. See the difference in minutes.",
+    },
+  },
+  compareDescript: {
+    title: "AutoTrim vs Descript: Speed & Control vs All-in-One Cloud",
+    subtitle: "AutoTrim is a lightning-fast standalone tool for professional editors. Descript is a cloud-based all-in-one editor with text-based editing. See which approach fits your workflow.",
+    table: {
+      headers: {
+        feature: "Feature",
+        autoTrim: "AutoTrim",
+        descript: "Descript",
+      },
+      rows: {
+        platformWorkflow: {
+          label: "Platform & Workflow",
+          autoTrim: "Stand-alone app → exports to Final Cut, Premiere, Resolve",
+          descript: "All-in-one editor with built-in editing, text-based workflow",
+        },
+        processingStyle: {
+          label: "Processing Style",
+          autoTrim: "Drag & drop multi-clip → parallel silence/filler removal → single timeline export",
+          descript: "Upload clip, transcribe, then edit via transcript UI",
+        },
+        aiExecution: {
+          label: "AI Execution",
+          autoTrim: "Runs locally — uses your machine's CPU/GPU, no extra costs",
+          descript: "AI runs on the cloud — requires internet, additional wait time",
+        },
+        pricingStructure: {
+          label: "Pricing Structure",
+          autoTrim: "One-time purchase (annual or lifetime), no recurring cloud fees",
+          descript: "Subscription $12–$24/month; free tier limited to 1 hour/month with watermarks",
+        },
+        silenceRemoval: {
+          label: "Silence & Filler Removal",
+          autoTrim: "Fast, optimized for pro editors — handles clips in batch",
+          descript: "Text-based removal, but slower exports and potential quirks",
+        },
+        advancedTools: {
+          label: "Advanced Editing Tools",
+          autoTrim: "Focused on core trimming — minimal friction, highly reliable",
+          descript: "Rich features: transcription, green screen, overdub, AI avatars, stock B-roll",
+        },
+        performanceUX: {
+          label: "Performance & UX",
+          autoTrim: "Lightning-fast, clean interface — designed for high-efficiency workflows",
+          descript: "Unique text-editor interface; slower performance and exports reported",
+        },
+        bestFor: {
+          label: "Best Suited For",
+          autoTrim: "Editors wanting maximum speed, control, and low-cost execution",
+          descript: "Creators who prefer an AI-heavy, all-in-one environment with subscriptions",
+        },
+      },
+    },
+    winner: {
+      title: "Why AutoTrim Wins for Professional Speed",
+      description: "While Descript offers an innovative text-based editing approach with many AI features, AutoTrim delivers what professional editors need most: blazing-fast local processing, simple workflows, and no recurring fees. For editors who value speed and control over bells and whistles, AutoTrim is the clear choice.",
+    },
+    cta: {
+      title: "Ready for professional-grade speed?",
+      button: "Try AutoTrim Free",
+      subtext: "No credit card required. Experience the difference in minutes.",
     },
   },
 };

@@ -500,6 +500,14 @@ const Pricing = () => {
               14-day money-back guarantee.
             </p>
           </div>
+          <div
+            data-animate="pricing-trust"
+            className="pt-4"
+          >
+            <p className="text-lg text-gray-700 font-semibold">
+              {t("pricing.note")}
+            </p>
+          </div>
         </div>
 
         {/* Bottom CTA removed to reduce redundancy with freemium flow */}

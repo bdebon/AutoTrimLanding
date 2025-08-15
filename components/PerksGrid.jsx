@@ -117,6 +117,16 @@ const PerksGrid = () => {
       gradient: "from-orange-500/10 to-orange-600/20",
       featured: false,
     },
+    {
+      icon: Cpu,
+      title: "Optimized for Pro Editing Machines",
+      desc: "AutoTrim is built for the hardware you already own. It runs AI models locally, using the full power of your CPU and GPU — with no slow uploads and no extra server costs.",
+      size: "normal",
+      iconBg: "from-cyan-50 to-cyan-100",
+      iconColor: "text-cyan-600",
+      gradient: "from-cyan-500/10 to-cyan-600/20",
+      featured: true,
+    },
   ];
 
   useLayoutEffect(() => {

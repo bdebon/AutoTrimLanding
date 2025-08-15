@@ -1,10 +1,13 @@
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Zap, Clock } from "lucide-react";
+import { useTranslation } from "../hooks/useTranslation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProcessSteps = () => {
+  const { t } = useTranslation();
   const rootRef = useRef(null);
   const titleRef = useRef(null);
   const steps = [
@@ -219,6 +222,27 @@ const ProcessSteps = () => {
           },
         });
       });
+
+      // Comparison box animation
+      const comparisonBox = rootRef.current?.querySelector('[data-animate="comparison-box"]');
+      if (comparisonBox) {
+        gsap.set(comparisonBox, { opacity: 0, y: 40, scale: 0.95 });
+        
+        ScrollTrigger.create({
+          trigger: comparisonBox,
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            gsap.to(comparisonBox, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 0.8,
+              ease: "power3.out",
+            });
+          },
+        });
+      }
     }, rootRef);
 
     return () => {
@@ -314,6 +338,43 @@ const ProcessSteps = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Comparison Box */}
+        <div 
+          data-animate="comparison-box"
+          className="mt-20 mx-auto max-w-4xl bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 lg:p-10 border border-blue-100 shadow-xl"
+        >
+          <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            {t("howItWorks.comparison.title")}
+          </h3>
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* AutoTrim Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-bold text-lg text-gray-900">AutoTrim</span>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                {t("howItWorks.comparison.autoTrim")}
+              </p>
+            </div>
+            
+            {/* Other Tools Column */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-white" />
+                </div>
+                <span className="font-bold text-lg text-gray-900">Other Tools</span>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                {t("howItWorks.comparison.otherTools")}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -11,6 +11,7 @@ import TimeSavings from "@/components/TimeSavings";
 import WhoIsItFor from "@/components/WhoIsItFor";
 import PerksGrid from "@/components/PerksGrid";
 import Testimonials from "@/components/Testimonials";
+import WhyFaster from "@/components/WhyFaster";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
@@ -48,6 +49,7 @@ export default function Home() {
         <WhoIsItFor />
         <PerksGrid />
         <Testimonials />
+        <WhyFaster />
         <Pricing />
         <FAQ />
         <FinalCTA />
