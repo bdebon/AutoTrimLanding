@@ -202,67 +202,88 @@ const WhoIsItFor = () => {
         });
       }
 
-      // Cards sophisticated animation
+      // Cards sophisticated animation - all triggered together when first card enters viewport
       if (cardEls.length) {
-        cardEls.forEach((card, i) => {
+        // Set initial states for all cards
+        cardEls.forEach((card) => {
           const icon = card.querySelector('[data-animate="card-icon"]');
           const content = card.querySelector('[data-animate="card-content"]');
           const stat = card.querySelector('[data-animate="card-stat"]');
           const glow = card.querySelector('[data-animate="card-glow"]');
 
-          // Initial states
           gsap.set(card, { opacity: 0, y: 40, scale: 0.9 });
           if (icon) gsap.set(icon, { scale: 0, rotate: -90 });
           if (content) gsap.set(content, { opacity: 0, x: -20 });
           if (stat) gsap.set(stat, { opacity: 0, scale: 0.8 });
           if (glow) gsap.set(glow, { opacity: 0, scale: 1.2 });
+        });
 
-          ScrollTrigger.create({
-            trigger: card,
+        // Create main timeline triggered by first card
+        const mainTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: cardEls[0], // Trigger on first card only
             start: "top 90%",
             once: true,
-            onEnter: () => {
-              const tl = gsap.timeline();
+          },
+        });
 
-              // Card reveal
-              tl.to(card, {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.7,
-                ease: "back.out(1.4)",
-                delay: i * 0.1,
-              })
-              // Icon animation
-              .to(icon, {
-                scale: 1,
-                rotate: 0,
-                duration: 0.6,
-                ease: "back.out(2)",
-              }, "-=0.4")
-              // Content slide in
-              .to(content, {
-                opacity: 1,
-                x: 0,
-                duration: 0.5,
-                ease: "power3.out",
-              }, "-=0.3")
-              // Stat badge
-              .to(stat, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.4,
-                ease: "back.out(1.5)",
-              }, "-=0.2")
-              // Subtle glow effect
-              .to(glow, {
-                opacity: 0.1,
-                scale: 1,
-                duration: 0.8,
-                ease: "power2.out",
-              }, "-=0.6");
-            },
-          });
+        // Animate all cards with stagger
+        cardEls.forEach((card, i) => {
+          const icon = card.querySelector('[data-animate="card-icon"]');
+          const content = card.querySelector('[data-animate="card-content"]');
+          const stat = card.querySelector('[data-animate="card-stat"]');
+          const glow = card.querySelector('[data-animate="card-glow"]');
+          
+          const delay = i * 0.15; // Stagger delay
+
+          // Card reveal
+          mainTl.to(card, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "back.out(1.4)",
+          }, delay);
+
+          // Icon animation
+          if (icon) {
+            mainTl.to(icon, {
+              scale: 1,
+              rotate: 0,
+              duration: 0.6,
+              ease: "back.out(2)",
+            }, delay + 0.1);
+          }
+
+          // Content slide in
+          if (content) {
+            mainTl.to(content, {
+              opacity: 1,
+              x: 0,
+              duration: 0.5,
+              ease: "power3.out",
+            }, delay + 0.2);
+          }
+
+          // Stat badge
+          if (stat) {
+            mainTl.to(stat, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "back.out(1.5)",
+            }, delay + 0.3);
+          }
+
+          // Subtle glow effect
+          if (glow) {
+            mainTl.to(glow, {
+              opacity: 0.1,
+              scale: 1,
+              duration: 0.8,
+              ease: "power2.out",
+            }, delay + 0.1);
+          }
         });
       }
     }, sectionRef);

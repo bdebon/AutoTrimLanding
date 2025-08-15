@@ -4,18 +4,19 @@ import { Download as DownloadIcon, Monitor, Laptop } from "lucide-react";
 // Simple OS detection from user agent
 function detectOS() {
   const ua = navigator.userAgent || navigator.vendor || window.opera;
-  if (/windows phone/i.test(ua)) return 'windows';
-  if (/win/i.test(ua)) return 'windows';
-  if (/macintosh|mac os x/i.test(ua)) return 'mac';
+  if (/windows phone/i.test(ua)) return "windows";
+  if (/win/i.test(ua)) return "windows";
+  if (/macintosh|mac os x/i.test(ua)) return "mac";
   // No Linux distribution supported for now
-  if (/linux/i.test(ua)) return 'unknown';
-  return 'unknown';
+  if (/linux/i.test(ua)) return "unknown";
+  return "unknown";
 }
 
 const assetLinks = {
   // Final artifact names as confirmed by the user
-  mac: 'https://github.com/bdebon/AutoTrim/releases/latest/download/AutoTrim.dmg',
-  windows: 'https://github.com/bdebon/AutoTrim/releases/latest/download/AutoTrim-Setup.msi',
+  mac: "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim.dmg",
+  windows:
+    "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim-Setup.msi",
 };
 
 const Download = () => {
@@ -25,8 +26,14 @@ const Download = () => {
     setOs(detectOS());
   }, []);
 
-  const primaryHref = os === 'mac' ? assetLinks.mac : os === 'windows' ? assetLinks.windows : '#';
-  const primaryLabel = os === 'mac' ? 'Download for macOS' : os === 'windows' ? 'Download for Windows' : 'Choose your OS';
+  const primaryHref =
+    os === "mac" ? assetLinks.mac : os === "windows" ? assetLinks.windows : "#";
+  const primaryLabel =
+    os === "mac"
+      ? "Download for macOS"
+      : os === "windows"
+      ? "Download for Windows"
+      : "Choose your OS";
 
   return (
     <section
@@ -56,15 +63,32 @@ const Download = () => {
 
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <span className="hidden sm:inline">Other platform:</span>
-            {os === 'mac' ? (
-              <a href={assetLinks.windows} className="underline hover:no-underline">Windows</a>
-            ) : os === 'windows' ? (
-              <a href={assetLinks.mac} className="underline hover:no-underline">macOS</a>
+            {os === "mac" ? (
+              <a
+                href={assetLinks.windows}
+                className="underline hover:no-underline"
+              >
+                Windows
+              </a>
+            ) : os === "windows" ? (
+              <a href={assetLinks.mac} className="underline hover:no-underline">
+                macOS
+              </a>
             ) : (
               <>
-                <a href={assetLinks.mac} className="underline hover:no-underline">macOS</a>
+                <a
+                  href={assetLinks.mac}
+                  className="underline hover:no-underline"
+                >
+                  macOS
+                </a>
                 <span>·</span>
-                <a href={assetLinks.windows} className="underline hover:no-underline">Windows</a>
+                <a
+                  href={assetLinks.windows}
+                  className="underline hover:no-underline"
+                >
+                  Windows
+                </a>
               </>
             )}
           </div>

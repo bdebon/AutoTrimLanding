@@ -127,63 +127,61 @@ const FAQ = () => {
         });
       }
 
-      // FAQ items animation
-      items.forEach((item, i) => {
-        const question = item.querySelector('[data-animate="faq-question"]');
-        const icon = item.querySelector('[data-animate="faq-toggle"]');
+      // FAQ items animation - all triggered together when first item enters viewport
+      if (items.length > 0) {
+        // Set initial states for all items
+        items.forEach((item) => {
+          const question = item.querySelector('[data-animate="faq-question"]');
+          const icon = item.querySelector('[data-animate="faq-toggle"]');
 
-        // Initial states
-        gsap.set(item, { opacity: 0, y: 30 });
-        if (question) gsap.set(question, { x: -20 });
-        if (icon) gsap.set(icon, { scale: 0, rotate: -90 });
+          gsap.set(item, { opacity: 0, y: 30 });
+          if (question) gsap.set(question, { x: -20 });
+          if (icon) gsap.set(icon, { scale: 0, rotate: -90 });
+        });
 
-        const baseDelay = i * 0.08;
-
-        // Item entrance
-        gsap.to(item, {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power3.out",
-          delay: baseDelay + 0.5,
+        // Create timeline that triggers when first item enters viewport
+        const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: item,
-            start: "top 95%",
+            trigger: items[0], // Trigger on first item only
+            start: "top 90%",
             once: true,
           },
         });
 
-        // Question slide
-        if (question) {
-          gsap.to(question, {
-            x: 0,
-            duration: 0.5,
-            ease: "power3.out",
-            delay: baseDelay + 0.6,
-            scrollTrigger: {
-              trigger: item,
-              start: "top 95%",
-              once: true,
-            },
-          });
-        }
+        // Animate all items with stagger
+        items.forEach((item, i) => {
+          const question = item.querySelector('[data-animate="faq-question"]');
+          const icon = item.querySelector('[data-animate="faq-toggle"]');
+          const delay = i * 0.12; // Stagger delay
 
-        // Icon animation
-        if (icon) {
-          gsap.to(icon, {
-            scale: 1,
-            rotate: 0,
-            duration: 0.4,
-            ease: "back.out(1.7)",
-            delay: baseDelay + 0.7,
-            scrollTrigger: {
-              trigger: item,
-              start: "top 95%",
-              once: true,
-            },
-          });
-        }
-      });
+          // Item entrance
+          tl.to(item, {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+          }, delay);
+
+          // Question slide
+          if (question) {
+            tl.to(question, {
+              x: 0,
+              duration: 0.5,
+              ease: "power3.out",
+            }, delay + 0.1);
+          }
+
+          // Icon animation
+          if (icon) {
+            tl.to(icon, {
+              scale: 1,
+              rotate: 0,
+              duration: 0.4,
+              ease: "back.out(1.7)",
+            }, delay + 0.2);
+          }
+        });
+      }
     }, rootRef);
 
     return () => {

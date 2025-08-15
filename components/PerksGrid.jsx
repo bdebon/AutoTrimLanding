@@ -189,9 +189,10 @@ const PerksGrid = () => {
         });
       }
 
-      // Cards sophisticated animation
+      // Cards sophisticated animation - all triggered together when first card enters viewport
       if (cardEls.length) {
-        cardEls.forEach((card, i) => {
+        // Set initial states for all cards
+        cardEls.forEach((card) => {
           const icon = card.querySelector('[data-animate="perk-icon"]');
           const content = card.querySelector('[data-animate="perk-content"]');
           const image = card.querySelector('[data-animate="perk-image"]');
@@ -199,7 +200,6 @@ const PerksGrid = () => {
           const glow = card.querySelector('[data-animate="perk-glow"]');
           const featured = card.querySelector('[data-animate="perk-featured"]');
 
-          // Initial states
           gsap.set(card, { opacity: 0, y: 60, scale: 0.9 });
           if (icon) gsap.set(icon, { scale: 0, rotate: -180 });
           if (content) gsap.set(content, { opacity: 0, y: 20 });
@@ -207,69 +207,97 @@ const PerksGrid = () => {
           if (badge) gsap.set(badge, { opacity: 0, scale: 0, rotate: 45 });
           if (glow) gsap.set(glow, { opacity: 0, scale: 1.2 });
           if (featured) gsap.set(featured, { opacity: 0, scale: 0 });
+        });
 
-          ScrollTrigger.create({
-            trigger: card,
+        // Create main timeline triggered by first card
+        const mainTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: cardEls[0], // Trigger on first card only
             start: "top 90%",
             once: true,
-            onEnter: () => {
-              const tl = gsap.timeline();
-              const delay = i * 0.08;
+          },
+        });
 
-              // Card reveal with bounce
-              tl.to(card, {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.8,
-                ease: "back.out(1.4)",
-                delay: delay,
-              })
-              // Glow effect
-              .to(glow, {
-                opacity: 0.08,
-                scale: 1,
-                duration: 1,
-                ease: "power2.out",
-              }, "-=0.6")
-              // Icon animation with spin
-              .to(icon, {
-                scale: 1,
-                rotate: 0,
-                duration: 0.7,
-                ease: "back.out(2.5)",
-              }, "-=0.5")
-              // Content slide up
-              .to(content, {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                ease: "power3.out",
-              }, "-=0.4")
-              // Image fade in (for large cards)
-              .to(image, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                ease: "power2.out",
-              }, "-=0.6")
-              // Badge animation
-              .to(badge, {
-                opacity: 1,
-                scale: 1,
-                rotate: 0,
-                duration: 0.5,
-                ease: "back.out(1.7)",
-              }, "-=0.3")
-              // Featured star
-              .to(featured, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.4,
-                ease: "back.out(2)",
-              }, "-=0.2");
-            },
-          });
+        // Animate all cards with stagger
+        cardEls.forEach((card, i) => {
+          const icon = card.querySelector('[data-animate="perk-icon"]');
+          const content = card.querySelector('[data-animate="perk-content"]');
+          const image = card.querySelector('[data-animate="perk-image"]');
+          const badge = card.querySelector('[data-animate="perk-badge"]');
+          const glow = card.querySelector('[data-animate="perk-glow"]');
+          const featured = card.querySelector('[data-animate="perk-featured"]');
+          
+          const delay = i * 0.12; // Stagger delay
+
+          // Card reveal with bounce
+          mainTl.to(card, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "back.out(1.4)",
+          }, delay);
+
+          // Glow effect
+          if (glow) {
+            mainTl.to(glow, {
+              opacity: 0.08,
+              scale: 1,
+              duration: 1,
+              ease: "power2.out",
+            }, delay + 0.2);
+          }
+
+          // Icon animation with spin
+          if (icon) {
+            mainTl.to(icon, {
+              scale: 1,
+              rotate: 0,
+              duration: 0.7,
+              ease: "back.out(2.5)",
+            }, delay + 0.3);
+          }
+
+          // Content slide up
+          if (content) {
+            mainTl.to(content, {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power3.out",
+            }, delay + 0.4);
+          }
+
+          // Image fade in (for large cards)
+          if (image) {
+            mainTl.to(image, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.8,
+              ease: "power2.out",
+            }, delay + 0.2);
+          }
+
+          // Badge animation
+          if (badge) {
+            mainTl.to(badge, {
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+              duration: 0.5,
+              ease: "back.out(1.7)",
+            }, delay + 0.5);
+          }
+
+          // Featured star
+          if (featured) {
+            mainTl.to(featured, {
+              opacity: 1,
+              scale: 1,
+              duration: 0.4,
+              ease: "back.out(2)",
+            }, delay + 0.6);
+          }
         });
       }
     }, sectionRef);
