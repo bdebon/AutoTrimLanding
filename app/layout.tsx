@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
+import { LanguageProvider } from "../contexts/LanguageContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -59,7 +60,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,8 +1,9 @@
 import React from "react";
 import { useTranslation } from "../hooks/useTranslation";
+import { Globe } from "lucide-react";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, language, changeLanguage } = useTranslation();
 
   return (
     <footer className="bg-gray-100 border-t border-gray-200 py-16 px-4 sm:px-6 lg:px-8">
@@ -117,15 +118,35 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="pt-8 border-t border-gray-200 text-center">
-          <p className="text-gray-700 mb-4">Ready to reclaim your time?</p>
-          <a
-            href="/download"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
-          >
-            Try AutoTrim Free
-          </a>
+        {/* Language Selector and Bottom CTA */}
+        <div className="pt-8 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            {/* Language Selector */}
+            <div className="flex items-center gap-2">
+              <Globe className="h-5 w-5 text-gray-600" />
+              <select
+                value={language}
+                onChange={(e) => changeLanguage(e.target.value)}
+                className="bg-white border border-gray-300 text-gray-700 py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+              >
+                <option value="en">🇬🇧 English</option>
+                <option value="fr">🇫🇷 Français</option>
+                <option value="es">🇪🇸 Español</option>
+                <option value="zh">🇨🇳 中文</option>
+              </select>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center sm:text-right">
+              <p className="text-gray-700 mb-2">Ready to reclaim your time?</p>
+              <a
+                href="/download"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                Try AutoTrim Free
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
