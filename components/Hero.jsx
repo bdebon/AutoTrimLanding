@@ -1,3 +1,4 @@
+"use client";
 import React, { useLayoutEffect, useRef, Suspense, lazy } from "react";
 import {
   ArrowRight,
@@ -10,7 +11,8 @@ import {
   Globe2,
   ArrowDown,
 } from "lucide-react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,7 +21,9 @@ const AnimatedBackground = lazy(() => import("../src/components/three/AnimatedBa
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
   const rootRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -381,7 +385,7 @@ const Hero = () => {
           >
             <span className="block overflow-hidden">
               <span data-animate="hero-title-line1" className="inline-block">
-                Stop wasting hours
+                {t("hero.titleLine1")}
               </span>
             </span>
             <span className="block overflow-hidden">
@@ -389,7 +393,7 @@ const Hero = () => {
                 data-animate="hero-title-line2"
                 className="inline-block bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent"
               >
-                trimming silence.
+                {t("hero.titleLine2")}
               </span>
             </span>
           </h1>
@@ -404,7 +408,7 @@ const Hero = () => {
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
               data-animate="hero-button"
-              href="/download"
+              href={`/${currentLocale}/download`}
               className="opacity-0 inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl"
             >
               <Zap className="w-4 h-4 mr-2" />

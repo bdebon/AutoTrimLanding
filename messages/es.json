@@ -1,0 +1,818 @@
+{
+  "nav": {
+    "features": "Características",
+    "howItWorks": "Cómo Funciona",
+    "pricing": "Precios",
+    "faq": "Preguntas Frecuentes",
+    "downloadBeta": "Descargar Prueba Gratuita"
+  },
+  "hero": {
+    "badge": "Ahorra el 96% de tu tiempo de edición",
+    "title": "Deja de perder horas recortando silencios.",
+    "titleLine1": "Deja de perder horas",
+    "titleLine2": "recortando silencios.",
+    "subtitle": "Completa tu edición en segundos.",
+    "description": "AutoTrim corta silencios, muletillas y repeticiones de todos tus clips a la vez — procesándolos en paralelo y exportando una línea de tiempo única y limpia lista para editar en Final Cut Pro, Premiere o Resolve.",
+    "cta": {
+      "main": "Prueba AutoTrim gratis",
+      "secondary": "Ver Demo de 60s"
+    },
+    "tagline": "Arrastra. Suelta. Listo.",
+    "subTagline": "Porque tienes mejores cosas que hacer.",
+    "arrows": {
+      "first": "con AutoTrim",
+      "second": "a tu editor"
+    },
+    "steps": {
+      "step1": {
+        "prefix": "De esto:",
+        "title": "Material en bruto"
+      },
+      "step2": {
+        "prefix": "A esto:",
+        "title": "Silencios y repeticiones eliminados"
+      },
+      "step3": {
+        "prefix": "En segundos:",
+        "title": "Línea de tiempo XML limpia"
+      }
+    },
+    "images": {
+      "rawFootage": "Material en bruto con silencios",
+      "processing": "Procesando con Trimly",
+      "cleanTimeline": "Línea de tiempo XML limpia"
+    }
+  },
+  "download": {
+    "title": "Descargar AutoTrim",
+    "subtitle": "Gratis para probar. Procesa tus archivos y previsualiza tus cortes. Paga solo cuando estés listo para exportar.",
+    "chooseOS": "Elige tu sistema operativo",
+    "macOS": "Descargar para macOS",
+    "windows": "Descargar para Windows",
+    "otherPlatform": "Otra plataforma:",
+    "githubNote": "Todas las descargas se sirven desde la última versión de GitHub.",
+    "buttons": {
+      "macOS": "macOS",
+      "windows": "Windows"
+    }
+  },
+  "whyAutoTrim": {
+    "title": "¿Por qué AutoTrim?",
+    "features": {
+      "saveHours": {
+        "title": "Ahorra Horas Cada Semana",
+        "description": "Deja de perder tiempo recortando manualmente silencios, muletillas y pausas incómodas.",
+        "subtitle": "AutoTrim corta tu material en bruto en segundos."
+      },
+      "oneTimeline": {
+        "title": "Una Línea de Tiempo Limpia",
+        "description": "Sin rompecabezas que reensamblar. Exporta una línea de tiempo XML pulida directamente a tu editor.",
+        "subtitle": "Todos los clips en una línea de tiempo, listos para usar."
+      },
+      "fastPrivate": {
+        "title": "Súper Rápido, Privado, Local",
+        "description": "Sin procesamiento en la nube. Todo funciona sin conexión, en tu máquina.",
+        "subtitle": "Seguro, privado y súper rápido."
+      }
+    }
+  },
+  "socialProof": {
+    "stats": {
+      "faster": "≈ 29× más rápido",
+      "timeSaved": "Ahorra ~46 min de trabajo en 30 min de material",
+      "localPrivate": "100% local y privado"
+    }
+  },
+  "timeComparison": {
+    "title": "¿Cuánto tiempo sigues perdiendo?",
+    "subtitle": "Hablemos de números. Esto es lo que pasa con solo 30 min de material en bruto:",
+    "table": {
+      "method": "Método",
+      "editingTime": "Tiempo de Edición",
+      "timeSaved": "Tiempo Ahorrado",
+      "fasterBy": "Más Rápido por",
+      "manual": "Recorte Manual",
+      "otherTools": "Otros Auto-recortadores",
+      "trimly": "AutoTrim (Paralelo)"
+    },
+    "stats": {
+      "manualFaster": "29 veces más rápido que la edición manual.",
+      "otherFaster": "12 veces más rápido que otras herramientas."
+    },
+    "testimonial": "\"Solía pasar horas importando múltiples líneas de tiempo XML. Con Trimly, son literalmente segundos.\"",
+    "testimonialAuthor": "— Todos los editores, siempre.",
+    "badges": {
+      "timeSaved": {
+        "title": "Tiempo Ahorrado",
+        "description": "En promedio, los editores ahorran 46 minutos por cada 30 minutos de video en bruto"
+      },
+      "fasterThanManual": {
+        "title": "Más Rápido que la Edición Manual",
+        "description": "AutoTrim procesa 4 archivos en paralelo gracias al código nativo en Rust"
+      },
+      "xmlTimeline": {
+        "title": "Línea de Tiempo XML",
+        "description": "Olvídate del lío de múltiples XML. Una exportación limpia, cada vez."
+      }
+    },
+    "numbersSpeak": "Los Números Hablan por Sí Solos",
+    "whyBetter": "Por qué es mejor que otras herramientas",
+    "comparisonTable": {
+      "headers": {
+        "manual": "Manual",
+        "otherTools": "Otras Herramientas",
+        "autoTrim": "AutoTrim"
+      },
+      "rows": {
+        "processingTime": {
+          "label": "Tiempo de procesamiento",
+          "manual": "48 min",
+          "otherTools": "~20 min",
+          "autoTrim": "1m 40s"
+        },
+        "timelineOutput": {
+          "label": "Salida de Línea de Tiempo",
+          "manual": "Muchos archivos",
+          "otherTools": "Rompecabezas",
+          "autoTrim": "Un XML"
+        },
+        "privacy": {
+          "label": "Privacidad",
+          "manual": "—",
+          "otherTools": "A menudo en la Nube",
+          "autoTrim": "100% Local"
+        }
+      }
+    }
+  },
+  "features": {
+    "title": "Cómo AutoTrim Salva Tu Día",
+    "badges": {
+      "noSubscription": "Sin suscripción",
+      "instantResults": "Resultados instantáneos",
+      "privateSecure": "100% privado",
+      "worksOffline": "Funciona sin conexión"
+    },
+    "list": {
+      "parallel": {
+        "title": "Procesamiento Paralelo",
+        "description": "Impulsado por Rust y Tauri para velocidad increíble. Hasta 4 trabajos simultáneos, recortando múltiples archivos a la vez."
+      },
+      "timeline": {
+        "title": "Exportación de Línea de Tiempo en Un Clic",
+        "description": "No más piezas de rompecabezas. Exporta una línea de tiempo XML/FCPXML única y lista para editar directamente a tu software de edición."
+      },
+      "cuts": {
+        "title": "Cortes Limpios y Precisos",
+        "description": "Umbrales de silencio ajustables, relleno y precisión de corte. Exactamente como lo quieres."
+      },
+      "privacy": {
+        "title": "Cero Subidas",
+        "description": "Todo sucede directamente en tu máquina. Seguro, privado, súper rápido."
+      },
+      "license": {
+        "title": "Licencia de Por Vida",
+        "description": "Paga una vez, úsalo para siempre. Sin costos ocultos, sin suscripciones."
+      },
+      "ai": {
+        "title": "Interfaz Multilingüe e IA (próximamente)",
+        "description": "Detección automática de muletillas, repeticiones y vacilaciones en múltiples idiomas. En el dispositivo, sin tarifas de nube."
+      }
+    }
+  },
+  "processSteps": {
+    "title": "Cómo Recortar Automáticamente Silencios de Video en Segundos",
+    "subtitle": "De clips en bruto a una línea de tiempo limpia — así es como funciona AutoTrim",
+    "stepCounter": "Paso",
+    "of": "de 3",
+    "autoTrimLabel": "AutoTrim",
+    "otherToolsLabel": "Otras Herramientas",
+    "steps": {
+      "drop": {
+        "title": "Suelta tus archivos",
+        "description": "Arrastra y suelta tus clips. Aparecen instantáneamente en la cola, listos para procesar.",
+        "alt": "Arrastra y suelta archivos de video en la interfaz de AutoTrim para eliminación automática de silencios"
+      },
+      "trim": {
+        "title": "Recorta en paralelo",
+        "description": "Presiona \"Procesar\" y deja que AutoTrim analice todos los archivos a la vez. Previsualiza tu línea de tiempo tan pronto como un clip esté listo.",
+        "alt": "AutoTrim procesando múltiples archivos de video en paralelo con detección automática de silencios"
+      },
+      "export": {
+        "title": "Una línea de tiempo, todos los clips",
+        "description": "AutoTrim automáticamente combina TODOS tus clips procesados en UNA sola línea de tiempo. Todo ya está ensamblado y listo para editar - solo exporta y listo.",
+        "alt": "Exportación de línea de tiempo unificada con todos los clips ya ensamblados en AutoTrim"
+      }
+    }
+  },
+  "howItWorks": {
+    "title": "Cómo Funciona",
+    "steps": {
+      "step1": {
+        "title": "Paso 1: Suelta Clips",
+        "description": "Arrastra y suelta tus archivos en la app. Sin desorden, sin lío."
+      },
+      "step2": {
+        "title": "Paso 2: Deja que AutoTrim Funcione",
+        "description": "El análisis de audio paralelo recorta automáticamente los silencios. Personaliza la configuración si quieres, o simplemente usa los valores predeterminados (son buenos)."
+      },
+      "step3": {
+        "title": "Paso 3: Importa Tu Línea de Tiempo",
+        "description": "Descarga una línea de tiempo XML/FCPXML completa. Ábrela en Final Cut, Premiere o Resolve. Comienza a editar inmediatamente."
+      }
+    },
+    "conclusion": "Listo. Ve a tomar un café, o comienza tu siguiente tarea. Acabas de recuperar tu día.",
+    "demoCta": "Ver Demo de 60s",
+    "comparison": {
+      "title": "Comparado con otras herramientas:",
+      "autoTrim": "Con AutoTrim, sueltas todos tus archivos, se procesan en paralelo, y obtienes una línea de tiempo terminada.",
+      "otherTools": "Con otras herramientas, procesas archivos uno por uno, exportas un XML por clip, y ensamblas todo manualmente — perdiendo minutos en cada proyecto."
+    }
+  },
+  "videoDemo": {
+    "title": "Ve AutoTrim en Acción",
+    "subtitle": "AutoTrim corta, limpia y organiza tu material — todo en segundos.",
+    "watchAction": "Míralo en acción:",
+    "demoTitle": "Demo de AutoTrim",
+    "thumbnail": "Miniatura de vista previa del video demo de AutoTrim",
+    "watchDemo": "▶ Ver Demo de 90s",
+    "oneClick": "De material en bruto a línea de tiempo limpia en un clic",
+    "iframeTitle": "Demo de AutoTrim",
+    "noVideoId": "Configura NEXT_PUBLIC_VIMEO_ID para habilitar el video demo."
+  },
+  "perksGrid": {
+    "title": "Por qué los creadores nunca vuelven atrás.",
+    "subtitle": "Desde arrastrar y soltar hasta XML limpio, AutoTrim está lleno de características que ahorran tiempo — y cordura.",
+    "badges": {
+      "popular": "Popular",
+      "comingSoon": "PRÓXIMAMENTE"
+    },
+    "lovedBy": "Amado por más de 10,000 creadores en todo el mundo",
+    "perks": {
+      "dragDrop": {
+        "title": "Arrastra y Suelta Todo",
+        "description": "Suelta cualquier cantidad de clips; AutoTrim los ingiere instantáneamente, sin importar el formato."
+      },
+      "smartPresets": {
+        "title": "Presets Inteligentes",
+        "description": "YouTube, Podcast, Vlog... un clic aplica la configuración perfecta."
+      },
+      "fineTune": {
+        "title": "Ajusta Finamente los Cortes",
+        "description": "Umbral de silencio, pre/post-roll, separación mínima — ajusta tu estilo de edición exacto."
+      },
+      "xmlExport": {
+        "title": "XML Individual o Múltiple",
+        "description": "Exporta una línea de tiempo limpia o XMLs individuales — no más piezas de rompecabezas."
+      },
+      "localProcessing": {
+        "title": "Procesamiento 100% Local",
+        "description": "IA, procesamiento de video, todo funciona en tu máquina. Sin subidas, sin esperas, velocidad máxima."
+      },
+      "parallelProcessing": {
+        "title": "Procesamiento Paralelo",
+        "description": "Maximiza tus núcleos: hasta 4 trabajos funcionan simultáneamente para cero tiempo muerto."
+      },
+      "repetitionRemover": {
+        "title": "Eliminador de Repeticiones y Vacilaciones",
+        "description": "Corta muletillas y tomas dobles automáticamente."
+      },
+      "multilingual": {
+        "title": "Multilingüe y Agnóstico de Formato",
+        "description": "Francés, inglés, español... MP4, MOV, MKV — simplemente funciona."
+      },
+      "blazingPreview": {
+        "title": "Vista Previa Súper Rápida",
+        "description": "Navega en tiempo real, sin lag, incluso en material largo."
+      },
+      "optimizedPro": {
+        "title": "Optimizado para Máquinas de Edición Profesional",
+        "description": "AutoTrim está construido para el hardware que ya posees. Ejecuta modelos de IA localmente, usando todo el poder de tu CPU y GPU — sin subidas lentas y sin costos extra de servidor."
+      }
+    }
+  },
+  "whoIsItFor": {
+    "title": "AutoTrim está Hecho Para",
+    "subtitle": "Ya sea que crees contenido a tiempo completo o recién estés empezando, AutoTrim te ahorra horas cada semana.",
+    "stats": {
+      "happyCreators": "Más de 10,000 creadores felices",
+      "hoursSaved": "Millones de horas ahorradas"
+    },
+    "joinThousands": "Únete a miles de creadores que han recuperado su tiempo",
+    "personas": {
+      "youtubers": {
+        "title": "YouTubers y Vloggers",
+        "description": "Publica videos más rápido sin el recorte tedioso",
+        "benefit": "Más de 10 horas ahorradas/semana"
+      },
+      "podcasters": {
+        "title": "Podcasters",
+        "description": "Limpia contenido de formato largo en minutos, no horas",
+        "benefit": "Edición 3x más rápida"
+      },
+      "teachers": {
+        "title": "Profesores Online",
+        "description": "Enfócate en enseñar, no en editar tus cursos",
+        "benefit": "Más tiempo para enseñar"
+      },
+      "freelancers": {
+        "title": "Editores Freelance",
+        "description": "Maneja más clientes reduciendo el tiempo de edición",
+        "benefit": "Capacidad de 2x clientes"
+      },
+      "teams": {
+        "title": "Equipos de Contenido",
+        "description": "Escala la producción de video sin escalar la plantilla",
+        "benefit": "Impulso de productividad del equipo"
+      },
+      "anyCreator": {
+        "title": "Cualquier Creador que Valore el Tiempo",
+        "description": "Si editas videos regularmente, AutoTrim es para ti",
+        "benefit": "Horas de vuelta diariamente"
+      }
+    }
+  },
+  "timeSavings": {
+    "title": "AutoTrim te ahorra tiempo. Mucho tiempo.",
+    "subtitle": "Ve qué tan rápido se vuelve tu flujo de trabajo",
+    "percentManual": "% del tiempo manual",
+    "methods": {
+      "manual": {
+        "name": "Edición manual",
+        "description": "Flujo de trabajo tradicional",
+        "time": "48 min",
+        "speed": "1×"
+      },
+      "otherTools": {
+        "name": "Otras herramientas",
+        "description": "Semi-automatizado",
+        "time": "20 min",
+        "speed": "2.4× más rápido"
+      },
+      "autoTrim": {
+        "name": "AutoTrim",
+        "description": "Completamente automatizado",
+        "time": "1 min",
+        "speed": "48× más rápido"
+      }
+    },
+    "realCase": {
+      "title": "Basado en un caso de cliente real: 30 min de material en bruto",
+      "test": {
+        "title": "Caso de prueba real",
+        "rawClip": "Clip en bruto",
+        "duration": "1 min 33 s",
+        "manualFCP": "Manual (FCP)",
+        "manualTime": "2 min 30 s (150 s)",
+        "autoTrimLabel": "AutoTrim",
+        "autoTrimTime": "8 s",
+        "result": "≈ 19× más rápido"
+      },
+      "scenario": {
+        "title": "Escenario realista (caso de cliente)",
+        "description": "6 clips de 5 min = 30 min en bruto",
+        "manualCalc": "Manual (FCP): 30 min × 1.61 ≈ 48 min 18 s",
+        "autoTrimCalc": "AutoTrim: procesamiento por lotes en 30 min en bruto = 1 min total",
+        "manualTotal": "Total manual",
+        "manualTotalTime": "48 min 18 s",
+        "autoTrimTotal": "Total AutoTrim",
+        "autoTrimTotalTime": "1 min",
+        "timeSaved": "Tiempo ahorrado",
+        "timeSavedAmount": "~47 min 18 s",
+        "reduction": "~97.9% de reducción — ≈ 48× más rápido"
+      },
+      "vsOtherTools": {
+        "title": "Vs. otras herramientas",
+        "similarSpeed": "Velocidad de procesamiento por clip similar (~50 s)",
+        "noParallel": "Sin procesamiento paralelo",
+        "oneXmlPerClip": "Un XML por clip → fusión manual en FCP",
+        "sequential": "Secuencial: 6 × 50 s = 5 min + fusión 6 × 2 min 30 s = 15 min → 20 min total",
+        "autoTrimBetter": "AutoTrim: 1 min + XML único → sin fusión",
+        "gain": "Ganancia: ~19 min — reducción del 95% — ≈ 20× más rápido"
+      },
+      "notes": "Notas: pruebas realizadas en material hablado, tiempos variables según máquina, fuente de audio y parámetros."
+    }
+  },
+  "ai": {
+    "title": "IA de siguiente nivel (¡próximamente!)",
+    "description": "La actualización mejorada con IA de AutoTrim detecta muletillas, repeticiones y vacilaciones instantáneamente—aún completamente en tu dispositivo.",
+    "benefit": "Sin tarifas extra. Solo recorte más inteligente y aún más rápido."
+  },
+  "testimonials": {
+    "title": "Por qué los Editores Aman AutoTrim",
+    "trustedBy": "Confiado por creadores y profesionales en todo el mundo",
+    "joinUsers": "Únete a más de 10,000 usuarios satisfechos",
+    "startTrial": "Comienza Tu Prueba Gratuita",
+    "quotes": {
+      "0": {
+        "text": "Estaba buscando una herramienta para hacer el trabajo tonto de desglosar y limpiar mi material en bruto. Así que construí AutoTrim."
+      },
+      "1": {
+        "text": "Sin subidas a la nube, sin esperas, sin fusiones manuales de XML. Solo líneas de tiempo limpias cada vez."
+      },
+      "2": {
+        "text": "Edito profesionalmente, y AutoTrim me ahorra HORAS cada semana. Es fácilmente el mejor dinero que he gastado este año."
+      }
+    }
+  },
+  "pricing": {
+    "title": "Elige Tu Plan",
+    "subtitle": "AutoTrim es gratis para probar. Paga solo cuando estés listo para exportar.",
+    "plans": {
+      "annual": {
+        "title": "Anual",
+        "price": "$79",
+        "period": "/año",
+        "billing": "Facturado anualmente",
+        "features": [
+          "Proyectos ilimitados",
+          "Clips ilimitados",
+          "1 año de actualizaciones",
+          "Velocidad de exportación prioritaria",
+          "Activar en 2 máquinas"
+        ]
+      },
+      "lifetime": {
+        "title": "Licencia de Por Vida",
+        "originalPrice": "$249",
+        "price": "$149",
+        "period": "una vez",
+        "badge": "Mejor Valor",
+        "earlyBird": "Oferta especial de lanzamiento",
+        "features": [
+          "Proyectos ilimitados",
+          "Clips ilimitados",
+          "Actualizaciones de por vida",
+          "Velocidad de exportación prioritaria",
+          "Activar en 2 máquinas"
+        ]
+      }
+    },
+    "downloadTrial": "Descargar Prueba Gratuita",
+    "alreadyTried": "¿Ya lo probaste?",
+    "buyLicense": "Comprar licencia",
+    "benefits": {
+      "freeTry": "Gratis para probar — procesa tus archivos, previsualiza tus cortes.",
+      "payExport": "Paga solo para exportar tu XML o línea de tiempo final.",
+      "moneyBack": "Garantía de devolución de dinero de 14 días."
+    },
+    "team": {
+      "title": "Paquete de Equipo (5 asientos)",
+      "tag": "Con Descuento"
+    },
+    "trial": {
+      "title": "Prueba Gratuita",
+      "description": "X días, sin compromisos"
+    },
+    "guarantee": {
+      "title": "Garantía de Devolución de Dinero",
+      "description": "14 días, reembolso del 100%"
+    },
+    "cta": "Comprar Ahora",
+    "note": "Sin tarifas recurrentes de servidor. Eres dueño de la herramienta — y toda la velocidad que conlleva."
+  },
+  "whyFaster": {
+    "title": "Por qué AutoTrim supera a cualquier otra herramienta de corte de silencios",
+    "table": {
+      "headers": {
+        "feature": "Característica",
+        "autoTrim": "AutoTrim",
+        "otherTools": "Otras Herramientas"
+      },
+      "rows": {
+        "import": {
+          "label": "Importar",
+          "autoTrim": "Arrastra y suelta todos los archivos a la vez",
+          "otherTools": "Importar un archivo a la vez"
+        },
+        "processing": {
+          "label": "Procesamiento",
+          "autoTrim": "Procesamiento paralelo de múltiples clips",
+          "otherTools": "Secuencial clip por clip"
+        },
+        "result": {
+          "label": "Resultado",
+          "autoTrim": "Una línea de tiempo limpia lista para editar",
+          "otherTools": "Múltiples líneas de tiempo para fusionar manualmente"
+        },
+        "speed": {
+          "label": "Velocidad en el mundo real",
+          "autoTrim": "48× más rápido en proyectos de múltiples clips",
+          "otherTools": "Tiempo multiplicado por número de clips"
+        },
+        "aiCost": {
+          "label": "IA y Costo",
+          "autoTrim": "Funciona completamente en tu computadora — sin costo extra, sin pago recurrente",
+          "otherTools": "Requiere suscripción para acceder a características de IA, tarifas recurrentes"
+        }
+      }
+    },
+    "cta": "Prueba AutoTrim gratis — ve qué tan rápido se vuelve tu flujo de trabajo.",
+    "ctaButton": "Prueba AutoTrim Gratis",
+    "comparisons": {
+      "title": "Ver comparaciones detalladas:",
+      "links": {
+        "timebolt": "AutoTrim vs TimeBolt",
+        "autocut": "AutoTrim vs AutoCut",
+        "descript": "AutoTrim vs Descript",
+        "premierePro": "AutoTrim vs Premiere Pro"
+      }
+    }
+  },
+  "about": {
+    "title": "¿Quién Construyó AutoTrim?",
+    "description": "AutoTrim fue creado por Benjamin Code, un desarrollador profesional y YouTuber que pasó más de una década editando videos manualmente.",
+    "quote": "\"Construí AutoTrim porque no podía permitirme perder más tiempo. Ahora, tú tampoco puedes.\""
+  },
+  "roadmap": {
+    "title": "Hoja de Ruta de AutoTrim",
+    "items": {
+      "v10": "✅ v1.0 — Recorte Súper Rápido",
+      "v11": "✅ v1.1 — Trabajos Paralelos Optimizados",
+      "v20": "📜 v2.0 — IA en el dispositivo: muletillas y repeticiones",
+      "v21": "📜 v2.1 — Vistas Previas Instantáneas Antes/Después",
+      "v22": "📜 v2.2 — Sincronización Automática de Audio/Video"
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "questions": {
+      "0": {
+        "q": "¿AutoTrim funciona en Mac, Windows, Linux?",
+        "a": "Absolutamente. AutoTrim funciona en todas partes gracias a Rust y Tauri."
+      },
+      "1": {
+        "q": "¿Es compatible con Final Cut, Premiere, Resolve?",
+        "a": "¡Sí! AutoTrim exporta líneas de tiempo XML/FCPXML compatibles con todos estos NLEs principales."
+      },
+      "2": {
+        "q": "¿Mis archivos salen de mi computadora?",
+        "a": "No. Todo el procesamiento se mantiene seguro en tu dispositivo."
+      },
+      "3": {
+        "q": "¿Puedo ajustar qué tan precisamente corta AutoTrim?",
+        "a": "Sí, personaliza fácilmente umbrales de silencio, longitudes mínimas de silencio y tiempos de relleno."
+      },
+      "4": {
+        "q": "¿Puedo eliminar muletillas y vacilaciones?",
+        "a": "Viene en AutoTrim v2.0—pronto y poderoso."
+      },
+      "5": {
+        "q": "¿Puedo procesar múltiples clips simultáneamente?",
+        "a": "Sí. El procesamiento paralelo está incorporado desde el primer día."
+      }
+    }
+  },
+  "stillNotSure": {
+    "title": "¿Aún No Estás Seguro?",
+    "subtitle": "Aquí tienes una matemática simple:",
+    "calculation": {
+      "line1": "5 horas/semana editando manualmente = 260 horas/año",
+      "line2": "Con AutoTrim, recuperarás el 96% de ese tiempo.",
+      "line3": "Eso son 250 horas devueltas a ti cada año."
+    },
+    "question": "¿Cuánto vale tu tiempo?",
+    "cta": "Comienza a Ahorrar Tiempo Ahora"
+  },
+  "finalCTA": {
+    "title": "¿Aún No Estás Seguro?",
+    "calculation": {
+      "spending": "Estás gastando 5 horas/semana recortando videos.",
+      "yearly": "horas al año",
+      "withAutoTrim": "Con AutoTrim, recuperas el 96% de ese tiempo.",
+      "saved": "horas ahorradas — cada año."
+    },
+    "question": "¿Cuánto vale tu tiempo?",
+    "atRate": "A $50/hora, eso son $12,500 ahorrados anualmente.",
+    "startNow": "Comienza a Ahorrar Tiempo Ahora",
+    "badges": {
+      "freeTrial": "Gratis para probar",
+      "moneyBack": "Devolución de dinero en 14 días",
+      "oneTime": "Pago único",
+      "localPrivate": "100% local y privado"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 AutoTrim. Construido con ❤️ por Benjamin Code",
+    "links": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos de Servicio",
+      "contact": "Contacto"
+    },
+    "comparisons": {
+      "title": "Comparaciones",
+      "timebolt": "AutoTrim vs TimeBolt",
+      "autocut": "AutoTrim vs AutoCut",
+      "descript": "AutoTrim vs Descript",
+      "premierePro": "AutoTrim vs Premiere Pro"
+    },
+    "resources": {
+      "title": "Recursos",
+      "download": "Descargar",
+      "pricing": "Precios",
+      "faq": "Preguntas Frecuentes",
+      "blog": "Blog"
+    },
+    "language": {
+      "en": "🇬🇧 English",
+      "fr": "🇫🇷 Français",
+      "es": "🇪🇸 Español",
+      "zh": "🇨🇳 中文"
+    },
+    "cta": {
+      "ready": "¿Listo para recuperar tu tiempo?",
+      "button": "Prueba AutoTrim Gratis"
+    }
+  },
+  "compareTimebolt": {
+    "title": "AutoTrim vs TimeBolt: La Comparación Definitiva",
+    "subtitle": "Ve por qué los profesionales están cambiando de TimeBolt a AutoTrim para edición de video más rápida y simple",
+    "table": {
+      "headers": {
+        "feature": "Característica",
+        "autoTrim": "AutoTrim",
+        "timebolt": "TimeBolt"
+      },
+      "rows": {
+        "importWorkflow": {
+          "label": "Flujo de Trabajo de Importación",
+          "autoTrim": "Arrastra y suelta todos los clips a la vez",
+          "timebolt": "Importar un clip a la vez"
+        },
+        "processing": {
+          "label": "Procesamiento",
+          "autoTrim": "Procesamiento paralelo de múltiples clips — todos los archivos a la vez",
+          "timebolt": "Procesamiento secuencial — un clip a la vez"
+        },
+        "finalOutput": {
+          "label": "Salida Final",
+          "autoTrim": "Una línea de tiempo limpia y completamente ensamblada lista para editar",
+          "timebolt": "Un XML por clip — fusión manual requerida en Final Cut / Premiere"
+        },
+        "realWorldSpeed": {
+          "label": "Velocidad en el Mundo Real",
+          "autoTrim": "48× más rápido en proyectos de múltiples clips (1 min para 30 min de material)",
+          "timebolt": "Tiempo multiplicado por el número de clips (20+ minutos para el mismo proyecto)"
+        },
+        "userExperience": {
+          "label": "Experiencia de Usuario (UX)",
+          "autoTrim": "Clics mínimos, flujo de trabajo sin fricción",
+          "timebolt": "Pasos repetitivos para cada clip — tedioso para proyectos grandes"
+        },
+        "interface": {
+          "label": "Interfaz (UI)",
+          "autoTrim": "Moderna, limpia, intuitiva — fácil de aprender en minutos",
+          "timebolt": "Interfaz desactualizada y desordenada — más de 10 años"
+        },
+        "featureQuality": {
+          "label": "Calidad de Características",
+          "autoTrim": "Menos características, pero todas altamente optimizadas y confiables (funciona perfectamente en inglés, español, chino y cualquier idioma)",
+          "timebolt": "Muchas características, pero varias mal implementadas (ej., HumCheck poco confiable en francés, FastForward/PunchZoom inconsistente)"
+        },
+        "aiCost": {
+          "label": "IA y Costo",
+          "autoTrim": "Funciona completamente en tu computadora — sin costo extra, sin suscripciones",
+          "timebolt": "Requiere suscripción para acceder a características de IA, tarifas continuas"
+        },
+        "developedBy": {
+          "label": "Desarrollado por",
+          "autoTrim": "Un YouTuber con 10 años de experiencia editando sus videos",
+          "timebolt": "Empresa de software"
+        },
+        "bestFor": {
+          "label": "Mejor Para",
+          "autoTrim": "Profesionales y creadores que valoran velocidad, simplicidad y resultados consistentes",
+          "timebolt": "Usuarios dispuestos a manejar flujos de trabajo más lentos y más ensamblaje manual"
+        }
+      }
+    },
+    "winner": {
+      "title": "El Claro Ganador para Edición de Video Profesional",
+      "description": "AutoTrim entrega lo que más importa: velocidad, simplicidad y confiabilidad. Mientras TimeBolt ofrece más características, el enfoque centrado de AutoTrim te ahorra horas en cada proyecto."
+    },
+    "cta": {
+      "title": "¿Listo para trabajar 48× más rápido?",
+      "button": "Prueba AutoTrim Gratis",
+      "subtext": "No se requiere tarjeta de crédito. Ve la diferencia en minutos."
+    }
+  },
+  "compareAutocut": {
+    "title": "AutoTrim vs AutoCut: Velocidad clara y costo-efectiva gana",
+    "subtitle": "AutoTrim es una herramienta independiente construida para editores: rápida, predecible y simple. En comparación, AutoCut es un plugin de editor que oculta su IA detrás de una suscripción y añade complejidad. Ve cómo se comparan velocidad, costo y claridad.",
+    "table": {
+      "headers": {
+        "feature": "Característica",
+        "autoTrim": "AutoTrim",
+        "autocut": "AutoCut (Extensión)"
+      },
+      "rows": {
+        "platform": {
+          "label": "Plataforma e Integración",
+          "autoTrim": "App independiente — funciona con Final Cut, Premiere, Resolve (una vez exportado)",
+          "autocut": "Plugin/extensión solo para Premiere Pro y DaVinci Resolve — sin Final Cut, sin versión independiente"
+        },
+        "workflow": {
+          "label": "Simplicidad del Flujo de Trabajo",
+          "autoTrim": "Arrastra y suelta todos los clips, procesamiento paralelo, exportación de línea de tiempo unificada",
+          "autocut": "Configuración compleja dentro del editor anfitrión — más pasos y curva de aprendizaje para dominar"
+        },
+        "aiPerformance": {
+          "label": "Rendimiento de IA",
+          "autoTrim": "Funciona completamente en tu computadora — usa tu CPU/GPU, sin ida y vuelta a la nube",
+          "autocut": "IA funciona en sus servidores — requiere subida/descarga, más lento, dependiente de conexión"
+        },
+        "pricing": {
+          "label": "Precios y Modelo de Costo",
+          "autoTrim": "Prueba gratuita; compra una vez (anual o de por vida)—sin tarifas recurrentes ocultas",
+          "autocut": "Modelo solo de suscripción: Básico (€79/año) características limitadas; plan de IA completa (€179/año) requerido para suite de IA completa"
+        },
+        "features": {
+          "label": "Enfoque de Características",
+          "autoTrim": "Solo características de edición principal (silencio, muletillas, repetición) — alta confiabilidad y velocidad",
+          "autocut": "Muchas características (subtítulos, auto-zoom, B-roll, capítulos etc.) pero a menudo menos pulidas o más lentas"
+        },
+        "learningCurve": {
+          "label": "Curva de Aprendizaje y UX",
+          "autoTrim": "Interfaz limpia e intuitiva — construida para editores, fricción mínima",
+          "autocut": "UI de plugin dentro de Premiere/Resolve—más complejo, incorporación más empinada"
+        },
+        "bestFor": {
+          "label": "Mejor Adecuado Para",
+          "autoTrim": "Editores que quieren máxima velocidad, simplicidad y control sin suscripciones",
+          "autocut": "Usuarios que prefieren efectos ricos y automatizados dentro de Premiere/Resolve y no les importan los costos continuos"
+        }
+      }
+    },
+    "winner": {
+      "title": "Por qué AutoTrim Gana para Editores Profesionales",
+      "description": "Ser una app independiente hace que AutoTrim sea más fácil de adoptar en cualquier software de edición. Con procesamiento de IA local, precios transparentes y enfoque en características principales que funcionan perfectamente, AutoTrim entrega lo que más importa: velocidad, simplicidad y confiabilidad."
+    },
+    "cta": {
+      "title": "¿Listo para edición más rápida y simple?",
+      "button": "Prueba AutoTrim Gratis",
+      "subtext": "No se requiere tarjeta de crédito. Ve la diferencia en minutos."
+    }
+  },
+  "compareDescript": {
+    "title": "AutoTrim vs Descript: Velocidad y Control vs Todo-en-Uno en la Nube",
+    "subtitle": "AutoTrim es una herramienta independiente súper rápida para editores profesionales. Descript es un editor todo-en-uno basado en la nube con edición basada en texto. Ve qué enfoque se adapta a tu flujo de trabajo.",
+    "table": {
+      "headers": {
+        "feature": "Característica",
+        "autoTrim": "AutoTrim",
+        "descript": "Descript"
+      },
+      "rows": {
+        "platformWorkflow": {
+          "label": "Plataforma y Flujo de Trabajo",
+          "autoTrim": "App independiente → exporta a Final Cut, Premiere, Resolve",
+          "descript": "Editor todo-en-uno con edición incorporada, flujo de trabajo basado en texto"
+        },
+        "processingStyle": {
+          "label": "Estilo de Procesamiento",
+          "autoTrim": "Arrastra y suelta múltiples clips → eliminación paralela de silencios/muletillas → exportación de línea de tiempo única",
+          "descript": "Sube clip, transcribe, luego edita vía UI de transcripción"
+        },
+        "aiExecution": {
+          "label": "Ejecución de IA",
+          "autoTrim": "Funciona localmente — usa CPU/GPU de tu máquina, sin costos extra",
+          "descript": "IA funciona en la nube — requiere internet, tiempo de espera adicional"
+        },
+        "pricingStructure": {
+          "label": "Estructura de Precios",
+          "autoTrim": "Compra única (anual o de por vida), sin tarifas recurrentes de nube",
+          "descript": "Suscripción $12—$24/mes; nivel gratuito limitado a 1 hora/mes con marcas de agua"
+        },
+        "silenceRemoval": {
+          "label": "Eliminación de Silencios y Muletillas",
+          "autoTrim": "Rápido, optimizado para editores profesionales — maneja clips en lote",
+          "descript": "Eliminación basada en texto, pero exportaciones más lentas y posibles peculiaridades"
+        },
+        "advancedTools": {
+          "label": "Herramientas de Edición Avanzadas",
+          "autoTrim": "Enfocado en recorte principal — fricción mínima, altamente confiable",
+          "descript": "Características ricas: transcripción, pantalla verde, overdub, avatares IA, B-roll de stock"
+        },
+        "performanceUX": {
+          "label": "Rendimiento y UX",
+          "autoTrim": "Súper rápido, interfaz limpia — diseñado para flujos de trabajo de alta eficiencia",
+          "descript": "Interfaz única de editor de texto; rendimiento más lento y exportaciones reportadas"
+        },
+        "bestFor": {
+          "label": "Mejor Adecuado Para",
+          "autoTrim": "Editores que quieren máxima velocidad, control y ejecución de bajo costo",
+          "descript": "Creadores que prefieren un ambiente todo-en-uno pesado en IA con suscripciones"
+        }
+      }
+    },
+    "winner": {
+      "title": "Por qué AutoTrim Gana para Velocidad Profesional",
+      "description": "Mientras Descript ofrece un enfoque innovador de edición basada en texto con muchas características de IA, AutoTrim entrega lo que los editores profesionales más necesitan: procesamiento local súper rápido, flujos de trabajo simples y sin tarifas recurrentes. Para editores que valoran velocidad y control sobre campanas y silbatos, AutoTrim es la elección clara."
+    },
+    "cta": {
+      "title": "¿Listo para velocidad de grado profesional?",
+      "button": "Prueba AutoTrim Gratis",
+      "subtext": "No se requiere tarjeta de crédito. Experimenta la diferencia en minutos."
+    }
+  }
+}

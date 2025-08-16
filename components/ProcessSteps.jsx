@@ -1,39 +1,37 @@
+"use client";
 import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Zap, Clock } from "lucide-react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const ProcessSteps = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const rootRef = useRef(null);
   const titleRef = useRef(null);
   const steps = [
     {
       number: "1",
-      title: "Drop your files",
-      description:
-        "Drag & drop your clips. They appear instantly in the queue, ready to go.",
+      title: t("processSteps.steps.drop.title"),
+      description: t("processSteps.steps.drop.description"),
       gif: "/assets/img/gif1.gif",
-      alt: "Drag and drop video files into AutoTrim interface for automatic silence removal",
+      alt: t("processSteps.steps.drop.alt"),
     },
     {
       number: "2",
-      title: "Trim in parallel",
-      description:
-        'Hit "Process" and let AutoTrim analyze all files at once. Preview your timeline as soon as a clip is done.',
+      title: t("processSteps.steps.trim.title"),
+      description: t("processSteps.steps.trim.description"),
       gif: "/assets/img/gif2.gif",
-      alt: "AutoTrim processing multiple video files in parallel with automatic silence detection",
+      alt: t("processSteps.steps.trim.alt"),
     },
     {
       number: "3",
-      title: "One timeline, all clips",
-      description:
-        "AutoTrim automatically merges ALL your processed clips into ONE single timeline. Everything is already assembled and ready to edit - just export and go.",
+      title: t("processSteps.steps.export.title"),
+      description: t("processSteps.steps.export.description"),
       gif: "/assets/img/gif3.gif",
-      alt: "Single unified timeline export with all clips already assembled in AutoTrim",
+      alt: t("processSteps.steps.export.alt"),
     },
   ];
 
@@ -266,14 +264,14 @@ const ProcessSteps = () => {
             className="mx-auto text-3xl sm:text-4xl font-bold text-gray-900 mb-4 overflow-hidden"
             style={{ opacity: 0 }}
           >
-            How to Automatically Trim Video Silences in Seconds
+            {t("processSteps.title")}
           </h2>
           <p
             data-animate="how-desc"
             className="text-xl text-gray-600 max-w-3xl mx-auto"
             style={{ opacity: 0 }}
           >
-            From raw clips to a clean timeline — here's how AutoTrim works
+            {t("processSteps.subtitle")}
           </p>
         </div>
 
@@ -331,7 +329,7 @@ const ProcessSteps = () => {
                   >
                     <div className="h-1 w-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
                     <span className="text-sm font-medium text-primary-600 uppercase tracking-wider">
-                      Step {step.number} of 3
+                      {t("processSteps.stepCounter")} {step.number} {t("processSteps.of")}
                     </span>
                   </div>
                 </div>
@@ -355,7 +353,7 @@ const ProcessSteps = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-bold text-lg text-gray-900">AutoTrim</span>
+                <span className="font-bold text-lg text-gray-900">{t("processSteps.autoTrimLabel")}</span>
               </div>
               <p className="text-gray-700 leading-relaxed">
                 {t("howItWorks.comparison.autoTrim")}
@@ -368,7 +366,7 @@ const ProcessSteps = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-gray-400 to-gray-500 rounded-xl flex items-center justify-center">
                   <Clock className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-bold text-lg text-gray-900">Other Tools</span>
+                <span className="font-bold text-lg text-gray-900">{t("processSteps.otherToolsLabel")}</span>
               </div>
               <p className="text-gray-700 leading-relaxed">
                 {t("howItWorks.comparison.otherTools")}

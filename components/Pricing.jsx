@@ -1,3 +1,4 @@
+"use client";
 import React, { useLayoutEffect, useRef } from "react";
 import {
   Check,
@@ -12,49 +13,40 @@ import {
   Calendar,
   Crown,
 } from "lucide-react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Pricing = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
   const rootRef = useRef(null);
   const titleRef = useRef(null);
 
   const plans = [
     {
-      name: "Annual",
+      name: t("pricing.plans.annual.title"),
       icon: Calendar,
-      price: "$79",
-      period: "/year",
-      description: "Billed yearly",
-      features: [
-        "Unlimited projects",
-        "Unlimited clips",
-        "1 year of updates",
-        "Priority export speed",
-        "Activate on 2 machines",
-      ],
+      price: t("pricing.plans.annual.price"),
+      period: t("pricing.plans.annual.period"),
+      description: t("pricing.plans.annual.billing"),
+      features: t.raw("pricing.plans.annual.features") || [],
       popular: false,
     },
     {
-      name: "Lifetime License",
+      name: t("pricing.plans.lifetime.title"),
       icon: Crown,
-      price: "$149",
-      originalPrice: "$249",
-      period: "one-time",
-      description: "Early bird special",
-      features: [
-        "Unlimited projects",
-        "Unlimited clips",
-        "Lifetime updates",
-        "Priority export speed",
-        "Activate on 2 machines",
-      ],
+      price: t("pricing.plans.lifetime.price"),
+      originalPrice: t("pricing.plans.lifetime.originalPrice"),
+      period: t("pricing.plans.lifetime.period"),
+      description: t("pricing.plans.lifetime.earlyBird"),
+      features: t.raw("pricing.plans.lifetime.features") || [],
       popular: true,
-      badge: "Best Value",
+      badge: t("pricing.plans.lifetime.badge"),
     },
   ];
 
@@ -352,10 +344,10 @@ const Pricing = () => {
             className="text-4xl sm:text-5xl mx-auto font-bold text-gray-900 mb-4 overflow-hidden"
             style={{ opacity: 0 }}
           >
-            Choose Your Plan
+            {t("pricing.title")}
           </h2>
           <p data-animate="pricing-subtitle" className="text-xl text-gray-600">
-            AutoTrim is free to try. Pay only when you're ready to export.
+            {t("pricing.subtitle")}
           </p>
         </div>
 
@@ -443,25 +435,25 @@ const Pricing = () => {
 
                   <a
                     data-animate="pricing-button"
-                    href="/download"
+                    href={`/${currentLocale}/download`}
                     className={`block w-full text-center py-4 rounded-xl font-bold text-lg shadow-lg ${
                       plan.popular
                         ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 hover:shadow-xl"
                         : "bg-gray-100 text-gray-900 hover:bg-gray-200 hover:shadow-lg"
                     }`}
                   >
-                    Download Free Trial
+                    {t("pricing.downloadTrial")}
                   </a>
                   <p
                     data-animate="pricing-subtext"
                     className="mt-3 text-center text-sm text-gray-600"
                   >
-                    Already tried?{" "}
+                    {t("pricing.alreadyTried")}{" "}
                     <a
                       href="#pricing"
                       className="text-primary-700 underline hover:no-underline"
                     >
-                      Buy license
+                      {t("pricing.buyLicense")}
                     </a>
                   </p>
                 </div>
@@ -478,8 +470,7 @@ const Pricing = () => {
           >
             <FlaskConical className="w-6 h-6" />
             <p className="text-lg">
-              <span className="font-semibold">Free to try</span> — process your
-              files, preview your cuts.
+              {t("pricing.benefits.freeTry")}
             </p>
           </div>
           <div
@@ -488,7 +479,7 @@ const Pricing = () => {
           >
             <Lock className="w-6 h-6" />
             <p className="text-lg">
-              Pay only to export your final XML or timeline.
+              {t("pricing.benefits.payExport")}
             </p>
           </div>
           <div
@@ -497,7 +488,7 @@ const Pricing = () => {
           >
             <p className="text-lg text-gray-700 font-medium inline-flex items-center gap-2">
               <BadgeDollarSign className="w-5 h-5 text-green-600" />
-              14-day money-back guarantee.
+              {t("pricing.benefits.moneyBack")}
             </p>
           </div>
           <div

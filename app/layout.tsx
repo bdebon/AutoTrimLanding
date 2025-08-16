@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
-import { LanguageProvider } from "../contexts/LanguageContext";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />
@@ -60,9 +59,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

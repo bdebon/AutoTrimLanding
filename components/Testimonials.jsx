@@ -1,26 +1,30 @@
+"use client";
 import React, { useLayoutEffect, useRef } from "react";
 import { Star, MessageCircle } from "lucide-react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Testimonials = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
   const rootRef = useRef(null);
   const titleRef = useRef(null);
 
   const testimonials = [
     {
-      text: t("testimonials.quotes")[0].text,
+      text: t("testimonials.quotes.0.text"),
       name: "Benjamin Code",
       role: "Creator",
       avatar: "/assets/img/pp-rose.jpg",
       rating: 5,
     },
     {
-      text: t("testimonials.quotes")[1].text,
+      text: t("testimonials.quotes.1.text"),
       name: "Alex Rivera",
       role: "Video Editor",
       avatar:
@@ -28,7 +32,7 @@ const Testimonials = () => {
       rating: 5,
     },
     {
-      text: t("testimonials.quotes")[2].text,
+      text: t("testimonials.quotes.2.text"),
       name: "Mike Johnson",
       role: "Professional Editor",
       avatar:
@@ -323,7 +327,7 @@ const Testimonials = () => {
             data-animate="test-subtitle"
             className="text-gray-400 text-lg max-w-2xl mx-auto"
           >
-            Trusted by creators and professionals worldwide
+            {t("testimonials.trustedBy")}
           </p>
         </div>
 
@@ -408,16 +412,16 @@ const Testimonials = () => {
                 />
               </div>
               <span data-animate="test-social-text" className="text-gray-400">
-                Join 10,000+ satisfied users
+                {t("testimonials.joinUsers")}
               </span>
             </div>
 
             <a
               data-animate="test-cta"
-              href="/download"
+              href={`/${currentLocale}/download`}
               className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-primary-500/25 hover:scale-105"
             >
-              Start Your Free Trial
+              {t("testimonials.startTrial")}
             </a>
           </div>
         </div>

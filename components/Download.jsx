@@ -1,5 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
-import { Download as DownloadIcon, Monitor, Laptop } from "lucide-react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { Download as DownloadIcon } from "lucide-react";
+import { useTranslations } from 'next-intl';
 
 // Simple OS detection from user agent
 function detectOS() {
@@ -20,6 +22,8 @@ const assetLinks = {
 };
 
 const Download = () => {
+  const t = useTranslations('download');
+  
   // Start with a stable SSR value to avoid hydration mismatch, then update on client
   const [os, setOs] = useState("unknown");
   useEffect(() => {
@@ -30,10 +34,10 @@ const Download = () => {
     os === "mac" ? assetLinks.mac : os === "windows" ? assetLinks.windows : "#";
   const primaryLabel =
     os === "mac"
-      ? "Download for macOS"
+      ? t('macOS')
       : os === "windows"
-      ? "Download for Windows"
-      : "Choose your OS";
+      ? t('windows')
+      : t('chooseOS');
 
   return (
     <section
@@ -45,11 +49,10 @@ const Download = () => {
           <DownloadIcon className="h-12 w-12 text-gray-900" />
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Download AutoTrim
+          {t('title')}
         </h2>
         <p className="text-lg text-gray-600 mb-8">
-          Free to try. Process your files and preview your cuts. Pay only when
-          you're ready to export.
+          {t('subtitle')}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -62,17 +65,17 @@ const Download = () => {
           </a>
 
           <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="hidden sm:inline">Other platform:</span>
+            <span className="hidden sm:inline">{t('otherPlatform')}</span>
             {os === "mac" ? (
               <a
                 href={assetLinks.windows}
                 className="underline hover:no-underline"
               >
-                Windows
+                {t('buttons.windows')}
               </a>
             ) : os === "windows" ? (
               <a href={assetLinks.mac} className="underline hover:no-underline">
-                macOS
+                {t('buttons.macOS')}
               </a>
             ) : (
               <>
@@ -80,14 +83,14 @@ const Download = () => {
                   href={assetLinks.mac}
                   className="underline hover:no-underline"
                 >
-                  macOS
+                  {t('buttons.macOS')}
                 </a>
                 <span>·</span>
                 <a
                   href={assetLinks.windows}
                   className="underline hover:no-underline"
                 >
-                  Windows
+                  {t('buttons.windows')}
                 </a>
               </>
             )}
@@ -95,7 +98,7 @@ const Download = () => {
         </div>
 
         <p className="text-sm text-gray-500 mt-6">
-          All downloads are served from the latest GitHub release.
+          {t('githubNote')}
         </p>
       </div>
     </section>

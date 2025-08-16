@@ -1,9 +1,9 @@
 import React from 'react';
 import { Upload, Cpu, Download, Coffee, Play, ArrowRight, MousePointerClick, Settings, FileDown } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import { useTranslations } from 'next-intl';
 
 const HowItWorks = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const steps = [
     {

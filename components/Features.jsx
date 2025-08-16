@@ -1,9 +1,9 @@
 import React from 'react';
 import { Zap, Download, Scissors, Shield, Award, Globe, Sparkles, CheckCircle, Clock, Globe2 } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import { useTranslations } from 'next-intl';
 
 const Features = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const features = [
     {

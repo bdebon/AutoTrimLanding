@@ -1,11 +1,14 @@
+"use client";
 import React, { useState, useLayoutEffect, useRef } from 'react';
 import { Play, X, Film } from 'lucide-react';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const VideoDemo = () => {
+  const t = useTranslations('videoDemo');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const rootRef = useRef(null);
   const titleRef = useRef(null);
@@ -211,12 +214,12 @@ const VideoDemo = () => {
               className="mx-auto text-3xl sm:text-4xl font-bold text-white mb-4 overflow-hidden"
               style={{ opacity: 0 }}
             >
-              See AutoTrim in Action
+              {t('title')}
             </h2>
             <p data-animate="demo-subtitle" className="text-xl text-gray-300 max-w-2xl mx-auto">
-              AutoTrim cuts, cleans, and organizes your footage — all in seconds.
+              {t('subtitle')}
               <br />
-              <span className="font-semibold">Watch it in action:</span>
+              <span className="font-semibold">{t('watchAction')}</span>
             </p>
           </div>
 
@@ -228,7 +231,7 @@ const VideoDemo = () => {
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <div className="flex-1 text-center">
-                  <span className="text-gray-400 text-sm">AutoTrim Demo</span>
+                  <span className="text-gray-400 text-sm">{t('demoTitle')}</span>
                 </div>
               </div>
             </div>
@@ -238,7 +241,7 @@ const VideoDemo = () => {
                 <img 
                   data-animate="demo-thumbnail"
                   src="/assets/img/demo-thumbnail.jpg" 
-                  alt="Preview thumbnail of the AutoTrim demo video"
+alt={t('thumbnail')}
                   className="w-full h-full object-cover"
                 />
                 
@@ -255,10 +258,10 @@ const VideoDemo = () => {
                 {/* Bottom text overlay */}
                 <div data-animate="demo-overlay" className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent">
                   <p className="text-white font-bold text-xl mb-2">
-                    ▶ Watch 90s Demo
+                    {t('watchDemo')}
                   </p>
                   <p className="text-gray-300">
-                    From raw footage to clean timeline in one click
+                    {t('oneClick')}
                   </p>
                 </div>
               </div>
@@ -282,7 +285,7 @@ const VideoDemo = () => {
                 {VIMEO_ID ? (
                   <iframe
                     src={`https://player.vimeo.com/video/${VIMEO_ID}?dnt=1&byline=0&portrait=0&title=0&autoplay=1`}
-                    title="AutoTrim Demo"
+                    title={t('iframeTitle')}
                     loading="lazy"
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
@@ -291,7 +294,7 @@ const VideoDemo = () => {
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-gray-300">
                     <p className="px-6 text-center">
-                      Set NEXT_PUBLIC_VIMEO_ID to enable the demo video.
+                      {t('noVideoId')}
                     </p>
                   </div>
                 )}

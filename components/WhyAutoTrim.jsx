@@ -1,29 +1,32 @@
 import React from 'react';
 import { Clock, FileText, Shield } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const WhyAutoTrim = () => {
+  const t = useTranslations('whyAutoTrim');
+  
   const benefits = [
     {
       icon: Clock,
-      title: 'Save Hours Every Week',
-      description: 'Stop wasting time manually trimming silences, filler words and awkward pauses.',
-      highlight: 'AutoTrim cuts your raw footage in seconds.',
+      title: t('features.saveHours.title'),
+      description: t('features.saveHours.description'),
+      highlight: t('features.saveHours.subtitle'),
       gradient: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-50 to-blue-100',
     },
     {
       icon: FileText,
-      title: 'One Clean Timeline',
-      description: 'No puzzle to reassemble. Export one polished XML timeline directly to your editor.',
-      highlight: 'All clips on one timeline, ready to go.',
+      title: t('features.oneTimeline.title'),
+      description: t('features.oneTimeline.description'),
+      highlight: t('features.oneTimeline.subtitle'),
       gradient: 'from-purple-500 to-purple-600',
       bgGradient: 'from-purple-50 to-purple-100',
     },
     {
       icon: Shield,
-      title: 'Super Fast, Private, Local',
-      description: 'No cloud processing. Everything runs offline, on your machine.',
-      highlight: 'Secure, private and blazing fast.',
+      title: t('features.fastPrivate.title'),
+      description: t('features.fastPrivate.description'),
+      highlight: t('features.fastPrivate.subtitle'),
       gradient: 'from-green-500 to-green-600',
       bgGradient: 'from-green-50 to-green-100',
     },
@@ -34,7 +37,7 @@ const WhyAutoTrim = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Why AutoTrim?
+            {t('title')}
           </h2>
         </div>
 

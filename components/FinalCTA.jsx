@@ -1,11 +1,14 @@
+"use client";
 import React, { useLayoutEffect, useRef } from "react";
 import { Clock, Zap, ArrowRight, Brain, Hourglass, Check } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FinalCTA = () => {
+  const t = useTranslations('finalCTA');
   const rootRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -315,7 +318,7 @@ const FinalCTA = () => {
             className="mx-auto text-4xl sm:text-5xl font-black text-white mb-2 overflow-hidden"
             style={{ opacity: 0 }}
           >
-            Still Not Sure?
+            {t('title')}
           </h2>
         </div>
 
@@ -332,14 +335,11 @@ const FinalCTA = () => {
               </div>
               <div data-animate="cta-text">
                 <p className="text-lg text-gray-300 mb-2">
-                  You're spending{" "}
-                  <span className="text-white font-bold">5 hours/week</span>{" "}
-                  trimming videos.
+                  {t('calculation.spending')}
                 </p>
                 <p className="text-3xl font-black text-white">
-                  That's{" "}
                   <span className="text-red-400">
-                    <span data-animate="cta-number">260</span> hours a year
+                    <span data-animate="cta-number">260</span> {t('calculation.yearly')}
                   </span>
                   .
                 </p>
@@ -358,15 +358,10 @@ const FinalCTA = () => {
               </div>
               <div data-animate="cta-text">
                 <p className="text-lg text-gray-300 mb-2">
-                  With AutoTrim, you get{" "}
-                  <span className="text-white font-bold">
-                    96% of that time back
-                  </span>
-                  .
+                  {t('calculation.withAutoTrim')}
                 </p>
                 <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">
-                  That's <span data-animate="cta-number">250+</span> hours saved
-                  — every single year.
+                  <span data-animate="cta-number">250+</span> {t('calculation.saved')}
                 </p>
               </div>
             </div>
@@ -379,14 +374,10 @@ const FinalCTA = () => {
             data-animate="cta-value-title"
             className="text-2xl text-white font-bold mb-2"
           >
-            What's your time worth?
+            {t('question')}
           </p>
           <p data-animate="cta-value-text" className="text-gray-400">
-            At $50/hour, that's{" "}
-            <span className="text-white font-semibold">
-              $<span data-animate="cta-number">12,500</span> saved annually
-            </span>
-            .
+            {t('atRate')}
           </p>
         </div>
 
@@ -397,7 +388,7 @@ const FinalCTA = () => {
             href="#pricing"
             className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-3xl"
           >
-            Start Saving Time Now
+{t('startNow')}
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
@@ -406,19 +397,19 @@ const FinalCTA = () => {
         <div className="mt-12 flex flex-wrap items-center justify-center gap-6 text-gray-400 text-sm">
           <div data-animate="cta-trust" className="flex items-center gap-2">
             <Check className="w-4 h-4 text-green-400" />
-            <span>Free to try</span>
+            <span>{t('badges.freeTrial')}</span>
           </div>
           <div data-animate="cta-trust" className="flex items-center gap-2">
             <Check className="w-4 h-4 text-green-400" />
-            <span>14-day money back</span>
+            <span>{t('badges.moneyBack')}</span>
           </div>
           <div data-animate="cta-trust" className="flex items-center gap-2">
             <Check className="w-4 h-4 text-green-400" />
-            <span>One-time payment</span>
+            <span>{t('badges.oneTime')}</span>
           </div>
           <div data-animate="cta-trust" className="flex items-center gap-2">
             <Check className="w-4 h-4 text-green-400" />
-            <span>100% local & private</span>
+            <span>{t('badges.localPrivate')}</span>
           </div>
         </div>
       </div>

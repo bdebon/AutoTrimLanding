@@ -15,10 +15,12 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PerksGrid = () => {
+  const t = useTranslations('perksGrid');
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const titleTextRef = useRef(null);
@@ -26,8 +28,8 @@ const PerksGrid = () => {
   const perks = [
     {
       icon: Upload,
-      title: "Drag & Drop Everything",
-      desc: "Drop any number of clips; AutoTrim ingests them instantly, whatever the format.",
+      title: t('perks.dragDrop.title'),
+      desc: t('perks.dragDrop.description'),
       size: "normal",
       iconBg: "from-blue-50 to-blue-100",
       iconColor: "text-blue-600",
@@ -36,8 +38,8 @@ const PerksGrid = () => {
     },
     {
       icon: Sparkles,
-      title: "Smart Presets",
-      desc: "YouTube, Podcast, Vlog… one click applies the perfect settings.",
+      title: t('perks.smartPresets.title'),
+      desc: t('perks.smartPresets.description'),
       size: "normal",
       iconBg: "from-yellow-50 to-yellow-100",
       iconColor: "text-yellow-600",
@@ -46,8 +48,8 @@ const PerksGrid = () => {
     },
     {
       icon: Sliders,
-      title: "Fine-Tune Cuts",
-      desc: "Silence threshold, pre/post-roll, min gap – dial in your exact editing style.",
+      title: t('perks.fineTune.title'),
+      desc: t('perks.fineTune.description'),
       size: "large",
       gifPath: "/assets/img/perks1.gif",
       iconBg: "from-green-50 to-green-100",
@@ -57,8 +59,8 @@ const PerksGrid = () => {
     },
     {
       icon: Film,
-      title: "Single or Multi-XML",
-      desc: "Export one clean timeline or individual XMLs – no more puzzle pieces.",
+      title: t('perks.xmlExport.title'),
+      desc: t('perks.xmlExport.description'),
       size: "normal",
       iconBg: "from-red-50 to-red-100",
       iconColor: "text-red-600",
@@ -67,8 +69,8 @@ const PerksGrid = () => {
     },
     {
       icon: MonitorPlay,
-      title: "100% Local Processing",
-      desc: "AI, video processing, everything runs on your machine. No uploads, no waiting, maximum speed.",
+      title: t('perks.localProcessing.title'),
+      desc: t('perks.localProcessing.description'),
       size: "normal",
       iconBg: "from-indigo-50 to-indigo-100",
       iconColor: "text-indigo-600",
@@ -77,8 +79,8 @@ const PerksGrid = () => {
     },
     {
       icon: Cpu,
-      title: "Parallel Processing",
-      desc: "Max out your cores: up to 4 jobs run side-by-side for zero downtime.",
+      title: t('perks.parallelProcessing.title'),
+      desc: t('perks.parallelProcessing.description'),
       size: "large",
       gifPath: "/assets/img/perks3.gif",
       iconBg: "from-purple-50 to-purple-100",
@@ -88,8 +90,8 @@ const PerksGrid = () => {
     },
     {
       icon: RefreshCcw,
-      title: "Repetition & Hesitation Remover",
-      desc: "Cuts filler words and double-takes automatically.",
+      title: t('perks.repetitionRemover.title'),
+      desc: t('perks.repetitionRemover.description'),
       comingSoon: true,
       size: "normal",
       iconBg: "from-pink-50 to-pink-100",
@@ -99,8 +101,8 @@ const PerksGrid = () => {
     },
     {
       icon: Globe,
-      title: "Multilingual & Format-Agnostic",
-      desc: "French, English, Spanish… MP4, MOV, MKV – it just works.",
+      title: t('perks.multilingual.title'),
+      desc: t('perks.multilingual.description'),
       size: "normal",
       iconBg: "from-teal-50 to-teal-100",
       iconColor: "text-teal-600",
@@ -109,8 +111,8 @@ const PerksGrid = () => {
     },
     {
       icon: Zap,
-      title: "Blazing-Fast Preview",
-      desc: "Scrub in real-time, no lag, even on long footage.",
+      title: t('perks.blazingPreview.title'),
+      desc: t('perks.blazingPreview.description'),
       size: "normal",
       iconBg: "from-orange-50 to-orange-100",
       iconColor: "text-orange-600",
@@ -119,8 +121,8 @@ const PerksGrid = () => {
     },
     {
       icon: Cpu,
-      title: "Optimized for Pro Editing Machines",
-      desc: "AutoTrim is built for the hardware you already own. It runs AI models locally, using the full power of your CPU and GPU — with no slow uploads and no extra server costs.",
+      title: t('perks.optimizedPro.title'),
+      desc: t('perks.optimizedPro.description'),
       size: "normal",
       iconBg: "from-cyan-50 to-cyan-100",
       iconColor: "text-cyan-600",
@@ -342,7 +344,7 @@ const PerksGrid = () => {
               ref={titleTextRef}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mx-auto"
             >
-              Why creators never go back.
+              {t('title')}
             </h2>
           </div>
 
@@ -351,8 +353,7 @@ const PerksGrid = () => {
             data-animate="perks-desc" 
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
-            From drag-and-drop to clean XML, AutoTrim is packed with features that
-            save time — and sanity.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -383,7 +384,7 @@ const PerksGrid = () => {
                 >
                   <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full text-xs font-bold text-white">
                     <Star className="h-3 w-3" fill="currentColor" />
-                    <span>Popular</span>
+                    <span>{t('badges.popular')}</span>
                   </div>
                 </div>
               )}
@@ -425,7 +426,7 @@ const PerksGrid = () => {
                       <div data-animate="perk-badge">
                         <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                           <Sparkles className="h-3 w-3" />
-                          COMING SOON
+                          {t('badges.comingSoon')}
                         </span>
                       </div>
                     )}
@@ -455,7 +456,7 @@ const PerksGrid = () => {
                     <div data-animate="perk-badge">
                       <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                         <Sparkles className="h-3 w-3" />
-                        COMING SOON
+                        {t('badges.comingSoon')}
                       </span>
                     </div>
                   )}
@@ -478,7 +479,7 @@ const PerksGrid = () => {
                 <Star key={i} className="h-4 w-4 text-yellow-400" fill="currentColor" />
               ))}
             </div>
-            <span className="text-sm text-gray-600 font-medium">Loved by 10,000+ creators worldwide</span>
+            <span className="text-sm text-gray-600 font-medium">{t('lovedBy')}</span>
           </div>
         </div>
       </div>

@@ -1,11 +1,14 @@
+"use client";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { Clock, ChevronDown, Activity, Gauge, Zap } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from 'next-intl';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const TimeSavings = () => {
+  const t = useTranslations('timeSavings');
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
   const accordionRef = useRef(null);
 
@@ -27,36 +30,36 @@ const TimeSavings = () => {
   // Bars data (seconds) for comparison chart
   const barsData = [
     {
-      label: "Manual editing",
-      subtitle: "Traditional workflow",
-      timeLabel: "48 min",
+      label: t('methods.manual.name'),
+      subtitle: t('methods.manual.description'),
+      timeLabel: t('methods.manual.time'),
       seconds: 48 * 60,
       color: "from-gray-600 to-gray-700",
       bgColor: "from-gray-50 to-gray-100",
       Icon: Clock,
-      speed: "1×",
+      speed: t('methods.manual.speed'),
       percentage: 100,
     },
     {
-      label: "Other tools",
-      subtitle: "Semi-automated",
-      timeLabel: "20 min",
+      label: t('methods.otherTools.name'),
+      subtitle: t('methods.otherTools.description'),
+      timeLabel: t('methods.otherTools.time'),
       seconds: 20 * 60,
       color: "from-gray-500 to-gray-600",
       bgColor: "from-gray-50 to-gray-100",
       Icon: Activity,
-      speed: "2.4× faster",
+      speed: t('methods.otherTools.speed'),
       percentage: 42,
     },
     {
-      label: "AutoTrim",
-      subtitle: "Fully automated",
-      timeLabel: "1 min",
+      label: t('methods.autoTrim.name'),
+      subtitle: t('methods.autoTrim.description'),
+      timeLabel: t('methods.autoTrim.time'),
       seconds: 60,
       color: "from-emerald-500 to-green-600",
       bgColor: "from-emerald-50 via-green-50 to-emerald-100",
       Icon: Zap,
-      speed: "48× faster",
+      speed: t('methods.autoTrim.speed'),
       percentage: 2.1,
       highlight: true,
     },
@@ -271,14 +274,14 @@ const TimeSavings = () => {
             style={{ opacity: 0 }}
           >
             <span ref={titleTextRef}>
-              AutoTrim saves you time. A lot of time.
+              {t('title')}
             </span>
           </h2>
           <p
             data-animate="ts-subtitle"
             className="text-xl text-gray-600 max-w-2xl mx-auto"
           >
-            See how much faster your workflow becomes
+            {t('subtitle')}
           </p>
         </div>
 
@@ -367,7 +370,7 @@ const TimeSavings = () => {
                             d.highlight ? "text-emerald-600" : "text-gray-600"
                           }`}
                         >
-                          {d.percentage}% of manual time
+{d.percentage}{t('percentManual')}
                         </span>
                         <span className="text-xs text-gray-500">48 min</span>
                       </div>
@@ -405,7 +408,7 @@ const TimeSavings = () => {
                 }
               }}
             >
-              <span>Based on a real client case: 30 min of raw footage</span>
+<span>{t('realCase.title')}</span>
               <ChevronDown
                 className={`h-4 w-4 transition-transform ${
                   isAccordionOpen ? "rotate-180" : ""
@@ -427,32 +430,32 @@ const TimeSavings = () => {
               {/* Section: Real test case */}
               <div className="space-y-3">
                 <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">
-                  Real test case
+                  {t('realCase.test.title')}
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
-                    <div className="text-[11px] text-gray-500">Raw clip</div>
+                    <div className="text-[11px] text-gray-500">{t('realCase.test.rawClip')}</div>
                     <div className="text-sm font-semibold text-gray-900">
-                      1 min 33 s
+                      {t('realCase.test.duration')}
                     </div>
                   </div>
                   <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
                     <div className="text-[11px] text-gray-500">
-                      Manual (FCP)
+                      {t('realCase.test.manualFCP')}
                     </div>
                     <div className="text-sm font-semibold text-gray-900">
-                      2 min 30 s (150 s)
+                      {t('realCase.test.manualTime')}
                     </div>
                   </div>
                   <div className="rounded-lg border border-gray-200 bg-white px-3 py-2">
-                    <div className="text-[11px] text-gray-500">AutoTrim</div>
+                    <div className="text-[11px] text-gray-500">{t('realCase.test.autoTrimLabel')}</div>
                     <div className="text-sm font-semibold text-gray-900">
-                      8 s
+                      {t('realCase.test.autoTrimTime')}
                     </div>
                   </div>
                 </div>
                 <div className="text-sm font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-md px-3 py-2 inline-block">
-                  ≈ 19× faster
+{t('realCase.test.result')}
                 </div>
               </div>
 
@@ -518,38 +521,24 @@ const TimeSavings = () => {
               {/* Section: Vs. other tools */}
               <div className="space-y-4">
                 <div className="text-[11px] uppercase tracking-wide text-gray-500 font-semibold">
-                  Vs. other tools
+                  {t('realCase.vsOtherTools.title')}
                 </div>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
-                  <li>Similar per‑clip processing speed (~50 s)</li>
-                  <li>
-                    <span className="font-semibold">
-                      No parallel processing
-                    </span>
-                  </li>
-                  <li>
-                    <span className="font-semibold">One XML per clip</span> →
-                    manual merge in FCP
-                  </li>
+                  <li>{t('realCase.vsOtherTools.similarSpeed')}</li>
+                  <li>{t('realCase.vsOtherTools.noParallel')}</li>
+                  <li>{t('realCase.vsOtherTools.oneXmlPerClip')}</li>
                 </ul>
                 <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-amber-900 text-sm">
-                  Sequential: 6 × 50 s ={" "}
-                  <span className="font-semibold">5 min</span> + merge 6 × 2 min
-                  30 s = <span className="font-semibold">15 min</span> →{" "}
-                  <span className="font-semibold">20 min total</span>
+                  {t('realCase.vsOtherTools.sequential')}
                   <br />
-                  AutoTrim: <span className="font-semibold">1 min</span> +
-                  single XML → <span className="font-semibold">no merge</span>
+                  {t('realCase.vsOtherTools.autoTrimBetter')}
                   <br />
-                  <span className="font-semibold">Gain:</span> ~19 min —{" "}
-                  <span className="font-semibold">95% reduction</span> —{" "}
-                  <span className="font-semibold">≈ 20× faster</span>
+                  {t('realCase.vsOtherTools.gain')}
                 </div>
               </div>
 
               <p className="mt-6 text-[11px] text-gray-500">
-                Notes: tests réalisés sur des rushs parlés, timings variables
-                selon machine, source audio et paramètres.
+                {t('realCase.notes')}
               </p>
             </div>
           </div>

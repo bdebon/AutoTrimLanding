@@ -1,9 +1,9 @@
 import React from 'react';
 import { Clock, Zap, FileText, Hourglass, Timer, Check, XCircle } from 'lucide-react';
-import { useTranslation } from '../hooks/useTranslation';
+import { useTranslations } from 'next-intl';
 
 const TimeComparison = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const stats = [
     {

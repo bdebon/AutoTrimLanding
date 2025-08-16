@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useLayoutEffect, useRef } from "react";
 import {
   Plus,
@@ -8,20 +9,27 @@ import {
   DollarSign,
   ArrowUpRight,
 } from "lucide-react";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FAQ = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [openIndex, setOpenIndex] = useState(null);
   const rootRef = useRef(null);
   const titleRef = useRef(null);
   const contentRefs = useRef({});
 
-  const faqs = t("faq.questions");
+  const faqs = [
+    { q: t("faq.questions.0.q"), a: t("faq.questions.0.a") },
+    { q: t("faq.questions.1.q"), a: t("faq.questions.1.a") },
+    { q: t("faq.questions.2.q"), a: t("faq.questions.2.a") },
+    { q: t("faq.questions.3.q"), a: t("faq.questions.3.a") },
+    { q: t("faq.questions.4.q"), a: t("faq.questions.4.a") },
+    { q: t("faq.questions.5.q"), a: t("faq.questions.5.a") },
+  ];
 
   const toggleFAQ = (index) => {
     const isOpening = openIndex !== index;

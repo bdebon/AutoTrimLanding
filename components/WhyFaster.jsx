@@ -3,12 +3,15 @@ import React, { useLayoutEffect, useRef } from "react";
 import { Check, X, Zap, ArrowRight } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useTranslation } from "../hooks/useTranslation";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WhyFaster = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -206,10 +209,10 @@ const WhyFaster = () => {
             {t("whyFaster.cta")}
           </p>
           <a
-            href="/download"
+            href={`/${currentLocale}/download`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
-            Try AutoTrim Free
+            {t("whyFaster.ctaButton")}
             <ArrowRight className="h-5 w-5" />
           </a>
         </div>
