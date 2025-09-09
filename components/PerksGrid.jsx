@@ -169,14 +169,12 @@ const PerksGrid = () => {
             >
               {/* Background glow */}
               <div 
-                ="perk-glow"
                 className={`absolute inset-0 bg-gradient-to-br ${perk.gradient} opacity-0 rounded-3xl blur-xl scale-110`}
               ></div>
 
               {/* Featured badge */}
               {perk.featured && (
-                <div 
-                  ="perk-featured"
+                <div
                   className="absolute top-4 right-4 z-10"
                 >
                   <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full text-xs font-bold text-white">
@@ -191,7 +189,6 @@ const PerksGrid = () => {
                   {/* Image section - Much taller for better GIF visibility */}
                   <div className="relative h-64 lg:h-96 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                     <img
-                      ="perk-image"
                       src={perk.gifPath}
                       alt={perk.title}
                       className="w-full h-full object-cover"
@@ -203,7 +200,6 @@ const PerksGrid = () => {
                     
                     {/* Floating icon */}
                     <div 
-                      ="perk-icon"
                       className="absolute top-4 left-4"
                     >
                       <div className={`p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} shadow-lg backdrop-blur-sm`}>
@@ -213,14 +209,14 @@ const PerksGrid = () => {
                   </div>
                   
                   {/* Content section - Reduced padding to give more space to GIF */}
-                  <div ="perk-content" className="p-6 flex-1 flex flex-col relative">
+                  <div className="p-6 flex-1 flex flex-col relative">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                       {perk.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed mb-4 flex-1 text-sm">{perk.desc}</p>
                     
                     {perk.comingSoon && (
-                      <div ="perk-badge">
+                      <div>
                         <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                           <Sparkles className="h-3 w-3" />
                           {t('badges.comingSoon')}
@@ -235,9 +231,9 @@ const PerksGrid = () => {
                   </div>
                 </div>
               ) : (
-                <div ="perk-content" className="relative p-8 h-full flex flex-col">
+                <div className="relative p-8 h-full flex flex-col">
                   {/* Icon */}
-                  <div ="perk-icon" className="mb-6">
+                  <div className="mb-6">
                     <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${perk.iconBg} group-hover:scale-110 transition-all duration-300 shadow-sm`}>
                       <perk.icon className={`w-8 h-8 ${perk.iconColor}`} strokeWidth={1.5} />
                     </div>
@@ -250,7 +246,7 @@ const PerksGrid = () => {
                   <p className="text-gray-600 leading-relaxed mb-4 flex-1">{perk.desc}</p>
                   
                   {perk.comingSoon && (
-                    <div ="perk-badge">
+                    <div>
                       <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                         <Sparkles className="h-3 w-3" />
                         {t('badges.comingSoon')}

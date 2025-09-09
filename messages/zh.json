@@ -419,9 +419,22 @@
     "title": "选择您的方案",
     "subtitle": "AutoTrim免费试用。只有在准备导出时才付费。",
     "plans": {
+      "monthly": {
+        "title": "月度",
+        "price": "$15",
+        "period": "/月",
+        "billing": "按月计费",
+        "features": [
+          "无限项目",
+          "无限片段",
+          "每月更新",
+          "优先导出速度",
+          "在2台机器上激活"
+        ]
+      },
       "annual": {
         "title": "年度",
-        "price": "$79",
+        "price": "$119",
         "period": "/年",
         "billing": "按年计费",
         "features": [
@@ -434,7 +447,7 @@
       },
       "lifetime": {
         "title": "终身许可",
-        "originalPrice": "$249",
+        "originalPrice": "$279",
         "price": "$149",
         "period": "一次性",
         "badge": "最佳价值",

@@ -419,9 +419,22 @@
     "title": "Elige Tu Plan",
     "subtitle": "AutoTrim es gratis para probar. Paga solo cuando estés listo para exportar.",
     "plans": {
+      "monthly": {
+        "title": "Mensual",
+        "price": "$15",
+        "period": "/mes",
+        "billing": "Facturado mensualmente",
+        "features": [
+          "Proyectos ilimitados",
+          "Clips ilimitados",
+          "Actualizaciones mensuales",
+          "Velocidad de exportación prioritaria",
+          "Activar en 2 máquinas"
+        ]
+      },
       "annual": {
         "title": "Anual",
-        "price": "$79",
+        "price": "$119",
         "period": "/año",
         "billing": "Facturado anualmente",
         "features": [
@@ -434,7 +447,7 @@
       },
       "lifetime": {
         "title": "Licencia de Por Vida",
-        "originalPrice": "$249",
+        "originalPrice": "$279",
         "price": "$149",
         "period": "una vez",
         "badge": "Mejor Valor",

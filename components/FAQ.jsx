@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import {
   Plus,
   Minus,
@@ -9,6 +9,7 @@ import {
   DollarSign,
   ArrowUpRight,
 } from "lucide-react";
+import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
 
 const FAQ = () => {
@@ -25,23 +26,54 @@ const FAQ = () => {
     { q: t("faq.questions.5.q"), a: t("faq.questions.5.a") },
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  useLayoutEffect(() => {
+    // Set initial state for all FAQ contents
+    Object.keys(contentRefs.current).forEach((key) => {
+      if (contentRefs.current[key]) {
+        gsap.set(contentRefs.current[key], {
+          height: 0,
+          opacity: 0,
+          overflow: "hidden",
+        });
+      }
+    });
+  }, []);
 
+  const toggleFAQ = (index) => {
+    const isOpening = openIndex !== index;
+    const prevIndex = openIndex;
+
+    // Close previously open item
+    if (prevIndex !== null && contentRefs.current[prevIndex]) {
+      gsap.to(contentRefs.current[prevIndex], {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.inOut",
+      });
+    }
+
+    // Open new item
+    if (isOpening && contentRefs.current[index]) {
+      gsap.to(contentRefs.current[index], {
+        height: "auto",
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      });
+    }
+
+    setOpenIndex(isOpening ? index : null);
+  };
 
   return (
     <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <div 
-            className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-4"
-          >
+          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-4">
             <HelpCircle className="h-6 w-6 text-gray-700" />
           </div>
-          <h2 
-            className="text-3xl sm:text-4xl font-bold text-gray-900"
-          >
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">
             {t("faq.title")}
           </h2>
         </div>
@@ -50,33 +82,30 @@ const FAQ = () => {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md"
+              className="bg-white rounded-xl border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-md transition-all duration-200"
             >
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 flex items-center justify-between text-left"
               >
-                <h3 
-                  className="text-gray-900 font-medium pr-4"
-                >
+                <h3 className="text-gray-900 font-medium pr-4">
                   {faq.q}
                 </h3>
-                <div>
-                  {openIndex === index ? (
-                    <Minus className="h-5 w-5 text-primary-500 flex-shrink-0" />
-                  ) : (
-                    <Plus className="h-5 w-5 text-primary-500 flex-shrink-0" />
-                  )}
+                <div className={`transition-transform duration-300 ${openIndex === index ? 'rotate-45' : ''}`}>
+                  <Plus className="h-5 w-5 text-primary-500 flex-shrink-0" />
                 </div>
               </button>
 
-              {openIndex === index && (
-                <div className="px-6">
-                  <p className="text-gray-600 text-sm leading-relaxed pb-4">
+              <div
+                ref={(el) => (contentRefs.current[index] = el)}
+                style={{ height: 0, opacity: 0, overflow: 'hidden' }}
+              >
+                <div className="px-6 pb-4">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {faq.a}
                   </p>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

@@ -119,6 +119,11 @@ const WhoIsItFor = () => {
               key={index}
               className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-8 hover:shadow-xl transition-shadow duration-200"
             >
+              {/* Background glow */}
+              <div 
+                className={`absolute inset-0 bg-gradient-to-br ${persona.gradient} opacity-10 group-hover:opacity-20 rounded-2xl blur-xl transition-opacity duration-300`}
+              ></div>
+              
               {/* Content */}
               <div className="relative">
                 {/* Icon */}
