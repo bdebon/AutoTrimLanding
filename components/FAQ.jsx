@@ -2,12 +2,7 @@
 import React, { useState, useRef, useLayoutEffect } from "react";
 import {
   Plus,
-  Minus,
   HelpCircle,
-  Lightbulb,
-  Calculator,
-  DollarSign,
-  ArrowUpRight,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
