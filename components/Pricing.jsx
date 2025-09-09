@@ -29,8 +29,17 @@ const Pricing = () => {
 
   const plans = [
     {
-      name: t("pricing.plans.annual.title"),
+      name: t("pricing.plans.monthly.title"),
       icon: Calendar,
+      price: t("pricing.plans.monthly.price"),
+      period: t("pricing.plans.monthly.period"),
+      description: t("pricing.plans.monthly.billing"),
+      features: t.raw("pricing.plans.monthly.features") || [],
+      popular: false,
+    },
+    {
+      name: t("pricing.plans.annual.title"),
+      icon: Gem,
       price: t("pricing.plans.annual.price"),
       period: t("pricing.plans.annual.period"),
       description: t("pricing.plans.annual.billing"),
@@ -352,7 +361,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing cards grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className="relative" data-animate="pricing-card">
               {/* Badge */}

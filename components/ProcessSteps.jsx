@@ -1,16 +1,10 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
 import { Zap, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const ProcessSteps = () => {
   const t = useTranslations();
-  const rootRef = useRef(null);
-  const titleRef = useRef(null);
   const steps = [
     {
       number: "1",
@@ -35,241 +29,21 @@ const ProcessSteps = () => {
     },
   ];
 
-  useLayoutEffect(() => {
-    let splitInst = null;
-
-    const ctx = gsap.context(() => {
-      const title = rootRef.current?.querySelector(
-        '[data-animate="how-title"]'
-      );
-      const desc = rootRef.current?.querySelector('[data-animate="how-desc"]');
-      const cards = gsap.utils.toArray(
-        rootRef.current?.querySelectorAll('[data-animate="how-card"]')
-      );
-
-      // Title animation with SplitText
-      if (title && titleRef.current) {
-        gsap.set(titleRef.current, { y: 30 });
-
-        ScrollTrigger.create({
-          trigger: rootRef.current,
-          start: "top 85%",
-          once: true,
-          onEnter: async () => {
-            try {
-              const mod = await import("@activetheory/split-text");
-              const SplitText = mod.default || mod;
-              splitInst = new SplitText(title, { type: "words" });
-              const words = splitInst.words;
-
-              gsap.set(words, {
-                yPercent: 130,
-                display: "inline-block",
-                willChange: "transform",
-                force3D: true,
-              });
-
-              gsap.set(titleRef.current, { opacity: 1, y: 0 });
-
-              gsap.to(words, {
-                yPercent: 0,
-                duration: 0.9,
-                ease: "power4.out",
-                stagger: { each: 0.06, from: "start" },
-              });
-            } catch (e) {
-              // Fallback animation
-              gsap.to(titleRef.current, {
-                opacity: 1,
-                y: 0,
-                duration: 0.9,
-                ease: "power3.out",
-              });
-            }
-          },
-        });
-      }
-
-      // Description animation
-      if (desc) {
-        gsap.set(desc, { y: 20, opacity: 0 });
-        gsap.to(desc, {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: rootRef.current,
-            start: "top 85%",
-            once: true,
-          },
-          delay: 0.3,
-        });
-      }
-
-      // Cards animation with sophisticated reveals
-      cards.forEach((card, i) => {
-        const badge = card.querySelector('[data-animate="how-badge"]');
-        const h3 = card.querySelector('[data-animate="how-h3"]');
-        const p = card.querySelector('[data-animate="how-p"]');
-        const gif = card.querySelector('[data-animate="how-gif"]');
-        const accent = card.querySelector('[data-animate="how-accent"]');
-        const isEven = i % 2 === 0;
-
-        // Initial states
-        gsap.set(card, { opacity: 0, y: 60 });
-        if (badge) gsap.set(badge, { scale: 0, rotate: -360, opacity: 0 });
-        if (h3) gsap.set(h3, { opacity: 0, x: isEven ? -40 : 40 });
-        if (p) gsap.set(p, { opacity: 0, y: 20 });
-        if (accent) gsap.set(accent, { opacity: 0, x: -20 });
-        if (gif) {
-          gsap.set(gif, {
-            opacity: 0,
-            scale: 1.05,
-            filter: "brightness(0.4) saturate(0.5)",
-          });
-        }
-
-        // Create timeline for each card
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 80%",
-          once: true,
-          onEnter: () => {
-            const tl = gsap.timeline();
-
-            // Card entrance
-            tl.to(card, {
-              opacity: 1,
-              y: 0,
-              duration: 0.9,
-              ease: "power3.out",
-            });
-
-            // GIF animation with sophisticated reveal
-            if (gif) {
-              tl.to(
-                gif,
-                {
-                  opacity: 1,
-                  scale: 1,
-                  filter: "brightness(1) saturate(1)",
-                  duration: 1.2,
-                  ease: "power2.out",
-                },
-                "-=0.7"
-              );
-            }
-
-            // Badge animation with bounce
-            if (badge) {
-              tl.to(
-                badge,
-                {
-                  scale: 1,
-                  rotate: 0,
-                  opacity: 1,
-                  duration: 0.8,
-                  ease: "back.out(1.7)",
-                },
-                "-=1"
-              );
-            }
-
-            // Title slide in
-            if (h3) {
-              tl.to(
-                h3,
-                {
-                  opacity: 1,
-                  x: 0,
-                  duration: 0.7,
-                  ease: "power3.out",
-                },
-                "-=0.9"
-              );
-            }
-
-            // Paragraph fade up
-            if (p) {
-              tl.to(
-                p,
-                {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.7,
-                  ease: "power3.out",
-                },
-                "-=0.6"
-              );
-            }
-
-            // Accent line
-            if (accent) {
-              tl.to(
-                accent,
-                {
-                  opacity: 1,
-                  x: 0,
-                  duration: 0.6,
-                  ease: "power3.out",
-                },
-                "-=0.4"
-              );
-            }
-          },
-        });
-      });
-
-      // Comparison box animation
-      const comparisonBox = rootRef.current?.querySelector('[data-animate="comparison-box"]');
-      if (comparisonBox) {
-        gsap.set(comparisonBox, { opacity: 0, y: 40, scale: 0.95 });
-        
-        ScrollTrigger.create({
-          trigger: comparisonBox,
-          start: "top 85%",
-          once: true,
-          onEnter: () => {
-            gsap.to(comparisonBox, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.8,
-              ease: "power3.out",
-            });
-          },
-        });
-      }
-    }, rootRef);
-
-    return () => {
-      try {
-        splitInst?.revert && splitInst.revert();
-      } catch {}
-      ctx.revert();
-    };
-  }, []);
 
   return (
     <section
       id="how-it-works"
       className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
     >
-      <div ref={rootRef} className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
           <h2
-            ref={titleRef}
-            data-animate="how-title"
-            className="mx-auto text-3xl sm:text-4xl font-bold text-gray-900 mb-4 overflow-hidden"
-            style={{ opacity: 0 }}
+            className="mx-auto text-3xl sm:text-4xl font-bold text-gray-900 mb-4"
           >
             {t("processSteps.title")}
           </h2>
           <p
-            data-animate="how-desc"
             className="text-xl text-gray-600 max-w-3xl mx-auto"
-            style={{ opacity: 0 }}
           >
             {t("processSteps.subtitle")}
           </p>
@@ -279,8 +53,7 @@ const ProcessSteps = () => {
           {steps.map((step, index) => (
             <div
               key={index}
-              data-animate="how-card"
-              className={`opacity-0 relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
+              className={`relative grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
                 index % 2 === 1 ? "lg:direction-rtl" : ""
               }`}
             >
@@ -291,15 +64,13 @@ const ProcessSteps = () => {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-900 to-gray-800">
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/10 to-transparent" />
                   <img
-                    data-animate="how-gif"
                     src={step.gif}
                     alt={step.alt}
-                    className="opacity-0 w-full h-full object-cover"
+                    className="w-full h-full object-cover"
                   />
                   {/* Floating step number */}
                   <div
-                    data-animate="how-badge"
-                    className="opacity-0 absolute top-6 left-6 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-2xl shadow-xl"
+                    className="absolute top-6 left-6 flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 text-white rounded-2xl font-bold text-2xl shadow-xl"
                   >
                     {step.number}
                   </div>
@@ -310,22 +81,19 @@ const ProcessSteps = () => {
               <div className={`${index % 2 === 1 ? "lg:order-1" : ""}`}>
                 <div className="space-y-6">
                   <h3
-                    data-animate="how-h3"
-                    className="opacity-0 text-3xl lg:text-4xl font-bold text-gray-900"
+                    className="text-3xl lg:text-4xl font-bold text-gray-900"
                   >
                     {step.title}
                   </h3>
                   <p
-                    data-animate="how-p"
-                    className="opacity-0 text-lg lg:text-xl text-gray-600 leading-relaxed"
+                    className="text-lg lg:text-xl text-gray-600 leading-relaxed"
                   >
                     {step.description}
                   </p>
 
                   {/* Visual enhancement */}
                   <div
-                    data-animate="how-accent"
-                    className="opacity-0 flex items-center gap-3 pt-4"
+                    className="flex items-center gap-3 pt-4"
                   >
                     <div className="h-1 w-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full" />
                     <span className="text-sm font-medium text-primary-600 uppercase tracking-wider">
@@ -340,7 +108,6 @@ const ProcessSteps = () => {
 
         {/* Comparison Box */}
         <div 
-          data-animate="comparison-box"
           className="mt-20 mx-auto max-w-4xl bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 lg:p-10 border border-blue-100 shadow-xl"
         >
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
