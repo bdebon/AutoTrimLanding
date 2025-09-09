@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 import {
   Upload,
   Cpu,
@@ -13,18 +13,10 @@ import {
   Star,
   ArrowUpRight,
 } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from 'next-intl';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const PerksGrid = () => {
   const t = useTranslations('perksGrid');
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const titleTextRef = useRef(null);
-  let splitInst = null;
   const perks = [
     {
       icon: Upload,
@@ -131,201 +123,9 @@ const PerksGrid = () => {
     },
   ];
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const descEl = sectionRef.current.querySelector('[data-animate="perks-desc"]');
-      const cardEls = gsap.utils.toArray(sectionRef.current.querySelectorAll('[data-animate="perks-card"]'));
-
-      // Title animation with SplitText
-      if (titleRef.current && titleTextRef.current) {
-        gsap.set(titleRef.current, { opacity: 0, y: 30 });
-
-        ScrollTrigger.create({
-          trigger: titleRef.current,
-          start: "top 85%",
-          once: true,
-          onEnter: async () => {
-            try {
-              const mod = await import("@activetheory/split-text");
-              const SplitText = mod.default || mod;
-              splitInst = new SplitText(titleTextRef.current, { type: "words" });
-              const words = splitInst.words;
-
-              gsap.set(words, {
-                yPercent: 130,
-                display: "inline-block",
-                willChange: "transform",
-                force3D: true,
-              });
-
-              gsap.set(titleRef.current, { opacity: 1, y: 0 });
-
-              gsap.to(words, {
-                yPercent: 0,
-                duration: 0.9,
-                ease: "power4.out",
-                stagger: { each: 0.06, from: "start" },
-                delay: 0.2,
-              });
-            } catch (e) {
-              gsap.to(titleRef.current, {
-                opacity: 1,
-                y: 0,
-                duration: 0.9,
-                ease: "power3.out",
-                delay: 0.2,
-              });
-            }
-          },
-        });
-      }
-
-      // Description animation
-      if (descEl) {
-        gsap.set(descEl, { opacity: 0, y: 20 });
-        ScrollTrigger.create({
-          trigger: descEl,
-          start: "top 85%",
-          once: true,
-          onEnter: () => {
-            gsap.to(descEl, {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-              delay: 0.6,
-            });
-          },
-        });
-      }
-
-      // Cards sophisticated animation - all triggered together when first card enters viewport
-      if (cardEls.length) {
-        // Set initial states for all cards
-        cardEls.forEach((card) => {
-          const icon = card.querySelector('[data-animate="perk-icon"]');
-          const content = card.querySelector('[data-animate="perk-content"]');
-          const image = card.querySelector('[data-animate="perk-image"]');
-          const badge = card.querySelector('[data-animate="perk-badge"]');
-          const glow = card.querySelector('[data-animate="perk-glow"]');
-          const featured = card.querySelector('[data-animate="perk-featured"]');
-
-          gsap.set(card, { opacity: 0, y: 60, scale: 0.9 });
-          if (icon) gsap.set(icon, { scale: 0, rotate: -180 });
-          if (content) gsap.set(content, { opacity: 0, y: 20 });
-          if (image) gsap.set(image, { opacity: 0, scale: 1.1 });
-          if (badge) gsap.set(badge, { opacity: 0, scale: 0, rotate: 45 });
-          if (glow) gsap.set(glow, { opacity: 0, scale: 1.2 });
-          if (featured) gsap.set(featured, { opacity: 0, scale: 0 });
-        });
-
-        // Create main timeline triggered by first card
-        const mainTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: cardEls[0], // Trigger on first card only
-            start: "top 90%",
-            once: true,
-          },
-        });
-
-        // Animate all cards with stagger
-        cardEls.forEach((card, i) => {
-          const icon = card.querySelector('[data-animate="perk-icon"]');
-          const content = card.querySelector('[data-animate="perk-content"]');
-          const image = card.querySelector('[data-animate="perk-image"]');
-          const badge = card.querySelector('[data-animate="perk-badge"]');
-          const glow = card.querySelector('[data-animate="perk-glow"]');
-          const featured = card.querySelector('[data-animate="perk-featured"]');
-          
-          const delay = i * 0.12; // Stagger delay
-
-          // Card reveal with bounce
-          mainTl.to(card, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: "back.out(1.4)",
-          }, delay);
-
-          // Glow effect
-          if (glow) {
-            mainTl.to(glow, {
-              opacity: 0.08,
-              scale: 1,
-              duration: 1,
-              ease: "power2.out",
-            }, delay + 0.2);
-          }
-
-          // Icon animation with spin
-          if (icon) {
-            mainTl.to(icon, {
-              scale: 1,
-              rotate: 0,
-              duration: 0.7,
-              ease: "back.out(2.5)",
-            }, delay + 0.3);
-          }
-
-          // Content slide up
-          if (content) {
-            mainTl.to(content, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power3.out",
-            }, delay + 0.4);
-          }
-
-          // Image fade in (for large cards)
-          if (image) {
-            mainTl.to(image, {
-              opacity: 1,
-              scale: 1,
-              duration: 0.8,
-              ease: "power2.out",
-            }, delay + 0.2);
-          }
-
-          // Badge animation
-          if (badge) {
-            mainTl.to(badge, {
-              opacity: 1,
-              scale: 1,
-              rotate: 0,
-              duration: 0.5,
-              ease: "back.out(1.7)",
-            }, delay + 0.5);
-          }
-
-          // Featured star
-          if (featured) {
-            mainTl.to(featured, {
-              opacity: 1,
-              scale: 1,
-              duration: 0.4,
-              ease: "back.out(2)",
-            }, delay + 0.6);
-          }
-        });
-      }
-    }, sectionRef);
-
-    return () => {
-      ctx.revert();
-      if (splitInst) {
-        splitInst.revert();
-        splitInst = null;
-      }
-    };
-  }, []);
 
   return (
     <section
-      ref={sectionRef}
       id="features"
       className="relative bg-gradient-to-br from-gray-50 via-white to-purple-50/30 py-24 overflow-hidden"
     >
@@ -339,9 +139,8 @@ const PerksGrid = () => {
         {/* Header */}
         <div className="text-center mb-16">
           {/* Title with SplitText */}
-          <div ref={titleRef} className="mb-6 overflow-hidden">
+          <div className="mb-6">
             <h2 
-              ref={titleTextRef}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mx-auto"
             >
               {t('title')}
@@ -350,7 +149,6 @@ const PerksGrid = () => {
 
           {/* Description */}
           <p 
-            data-animate="perks-desc" 
             className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
           >
             {t('subtitle')}
@@ -362,7 +160,6 @@ const PerksGrid = () => {
           {perks.map((perk, index) => (
             <div
               key={index}
-              data-animate="perks-card"
               className={`
                 group relative bg-white/80 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl
                 border border-gray-100/50 hover:border-primary-200 overflow-hidden
@@ -372,14 +169,14 @@ const PerksGrid = () => {
             >
               {/* Background glow */}
               <div 
-                data-animate="perk-glow"
+                ="perk-glow"
                 className={`absolute inset-0 bg-gradient-to-br ${perk.gradient} opacity-0 rounded-3xl blur-xl scale-110`}
               ></div>
 
               {/* Featured badge */}
               {perk.featured && (
                 <div 
-                  data-animate="perk-featured"
+                  ="perk-featured"
                   className="absolute top-4 right-4 z-10"
                 >
                   <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full text-xs font-bold text-white">
@@ -394,7 +191,7 @@ const PerksGrid = () => {
                   {/* Image section - Much taller for better GIF visibility */}
                   <div className="relative h-64 lg:h-96 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                     <img
-                      data-animate="perk-image"
+                      ="perk-image"
                       src={perk.gifPath}
                       alt={perk.title}
                       className="w-full h-full object-cover"
@@ -406,7 +203,7 @@ const PerksGrid = () => {
                     
                     {/* Floating icon */}
                     <div 
-                      data-animate="perk-icon"
+                      ="perk-icon"
                       className="absolute top-4 left-4"
                     >
                       <div className={`p-3 rounded-xl bg-gradient-to-br ${perk.iconBg} shadow-lg backdrop-blur-sm`}>
@@ -416,14 +213,14 @@ const PerksGrid = () => {
                   </div>
                   
                   {/* Content section - Reduced padding to give more space to GIF */}
-                  <div data-animate="perk-content" className="p-6 flex-1 flex flex-col relative">
+                  <div ="perk-content" className="p-6 flex-1 flex flex-col relative">
                     <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
                       {perk.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed mb-4 flex-1 text-sm">{perk.desc}</p>
                     
                     {perk.comingSoon && (
-                      <div data-animate="perk-badge">
+                      <div ="perk-badge">
                         <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                           <Sparkles className="h-3 w-3" />
                           {t('badges.comingSoon')}
@@ -438,9 +235,9 @@ const PerksGrid = () => {
                   </div>
                 </div>
               ) : (
-                <div data-animate="perk-content" className="relative p-8 h-full flex flex-col">
+                <div ="perk-content" className="relative p-8 h-full flex flex-col">
                   {/* Icon */}
-                  <div data-animate="perk-icon" className="mb-6">
+                  <div ="perk-icon" className="mb-6">
                     <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${perk.iconBg} group-hover:scale-110 transition-all duration-300 shadow-sm`}>
                       <perk.icon className={`w-8 h-8 ${perk.iconColor}`} strokeWidth={1.5} />
                     </div>
@@ -453,7 +250,7 @@ const PerksGrid = () => {
                   <p className="text-gray-600 leading-relaxed mb-4 flex-1">{perk.desc}</p>
                   
                   {perk.comingSoon && (
-                    <div data-animate="perk-badge">
+                    <div ="perk-badge">
                       <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-primary-500 to-primary-600 text-white">
                         <Sparkles className="h-3 w-3" />
                         {t('badges.comingSoon')}
