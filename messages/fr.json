@@ -421,7 +421,7 @@
     "plans": {
       "monthly": {
         "title": "Mensuel",
-        "price": "15€",
+        "price": "$15",
         "period": "/mois",
         "billing": "Facturé mensuellement",
         "features": [
@@ -434,7 +434,7 @@
       },
       "annual": {
         "title": "Annuel",
-        "price": "119€",
+        "price": "$119",
         "period": "/an",
         "billing": "Facturé annuellement",
         "features": [
@@ -447,8 +447,8 @@
       },
       "lifetime": {
         "title": "Licence à vie",
-        "originalPrice": "279€",
-        "price": "149€",
+        "originalPrice": "$279",
+        "price": "$149",
         "period": "une fois",
         "badge": "Meilleure valeur",
         "earlyBird": "Offre de lancement",
