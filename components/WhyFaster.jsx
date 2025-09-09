@@ -1,111 +1,14 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 import { Check, X, Zap, ArrowRight } from "lucide-react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const WhyFaster = () => {
   const t = useTranslations();
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'en';
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const title = sectionRef.current?.querySelector('[data-animate="why-title"]');
-      const table = sectionRef.current?.querySelector('[data-animate="why-table"]');
-      const cta = sectionRef.current?.querySelector('[data-animate="why-cta"]');
-      const rows = gsap.utils.toArray(sectionRef.current?.querySelectorAll('[data-animate="table-row"]'));
-
-      // Title animation
-      if (title) {
-        gsap.set(title, { opacity: 0, y: 30 });
-        ScrollTrigger.create({
-          trigger: title,
-          start: "top 85%",
-          once: true,
-          onEnter: () => {
-            gsap.to(title, {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power3.out",
-            });
-          },
-        });
-      }
-
-      // Table animation
-      if (table) {
-        gsap.set(table, { opacity: 0, scale: 0.95 });
-        ScrollTrigger.create({
-          trigger: table,
-          start: "top 85%",
-          once: true,
-          onEnter: () => {
-            gsap.to(table, {
-              opacity: 1,
-              scale: 1,
-              duration: 0.7,
-              ease: "power3.out",
-              delay: 0.2,
-            });
-          },
-        });
-      }
-
-      // Rows stagger animation
-      if (rows.length) {
-        gsap.set(rows, { opacity: 0, x: -20 });
-        
-        ScrollTrigger.create({
-          trigger: rows[0],
-          start: "top 90%",
-          once: true,
-          onEnter: () => {
-            gsap.to(rows, {
-              opacity: 1,
-              x: 0,
-              duration: 0.5,
-              ease: "power3.out",
-              stagger: 0.1,
-              delay: 0.4,
-            });
-          },
-        });
-      }
-
-      // CTA animation
-      if (cta) {
-        gsap.set(cta, { opacity: 0, y: 20 });
-        ScrollTrigger.create({
-          trigger: cta,
-          start: "top 90%",
-          once: true,
-          onEnter: () => {
-            gsap.to(cta, {
-              opacity: 1,
-              y: 0,
-              duration: 0.6,
-              ease: "power3.out",
-              delay: 0.6,
-            });
-          },
-        });
-      }
-    }, sectionRef);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
 
   const tableData = [
     {
@@ -142,13 +45,11 @@ const WhyFaster = () => {
 
   return (
     <section
-      ref={sectionRef}
       className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-blue-50/30"
     >
       <div className="max-w-6xl mx-auto">
         {/* Title */}
         <h2
-          data-animate="why-title"
           className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center mb-12"
         >
           {t("whyFaster.title")}
@@ -156,7 +57,6 @@ const WhyFaster = () => {
 
         {/* Comparison Table */}
         <div
-          data-animate="why-table"
           className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
         >
           {/* Table Header */}
@@ -179,7 +79,6 @@ const WhyFaster = () => {
           {tableData.map((row, index) => (
             <div
               key={index}
-              data-animate="table-row"
               className={`grid grid-cols-3 border-b border-gray-100 ${
                 row.highlight ? "bg-blue-50/30" : ""
               }`}
@@ -204,7 +103,7 @@ const WhyFaster = () => {
         </div>
 
         {/* CTA */}
-        <div data-animate="why-cta" className="text-center mt-12">
+        <div className="text-center mt-12">
           <p className="text-lg text-gray-700 mb-6">
             {t("whyFaster.cta")}
           </p>
