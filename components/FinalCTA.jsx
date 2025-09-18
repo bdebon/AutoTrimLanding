@@ -78,7 +78,7 @@ const FinalCTA = () => {
         {/* CTA Button */}
         <div className="text-center">
           <a
-            href="#pricing"
+            href="https://autotrim.lemonsqueezy.com/"
             className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-3xl transition-all duration-200"
           >
             {t('startNow')}

@@ -459,7 +459,7 @@ const Pricing = () => {
                   >
                     {t("pricing.alreadyTried")}{" "}
                     <a
-                      href="#pricing"
+                      href="https://autotrim.lemonsqueezy.com/"
                       className="text-primary-700 underline hover:no-underline"
                     >
                       {t("pricing.buyLicense")}
