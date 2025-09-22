@@ -609,7 +609,12 @@
   "metadata": {
     "title": "AutoTrim – Instantly cut silence in your videos | Automatic Video Editing",
     "description": "Remove silence from videos automatically with AutoTrim. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve. Try it free today!",
-    "keywords": "video editing, silence removal, automatic editing, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation"
+    "keywords": "video editing, silence removal, automatic editing, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
+    "download": {
+      "title": "Download AutoTrim - Free Trial | Automatic Video Silence Removal",
+      "description": "Download AutoTrim for macOS and start cutting silence from your videos instantly. Free trial available. Compatible with Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
+      "keywords": "download autotrim, video editing software, silence removal tool, macOS video editor, free trial, automatic editing software"
+    }
   },
   "footer": {
     "copyright": "© 2024 AutoTrim. Built with ❤️ by Benjamin Code",

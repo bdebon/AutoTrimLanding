@@ -609,7 +609,12 @@
   "metadata": {
     "title": "AutoTrim – 即时剪切视频中的静音 | 自动视频编辑",
     "description": "使用AutoTrim自动删除视频中的静音。将您的视频编辑工作流程加快10倍。兼容Final Cut Pro、Adobe Premiere和DaVinci Resolve。今天免费试用！",
-    "keywords": "视频编辑, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作"
+    "keywords": "视频编辑, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作",
+    "download": {
+      "title": "下载AutoTrim - 免费试用 | 自动静音删除",
+      "description": "下载适用于macOS的AutoTrim，立即开始剪切视频中的静音。提供免费试用。兼容Final Cut Pro、Adobe Premiere和DaVinci Resolve。",
+      "keywords": "下载autotrim, 视频编辑软件, 静音删除工具, macOS视频编辑器, 免费试用, 自动编辑软件"
+    }
   },
   "footer": {
     "copyright": "© 2024 AutoTrim. 由Benjamin Code用❤️构建",
