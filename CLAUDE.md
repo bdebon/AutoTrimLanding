@@ -1,0 +1,1 @@
+- don't run the server by yourself, no npm run build, no npm run dev, i do it on my own

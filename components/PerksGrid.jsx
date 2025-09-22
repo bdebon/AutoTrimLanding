@@ -14,6 +14,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import VideoPlayer from "./VideoPlayer";
 
 const PerksGrid = () => {
   const t = useTranslations('perksGrid');
@@ -188,13 +189,10 @@ const PerksGrid = () => {
                 <div className="relative flex flex-col h-full">
                   {/* Image section - Much taller for better GIF visibility */}
                   <div className="relative h-64 lg:h-96 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-                    <img
+                    <VideoPlayer
                       src={perk.gifPath}
                       alt={perk.title}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.style.display = "none";
-                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
                     

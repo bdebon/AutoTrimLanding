@@ -15,6 +15,7 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import OptimizedImage from "./OptimizedImage";
 
 const AnimatedBackground = lazy(() => import("../src/components/three/AnimatedBackground"));
 
@@ -429,6 +430,7 @@ const Hero = () => {
 
         <div className="mt-20 relative">
           {/* Three-step Process */}
+          <h2 className="sr-only">How it works in three steps</h2>
           <div className="relative max-w-5xl mx-auto">
             <div className="space-y-12">
               {/* Step 1 */}
@@ -456,11 +458,14 @@ const Hero = () => {
                     className="absolute rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
                   ></div>
                   <div className="relative bg-white rounded-xl overflow-hidden">
-                    <img
+                    <OptimizedImage
                       data-animate="step-image"
                       src="/assets/img/hero-step-1.jpg"
                       alt="Raw footage with silences"
                       className="w-full"
+                      width={400}
+                      height={300}
+                      priority
                     />
                   </div>
                 </div>
@@ -507,11 +512,14 @@ const Hero = () => {
                     className="absolute from-secondary-100 to-secondary-50 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
                   ></div>
                   <div className="relative bg-white rounded-xl overflow-hidden">
-                    <img
+                    <OptimizedImage
                       data-animate="step-image"
                       src="/assets/img/hero-step-2.jpg"
                       alt="Trimly processing"
                       className="w-full"
+                      width={400}
+                      height={300}
+                      priority
                     />
                   </div>
                 </div>
@@ -545,23 +553,32 @@ const Hero = () => {
                       {t("hero.steps.step3.title")}
                     </span>
                     <div className="flex items-center gap-1">
-                      <img
+                      <OptimizedImage
                         data-animate="step-logo"
                         src="/assets/img/fcpx-icon.png"
                         alt="Final Cut Pro"
                         className="h-4 w-auto"
+                        width={32}
+                        height={32}
+                        priority
                       />
-                      <img
+                      <OptimizedImage
                         data-animate="step-logo"
                         src="/assets/img/premiere-icon.svg"
                         alt="Adobe Premiere"
                         className="h-4 w-auto"
+                        width={32}
+                        height={32}
+                        priority
                       />
-                      <img
+                      <OptimizedImage
                         data-animate="step-logo"
                         src="/assets/img/resolve-icon.svg"
                         alt="DaVinci Resolve"
                         className="h-4 w-auto"
+                        width={32}
+                        height={32}
+                        priority
                       />
                     </div>
                   </h3>
@@ -572,11 +589,14 @@ const Hero = () => {
                     className="absolute rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity"
                   ></div>
                   <div className="relative bg-white rounded-xl overflow-hidden">
-                    <img
+                    <OptimizedImage
                       data-animate="step-image"
                       src="/assets/img/hero-step-3.jpg"
                       alt="Clean XML timeline"
                       className="w-full"
+                      width={400}
+                      height={300}
+                      priority
                     />
                   </div>
                 </div>

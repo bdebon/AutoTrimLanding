@@ -3,6 +3,7 @@ import React from "react";
 import { Star, MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import OptimizedImage from "./OptimizedImage";
 
 const Testimonials = () => {
   const t = useTranslations();
@@ -86,10 +87,13 @@ const Testimonials = () => {
                 <div className="flex items-center gap-4">
                   <div className="relative">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-sm opacity-50" />
-                    <img
-                                            src={testimonial.avatar}
+                    <OptimizedImage
+                      src={testimonial.avatar}
                       alt={testimonial.name}
                       className="relative w-12 h-12 rounded-full object-cover border-2 border-gray-800"
+                      width={48}
+                      height={48}
+                      loading="lazy"
                     />
                   </div>
                   <div>

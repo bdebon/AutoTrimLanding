@@ -238,7 +238,8 @@
     "watchDemo": "▶ Voir la démo 90s",
     "oneClick": "Des séquences brutes à une timeline propre en un clic",
     "iframeTitle": "Démo AutoTrim",
-    "noVideoId": "Définissez NEXT_PUBLIC_VIMEO_ID pour activer la vidéo démo."
+    "noVideoId": "Définissez NEXT_PUBLIC_VIMEO_ID pour activer la vidéo démo.",
+    "playDemo": "Lire la démo vidéo"
   },
   "perksGrid": {
     "title": "Pourquoi les créateurs ne reviennent jamais en arrière.",
@@ -627,6 +628,7 @@
       "blog": "Blog"
     },
     "language": {
+      "label": "Sélectionner la langue",
       "en": "🇬🇧 English",
       "fr": "🇫🇷 Français",
       "es": "🇪🇸 Español",

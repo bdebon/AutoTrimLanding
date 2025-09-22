@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Play, X, Film } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import OptimizedImage from "./OptimizedImage";
 
 const VideoDemo = () => {
   const t = useTranslations('videoDemo');
@@ -49,18 +50,21 @@ const VideoDemo = () => {
             
             <div className="bg-gray-900 rounded-b-xl overflow-hidden shadow-2xl">
               <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 cursor-pointer group" onClick={openModal}>
-                <img 
-                  src="/assets/img/demo-thumbnail.jpg" 
+                <OptimizedImage
+                  src="/assets/img/demo-thumbnail.jpg"
                   alt={t('thumbnail')}
                   className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  loading="lazy"
                 />
                 
                 {/* Play button overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="group relative">
+                  <button className="group relative" aria-label={t('playDemo')}>
                     <div className="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:bg-white/30 transition-all"></div>
                     <div className="relative bg-gradient-to-r from-primary-500 to-primary-600 text-white p-6 rounded-full shadow-2xl group-hover:scale-110 transition-transform animate-pulse">
-                      <Play className="h-12 w-12 ml-1" fill="currentColor" />
+                      <Play className="h-12 w-12 ml-1" fill="currentColor" aria-hidden="true" />
                     </div>
                   </button>
                 </div>

@@ -16,31 +16,51 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "AutoTrim – Instantly cut silence in your videos",
+  title: "AutoTrim – Instantly cut silence in your videos | Automatic Video Editing",
   description:
-    "Speed up your editing workflow. AutoTrim removes silence automatically. Fast, accurate, and reliable.",
+    "Remove silence from videos automatically with AutoTrim. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve. Try it free today!",
+  keywords: "video editing, silence removal, automatic editing, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
+  authors: [{ name: "AutoTrim Team" }],
+  creator: "AutoTrim",
+  publisher: "AutoTrim",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "AutoTrim – Instantly cut silence in your videos",
     description:
-      "Speed up your editing workflow. AutoTrim removes silence automatically.",
+      "Remove silence from videos automatically. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
     url: "/",
     siteName: "AutoTrim",
     images: [
       {
         url: "/assets/img/hero-screenshot.jpg",
+        width: 1200,
+        height: 630,
+        alt: "AutoTrim - Automatic silence removal tool",
       },
     ],
+    locale: 'en_US',
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "AutoTrim – Instantly cut silence in your videos",
     description:
-      "Speed up your editing workflow. AutoTrim removes silence automatically.",
+      "Remove silence from videos automatically. Speed up your video editing workflow by 10x.",
     images: ["/assets/img/hero-screenshot.jpg"],
+    creator: "@autotrimapp",
   },
 };
 
@@ -50,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://player.vimeo.com" />
         <link rel="preconnect" href="https://i.vimeocdn.com" />

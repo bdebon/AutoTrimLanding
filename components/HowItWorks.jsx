@@ -1,6 +1,8 @@
 import React from 'react';
 import { Upload, Cpu, Download, Coffee, Play, ArrowRight, MousePointerClick, Settings, FileDown } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import VideoPlayer from './VideoPlayer';
+import OptimizedImage from './OptimizedImage';
 
 const HowItWorks = () => {
   const t = useTranslations();
@@ -49,11 +51,22 @@ const HowItWorks = () => {
             <div key={index} className="group">
               <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 h-full overflow-hidden">
                 <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                  <img 
-                    src={step.image} 
-                    alt={step.title}
-                    className="w-full h-full object-cover"
-                  />
+                  {step.image.endsWith('.gif') ? (
+                    <VideoPlayer
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <OptimizedImage
+                      src={step.image}
+                      alt={step.title}
+                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      loading="lazy"
+                    />
+                  )}
                   <div className={`absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl shadow-md`}>
                     <step.icon className={`h-6 w-6`} style={{ color: step.iconColor }} />
                   </div>

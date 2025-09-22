@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   const t = useTranslations();
@@ -28,10 +29,12 @@ const Footer = () => {
           {/* Logo and Copyright */}
           <div className="col-span-1 lg:col-span-2">
             <div className="mb-4">
-              <img
+              <Image
                 src="/assets/img/logo-autotrim.svg"
                 alt="AutoTrim"
                 className="h-8 w-auto"
+                width={120}
+                height={32}
               />
             </div>
             <p className="text-gray-600 text-sm mb-4">
@@ -147,10 +150,15 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2">
               <Globe className="h-4 w-4 text-gray-600" />
+              <label htmlFor="language-select" className="sr-only">
+                {t("footer.language.label")}
+              </label>
               <select
+                id="language-select"
                 value={currentLocale}
                 onChange={(e) => handleLanguageChange(e.target.value)}
                 className="bg-transparent text-gray-600 text-sm border border-gray-300 rounded px-2 py-1 focus:outline-none focus:border-primary-500"
+                aria-label={t("footer.language.label")}
               >
                 <option value="en">{t("footer.language.en")}</option>
                 <option value="fr">{t("footer.language.fr")}</option>

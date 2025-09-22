@@ -11,7 +11,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
+
   // Ensure that the incoming locale is valid
   const validLocales = routing.locales as readonly string[];
   if (!validLocales.includes(locale)) {

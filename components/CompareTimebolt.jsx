@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import VideoPlayer from "./VideoPlayer";
+import OptimizedImage from "./OptimizedImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -273,12 +275,22 @@ const CompareTimebolt = () => {
                   </div>
                   {row.autoTrimImage && (
                     <div className="mt-3 rounded-lg overflow-hidden border border-green-200 shadow-sm">
-                      <img 
-                        src={row.autoTrimImage} 
-                        alt={`${row.label} - AutoTrim`}
-                        className="w-full h-auto"
-                        loading="lazy"
-                      />
+                      {row.autoTrimImage.endsWith('.gif') ? (
+                        <VideoPlayer
+                          src={row.autoTrimImage}
+                          alt={`${row.label} - AutoTrim`}
+                          className="w-full h-auto"
+                        />
+                      ) : (
+                        <OptimizedImage
+                          src={row.autoTrimImage}
+                          alt={`${row.label} - AutoTrim`}
+                          className="w-full h-auto"
+                          width={600}
+                          height={400}
+                          loading="lazy"
+                        />
+                      )}
                     </div>
                   )}
                 </div>
@@ -291,12 +303,22 @@ const CompareTimebolt = () => {
                   </div>
                   {row.timeboltImage && (
                     <div className="mt-3 rounded-lg overflow-hidden border border-red-200 shadow-sm">
-                      <img 
-                        src={row.timeboltImage} 
-                        alt={`${row.label} - TimeBolt`}
-                        className="w-full h-auto opacity-75"
-                        loading="lazy"
-                      />
+                      {row.timeboltImage.endsWith('.gif') ? (
+                        <VideoPlayer
+                          src={row.timeboltImage}
+                          alt={`${row.label} - TimeBolt`}
+                          className="w-full h-auto opacity-75"
+                        />
+                      ) : (
+                        <OptimizedImage
+                          src={row.timeboltImage}
+                          alt={`${row.label} - TimeBolt`}
+                          className="w-full h-auto opacity-75"
+                          width={600}
+                          height={400}
+                          loading="lazy"
+                        />
+                      )}
                     </div>
                   )}
                 </div>

@@ -238,7 +238,8 @@
     "watchDemo": "▶ Watch 90s Demo",
     "oneClick": "From raw footage to clean timeline in one click",
     "iframeTitle": "AutoTrim Demo",
-    "noVideoId": "Set NEXT_PUBLIC_VIMEO_ID to enable the demo video."
+    "noVideoId": "Set NEXT_PUBLIC_VIMEO_ID to enable the demo video.",
+    "playDemo": "Play demo video"
   },
   "perksGrid": {
     "title": "Why creators never go back.",
@@ -627,6 +628,7 @@
       "blog": "Blog"
     },
     "language": {
+      "label": "Select language",
       "en": "🇬🇧 English",
       "fr": "🇫🇷 Français",
       "es": "🇪🇸 Español",

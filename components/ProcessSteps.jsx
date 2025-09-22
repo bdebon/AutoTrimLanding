@@ -2,6 +2,7 @@
 import React from "react";
 import { Zap, Clock } from "lucide-react";
 import { useTranslations } from "next-intl";
+import VideoPlayer from "./VideoPlayer";
 
 const ProcessSteps = () => {
   const t = useTranslations();
@@ -63,7 +64,7 @@ const ProcessSteps = () => {
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-900 to-gray-800">
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary-500/10 to-transparent" />
-                  <img
+                  <VideoPlayer
                     src={step.gif}
                     alt={step.alt}
                     className="w-full h-full object-cover"

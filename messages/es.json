@@ -238,7 +238,8 @@
     "watchDemo": "▶ Ver Demo de 90s",
     "oneClick": "De material en bruto a línea de tiempo limpia en un clic",
     "iframeTitle": "Demo de AutoTrim",
-    "noVideoId": "Configura NEXT_PUBLIC_VIMEO_ID para habilitar el video demo."
+    "noVideoId": "Configura NEXT_PUBLIC_VIMEO_ID para habilitar el video demo.",
+    "playDemo": "Reproducir video de demostración"
   },
   "perksGrid": {
     "title": "Por qué los creadores nunca vuelven atrás.",
@@ -627,6 +628,7 @@
       "blog": "Blog"
     },
     "language": {
+      "label": "Seleccionar idioma",
       "en": "🇬🇧 English",
       "fr": "🇫🇷 Français",
       "es": "🇪🇸 Español",
