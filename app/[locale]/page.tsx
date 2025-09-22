@@ -1,4 +1,6 @@
+import { Metadata } from "next";
 import Script from "next/script";
+import { getTranslations } from 'next-intl/server';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -13,6 +15,34 @@ import WhyFaster from "@/components/WhyFaster";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata' });
+
+  const localeMap: Record<string, string> = {
+    'fr': 'fr_FR',
+    'es': 'es_ES',
+    'zh': 'zh_CN',
+    'en': 'en_US'
+  };
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: t('keywords'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      images: ["/assets/img/hero-screenshot.jpg"],
+      locale: localeMap[locale] || 'en_US',
+    },
+  };
+}
 
 export default function Home() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
