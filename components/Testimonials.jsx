@@ -116,6 +116,7 @@ const Testimonials = () => {
 
         <div className="mt-20 text-center">
           <div className="flex flex-col items-center gap-6">
+            {/* Masqué pour l'instant - À réactiver quand 10k users atteints
             <div  className="flex items-center gap-3">
               <div className="flex -space-x-2">
                 <div
@@ -132,6 +133,7 @@ const Testimonials = () => {
                 {t("testimonials.joinUsers")}
               </span>
             </div>
+            */}
 
             <a
                             href={`/${currentLocale}/download`}

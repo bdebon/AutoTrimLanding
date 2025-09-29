@@ -40,25 +40,37 @@ const Footer = () => {
             <p className="text-gray-600 text-sm mb-4">
               {t("footer.copyright")}
             </p>
-            <div className="flex gap-4">
+            <div className="flex flex-wrap gap-4">
               <Link
-                href={`/${currentLocale}/privacy`}
+                href="/terms"
                 className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
               >
-                {t("footer.links.privacy")}
+                Terms & Conditions
               </Link>
               <Link
-                href={`/${currentLocale}/terms`}
+                href="/privacy"
                 className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
               >
-                {t("footer.links.terms")}
+                Privacy Policy
               </Link>
               <Link
-                href={`/${currentLocale}/contact`}
+                href="/refund"
                 className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
               >
-                {t("footer.links.contact")}
+                Refund Policy
               </Link>
+              <Link
+                href="/legal"
+                className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
+              >
+                Legal Notice
+              </Link>
+              <a
+                href="mailto:b1jam1code@gmail.com"
+                className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
+              >
+                Contact
+              </a>
             </div>
           </div>
 
