@@ -262,8 +262,8 @@ const PerksGrid = () => {
           ))}
         </div>
 
-        {/* Bottom decoration */}
-        <div className="mt-16 text-center">
+        {/* Bottom decoration - Masqué pour l'instant - À réactiver quand 10k users atteints */}
+        {/* <div className="mt-16 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/60 backdrop-blur-sm rounded-full border border-gray-200/50">
             <div className="flex items-center gap-1">
               {[...Array(5)].map((_, i) => (
@@ -272,7 +272,7 @@ const PerksGrid = () => {
             </div>
             <span className="text-sm text-gray-600 font-medium">{t('lovedBy')}</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

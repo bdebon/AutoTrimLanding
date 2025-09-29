@@ -10,8 +10,8 @@ export default function TermsPage() {
 
         <div className="prose prose-lg max-w-none text-gray-600">
           <p className="mb-6">
-            These Terms and Conditions ("Terms") govern your use of the website located at autotrim.app (the "Website")
-            and the AutoTrim software (the "Software"), provided by bdebon SASU ("we," "our," or "us"). By accessing the
+            These Terms and Conditions (&quot;Terms&quot;) govern your use of the website located at autotrim.app (the &quot;Website&quot;)
+            and the AutoTrim software (the &quot;Software&quot;), provided by bdebon SASU (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). By accessing the
             Website or using the Software, you agree to comply with these Terms. If you do not agree, please do not use AutoTrim.
           </p>
 
@@ -36,7 +36,7 @@ export default function TermsPage() {
 
           <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">4. Disclaimer</h2>
           <p className="mb-6">
-            The Software is provided "as is" without warranty of any kind. We do not guarantee that it will be error-free
+            The Software is provided &quot;as is&quot; without warranty of any kind. We do not guarantee that it will be error-free
             or meet your specific requirements.
           </p>
 

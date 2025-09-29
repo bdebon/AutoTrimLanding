@@ -99,8 +99,8 @@ const WhoIsItFor = () => {
             {t('subtitle')}
           </p>
 
-          {/* Stats */}
-          <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-500">
+          {/* Stats - Masqué pour l'instant - À réactiver quand 10k users atteints */}
+          {/* <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <TrendingUp className="h-4 w-4 text-green-500" />
               <span>{t('stats.happyCreators')}</span>
@@ -109,7 +109,7 @@ const WhoIsItFor = () => {
               <Clock className="h-4 w-4 text-blue-500" />
               <span>{t('stats.hoursSaved')}</span>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Personas Grid */}
@@ -157,8 +157,8 @@ const WhoIsItFor = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center">
+        {/* Bottom CTA - Masqué pour l'instant - À réactiver quand plus d'utilisateurs */}
+        {/* <div className="text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-lg">
             <div className="flex -space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full border-2 border-white"></div>
@@ -170,7 +170,7 @@ const WhoIsItFor = () => {
               {t('joinThousands')}
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
