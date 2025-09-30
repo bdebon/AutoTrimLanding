@@ -10,15 +10,15 @@ const Footer = () => {
   const t = useTranslations();
   const router = useRouter();
   const pathname = usePathname();
-  
+
   // Extract current locale from pathname
-  const currentLocale = pathname.split('/')[1] || 'en';
-  
+  const currentLocale = pathname.split("/")[1] || "en";
+
   const handleLanguageChange = (newLocale: string) => {
     // Replace the locale in the current path
-    const segments = pathname.split('/');
+    const segments = pathname.split("/");
     segments[1] = newLocale;
-    const newPath = segments.join('/') || `/${newLocale}`;
+    const newPath = segments.join("/") || `/${newLocale}`;
     router.push(newPath);
   };
 
@@ -103,14 +103,6 @@ const Footer = () => {
                 >
                   {t("footer.resources.faq")}
                 </a>
-              </li>
-              <li>
-                <Link
-                  href={`/${currentLocale}/blog`}
-                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
-                >
-                  {t("footer.resources.blog")}
-                </Link>
               </li>
             </ul>
           </div>
