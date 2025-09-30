@@ -409,10 +409,12 @@
         "text": "Je cherchais un outil pour faire le travail stupide de dérushage et de nettoyage de mes séquences brutes. Alors j'ai créé AutoTrim."
       },
       "1": {
-        "text": "Pas d'uploads cloud, pas d'attente, pas de fusions XML manuelles. Juste des timelines propres à chaque fois."
+        "text": "En tant que monteur, je cherche toujours à automatiser les parties ennuyeuses. J'ai essayé d'autres outils, mais aucun ne fonctionnait vraiment. Avec AutoCut, l'UX est propre, intuitive, et ça fait exactement ce que tu veux — sans fioritures inutiles. Ça me fait gagner au moins une heure sur chaque projet.",
+        "role": "Monteur Pro"
       },
       "2": {
-        "text": "Je monte professionnellement, et AutoTrim me fait économiser des HEURES chaque semaine. C'est facilement le meilleur argent que j'ai dépensé cette année."
+        "text": "AutoCut me fait gagner des heures. Ça rend tout le processus de dérushage plus léger, moins répétitif, et la vitesse est choquante — je peux traiter des gigaoctets en quelques secondes. Super intuitif, avec des previews qui aident beaucoup. Je recommande vivement.",
+        "role": "Monteur Freelance"
       }
     }
   },

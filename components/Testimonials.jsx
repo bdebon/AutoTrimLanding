@@ -8,49 +8,40 @@ import OptimizedImage from "./OptimizedImage";
 const Testimonials = () => {
   const t = useTranslations();
   const pathname = usePathname();
-  const currentLocale = pathname.split('/')[1] || 'en';
+  const currentLocale = pathname.split("/")[1] || "en";
 
   const testimonials = [
     {
-      text: t("testimonials.quotes.0.text"),
-      name: "Benjamin Code",
-      role: "Creator",
-      avatar: "/assets/img/pp-rose.jpg",
-      rating: 5,
-    },
-    {
       text: t("testimonials.quotes.1.text"),
-      name: "Alex Rivera",
-      role: "Video Editor",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces",
+      name: "Robin Servoisier",
+      role: t("testimonials.quotes.1.role"),
+      avatar: "/assets/img/robin.jpg",
       rating: 5,
     },
     {
       text: t("testimonials.quotes.2.text"),
-      name: "Mike Johnson",
-      role: "Professional Editor",
-      avatar:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces",
+      name: "Izayi",
+      role: t("testimonials.quotes.2.role"),
+      avatar: "/assets/img/izayi.jpg",
+      rating: 5,
+    },
+    {
+      text: t("testimonials.quotes.0.text"),
+      name: "Theo Won",
+      role: "Podcaster",
+      avatar: "/assets/img/theo.jpg",
       rating: 5,
     },
   ];
 
-
   return (
-    <section
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-black"
-    >
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-black">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2
-            className="text-3xl sm:text-4xl mx-auto font-bold text-white mb-4"
-          >
+          <h2 className="text-3xl sm:text-4xl mx-auto font-bold text-white mb-4">
             {t("testimonials.title")}
           </h2>
-          <p
-            className="text-gray-400 text-lg max-w-2xl mx-auto"
-          >
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             {t("testimonials.trustedBy")}
           </p>
         </div>
@@ -69,18 +60,14 @@ const Testimonials = () => {
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
-                                                className="h-4 w-4 fill-primary-400 text-primary-400"
+                        className="h-4 w-4 fill-primary-400 text-primary-400"
                       />
                     ))}
                   </div>
-                  <MessageCircle
-                                        className="h-6 w-6 text-primary-500/30"
-                  />
+                  <MessageCircle className="h-6 w-6 text-primary-500/30" />
                 </div>
 
-                <p
-                                    className="text-gray-300 mb-8 leading-relaxed font-normal"
-                >
+                <p className="text-gray-300 mb-8 leading-relaxed font-normal">
                   {testimonial.text}
                 </p>
 
@@ -97,16 +84,10 @@ const Testimonials = () => {
                     />
                   </div>
                   <div>
-                    <p
-                                            className="font-semibold text-white"
-                    >
+                    <p className="font-semibold text-white">
                       {testimonial.name}
                     </p>
-                    <p
-                                            className="text-sm text-gray-500"
-                    >
-                      {testimonial.role}
-                    </p>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
@@ -136,7 +117,7 @@ const Testimonials = () => {
             */}
 
             <a
-                            href={`/${currentLocale}/download`}
+              href={`/${currentLocale}/download`}
               className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-primary-500/25 hover:scale-105"
             >
               {t("testimonials.startTrial")}

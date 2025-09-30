@@ -409,10 +409,12 @@
         "text": "Estaba buscando una herramienta para hacer el trabajo tonto de desglosar y limpiar mi material en bruto. Así que construí AutoTrim."
       },
       "1": {
-        "text": "Sin subidas a la nube, sin esperas, sin fusiones manuales de XML. Solo líneas de tiempo limpias cada vez."
+        "text": "Como editor, siempre busco automatizar las partes aburridas. Probé otras herramientas, pero ninguna funcionaba realmente. Con AutoCut, la UX es limpia, intuitiva, y hace exactamente lo que quieres — sin extras innecesarios. Me ahorra al menos una hora en cada proyecto.",
+        "role": "Editor Profesional"
       },
       "2": {
-        "text": "Edito profesionalmente, y AutoTrim me ahorra HORAS cada semana. Es fácilmente el mejor dinero que he gastado este año."
+        "text": "AutoCut me ahorra horas. Hace que todo el proceso de desglose sea más ligero, menos repetitivo, y la velocidad es impactante — puedo procesar gigabytes en segundos. Súper intuitivo, con previsualizaciones que ayudan mucho. Lo recomiendo ampliamente.",
+        "role": "Editor Freelance"
       }
     }
   },
