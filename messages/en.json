@@ -571,7 +571,7 @@
       },
       "4": {
         "q": "Can I remove filler words & hesitations?",
-        "a": "Coming in AutoTrim v2.0—soon and powerful."
+        "a": "Yes, this feature is available but still experimental. Results may vary depending on language and diction."
       },
       "5": {
         "q": "Can I process multiple clips simultaneously?",

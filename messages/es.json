@@ -571,7 +571,7 @@
       },
       "4": {
         "q": "¿Puedo eliminar muletillas y vacilaciones?",
-        "a": "Viene en AutoTrim v2.0—pronto y poderoso."
+        "a": "Sí, esta funcionalidad está disponible pero aún es experimental. Los resultados pueden variar según el idioma y la dicción."
       },
       "5": {
         "q": "¿Puedo procesar múltiples clips simultáneamente?",
