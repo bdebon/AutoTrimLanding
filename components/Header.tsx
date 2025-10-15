@@ -49,6 +49,7 @@ const Header = () => {
                 width={120}
                 height={32}
                 priority
+                fetchPriority="high"
               />
             </Link>
           </div>

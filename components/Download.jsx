@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 
 // Simple OS detection from user agent
 function detectOS() {
+  if (typeof window === 'undefined') return "mac"; // Default to mac for SSR
   const ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/windows phone/i.test(ua)) return "windows";
   if (/win/i.test(ua)) return "windows";
@@ -23,9 +24,9 @@ const assetLinks = {
 
 const Download = () => {
   const t = useTranslations('download');
-  
-  // Start with a stable SSR value to avoid hydration mismatch, then update on client
-  const [os, setOs] = useState("unknown");
+
+  // Start with a sensible default (mac is most common) to show content immediately
+  const [os, setOs] = useState("mac");
   useEffect(() => {
     setOs(detectOS());
   }, []);
@@ -46,11 +47,11 @@ const Download = () => {
     >
       <div className="max-w-4xl mx-auto text-center">
         <div className="mb-4 flex justify-center">
-          <DownloadIcon className="h-12 w-12 text-gray-900" />
+          <DownloadIcon className="h-12 w-12 text-gray-900" aria-hidden="true" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           {t('title')}
-        </h2>
+        </h1>
         <p className="text-lg text-gray-600 mb-8">
           {t('subtitle')}
         </p>

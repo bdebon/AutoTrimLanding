@@ -35,6 +35,7 @@ const Footer = () => {
                 className="h-8 w-auto"
                 width={120}
                 height={32}
+                loading="lazy"
               />
             </div>
             <p className="text-gray-600 text-sm mb-4">

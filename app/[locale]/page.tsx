@@ -50,8 +50,9 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "AutoTrim",
+    alternateName: "Auto Trim",
     description:
-      "Speed up your editing workflow. AutoTrim removes silence automatically.",
+      "Auto trim and remove silence, filler words, and hesitations from videos automatically. Speed up your editing workflow with parallel processing.",
     image: [`${siteUrl}/assets/img/hero-screenshot.jpg`],
     brand: {
       "@type": "Brand",

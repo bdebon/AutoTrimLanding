@@ -67,3 +67,9 @@ body {
   background: var(--color-primary-200);
   color: var(--color-primary-900);
 }
+
+/* SEO: Ensure H1 is always visible for crawlers without JS */
+noscript h1[data-animate="hero-title"] {
+  visibility: visible !important;
+  opacity: 1 !important;
+}

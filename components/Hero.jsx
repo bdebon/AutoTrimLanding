@@ -95,7 +95,7 @@ const Hero = () => {
             });
 
             // Show title container
-            gsap.set(titleRef.current, { opacity: 1, y: 0 });
+            gsap.set(titleRef.current, { visibility: 'visible', y: 0 });
 
             // Animate first line words
             gsap.to(words1, {
@@ -140,7 +140,7 @@ const Hero = () => {
           }
         } catch (e) {
           // Fallback without SplitText
-          gsap.set(titleRef.current, { opacity: 1 });
+          gsap.set(titleRef.current, { visibility: 'visible' });
           gsap.fromTo(
             titleLine1,
             { yPercent: 100 },
@@ -155,7 +155,7 @@ const Hero = () => {
       };
 
       if (titleRef.current) {
-        gsap.set(titleRef.current, { opacity: 0 });
+        gsap.set(titleRef.current, { visibility: 'hidden' });
         animateTitle();
       }
 
@@ -382,7 +382,7 @@ const Hero = () => {
             ref={titleRef}
             data-animate="hero-title"
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight tracking-tight mx-auto"
-            style={{ opacity: 0 }}
+            style={{ visibility: 'hidden' }}
           >
             <span className="block overflow-hidden">
               <span data-animate="hero-title-line1" className="inline-block">
