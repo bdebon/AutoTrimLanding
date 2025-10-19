@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Download as DownloadIcon } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import { trackDownload } from '@/lib/tracking';
 
 // Simple OS detection from user agent
 function detectOS() {
@@ -31,6 +32,15 @@ const Download = () => {
     setOs(detectOS());
   }, []);
 
+  // Handle download click and track it
+  const handleDownloadClick = (platform) => {
+    trackDownload({
+      platform: platform,
+      downloadLink: platform === 'mac' ? assetLinks.mac : assetLinks.windows,
+      location: 'download_page'
+    });
+  };
+
   const primaryHref =
     os === "mac" ? assetLinks.mac : os === "windows" ? assetLinks.windows : "#";
   const primaryLabel =
@@ -59,6 +69,7 @@ const Download = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href={primaryHref}
+            onClick={() => handleDownloadClick(os)}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg"
           >
             <DownloadIcon className="h-5 w-5" />
@@ -70,18 +81,24 @@ const Download = () => {
             {os === "mac" ? (
               <a
                 href={assetLinks.windows}
+                onClick={() => handleDownloadClick('windows')}
                 className="underline hover:no-underline"
               >
                 {t('buttons.windows')}
               </a>
             ) : os === "windows" ? (
-              <a href={assetLinks.mac} className="underline hover:no-underline">
+              <a
+                href={assetLinks.mac}
+                onClick={() => handleDownloadClick('mac')}
+                className="underline hover:no-underline"
+              >
                 {t('buttons.macOS')}
               </a>
             ) : (
               <>
                 <a
                   href={assetLinks.mac}
+                  onClick={() => handleDownloadClick('mac')}
                   className="underline hover:no-underline"
                 >
                   {t('buttons.macOS')}
@@ -89,6 +106,7 @@ const Download = () => {
                 <span>·</span>
                 <a
                   href={assetLinks.windows}
+                  onClick={() => handleDownloadClick('windows')}
                   className="underline hover:no-underline"
                 >
                   {t('buttons.windows')}

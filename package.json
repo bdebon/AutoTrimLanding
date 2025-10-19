@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@activetheory/split-text": "^1.1.2",
+    "@next/third-parties": "^15.5.5",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",
     "@vercel/analytics": "^1.5.0",
