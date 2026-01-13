@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { GoogleTagManager } from "@next/third-parties/google";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "./FacebookPixel";
@@ -92,10 +91,10 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Meta Pixel */}
+        {/* Meta Pixel - lazyOnload for better LCP */}
         <Script
           id="facebook-pixel"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         >
           {`
             !function(f,b,e,v,n,t,s)
@@ -161,7 +160,22 @@ export default function RootLayout({
         <FacebookPixel />
         {children}
         <Analytics />
-        <GoogleTagManager gtmId="GTM-MTPT8QGT" />
+
+        {/* Google Tag Manager - lazyOnload for better LCP */}
+        <Script
+          id="gtm-script"
+          strategy="lazyOnload"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-MTPT8QGT"
+        />
+        <Script
+          id="gtm-init"
+          strategy="lazyOnload"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+          `}
+        </Script>
       </body>
     </html>
   );

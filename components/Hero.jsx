@@ -1,14 +1,10 @@
 "use client";
-import React, { useLayoutEffect, useRef, Suspense, lazy } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import {
   ArrowRight,
   Play,
   Sparkles,
   Zap,
-  CheckCircle,
-  Clock,
-  Shield,
-  Globe2,
   ArrowDown,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -16,8 +12,23 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OptimizedImage from "./OptimizedImage";
+import dynamic from "next/dynamic";
 
-const AnimatedBackground = lazy(() => import("../src/components/three/AnimatedBackground"));
+// Dynamic import with ssr: false to avoid loading Three.js on server
+// and defer loading until after initial render
+const AnimatedBackground = dynamic(
+  () => import("../src/components/three/AnimatedBackground"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-primary-300/50 via-primary-200/30 to-transparent rounded-full blur-3xl opacity-70"></div>
+        <div className="hidden sm:block absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-secondary-300/40 via-secondary-200/25 to-transparent rounded-full blur-3xl opacity-50"></div>
+        <div className="hidden sm:block absolute top-1/3 left-0 w-[420px] h-[420px] bg-gradient-to-r from-emerald-300/35 to-transparent rounded-full blur-2xl opacity-40"></div>
+      </div>
+    )
+  }
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -352,16 +363,8 @@ const Hero = () => {
       ref={rootRef}
       className="relative min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Three.js Animated Background */}
-      <Suspense fallback={
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="hidden sm:block absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-br from-primary-300/50 via-primary-200/30 to-transparent rounded-full blur-3xl opacity-70"></div>
-          <div className="hidden sm:block absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-to-tl from-secondary-300/40 via-secondary-200/25 to-transparent rounded-full blur-3xl opacity-50"></div>
-          <div className="hidden sm:block absolute top-1/3 left-0 w-[420px] h-[420px] bg-gradient-to-r from-emerald-300/35 to-transparent rounded-full blur-2xl opacity-40"></div>
-        </div>
-      }>
-        <AnimatedBackground />
-      </Suspense>
+      {/* Three.js Animated Background - loaded dynamically after hydration */}
+      <AnimatedBackground />
 
       <div className="relative max-w-7xl mx-auto text-center">
         <div>
