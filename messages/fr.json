@@ -246,13 +246,14 @@
     "subtitle": "Du glisser-déposer au XML propre, AutoTrim regorge de fonctionnalités qui économisent du temps — et préservent la santé mentale.",
     "badges": {
       "popular": "Populaire",
-      "comingSoon": "BIENTÔT DISPONIBLE"
+      "comingSoon": "BIENTÔT DISPONIBLE",
+      "experimental": "EXPÉRIMENTAL"
     },
     "lovedBy": "Apprécié par plus de 10 000 créateurs dans le monde",
     "perks": {
       "dragDrop": {
         "title": "Glissez-déposez tout",
-        "description": "Déposez autant de clips que vous voulez ; AutoTrim les ingère instantanément, quel que soit le format."
+        "description": "Déposez autant de clips vidéo ou audio que vous voulez ; AutoTrim les ingère instantanément, quel que soit le format."
       },
       "smartPresets": {
         "title": "Préréglages intelligents",
@@ -266,6 +267,10 @@
         "title": "XML simple ou multiple",
         "description": "Exportez une timeline propre ou des XML individuels — plus de pièces de puzzle."
       },
+      "directRender": {
+        "title": "Export direct MP3 & Vidéo",
+        "description": "Pas besoin de timeline ? Rendez vos fichiers coupés directement en MP3 ou en vidéo."
+      },
       "localProcessing": {
         "title": "Traitement 100% local",
         "description": "IA, traitement vidéo, tout fonctionne sur votre machine. Pas d'uploads, pas d'attente, vitesse maximale."
@@ -274,13 +279,17 @@
         "title": "Traitement parallèle",
         "description": "Exploitez vos cœurs : jusqu'à 4 tâches en parallèle pour zéro temps mort."
       },
+      "audioVideoSync": {
+        "title": "Synchro Vidéo + Audio intelligente",
+        "description": "Déposez vos fichiers vidéo et audio séparément — AutoTrim détecte les paires correspondantes, les synchronise automatiquement, et exporte les deux parfaitement alignés dans votre timeline."
+      },
       "repetitionRemover": {
         "title": "Suppresseur de répétitions et hésitations",
         "description": "Coupe automatiquement les mots de remplissage et les reprises."
       },
       "multilingual": {
         "title": "Multilingue et agnostique du format",
-        "description": "Français, anglais, espagnol... MP4, MOV, MKV — ça marche tout simplement."
+        "description": "Français, anglais, espagnol... MP4, MOV, MKV, WAV, MP3 — vidéo ou audio, ça marche tout simplement."
       },
       "blazingPreview": {
         "title": "Prévisualisation ultra-rapide",
@@ -576,6 +585,10 @@
       "5": {
         "q": "Puis-je traiter plusieurs clips simultanément ?",
         "a": "Oui. Le traitement parallèle est intégré dès le premier jour."
+      },
+      "6": {
+        "q": "AutoTrim supporte-t-il les fichiers audio ?",
+        "a": "Oui ! AutoTrim fonctionne avec les fichiers vidéo et audio. Vous pouvez même déposer vidéo et audio séparément — s'ils correspondent, AutoTrim les synchronise automatiquement et exporte les deux alignés dans votre timeline."
       }
     }
   },

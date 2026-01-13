@@ -12,6 +12,8 @@ import {
   Zap,
   Star,
   ArrowUpRight,
+  Link2,
+  FileOutput,
 } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import VideoPlayer from "./VideoPlayer";
@@ -19,6 +21,7 @@ import VideoPlayer from "./VideoPlayer";
 const PerksGrid = () => {
   const t = useTranslations('perksGrid');
   const perks = [
+    // Row 1: 4 small cards
     {
       icon: Upload,
       title: t('perks.dragDrop.title'),
@@ -28,27 +31,6 @@ const PerksGrid = () => {
       iconColor: "text-blue-600",
       gradient: "from-blue-500/10 to-blue-600/20",
       featured: true,
-    },
-    {
-      icon: Sparkles,
-      title: t('perks.smartPresets.title'),
-      desc: t('perks.smartPresets.description'),
-      size: "normal",
-      iconBg: "from-yellow-50 to-yellow-100",
-      iconColor: "text-yellow-600",
-      gradient: "from-yellow-500/10 to-yellow-600/20",
-      featured: false,
-    },
-    {
-      icon: Sliders,
-      title: t('perks.fineTune.title'),
-      desc: t('perks.fineTune.description'),
-      size: "large",
-      gifPath: "/assets/img/perks1.gif",
-      iconBg: "from-green-50 to-green-100",
-      iconColor: "text-green-600",
-      gradient: "from-green-500/10 to-green-600/20",
-      featured: false,
     },
     {
       icon: Film,
@@ -61,6 +43,16 @@ const PerksGrid = () => {
       featured: true,
     },
     {
+      icon: Link2,
+      title: t('perks.audioVideoSync.title'),
+      desc: t('perks.audioVideoSync.description'),
+      size: "normal",
+      iconBg: "from-emerald-50 to-emerald-100",
+      iconColor: "text-emerald-600",
+      gradient: "from-emerald-500/10 to-emerald-600/20",
+      featured: true,
+    },
+    {
       icon: MonitorPlay,
       title: t('perks.localProcessing.title'),
       desc: t('perks.localProcessing.description'),
@@ -68,6 +60,18 @@ const PerksGrid = () => {
       iconBg: "from-indigo-50 to-indigo-100",
       iconColor: "text-indigo-600",
       gradient: "from-indigo-500/10 to-indigo-600/20",
+      featured: false,
+    },
+    // Row 2-3: 2 large cards side by side
+    {
+      icon: Sliders,
+      title: t('perks.fineTune.title'),
+      desc: t('perks.fineTune.description'),
+      size: "large",
+      gifPath: "/assets/img/perks1.gif",
+      iconBg: "from-green-50 to-green-100",
+      iconColor: "text-green-600",
+      gradient: "from-green-500/10 to-green-600/20",
       featured: false,
     },
     {
@@ -81,11 +85,32 @@ const PerksGrid = () => {
       gradient: "from-purple-500/10 to-purple-600/20",
       featured: true,
     },
+    // Row 4: 4 small cards
+    {
+      icon: Sparkles,
+      title: t('perks.smartPresets.title'),
+      desc: t('perks.smartPresets.description'),
+      size: "normal",
+      iconBg: "from-yellow-50 to-yellow-100",
+      iconColor: "text-yellow-600",
+      gradient: "from-yellow-500/10 to-yellow-600/20",
+      featured: false,
+    },
+    {
+      icon: FileOutput,
+      title: t('perks.directRender.title'),
+      desc: t('perks.directRender.description'),
+      size: "normal",
+      iconBg: "from-violet-50 to-violet-100",
+      iconColor: "text-violet-600",
+      gradient: "from-violet-500/10 to-violet-600/20",
+      featured: false,
+    },
     {
       icon: RefreshCcw,
       title: t('perks.repetitionRemover.title'),
       desc: t('perks.repetitionRemover.description'),
-      comingSoon: true,
+      experimental: true,
       size: "normal",
       iconBg: "from-pink-50 to-pink-100",
       iconColor: "text-pink-600",
@@ -102,6 +127,7 @@ const PerksGrid = () => {
       gradient: "from-teal-500/10 to-teal-600/20",
       featured: false,
     },
+    // Row 5: 2 small cards (centered or full width alternative)
     {
       icon: Zap,
       title: t('perks.blazingPreview.title'),
@@ -221,7 +247,16 @@ const PerksGrid = () => {
                         </span>
                       </div>
                     )}
-                    
+
+                    {perk.experimental && (
+                      <div>
+                        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                          <Sparkles className="h-3 w-3" />
+                          {t('badges.experimental')}
+                        </span>
+                      </div>
+                    )}
+
                     {/* Arrow indicator */}
                     <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1">
                       <ArrowUpRight className="h-5 w-5 text-primary-500" />
@@ -251,7 +286,16 @@ const PerksGrid = () => {
                       </span>
                     </div>
                   )}
-                  
+
+                  {perk.experimental && (
+                    <div>
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                        <Sparkles className="h-3 w-3" />
+                        {t('badges.experimental')}
+                      </span>
+                    </div>
+                  )}
+
                   {/* Arrow indicator */}
                   <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1">
                     <ArrowUpRight className="h-5 w-5 text-primary-500" />

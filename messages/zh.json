@@ -246,13 +246,14 @@
     "subtitle": "从拖放到干净XML，AutoTrim充满节省时间和理智的功能。",
     "badges": {
       "popular": "热门",
-      "comingSoon": "即将推出"
+      "comingSoon": "即将推出",
+      "experimental": "实验性"
     },
     "lovedBy": "受到全球10,000+创作者喜爱",
     "perks": {
       "dragDrop": {
         "title": "拖放一切",
-        "description": "放置任意数量的片段；AutoTrim立即摄取，无论什么格式。"
+        "description": "放置任意数量的视频或音频片段；AutoTrim立即摄取，无论什么格式。"
       },
       "smartPresets": {
         "title": "智能预设",
@@ -266,6 +267,10 @@
         "title": "单个或多XML",
         "description": "导出一个干净时间线或单独XML——不再有拼图块。"
       },
+      "directRender": {
+        "title": "直接导出MP3和视频",
+        "description": "不需要时间线？直接将剪辑后的文件渲染为MP3或视频格式。"
+      },
       "localProcessing": {
         "title": "100%本地处理",
         "description": "AI、视频处理，一切都在您的设备上运行。无上传，无等待，最大速度。"
@@ -274,13 +279,17 @@
         "title": "并行处理",
         "description": "最大化您的核心：最多4个任务并行运行，零停机时间。"
       },
+      "audioVideoSync": {
+        "title": "智能视频+音频同步",
+        "description": "分别放置视频和音频文件——AutoTrim检测匹配对，自动同步它们，并在时间线中导出两者完美对齐。"
+      },
       "repetitionRemover": {
         "title": "重复和犹豫移除器",
         "description": "自动剪切填充词和重拍。"
       },
       "multilingual": {
         "title": "多语言和格式无关",
-        "description": "法语、英语、西班牙语……MP4、MOV、MKV——都能工作。"
+        "description": "法语、英语、西班牙语……MP4、MOV、MKV、WAV、MP3——视频或音频，都能工作。"
       },
       "blazingPreview": {
         "title": "极速预览",
@@ -576,6 +585,10 @@
       "5": {
         "q": "我可以同时处理多个片段吗？",
         "a": "是的。并行处理从第一天就内置。"
+      },
+      "6": {
+        "q": "AutoTrim支持音频文件吗？",
+        "a": "是的！AutoTrim可处理视频和音频文件。您甚至可以分别放置视频和音频——如果它们匹配，AutoTrim会自动同步它们，并在时间线中导出两者对齐。"
       }
     }
   },
