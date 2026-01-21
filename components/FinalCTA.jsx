@@ -1,10 +1,13 @@
 "use client";
-import React from "react";
+import React, { Suspense } from "react";
 import { Clock, Zap, ArrowRight, Brain, Hourglass, Check } from "lucide-react";
 import { useTranslations } from 'next-intl';
+import { useAttribution } from "@/hooks/useAttribution";
 
-const FinalCTA = () => {
+// Inner component that uses hooks
+const FinalCTAContent = () => {
   const t = useTranslations('finalCTA');
+  const { buildLemonSqueezyUrl } = useAttribution();
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
@@ -78,7 +81,7 @@ const FinalCTA = () => {
         {/* CTA Button */}
         <div className="text-center">
           <a
-            href="https://autotrim.lemonsqueezy.com/"
+            href={buildLemonSqueezyUrl()}
             className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-3xl transition-all duration-200"
           >
             {t('startNow')}
@@ -104,6 +107,39 @@ const FinalCTA = () => {
             <Check className="w-4 h-4 text-green-400" />
             <span>{t('badges.localPrivate')}</span>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Wrapper component with Suspense for useSearchParams
+const FinalCTA = () => {
+  return (
+    <Suspense fallback={<FinalCTAFallback />}>
+      <FinalCTAContent />
+    </Suspense>
+  );
+};
+
+// Fallback component while loading
+const FinalCTAFallback = () => {
+  return (
+    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+      <div className="relative max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="mb-4 flex justify-center">
+            <Brain className="w-14 h-14 text-white/90" />
+          </div>
+          <div className="h-12 bg-gray-700 rounded w-64 mx-auto mb-4 animate-pulse" />
+        </div>
+        <div className="space-y-6 max-w-2xl mx-auto mb-12">
+          <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
+            <div className="h-16 bg-gray-700 rounded animate-pulse" />
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div className="h-16 bg-gray-700 rounded-xl w-48 animate-pulse" />
         </div>
       </div>
     </section>

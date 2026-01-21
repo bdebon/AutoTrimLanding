@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "./FacebookPixel";
+import PostHogProvider from "./PostHogProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -158,7 +159,9 @@ export default function RootLayout({
         />
 
         <FacebookPixel />
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
         <Analytics />
 
         {/* Google Tag Manager - lazyOnload for better LCP */}

@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { Download as DownloadIcon } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import { trackDownload } from '@/lib/tracking';
+import { useAttribution } from '@/hooks/useAttribution';
 
 // Simple OS detection from user agent
 function detectOS() {
@@ -23,8 +24,10 @@ const assetLinks = {
     "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim-Setup.msi",
 };
 
-const Download = () => {
+// Inner component that uses hooks requiring Suspense
+const DownloadContent = () => {
   const t = useTranslations('download');
+  const { copyAttributionToClipboard } = useAttribution();
 
   // Start with a sensible default (mac is most common) to show content immediately
   const [os, setOs] = useState("mac");
@@ -32,8 +35,12 @@ const Download = () => {
     setOs(detectOS());
   }, []);
 
-  // Handle download click and track it
-  const handleDownloadClick = (platform) => {
+  // Handle download click: copy attribution to clipboard, then track
+  const handleDownloadClick = async (platform) => {
+    // Copy attribution code to clipboard BEFORE initiating download
+    await copyAttributionToClipboard();
+
+    // Track the download event
     trackDownload({
       platform: platform,
       downloadLink: platform === 'mac' ? assetLinks.mac : assetLinks.windows,
@@ -119,6 +126,36 @@ const Download = () => {
         <p className="text-sm text-gray-500 mt-6">
           {t('githubNote')}
         </p>
+      </div>
+    </section>
+  );
+};
+
+// Wrapper component with Suspense for useSearchParams
+const Download = () => {
+  return (
+    <Suspense fallback={<DownloadFallback />}>
+      <DownloadContent />
+    </Suspense>
+  );
+};
+
+// Fallback component while loading
+const DownloadFallback = () => {
+  return (
+    <section
+      id="download"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
+    >
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="mb-4 flex justify-center">
+          <DownloadIcon className="h-12 w-12 text-gray-900" aria-hidden="true" />
+        </div>
+        <div className="h-10 bg-gray-200 rounded w-64 mx-auto mb-4 animate-pulse" />
+        <div className="h-6 bg-gray-200 rounded w-96 mx-auto mb-8 animate-pulse" />
+        <div className="flex justify-center">
+          <div className="h-14 bg-gray-200 rounded-xl w-48 animate-pulse" />
+        </div>
       </div>
     </section>
   );
