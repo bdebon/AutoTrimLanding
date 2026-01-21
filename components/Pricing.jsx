@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef, Suspense } from "react";
 import {
   Check,
   Shield,
@@ -17,13 +17,16 @@ import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useAttribution } from "@/hooks/useAttribution";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Pricing = () => {
+// Inner component that uses hooks
+const PricingContent = () => {
   const t = useTranslations();
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'en';
+  const { buildLemonSqueezyUrl } = useAttribution();
   const rootRef = useRef(null);
   const titleRef = useRef(null);
 
@@ -459,7 +462,7 @@ const Pricing = () => {
                   >
                     {t("pricing.alreadyTried")}{" "}
                     <a
-                      href="https://autotrim.lemonsqueezy.com/"
+                      href={buildLemonSqueezyUrl()}
                       className="text-primary-700 underline hover:no-underline"
                     >
                       {t("pricing.buyLicense")}
@@ -511,6 +514,45 @@ const Pricing = () => {
         </div>
 
         {/* Bottom CTA removed to reduce redundancy with freemium flow */}
+      </div>
+    </section>
+  );
+};
+
+// Wrapper component with Suspense for useSearchParams
+const Pricing = () => {
+  return (
+    <Suspense fallback={<PricingFallback />}>
+      <PricingContent />
+    </Suspense>
+  );
+};
+
+// Fallback component while loading
+const PricingFallback = () => {
+  return (
+    <section
+      id="pricing"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <div className="h-12 bg-gray-200 rounded w-64 mx-auto mb-4 animate-pulse" />
+          <div className="h-6 bg-gray-200 rounded w-96 mx-auto animate-pulse" />
+        </div>
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+              <div className="h-8 bg-gray-200 rounded w-32 mx-auto mb-4 animate-pulse" />
+              <div className="h-12 bg-gray-200 rounded w-24 mx-auto mb-4 animate-pulse" />
+              <div className="space-y-3">
+                {[1, 2, 3, 4].map((j) => (
+                  <div key={j} className="h-5 bg-gray-200 rounded animate-pulse" />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

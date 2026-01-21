@@ -1,6 +1,8 @@
 /**
- * Tracking utilities for Meta Pixel and Google Tag Manager
+ * Tracking utilities for Meta Pixel, Google Tag Manager, and PostHog
  */
+
+import posthog from "posthog-js";
 
 // Declare global window types for tracking scripts
 declare global {
@@ -21,7 +23,7 @@ export interface DownloadTrackingParams {
 }
 
 /**
- * Track a download click event with both Meta Pixel and GTM
+ * Track a download click event with Meta Pixel, GTM, and PostHog
  */
 export const trackDownload = ({
   platform,
@@ -51,10 +53,23 @@ export const trackDownload = ({
       event_label: `AutoTrim ${platform === 'mac' ? 'macOS' : 'Windows'}`,
     });
   }
+
+  // PostHog event
+  if (typeof posthog !== 'undefined' && posthog.__loaded) {
+    posthog.capture('download_clicked', {
+      platform: platform,
+      download_link: downloadLink,
+      location: location,
+      $set: {
+        last_download_platform: platform,
+        last_download_date: new Date().toISOString(),
+      },
+    });
+  }
 };
 
 /**
- * Track a custom event
+ * Track a custom event (GTM + PostHog)
  */
 export const trackEvent = (
   eventName: string,
@@ -66,6 +81,11 @@ export const trackEvent = (
       event: eventName,
       ...params,
     });
+  }
+
+  // PostHog
+  if (typeof posthog !== 'undefined' && posthog.__loaded) {
+    posthog.capture(eventName, params);
   }
 };
 
