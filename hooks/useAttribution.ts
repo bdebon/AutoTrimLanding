@@ -19,6 +19,12 @@ export interface AttributionData {
 const STORAGE_KEY = "autotrim_attribution";
 const ATTRIBUTION_PREFIX = "ATR:";
 
+// Validate UTM parameters to prevent injection attacks
+const isValidUtmParam = (value: string | null): value is string => {
+  if (!value) return false;
+  return /^[a-zA-Z0-9_\-\.~]{1,200}$/.test(value);
+};
+
 /**
  * Hook to manage marketing attribution tracking.
  * Captures UTM parameters and PostHog visitor ID, stores them in localStorage,
@@ -49,19 +55,19 @@ export function useAttribution() {
         ts: Date.now(),
       };
 
-      if (utmSource) attributionData.s = utmSource;
-      if (utmMedium) attributionData.m = utmMedium;
-      if (utmCampaign) attributionData.c = utmCampaign;
-      if (utmContent) attributionData.t = utmContent;
-      if (utmTerm) attributionData.k = utmTerm;
+      if (isValidUtmParam(utmSource)) attributionData.s = utmSource;
+      if (isValidUtmParam(utmMedium)) attributionData.m = utmMedium;
+      if (isValidUtmParam(utmCampaign)) attributionData.c = utmCampaign;
+      if (isValidUtmParam(utmContent)) attributionData.t = utmContent;
+      if (isValidUtmParam(utmTerm)) attributionData.k = utmTerm;
 
-      // Capture referrer on first visit
+      // Capture referrer on first visit (hostname only for privacy)
       if (typeof document !== "undefined" && document.referrer) {
         try {
           const referrerUrl = new URL(document.referrer);
-          // Only store external referrers
+          // Only store external referrers - hostname only to avoid sensitive data
           if (referrerUrl.hostname !== window.location.hostname) {
-            attributionData.r = document.referrer;
+            attributionData.r = referrerUrl.hostname;
           }
         } catch {
           // Invalid referrer URL, skip it
