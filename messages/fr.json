@@ -239,7 +239,8 @@
     "oneClick": "Des séquences brutes à une timeline propre en un clic",
     "iframeTitle": "Démo AutoTrim",
     "noVideoId": "Définissez NEXT_PUBLIC_VIMEO_ID pour activer la vidéo démo.",
-    "playDemo": "Lire la démo vidéo"
+    "playDemo": "Lire la démo vidéo",
+    "closeVideo": "Fermer la vidéo"
   },
   "perksGrid": {
     "title": "Pourquoi les créateurs ne reviennent jamais en arrière.",

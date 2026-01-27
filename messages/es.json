@@ -239,7 +239,8 @@
     "oneClick": "De material en bruto a línea de tiempo limpia en un clic",
     "iframeTitle": "Demo de AutoTrim",
     "noVideoId": "Configura NEXT_PUBLIC_VIMEO_ID para habilitar el video demo.",
-    "playDemo": "Reproducir video de demostración"
+    "playDemo": "Reproducir video de demostración",
+    "closeVideo": "Cerrar video"
   },
   "perksGrid": {
     "title": "Por qué los creadores nunca vuelven atrás.",
