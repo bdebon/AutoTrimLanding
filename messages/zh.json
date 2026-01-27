@@ -239,7 +239,8 @@
     "oneClick": "从原始素材到干净时间线一键完成",
     "iframeTitle": "AutoTrim演示",
     "noVideoId": "设置NEXT_PUBLIC_VIMEO_ID以启用演示视频。",
-    "playDemo": "播放演示视频"
+    "playDemo": "播放演示视频",
+    "closeVideo": "关闭视频"
   },
   "perksGrid": {
     "title": "为什么创作者永不回头。",

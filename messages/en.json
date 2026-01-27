@@ -239,7 +239,8 @@
     "oneClick": "From raw footage to clean timeline in one click",
     "iframeTitle": "AutoTrim Demo",
     "noVideoId": "Set NEXT_PUBLIC_VIMEO_ID to enable the demo video.",
-    "playDemo": "Play demo video"
+    "playDemo": "Play demo video",
+    "closeVideo": "Close video"
   },
   "perksGrid": {
     "title": "Why creators never go back.",
