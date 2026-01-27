@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -28,11 +28,6 @@ export const metadata: Metadata = {
   authors: [{ name: "AutoTrim Team" }],
   creator: "AutoTrim",
   publisher: "AutoTrim",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   robots: {
     index: true,
     follow: true,
@@ -72,6 +67,12 @@ export const metadata: Metadata = {
     images: ["/assets/img/hero-screenshot.jpg"],
     creator: "@autotrimapp",
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
