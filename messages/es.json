@@ -15,7 +15,7 @@
     "description": "AutoTrim corta silencios, muletillas y repeticiones de todos tus clips a la vez — procesándolos en paralelo y exportando una línea de tiempo única y limpia lista para editar en Final Cut Pro, Premiere o Resolve.",
     "cta": {
       "main": "Prueba AutoTrim gratis",
-      "secondary": "Ver Demo de 60s"
+      "secondary": "Ver Demo de 90s"
     },
     "tagline": "Arrastra. Suelta. Listo.",
     "subTagline": "Porque tienes mejores cosas que hacer.",
@@ -222,7 +222,7 @@
       }
     },
     "conclusion": "Listo. Ve a tomar un café, o comienza tu siguiente tarea. Acabas de recuperar tu día.",
-    "demoCta": "Ver Demo de 60s",
+    "demoCta": "Ver Demo de 90s",
     "comparison": {
       "title": "Comparado con otras herramientas:",
       "autoTrim": "Con AutoTrim, sueltas todos tus archivos, se procesan en paralelo, y obtienes una línea de tiempo terminada.",
@@ -428,9 +428,21 @@
     }
   },
   "pricing": {
-    "title": "Elige Tu Plan",
+    "title": "Prueba gratis, paga cuando estés listo",
     "subtitle": "AutoTrim es gratis para probar. Paga solo cuando estés listo para exportar.",
     "plans": {
+      "free": {
+        "title": "Gratis",
+        "price": "$0",
+        "period": "para siempre",
+        "billing": "Sin pago requerido",
+        "features": [
+          "Proyectos ilimitados",
+          "Clips ilimitados",
+          "Previsualización completa"
+        ],
+        "limitation": "La exportación requiere una licencia"
+      },
       "monthly": {
         "title": "Mensual",
         "price": "$15",
@@ -474,12 +486,13 @@
       }
     },
     "downloadTrial": "Descargar Prueba Gratuita",
+    "downloadFree": "Descargar",
     "alreadyTried": "¿Ya lo probaste?",
     "buyLicense": "Comprar licencia",
     "benefits": {
-      "freeTry": "Gratis para probar — procesa tus archivos, previsualiza tus cortes.",
-      "payExport": "Paga solo para exportar tu XML o línea de tiempo final.",
-      "moneyBack": "Garantía de devolución de dinero de 14 días."
+      "freeTry": "Gratis para probar",
+      "payExport": "Paga solo para exportar",
+      "moneyBack": "Garantía de 14 días"
     },
     "team": {
       "title": "Paquete de Equipo (5 asientos)",

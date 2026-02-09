@@ -15,7 +15,7 @@
     "description": "AutoTrim cuts silences, filler words, and repetition from all your clips at once — processing them in parallel and exporting a single, clean timeline ready to edit in Final Cut Pro, Premiere, or Resolve.",
     "cta": {
       "main": "Try AutoTrim for free",
-      "secondary": "Watch a 60s Demo"
+      "secondary": "Watch a 90s Demo"
     },
     "tagline": "Drag. Drop. Done.",
     "subTagline": "Because you've got better things to do.",
@@ -222,7 +222,7 @@
       }
     },
     "conclusion": "Done. Go have a coffee, or start your next task. You just got your day back.",
-    "demoCta": "Watch a 60s Demo",
+    "demoCta": "Watch a 90s Demo",
     "comparison": {
       "title": "Compared to other tools:",
       "autoTrim": "With AutoTrim, you drop all your files in, they process in parallel, and you get one finished timeline.",
@@ -428,9 +428,21 @@
     }
   },
   "pricing": {
-    "title": "Choose Your Plan",
+    "title": "Try free, pay when you're ready",
     "subtitle": "AutoTrim is free to try. Pay only when you're ready to export.",
     "plans": {
+      "free": {
+        "title": "Free",
+        "price": "$0",
+        "period": "forever",
+        "billing": "No payment required",
+        "features": [
+          "Unlimited projects",
+          "Unlimited clips",
+          "Full preview"
+        ],
+        "limitation": "Export requires a license"
+      },
       "monthly": {
         "title": "Monthly",
         "price": "$15",
@@ -474,12 +486,13 @@
       }
     },
     "downloadTrial": "Download Free Trial",
+    "downloadFree": "Download",
     "alreadyTried": "Already tried?",
     "buyLicense": "Buy license",
     "benefits": {
-      "freeTry": "Free to try — process your files, preview your cuts.",
-      "payExport": "Pay only to export your final XML or timeline.",
-      "moneyBack": "14-day money-back guarantee."
+      "freeTry": "Free to try",
+      "payExport": "Pay only to export",
+      "moneyBack": "14-day guarantee"
     },
     "team": {
       "title": "Team Pack (5 seats)",

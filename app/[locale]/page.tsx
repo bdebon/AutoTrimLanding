@@ -8,7 +8,6 @@ import SocialProof from "@/components/SocialProof";
 import ProcessSteps from "@/components/ProcessSteps";
 import VideoDemo from "@/components/VideoDemo";
 import TimeSavings from "@/components/TimeSavings";
-import WhoIsItFor from "@/components/WhoIsItFor";
 import PerksGrid from "@/components/PerksGrid";
 import Testimonials from "@/components/Testimonials";
 import WhyFaster from "@/components/WhyFaster";
@@ -72,13 +71,12 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProof />
-        <ProcessSteps />
         <VideoDemo />
         <TimeSavings />
-        <WhoIsItFor />
-        <PerksGrid />
         <Testimonials />
+        <ProcessSteps />
         <WhyFaster />
+        <PerksGrid />
         <Pricing />
         <FAQ />
         <FinalCTA />

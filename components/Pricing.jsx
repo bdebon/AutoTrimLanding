@@ -1,5 +1,5 @@
 "use client";
-import React, { useLayoutEffect, useRef, Suspense } from "react";
+import React, { useLayoutEffect, useEffect, useRef, Suspense } from "react";
 import {
   Check,
   Shield,
@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAttribution } from "@/hooks/useAttribution";
+import posthog from "posthog-js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,15 @@ const PricingContent = () => {
   const { buildLemonSqueezyUrl } = useAttribution();
   const rootRef = useRef(null);
   const titleRef = useRef(null);
+
+  const freePlan = {
+    name: t("pricing.plans.free.title"),
+    price: t("pricing.plans.free.price"),
+    period: t("pricing.plans.free.period"),
+    description: t("pricing.plans.free.billing"),
+    features: t.raw("pricing.plans.free.features") || [],
+    limitation: t("pricing.plans.free.limitation"),
+  };
 
   const plans = [
     {
@@ -74,6 +84,9 @@ const PricingContent = () => {
       );
       const cards = gsap.utils.toArray(
         rootRef.current?.querySelectorAll('[data-animate="pricing-card"]')
+      );
+      const badges = gsap.utils.toArray(
+        rootRef.current?.querySelectorAll('[data-animate="pricing-badge-item"]')
       );
       const trustIndicators = gsap.utils.toArray(
         rootRef.current?.querySelectorAll('[data-animate="pricing-trust"]')
@@ -136,6 +149,25 @@ const PricingContent = () => {
             once: true,
           },
           delay: 0.3,
+        });
+      }
+
+      // Badges animation
+      if (badges.length) {
+        gsap.set(badges, { opacity: 0, y: 15, scale: 0.9 });
+        gsap.to(badges, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: "back.out(1.4)",
+          stagger: 0.1,
+          delay: 0.4,
+          scrollTrigger: {
+            trigger: rootRef.current,
+            start: "top 85%",
+            once: true,
+          },
         });
       }
 
@@ -342,6 +374,27 @@ const PricingContent = () => {
     };
   }, []);
 
+  // PostHog: track when pricing section becomes visible
+  useEffect(() => {
+    const section = rootRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            posthog.capture("pricing_viewed");
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       ref={rootRef}
@@ -363,7 +416,75 @@ const PricingContent = () => {
           </p>
         </div>
 
-        {/* Pricing cards grid */}
+        {/* Trust badges */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div
+            data-animate="pricing-badge-item"
+            className="flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2.5 rounded-full text-sm font-semibold border border-green-200"
+          >
+            <FlaskConical className="w-4 h-4" />
+            {t("pricing.benefits.freeTry")}
+          </div>
+          <div
+            data-animate="pricing-badge-item"
+            className="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2.5 rounded-full text-sm font-semibold border border-blue-200"
+          >
+            <Lock className="w-4 h-4" />
+            {t("pricing.benefits.payExport")}
+          </div>
+          <div
+            data-animate="pricing-badge-item"
+            className="flex items-center gap-2 bg-amber-50 text-amber-700 px-4 py-2.5 rounded-full text-sm font-semibold border border-amber-200"
+          >
+            <BadgeDollarSign className="w-4 h-4" />
+            {t("pricing.benefits.moneyBack")}
+          </div>
+        </div>
+
+        {/* Free plan banner */}
+        <div data-animate="pricing-card" className="mb-8 max-w-4xl mx-auto">
+          <div className="bg-white rounded-3xl shadow-xl border border-green-300 shadow-green-500/10 overflow-hidden">
+            <div className="p-6 sm:p-8 flex flex-col md:flex-row md:items-center gap-6">
+              <div className="text-center md:text-left md:min-w-[160px]">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <span className="inline-flex items-center gap-2">
+                    <Download className="w-5 h-5 text-green-600" />
+                    {freePlan.name}
+                  </span>
+                </h3>
+                <span className="text-4xl font-black text-gray-900">{freePlan.price}</span>
+                <p className="text-gray-600 mt-1">{freePlan.period}</p>
+                <p className="text-sm font-semibold text-green-600">{freePlan.description}</p>
+              </div>
+
+              <div className="flex-1 flex flex-wrap gap-x-6 gap-y-2 justify-center md:justify-start">
+                {freePlan.features.map((feature, idx) => (
+                  <span key={idx} className="flex items-center text-gray-700">
+                    <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
+                    {feature}
+                  </span>
+                ))}
+                {freePlan.limitation && (
+                  <span className="flex items-center text-gray-400">
+                    <Lock className="h-4 w-4 mr-2 flex-shrink-0" />
+                    {freePlan.limitation}
+                  </span>
+                )}
+              </div>
+
+              <div className="text-center md:text-right shrink-0">
+                <a
+                  href={`/${currentLocale}/download`}
+                  className="inline-block px-8 py-4 rounded-xl font-bold text-lg shadow-lg bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 hover:shadow-xl"
+                >
+                  {t("pricing.downloadFree")}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Paid plans grid */}
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {plans.map((plan, index) => (
             <div key={index} className="relative" data-animate="pricing-card">
@@ -474,43 +595,14 @@ const PricingContent = () => {
           ))}
         </div>
 
-        {/* Trial & Trust indicators */}
-        <div className="mt-16 text-center space-y-4 max-w-2xl mx-auto">
-          <div
+        {/* Bottom note */}
+        <div className="mt-12 text-center">
+          <p
             data-animate="pricing-trust"
-            className="flex items-center justify-center gap-2 text-gray-600"
+            className="text-lg text-gray-700 font-semibold"
           >
-            <FlaskConical className="w-6 h-6" />
-            <p className="text-lg">
-              {t("pricing.benefits.freeTry")}
-            </p>
-          </div>
-          <div
-            data-animate="pricing-trust"
-            className="flex items-center justify-center gap-2 text-gray-600"
-          >
-            <Lock className="w-6 h-6" />
-            <p className="text-lg">
-              {t("pricing.benefits.payExport")}
-            </p>
-          </div>
-          <div
-            data-animate="pricing-trust"
-            className="pt-4 border-t border-gray-200"
-          >
-            <p className="text-lg text-gray-700 font-medium inline-flex items-center gap-2">
-              <BadgeDollarSign className="w-5 h-5 text-green-600" />
-              {t("pricing.benefits.moneyBack")}
-            </p>
-          </div>
-          <div
-            data-animate="pricing-trust"
-            className="pt-4"
-          >
-            <p className="text-lg text-gray-700 font-semibold">
-              {t("pricing.note")}
-            </p>
-          </div>
+            {t("pricing.note")}
+          </p>
         </div>
 
         {/* Bottom CTA removed to reduce redundancy with freemium flow */}

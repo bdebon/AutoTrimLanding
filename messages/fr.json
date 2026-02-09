@@ -15,7 +15,7 @@
     "description": "AutoTrim supprime les silences, les mots de remplissage et les répétitions de tous vos clips en une fois — en les traitant en parallèle et en exportant une timeline propre et unique, prête à monter dans Final Cut Pro, Premiere ou Resolve.",
     "cta": {
       "main": "Essayer AutoTrim gratuitement",
-      "secondary": "Voir la démo de 60s"
+      "secondary": "Voir la démo de 90s"
     },
     "tagline": "Glisser. Déposer. Terminé.",
     "subTagline": "Parce que vous avez mieux à faire.",
@@ -222,7 +222,7 @@
       }
     },
     "conclusion": "Terminé. Allez prendre un café, ou commencez votre prochaine tâche. Vous venez de récupérer votre journée.",
-    "demoCta": "Voir la démo de 60s",
+    "demoCta": "Voir la démo de 90s",
     "comparison": {
       "title": "Comparé aux autres outils :",
       "autoTrim": "Avec AutoTrim, vous déposez tous vos fichiers, ils se traitent en parallèle, et vous obtenez une timeline finie.",
@@ -428,9 +428,21 @@
     }
   },
   "pricing": {
-    "title": "Choisissez votre forfait",
+    "title": "Essayez gratuitement, payez quand vous êtes prêt",
     "subtitle": "AutoTrim est gratuit à essayer. Payez seulement quand vous êtes prêt à exporter.",
     "plans": {
+      "free": {
+        "title": "Gratuit",
+        "price": "$0",
+        "period": "pour toujours",
+        "billing": "Aucun paiement requis",
+        "features": [
+          "Projets illimités",
+          "Clips illimités",
+          "Prévisualisation complète"
+        ],
+        "limitation": "L'export nécessite une licence"
+      },
       "monthly": {
         "title": "Mensuel",
         "price": "$15",
@@ -474,12 +486,13 @@
       }
     },
     "downloadTrial": "Télécharger l'essai gratuit",
+    "downloadFree": "Télécharger",
     "alreadyTried": "Déjà essayé ?",
     "buyLicense": "Acheter la licence",
     "benefits": {
-      "freeTry": "Gratuit à essayer — traitez vos fichiers, prévisualisez vos coupes.",
-      "payExport": "Payez seulement pour exporter votre XML ou timeline finale.",
-      "moneyBack": "Garantie remboursement 14 jours."
+      "freeTry": "Gratuit à essayer",
+      "payExport": "Payez seulement pour exporter",
+      "moneyBack": "Garantie 14 jours"
     },
     "team": {
       "title": "Pack équipe (5 sièges)",

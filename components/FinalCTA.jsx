@@ -2,12 +2,13 @@
 import React, { Suspense } from "react";
 import { Clock, Zap, ArrowRight, Brain, Hourglass, Check } from "lucide-react";
 import { useTranslations } from 'next-intl';
-import { useAttribution } from "@/hooks/useAttribution";
+import { usePathname } from "next/navigation";
 
 // Inner component that uses hooks
 const FinalCTAContent = () => {
   const t = useTranslations('finalCTA');
-  const { buildLemonSqueezyUrl } = useAttribution();
+  const pathname = usePathname();
+  const currentLocale = pathname.split('/')[1] || 'en';
 
   return (
     <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
@@ -81,7 +82,7 @@ const FinalCTAContent = () => {
         {/* CTA Button */}
         <div className="text-center">
           <a
-            href={buildLemonSqueezyUrl()}
+            href={`/${currentLocale}/download`}
             className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-3xl transition-all duration-200"
           >
             {t('startNow')}

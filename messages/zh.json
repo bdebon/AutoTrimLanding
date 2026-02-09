@@ -15,7 +15,7 @@
     "description": "AutoTrim一次性从所有视频片段中切除静音、填充词和重复内容——并行处理并导出单个干净的时间线，可直接在Final Cut Pro、Premiere或Resolve中编辑。",
     "cta": {
       "main": "免费试用AutoTrim",
-      "secondary": "观看60秒演示"
+      "secondary": "观看90秒演示"
     },
     "tagline": "拖拽。放置。完成。",
     "subTagline": "因为你有更重要的事情要做。",
@@ -222,7 +222,7 @@
       }
     },
     "conclusion": "完成。去喝杯咖啡，或开始下一个任务。您刚刚夺回了一天的时间。",
-    "demoCta": "观看60秒演示",
+    "demoCta": "观看90秒演示",
     "comparison": {
       "title": "与其他工具相比：",
       "autoTrim": "使用AutoTrim，您放入所有文件，它们并行处理，您得到一个完成的时间线。",
@@ -428,9 +428,21 @@
     }
   },
   "pricing": {
-    "title": "选择您的方案",
+    "title": "免费试用，准备好再付费",
     "subtitle": "AutoTrim免费试用。只有在准备导出时才付费。",
     "plans": {
+      "free": {
+        "title": "免费",
+        "price": "$0",
+        "period": "永久",
+        "billing": "无需付费",
+        "features": [
+          "无限项目",
+          "无限片段",
+          "完整预览"
+        ],
+        "limitation": "导出需要许可证"
+      },
       "monthly": {
         "title": "月度",
         "price": "$15",
@@ -474,12 +486,13 @@
       }
     },
     "downloadTrial": "下载免费试用",
+    "downloadFree": "下载",
     "alreadyTried": "已经试过了？",
     "buyLicense": "购买许可",
     "benefits": {
-      "freeTry": "免费试用——处理文件，预览剪切。",
-      "payExport": "只为导出最终XML或时间线付费。",
-      "moneyBack": "14天退款保证。"
+      "freeTry": "免费试用",
+      "payExport": "只为导出付费",
+      "moneyBack": "14天退款保证"
     },
     "team": {
       "title": "团队包（5个席位）",
