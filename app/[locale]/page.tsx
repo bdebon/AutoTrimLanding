@@ -50,13 +50,67 @@ export default function Home() {
     name: "AutoTrim",
     alternateName: "Auto Trim",
     description:
-      "Auto trim and remove silence, filler words, and hesitations from videos automatically. Speed up your editing workflow with parallel processing.",
+      "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve.",
     image: [`${siteUrl}/assets/img/hero-screenshot.jpg`],
     brand: {
       "@type": "Brand",
       name: "AutoTrim",
     },
     url: siteUrl,
+  };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Does AutoTrim work on Mac and Windows?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. AutoTrim runs on macOS and Windows thanks to Rust & Tauri.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does AutoTrim work with Final Cut Pro, Premiere, and DaVinci Resolve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! AutoTrim exports XML/FCPXML timelines compatible with all major NLEs including Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do my files leave my computer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. All processing happens locally on your device. No cloud uploads, no data leaving your machine.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can AutoTrim remove filler words and hesitations?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, AutoTrim can detect and remove filler words and hesitations using AI. This feature is available but still experimental — results may vary depending on language and diction.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I process multiple clips at once?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Parallel multi-clip processing is built-in. Drop all your clips at once and get one clean, assembled timeline — no need to process clips one by one.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does AutoTrim support audio files?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! AutoTrim works with both video and audio files. You can even drop video and audio separately — if they match, AutoTrim syncs them automatically and exports both aligned in your timeline.",
+        },
+      },
+    ],
   };
   return (
     <div className="min-h-screen">
@@ -65,6 +119,12 @@ export default function Home() {
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Script
+        id="ld-faq"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Header />
       <main>

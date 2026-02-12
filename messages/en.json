@@ -643,9 +643,9 @@
     }
   },
   "metadata": {
-    "title": "AutoTrim – Auto Trim Silence, Filler Words & Hesitations from Videos",
-    "description": "Automatically remove silence, filler words, and hesitations from videos with AutoTrim. Auto trim and cut unwanted pauses in seconds. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve. Try it free today!",
-    "keywords": "auto trim, automatic trimming, silence removal, remove filler words, cut hesitations, video editing, automatic editing, remove silence from video, cut silence video, um ah removal, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
+    "title": "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
+    "description": "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local, no cloud. Try free.",
+    "keywords": "auto trim, remove silence from video, automatic silence removal, cut filler words, video editing automation, trim silence video, autotrim, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
     "download": {
       "title": "Download AutoTrim - Free Trial | Auto Trim Video Silence Removal",
       "description": "Download AutoTrim for macOS and Windows. Auto trim silence, filler words and hesitations from your videos instantly. Free trial available. Compatible with Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
@@ -655,6 +655,21 @@
       "title": "AutoTrim Pricing – Plans & Licenses",
       "description": "AutoTrim pricing plans: free trial, annual license, and lifetime license. Try AutoTrim for free, pay only when you're ready to export. 14-day money-back guarantee.",
       "keywords": "autotrim pricing, autotrim license, autotrim cost, autotrim free trial, video editing software pricing, silence removal tool price"
+    },
+    "compareTimebolt": {
+      "title": "Best TimeBolt Alternative (2026) – AutoTrim | 48x Faster, No Subscription",
+      "description": "Looking for a TimeBolt alternative? AutoTrim processes all your clips in parallel — 48x faster. No subscription, free trial. Works with Premiere, Final Cut & DaVinci Resolve.",
+      "keywords": "TimeBolt alternative, AutoTrim vs TimeBolt, timebolt replacement, video silence removal, parallel video processing, no subscription video editor"
+    },
+    "compareAutocut": {
+      "title": "Best AutoCut Alternative (2026) – AutoTrim | No Plugin, No Subscription",
+      "description": "Looking for an AutoCut alternative? AutoTrim is a standalone app — no plugin needed. Local AI processing, no subscription fees. Free trial for Mac & Windows.",
+      "keywords": "AutoCut alternative, AutoTrim vs AutoCut, autocut replacement, standalone video editor, silence removal without plugin, local AI video editing"
+    },
+    "compareDescript": {
+      "title": "Best Descript Alternative (2026) – AutoTrim | Fast Local Processing, No Cloud",
+      "description": "Looking for a Descript alternative? AutoTrim processes videos locally in seconds — no cloud uploads, no monthly fees. Free trial for Mac & Windows.",
+      "keywords": "Descript alternative, AutoTrim vs Descript, descript replacement, local video processing, no cloud video editor, offline silence removal"
     }
   },
   "footer": {

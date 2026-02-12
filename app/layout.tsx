@@ -21,10 +21,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "AutoTrim – Auto Trim Silence, Filler Words & Hesitations from Videos",
+  title: "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
   description:
-    "Automatically remove silence, filler words, and hesitations from videos with AutoTrim. Auto trim and cut unwanted pauses in seconds. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve. Try it free today!",
-  keywords: "auto trim, automatic trimming, silence removal, remove filler words, cut hesitations, video editing, automatic editing, remove silence from video, cut silence video, um ah removal, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
+    "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local, no cloud. Try free.",
+  keywords: "auto trim, remove silence from video, automatic silence removal, cut filler words, video editing automation, trim silence video, autotrim, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
   authors: [{ name: "AutoTrim Team" }],
   creator: "AutoTrim",
   publisher: "AutoTrim",
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "AutoTrim – Auto Trim Silence, Filler Words & Hesitations from Videos",
+    title: "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
     description:
-      "Automatically remove silence, filler words, and hesitations from videos. Auto trim and cut unwanted pauses in seconds. Speed up your video editing workflow by 10x. Works with Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
+      "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local, no cloud. Try free.",
     url: "/",
     siteName: "AutoTrim",
     images: [
@@ -66,9 +66,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AutoTrim – Auto Trim Silence, Filler Words & Hesitations",
+    title: "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
     description:
-      "Automatically remove silence, filler words, and hesitations from videos. Auto trim and cut unwanted pauses in seconds. Speed up your video editing workflow by 10x.",
+      "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline. 100% local, no cloud. Try free.",
     images: ["/assets/img/hero-screenshot.jpg"],
     creator: "@autotrimapp",
   },
@@ -133,13 +133,33 @@ export default function RootLayout({
               "alternateName": "Auto Trim",
               "applicationCategory": "MultimediaApplication",
               "operatingSystem": "macOS, Windows",
-              "description": "Automatically remove silence, filler words, and hesitations from videos. Auto trim and cut unwanted pauses in seconds with parallel processing.",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "description": "Free trial with one-time purchase for lifetime license"
+              "description": "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local processing.",
+              "url": "https://www.autotrim.app",
+              "downloadUrl": "https://www.autotrim.app/en/download",
+              "screenshot": "https://www.autotrim.app/assets/img/hero-screenshot.jpg",
+              "softwareVersion": "1.0",
+              "datePublished": "2025-01-01",
+              "author": {
+                "@type": "Person",
+                "name": "Benjamin Code",
+                "url": "https://www.youtube.com/@BenjaminCode"
               },
+              "offers": [
+                {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD",
+                  "description": "Free trial — process and preview your clips, pay only to export",
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": "49",
+                  "priceCurrency": "USD",
+                  "description": "Lifetime license — one-time payment, all future updates included",
+                  "availability": "https://schema.org/InStock"
+                }
+              ],
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "5",
@@ -147,12 +167,13 @@ export default function RootLayout({
               },
               "featureList": [
                 "Automatic silence removal",
-                "Remove filler words and hesitations",
-                "Auto trim videos",
-                "Parallel video processing",
-                "XML timeline export",
+                "Remove filler words and hesitations with AI",
+                "Parallel multi-clip processing",
+                "Single clean XML timeline export",
                 "Works with Final Cut Pro, Adobe Premiere, DaVinci Resolve",
-                "Local processing - no cloud uploads"
+                "100% local processing — no cloud uploads",
+                "Audio/video sync detection",
+                "Customizable silence thresholds"
               ]
             })
           }}

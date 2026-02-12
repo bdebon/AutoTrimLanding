@@ -643,9 +643,9 @@
     }
   },
   "metadata": {
-    "title": "AutoTrim – Coupez instantanément les silences dans vos vidéos | Montage Vidéo Automatique",
-    "description": "Supprimez automatiquement les silences de vos vidéos avec AutoTrim. Accélérez votre workflow de montage vidéo par 10. Compatible avec Final Cut Pro, Adobe Premiere et DaVinci Resolve. Essayez gratuitement !",
-    "keywords": "montage vidéo, suppression silence, montage automatique, Final Cut Pro, Adobe Premiere, DaVinci Resolve, production vidéo, création contenu",
+    "title": "AutoTrim – Supprimez les silences de vos vidéos automatiquement | Essai gratuit",
+    "description": "AutoTrim supprime les silences, mots de remplissage et hésitations de vos vidéos en quelques secondes. Déposez vos clips, récupérez une timeline propre pour Premiere, Final Cut ou Resolve. 100% local. Essai gratuit.",
+    "keywords": "supprimer silence vidéo, montage vidéo automatique, couper silences, autotrim, suppression silence, montage automatique, Final Cut Pro, Adobe Premiere, DaVinci Resolve, production vidéo, création contenu",
     "download": {
       "title": "Télécharger AutoTrim - Essai Gratuit | Suppression Automatique des Silences",
       "description": "Téléchargez AutoTrim pour macOS et commencez à couper les silences de vos vidéos instantanément. Essai gratuit disponible. Compatible avec Final Cut Pro, Adobe Premiere et DaVinci Resolve.",
@@ -655,6 +655,21 @@
       "title": "Tarifs AutoTrim – Plans & Licences",
       "description": "Tarifs AutoTrim : essai gratuit, licence annuelle et licence à vie. Essayez AutoTrim gratuitement, payez uniquement quand vous êtes prêt à exporter. Garantie satisfait ou remboursé 14 jours.",
       "keywords": "autotrim tarif, autotrim prix, autotrim licence, autotrim essai gratuit, logiciel montage vidéo prix, outil suppression silence tarif"
+    },
+    "compareTimebolt": {
+      "title": "Meilleure alternative à TimeBolt (2026) – AutoTrim | 48x plus rapide, sans abonnement",
+      "description": "Vous cherchez une alternative à TimeBolt ? AutoTrim traite tous vos clips en parallèle — 48x plus rapide. Sans abonnement, essai gratuit. Compatible Premiere, Final Cut et DaVinci Resolve.",
+      "keywords": "alternative TimeBolt, AutoTrim vs TimeBolt, remplacer TimeBolt, suppression silence vidéo, traitement parallèle vidéo, montage vidéo sans abonnement"
+    },
+    "compareAutocut": {
+      "title": "Meilleure alternative à AutoCut (2026) – AutoTrim | Sans plugin, sans abonnement",
+      "description": "Vous cherchez une alternative à AutoCut ? AutoTrim est une application standalone — pas besoin de plugin. IA locale, sans abonnement. Essai gratuit Mac & Windows.",
+      "keywords": "alternative AutoCut, AutoTrim vs AutoCut, remplacer AutoCut, éditeur vidéo standalone, suppression silence sans plugin, montage vidéo IA locale"
+    },
+    "compareDescript": {
+      "title": "Meilleure alternative à Descript (2026) – AutoTrim | Traitement local, sans cloud",
+      "description": "Vous cherchez une alternative à Descript ? AutoTrim traite vos vidéos localement en quelques secondes. Aucun upload cloud, aucun abonnement mensuel. Essai gratuit Mac & Windows.",
+      "keywords": "alternative Descript, AutoTrim vs Descript, remplacer Descript, traitement vidéo local, éditeur vidéo sans cloud, suppression silence hors ligne"
     }
   },
   "footer": {

@@ -643,9 +643,9 @@
     }
   },
   "metadata": {
-    "title": "AutoTrim – 即时剪切视频中的静音 | 自动视频编辑",
-    "description": "使用AutoTrim自动删除视频中的静音。将您的视频编辑工作流程加快10倍。兼容Final Cut Pro、Adobe Premiere和DaVinci Resolve。今天免费试用！",
-    "keywords": "视频编辑, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作",
+    "title": "AutoTrim – 自动删除视频静音 | 免费试用",
+    "description": "AutoTrim在几秒内删除视频中的静音、填充词和犹豫。拖放所有片段，获得一个干净的时间线，适用于Premiere、Final Cut或Resolve。100%本地处理。免费试用。",
+    "keywords": "删除视频静音, 自动视频编辑, 剪切静音, autotrim, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作",
     "download": {
       "title": "下载AutoTrim - 免费试用 | 自动静音删除",
       "description": "下载适用于macOS的AutoTrim，立即开始剪切视频中的静音。提供免费试用。兼容Final Cut Pro、Adobe Premiere和DaVinci Resolve。",
@@ -655,6 +655,21 @@
       "title": "AutoTrim 价格 – 计划与许可证",
       "description": "AutoTrim定价方案：免费试用、年度许可和终身许可。免费试用AutoTrim，准备好导出时再付款。14天退款保证。",
       "keywords": "autotrim价格, autotrim许可证, autotrim费用, autotrim免费试用, 视频编辑软件价格, 静音删除工具价格"
+    },
+    "compareTimebolt": {
+      "title": "最佳TimeBolt替代品 (2026) – AutoTrim | 快48倍，无需订阅",
+      "description": "正在寻找TimeBolt替代品？AutoTrim并行处理所有片段——快48倍。无需订阅，免费试用。兼容Premiere、Final Cut和DaVinci Resolve。",
+      "keywords": "TimeBolt替代品, AutoTrim vs TimeBolt, 替换TimeBolt, 视频静音删除, 并行视频处理, 无订阅视频编辑器"
+    },
+    "compareAutocut": {
+      "title": "最佳AutoCut替代品 (2026) – AutoTrim | 无需插件，无需订阅",
+      "description": "正在寻找AutoCut替代品？AutoTrim是独立应用——无需插件。本地AI处理，无需订阅。Mac和Windows免费试用。",
+      "keywords": "AutoCut替代品, AutoTrim vs AutoCut, 替换AutoCut, 独立视频编辑器, 无插件静音删除, 本地AI视频编辑"
+    },
+    "compareDescript": {
+      "title": "最佳Descript替代品 (2026) – AutoTrim | 本地处理，无需云端",
+      "description": "正在寻找Descript替代品？AutoTrim在几秒内本地处理视频。无需云上传，无月费。Mac和Windows免费试用。",
+      "keywords": "Descript替代品, AutoTrim vs Descript, 替换Descript, 本地视频处理, 无云视频编辑器, 离线静音删除"
     }
   },
   "footer": {
