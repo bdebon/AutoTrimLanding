@@ -54,6 +54,14 @@
     "buttons": {
       "macOS": "macOS",
       "windows": "Windows"
+    },
+    "mobile": {
+      "desktopOnly": "AutoTrim是一款适用于macOS和Windows的桌面应用程序，不支持移动设备。",
+      "sendReminder": "给自己发送提醒，以便在电脑上下载AutoTrim：",
+      "emailSubject": "在电脑上下载AutoTrim",
+      "emailBody": "你好！这是在电脑上下载AutoTrim的链接：\n\nhttps://autotrim.app/zh/download\n\nAutoTrim可以自动删除视频中的静音、填充词和犹豫停顿。",
+      "emailButton": "给自己发送提醒",
+      "orVisit": "或在电脑上访问此页面："
     }
   },
   "whyAutoTrim": {

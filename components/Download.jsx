@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { Download as DownloadIcon } from "lucide-react";
+import { Download as DownloadIcon, Monitor, Mail } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import { trackDownload } from '@/lib/tracking';
 import { useAttribution } from '@/hooks/useAttribution';
@@ -9,7 +9,10 @@ import { useAttribution } from '@/hooks/useAttribution';
 function detectOS() {
   if (typeof window === 'undefined') return "mac"; // Default to mac for SSR
   const ua = navigator.userAgent || navigator.vendor || window.opera;
-  if (/windows phone/i.test(ua)) return "windows";
+  // Mobile detection first
+  if (/android/i.test(ua)) return "mobile";
+  if (/iPhone|iPad|iPod/i.test(ua)) return "mobile";
+  if (/windows phone/i.test(ua)) return "mobile";
   if (/win/i.test(ua)) return "windows";
   if (/macintosh|mac os x/i.test(ua)) return "mac";
   // No Linux distribution supported for now
@@ -56,6 +59,49 @@ const DownloadContent = () => {
       : os === "windows"
       ? t('windows')
       : t('chooseOS');
+
+  // Mobile: show desktop-only message
+  if (os === "mobile") {
+    return (
+      <section
+        id="download"
+        className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
+      >
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-4 flex justify-center">
+            <Monitor className="h-12 w-12 text-gray-900" aria-hidden="true" />
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            {t('title')}
+          </h1>
+          <p className="text-lg text-gray-600 mb-4">
+            {t('mobile.desktopOnly')}
+          </p>
+
+          <div className="max-w-md mx-auto mt-8 bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
+            <Mail className="h-8 w-8 text-primary-500 mx-auto mb-3" aria-hidden="true" />
+            <p className="text-gray-700 font-medium mb-4">
+              {t('mobile.sendReminder')}
+            </p>
+            <a
+              href={`mailto:?subject=${encodeURIComponent(t('mobile.emailSubject'))}&body=${encodeURIComponent(t('mobile.emailBody'))}`}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg"
+            >
+              <Mail className="h-5 w-5" />
+              <span>{t('mobile.emailButton')}</span>
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-500">
+            <p>{t('mobile.orVisit')}</p>
+            <code className="bg-gray-100 px-3 py-1 rounded-lg text-primary-600 font-mono">
+              autotrim.app
+            </code>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section

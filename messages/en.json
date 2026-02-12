@@ -54,6 +54,14 @@
     "buttons": {
       "macOS": "macOS",
       "windows": "Windows"
+    },
+    "mobile": {
+      "desktopOnly": "AutoTrim is a desktop application for macOS and Windows. It's not available on mobile devices.",
+      "sendReminder": "Send yourself a reminder to download AutoTrim on your computer:",
+      "emailSubject": "Download AutoTrim on your computer",
+      "emailBody": "Hey! Here's the link to download AutoTrim on your computer:\n\nhttps://autotrim.app/en/download\n\nAutoTrim automatically removes silences, filler words and hesitations from your videos.",
+      "emailButton": "Send myself a reminder",
+      "orVisit": "Or visit this page from your computer:"
     }
   },
   "whyAutoTrim": {
