@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useAttribution } from "@/hooks/useAttribution";
+import { trackEvent } from "@/lib/tracking";
 import posthog from "posthog-js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +43,7 @@ const PricingContent = () => {
 
   const plans = [
     {
+      id: "monthly",
       name: t("pricing.plans.monthly.title"),
       icon: Calendar,
       price: t("pricing.plans.monthly.price"),
@@ -51,6 +53,7 @@ const PricingContent = () => {
       popular: false,
     },
     {
+      id: "annual",
       name: t("pricing.plans.annual.title"),
       icon: Gem,
       price: t("pricing.plans.annual.price"),
@@ -60,6 +63,7 @@ const PricingContent = () => {
       popular: false,
     },
     {
+      id: "lifetime",
       name: t("pricing.plans.lifetime.title"),
       icon: Crown,
       price: t("pricing.plans.lifetime.price"),
@@ -475,6 +479,7 @@ const PricingContent = () => {
               <div className="text-center md:text-right shrink-0">
                 <a
                   href={`/${currentLocale}/download`}
+                  onClick={() => trackEvent("pricing_cta_clicked", { plan: "free", action: "download_trial" })}
                   className="inline-block px-8 py-4 rounded-xl font-bold text-lg shadow-lg bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 hover:shadow-xl"
                 >
                   {t("pricing.downloadFree")}
@@ -569,6 +574,7 @@ const PricingContent = () => {
                   <a
                     data-animate="pricing-button"
                     href={`/${currentLocale}/download`}
+                    onClick={() => trackEvent("pricing_cta_clicked", { plan: plan.id, action: "download_trial" })}
                     className={`block w-full text-center py-4 rounded-xl font-bold text-lg shadow-lg ${
                       plan.popular
                         ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 hover:shadow-xl"
@@ -584,6 +590,7 @@ const PricingContent = () => {
                     {t("pricing.alreadyTried")}{" "}
                     <a
                       href={buildLemonSqueezyUrl()}
+                      onClick={() => trackEvent("pricing_cta_clicked", { plan: plan.id, action: "buy_license" })}
                       className="text-primary-700 underline hover:no-underline"
                     >
                       {t("pricing.buyLicense")}

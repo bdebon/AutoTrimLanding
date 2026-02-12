@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useRef, useLayoutEffect } from "react";
+import React, { useState, useRef, useLayoutEffect, useEffect } from "react";
 import {
   Plus,
   HelpCircle,
 } from "lucide-react";
 import { gsap } from "gsap";
 import { useTranslations } from "next-intl";
+import { trackEvent } from "@/lib/tracking";
 
 const FAQ = () => {
   const t = useTranslations();
@@ -35,9 +36,33 @@ const FAQ = () => {
     });
   }, []);
 
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          trackEvent("section_viewed", { section: "faq" });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const toggleFAQ = (index) => {
     const isOpening = openIndex !== index;
     const prevIndex = openIndex;
+
+    trackEvent("faq_toggled", {
+      question_index: index,
+      question: faqs[index].q,
+      action: isOpening ? "open" : "close",
+    });
 
     // Close previously open item
     if (prevIndex !== null && contentRefs.current[prevIndex]) {
@@ -63,7 +88,7 @@ const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={sectionRef} id="faq" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center p-3 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-4">

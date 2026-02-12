@@ -1,17 +1,35 @@
 "use client";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { Clock, Zap, ArrowRight, Brain, Hourglass, Check } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/tracking";
 
 // Inner component that uses hooks
 const FinalCTAContent = () => {
   const t = useTranslations('finalCTA');
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'en';
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          trackEvent("section_viewed", { section: "final_cta" });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
@@ -83,6 +101,7 @@ const FinalCTAContent = () => {
         <div className="text-center">
           <a
             href={`/${currentLocale}/download`}
+            onClick={() => trackEvent("cta_clicked", { location: "final_cta", type: "download" })}
             className="group inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-bold text-lg rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-3xl transition-all duration-200"
           >
             {t('startNow')}

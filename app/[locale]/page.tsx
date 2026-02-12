@@ -11,7 +11,6 @@ import TimeSavings from "@/components/TimeSavings";
 import PerksGrid from "@/components/PerksGrid";
 import Testimonials from "@/components/Testimonials";
 import WhyFaster from "@/components/WhyFaster";
-import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 
@@ -77,7 +76,6 @@ export default function Home() {
         <ProcessSteps />
         <WhyFaster />
         <PerksGrid />
-        <Pricing />
         <FAQ />
         <FinalCTA />
       </main>

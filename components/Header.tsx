@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { trackEvent } from '@/lib/tracking';
 
 const Header = () => {
   const t = useTranslations();
@@ -26,7 +27,6 @@ const Header = () => {
   const navLinks = [
     { href: '/#features', label: t('nav.features') },
     { href: '/#how-it-works', label: t('nav.howItWorks') },
-    { href: '/#pricing', label: t('nav.pricing') },
     { href: '/#faq', label: t('nav.faq') },
   ];
 
@@ -67,6 +67,7 @@ const Header = () => {
               ))}
               <Link
                 href={`/${currentLocale}/download`}
+                onClick={() => trackEvent('cta_clicked', { location: 'header', type: 'download' })}
                 className="ml-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm font-medium"
               >
                 {t('nav.downloadBeta')}
@@ -107,7 +108,7 @@ const Header = () => {
             <Link
               href={`/${currentLocale}/download`}
               className="block px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-base font-medium text-center"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => { trackEvent('cta_clicked', { location: 'header', type: 'download' }); setIsMobileMenuOpen(false); }}
             >
               {t('nav.downloadBeta')}
             </Link>

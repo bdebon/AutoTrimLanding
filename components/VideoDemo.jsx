@@ -1,23 +1,46 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Play, X, Film } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import OptimizedImage from "./OptimizedImage";
+import { trackEvent } from "@/lib/tracking";
 
 const VideoDemo = () => {
   const t = useTranslations('videoDemo');
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Configure your Vimeo video ID via env: NEXT_PUBLIC_VIMEO_ID
   const VIMEO_ID = process.env.NEXT_PUBLIC_VIMEO_ID || '';
+  const sectionRef = useRef(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+    trackEvent("demo_video_played");
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    trackEvent("demo_video_closed");
+  };
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          trackEvent("section_viewed", { section: "demo" });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <>
       {/* Demo Section */}
-      <div id="demo" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white">
+      <div ref={sectionRef} id="demo" className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 via-gray-900 to-black text-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="mb-4 flex justify-center">

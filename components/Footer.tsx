@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { Globe } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { trackEvent } from "@/lib/tracking";
 
 const Footer = () => {
   const t = useTranslations();
@@ -15,6 +16,7 @@ const Footer = () => {
   const currentLocale = pathname.split("/")[1] || "en";
 
   const handleLanguageChange = (newLocale: string) => {
+    trackEvent("language_changed", { from_locale: currentLocale, to_locale: newLocale });
     // Replace the locale in the current path
     const segments = pathname.split("/");
     segments[1] = newLocale;
@@ -90,12 +92,12 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#pricing"
+                <Link
+                  href={`/${currentLocale}/pricing`}
                   className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
                 >
                   {t("footer.resources.pricing")}
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -177,6 +179,7 @@ const Footer = () => {
               <p className="text-gray-600 text-sm">{t("footer.cta.ready")}</p>
               <Link
                 href={`/${currentLocale}/download`}
+                onClick={() => trackEvent("cta_clicked", { location: "footer", type: "download" })}
                 className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm font-medium"
               >
                 {t("footer.cta.button")}

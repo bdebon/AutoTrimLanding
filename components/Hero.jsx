@@ -13,6 +13,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import OptimizedImage from "./OptimizedImage";
 import dynamic from "next/dynamic";
+import { trackEvent } from "@/lib/tracking";
 
 // Dynamic import with ssr: false to avoid loading Three.js on server
 // and defer loading until after initial render
@@ -377,7 +378,7 @@ const Hero = () => {
               className="w-4 h-4 text-primary-600"
             />
             <span className="text-sm font-medium text-primary-700">
-              Save 96% of your editing time
+              {t("hero.badge")}
             </span>
           </div>
 
@@ -413,6 +414,7 @@ const Hero = () => {
             <a
               data-animate="hero-button"
               href={`/${currentLocale}/download`}
+              onClick={() => trackEvent("cta_clicked", { location: "hero", type: "download" })}
               className="opacity-0 inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl"
             >
               <Zap className="w-4 h-4 mr-2" />
@@ -423,6 +425,7 @@ const Hero = () => {
             <a
               data-animate="hero-button"
               href="#demo"
+              onClick={() => trackEvent("cta_clicked", { location: "hero", type: "watch_demo" })}
               className="opacity-0 group inline-flex items-center justify-center px-6 py-3 bg-white text-gray-700 font-medium rounded-lg hover:bg-gray-50 shadow-md hover:shadow-lg border border-gray-200"
             >
               <Play className="w-4 h-4 mr-2" />

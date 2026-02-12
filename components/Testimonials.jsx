@@ -1,14 +1,33 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Star, MessageCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import OptimizedImage from "./OptimizedImage";
+import { trackEvent } from "@/lib/tracking";
 
 const Testimonials = () => {
   const t = useTranslations();
   const pathname = usePathname();
   const currentLocale = pathname.split("/")[1] || "en";
+
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          trackEvent("section_viewed", { section: "testimonials" });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const testimonials = [
     {
@@ -35,7 +54,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-black">
+    <section ref={sectionRef} className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-950 to-black">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl mx-auto font-bold text-white mb-4">
@@ -118,6 +137,7 @@ const Testimonials = () => {
 
             <a
               href={`/${currentLocale}/download`}
+              onClick={() => trackEvent("cta_clicked", { location: "testimonials", type: "download" })}
               className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 shadow-2xl hover:shadow-primary-500/25 hover:scale-105"
             >
               {t("testimonials.startTrial")}
