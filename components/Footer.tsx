@@ -107,6 +107,16 @@ const Footer = () => {
                   {t("footer.resources.faq")}
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://autotrim.lemonsqueezy.com/affiliates"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.resources.affiliate")}
+                </a>
+              </li>
             </ul>
           </div>
 
