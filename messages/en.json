@@ -670,6 +670,11 @@
       "title": "Best Descript Alternative (2026) – AutoTrim | Fast Local Processing, No Cloud",
       "description": "Looking for a Descript alternative? AutoTrim processes videos locally in seconds — no cloud uploads, no monthly fees. Free trial for Mac & Windows.",
       "keywords": "Descript alternative, AutoTrim vs Descript, descript replacement, local video processing, no cloud video editor, offline silence removal"
+    },
+    "compareFinalCut": {
+      "title": "Silence Remover for Final Cut Pro (2026) – AutoTrim | The Missing FCP Tool",
+      "description": "Final Cut Pro has no built-in silence removal and no plugin marketplace for it. AutoTrim fills the gap — drop your clips, get one FCPXML timeline ready to import. Free trial for Mac.",
+      "keywords": "silence remover final cut pro, final cut pro silence removal, remove filler words final cut, final cut pro plugin silence, autotrim final cut, fcpxml silence removal"
     }
   },
   "footer": {
@@ -684,7 +689,8 @@
       "timebolt": "AutoTrim vs TimeBolt",
       "autocut": "AutoTrim vs AutoCut",
       "descript": "AutoTrim vs Descript",
-      "premierePro": "AutoTrim vs Premiere Pro"
+      "premierePro": "AutoTrim vs Premiere Pro",
+      "finalCut": "AutoTrim for Final Cut Pro"
     },
     "resources": {
       "title": "Resources",
@@ -895,6 +901,68 @@
       "title": "Ready for professional-grade speed?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. Experience the difference in minutes."
+    }
+  },
+  "compareFinalCut": {
+    "title": "AutoTrim for Final Cut Pro: The Missing Silence Remover",
+    "subtitle": "Final Cut Pro has no native silence removal and no third-party plugin marketplace to install one. AutoTrim is the standalone tool that fills the gap — drop all your clips, get a single FCPXML timeline, import it into your project, and edit.",
+    "table": {
+      "headers": {
+        "feature": "Feature",
+        "autoTrim": "AutoTrim",
+        "finalCut": "Final Cut Pro (native)"
+      },
+      "rows": {
+        "nativeSilenceRemoval": {
+          "label": "Silence Removal",
+          "autoTrim": "Automatic detection and cutting of silences across all your clips",
+          "finalCut": "No native feature — every silent gap must be cut manually with the razor tool"
+        },
+        "fillerWordRemoval": {
+          "label": "Filler Word Removal (um, uh, like)",
+          "autoTrim": "Automatic removal via on-device AI transcription (Whisper)",
+          "finalCut": "Not possible natively — requires external transcription and manual cuts"
+        },
+        "pluginEcosystem": {
+          "label": "Third-party Plugin Options",
+          "autoTrim": "Standalone app — exports a ready-to-import FCPXML timeline",
+          "finalCut": "No plugin marketplace for silence removers (unlike Premiere's AutoCut or Resolve's internal tools)"
+        },
+        "multiClipWorkflow": {
+          "label": "Multi-clip Workflow",
+          "autoTrim": "Drag & drop all clips at once, parallel processing, one unified FCPXML",
+          "finalCut": "Clip by clip, silence by silence, manual assembly on the timeline"
+        },
+        "aiPrivacy": {
+          "label": "AI & Privacy",
+          "autoTrim": "100% local — AI runs on your Mac, files never leave your machine",
+          "finalCut": "N/A — no silence AI. Cloud alternatives require upload of your footage"
+        },
+        "timeOn30min": {
+          "label": "Time to Clean 30 min of Footage",
+          "autoTrim": "About 1 minute (parallel processing)",
+          "finalCut": "About 48 minutes of manual razor work"
+        },
+        "pricing": {
+          "label": "Total Cost for Silence Removal",
+          "autoTrim": "Free trial, $149 lifetime license (launch price)",
+          "finalCut": "Included in FCP ($299.99 once) — but costs hours of manual work on every project"
+        },
+        "bestFor": {
+          "label": "Best Suited For",
+          "autoTrim": "FCP editors who want their hours back on every project",
+          "finalCut": "Editors who enjoy razor-tool work and have unlimited time"
+        }
+      }
+    },
+    "winner": {
+      "title": "The Missing Silence Remover for Final Cut Pro",
+      "description": "Unlike Premiere users (who have AutoCut and native audio features) or Resolve users (with built-in silence detection), Final Cut Pro editors have almost no options for automatic silence removal. AutoTrim fills that gap with a clean, standalone workflow: drop your clips, get a ready-to-edit FCPXML, spend your time on the creative part."
+    },
+    "cta": {
+      "title": "Ready to stop cutting silences by hand in Final Cut?",
+      "button": "Try AutoTrim Free",
+      "subtext": "No credit card required. Exports FCPXML directly into your Final Cut Pro project."
     }
   }
 }

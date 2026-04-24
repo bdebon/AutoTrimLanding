@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   const locales = ['en', 'fr', 'es', 'zh'];
-  const comparePages = ['timebolt', 'autocut', 'descript'];
+  const comparePages = ['timebolt', 'autocut', 'descript', 'final-cut-pro'];
 
   const entries: MetadataRoute.Sitemap = [
     {

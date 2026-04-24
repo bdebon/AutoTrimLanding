@@ -158,6 +158,14 @@ const Footer = () => {
                   {t("footer.comparisons.premierePro")}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href={`/${currentLocale}/compare/final-cut-pro`}
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.comparisons.finalCut")}
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

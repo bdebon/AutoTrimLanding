@@ -670,6 +670,11 @@
       "title": "Meilleure alternative à Descript (2026) – AutoTrim | Traitement local, sans cloud",
       "description": "Vous cherchez une alternative à Descript ? AutoTrim traite vos vidéos localement en quelques secondes. Aucun upload cloud, aucun abonnement mensuel. Essai gratuit Mac & Windows.",
       "keywords": "alternative Descript, AutoTrim vs Descript, remplacer Descript, traitement vidéo local, éditeur vidéo sans cloud, suppression silence hors ligne"
+    },
+    "compareFinalCut": {
+      "title": "Silence Remover pour Final Cut Pro (2026) – AutoTrim | Le plugin FCP qui manquait",
+      "description": "Final Cut Pro n'a pas de suppression de silence intégrée ni de marketplace de plugins pour ça. AutoTrim comble le vide — déposez vos clips, obtenez une timeline FCPXML prête à importer. Essai gratuit pour Mac.",
+      "keywords": "silence remover final cut pro, suppression silence final cut, supprimer mots de remplissage final cut, plugin final cut silence, autotrim final cut, fcpxml silence"
     }
   },
   "footer": {
@@ -684,7 +689,8 @@
       "timebolt": "AutoTrim vs TimeBolt",
       "autocut": "AutoTrim vs AutoCut",
       "descript": "AutoTrim vs Descript",
-      "premierePro": "AutoTrim vs Premiere Pro"
+      "premierePro": "AutoTrim vs Premiere Pro",
+      "finalCut": "AutoTrim pour Final Cut Pro"
     },
     "resources": {
       "title": "Ressources",
@@ -895,6 +901,68 @@
       "title": "Prêt pour la vitesse de niveau professionnel ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Expérimentez la différence en minutes."
+    }
+  },
+  "compareFinalCut": {
+    "title": "AutoTrim pour Final Cut Pro : le silence remover qui manquait",
+    "subtitle": "Final Cut Pro n'a pas de suppression de silence native et aucun marketplace de plugins tiers pour en installer une. AutoTrim est l'outil standalone qui comble le vide — déposez tous vos clips, obtenez une seule timeline FCPXML, importez-la dans votre projet et montez.",
+    "table": {
+      "headers": {
+        "feature": "Fonctionnalité",
+        "autoTrim": "AutoTrim",
+        "finalCut": "Final Cut Pro (natif)"
+      },
+      "rows": {
+        "nativeSilenceRemoval": {
+          "label": "Suppression des silences",
+          "autoTrim": "Détection et coupe automatiques des silences sur tous vos clips",
+          "finalCut": "Aucune fonction native — chaque silence doit être coupé manuellement au rasoir"
+        },
+        "fillerWordRemoval": {
+          "label": "Suppression des mots de remplissage (euh, ben, genre)",
+          "autoTrim": "Suppression automatique via transcription IA locale (Whisper)",
+          "finalCut": "Impossible nativement — nécessite une transcription externe et des coupes manuelles"
+        },
+        "pluginEcosystem": {
+          "label": "Plugins tiers disponibles",
+          "autoTrim": "App standalone — exporte une timeline FCPXML prête à importer",
+          "finalCut": "Pas de marketplace de plugins pour le dérush (contrairement à AutoCut sur Premiere ou aux outils internes de Resolve)"
+        },
+        "multiClipWorkflow": {
+          "label": "Workflow multi-clips",
+          "autoTrim": "Drag & drop de tous les clips d'un coup, traitement parallèle, une seule FCPXML",
+          "finalCut": "Clip par clip, silence par silence, assemblage manuel sur la timeline"
+        },
+        "aiPrivacy": {
+          "label": "IA et confidentialité",
+          "autoTrim": "100% local — l'IA tourne sur votre Mac, les fichiers ne quittent jamais la machine",
+          "finalCut": "N/A — pas d'IA pour les silences. Les alternatives cloud exigent l'upload de vos rushes"
+        },
+        "timeOn30min": {
+          "label": "Temps pour nettoyer 30 min de rushes",
+          "autoTrim": "Environ 1 minute (traitement parallèle)",
+          "finalCut": "Environ 48 minutes de rasoir manuel"
+        },
+        "pricing": {
+          "label": "Coût total pour le dérush",
+          "autoTrim": "Essai gratuit, licence Lifetime $149 (prix de lancement)",
+          "finalCut": "Inclus dans FCP (299,99 $ une fois) — mais coûte des heures de travail manuel sur chaque projet"
+        },
+        "bestFor": {
+          "label": "Idéal pour",
+          "autoTrim": "Les monteurs FCP qui veulent récupérer leurs heures sur chaque projet",
+          "finalCut": "Les monteurs qui aiment le rasoir et ont du temps illimité"
+        }
+      }
+    },
+    "winner": {
+      "title": "Le silence remover qui manquait à Final Cut Pro",
+      "description": "Contrairement aux utilisateurs de Premiere (qui ont AutoCut et des features audio natives) ou de Resolve (avec détection de silence intégrée), les monteurs Final Cut Pro n'ont quasiment aucune option pour la suppression automatique des silences. AutoTrim comble ce vide avec un workflow standalone propre : déposez vos clips, récupérez une FCPXML prête à monter, et passez votre temps sur la partie créative."
+    },
+    "cta": {
+      "title": "Prêt à arrêter de couper les silences à la main dans Final Cut ?",
+      "button": "Essayer AutoTrim gratuitement",
+      "subtext": "Pas de carte de crédit requise. Exporte une FCPXML directement dans votre projet Final Cut Pro."
     }
   }
 }

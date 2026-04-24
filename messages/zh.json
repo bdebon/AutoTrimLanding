@@ -670,6 +670,11 @@
       "title": "最佳Descript替代品 (2026) – AutoTrim | 本地处理，无需云端",
       "description": "正在寻找Descript替代品？AutoTrim在几秒内本地处理视频。无需云上传，无月费。Mac和Windows免费试用。",
       "keywords": "Descript替代品, AutoTrim vs Descript, 替换Descript, 本地视频处理, 无云视频编辑器, 离线静音删除"
+    },
+    "compareFinalCut": {
+      "title": "Final Cut Pro静音移除工具 (2026) – AutoTrim | 缺失的FCP插件",
+      "description": "Final Cut Pro没有内置的静音移除功能，也没有相关的插件市场。AutoTrim填补了这个空白——拖入您的片段，获得一个可直接导入的FCPXML时间线。Mac免费试用。",
+      "keywords": "Final Cut Pro静音移除, final cut静音删除, final cut去除语气词, final cut插件静音, autotrim final cut, fcpxml静音"
     }
   },
   "footer": {
@@ -684,7 +689,8 @@
       "timebolt": "AutoTrim vs TimeBolt",
       "autocut": "AutoTrim vs AutoCut",
       "descript": "AutoTrim vs Descript",
-      "premierePro": "AutoTrim vs Premiere Pro"
+      "premierePro": "AutoTrim vs Premiere Pro",
+      "finalCut": "AutoTrim for Final Cut Pro"
     },
     "resources": {
       "title": "资源",
@@ -895,6 +901,68 @@
       "title": "准备专业级速度？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。几分钟内体验差异。"
+    }
+  },
+  "compareFinalCut": {
+    "title": "AutoTrim for Final Cut Pro：缺失的静音移除工具",
+    "subtitle": "Final Cut Pro没有原生的静音移除功能，也没有第三方插件市场可以安装一个。AutoTrim是填补这一空白的独立工具——拖入所有片段，获得一个FCPXML时间线，导入您的项目并开始编辑。",
+    "table": {
+      "headers": {
+        "feature": "功能",
+        "autoTrim": "AutoTrim",
+        "finalCut": "Final Cut Pro (原生)"
+      },
+      "rows": {
+        "nativeSilenceRemoval": {
+          "label": "静音移除",
+          "autoTrim": "自动检测和切除所有片段中的静音",
+          "finalCut": "没有原生功能——每个静音间隙必须用刀片工具手动切除"
+        },
+        "fillerWordRemoval": {
+          "label": "语气词移除（嗯、啊、那个）",
+          "autoTrim": "通过本地AI转录（Whisper）自动移除",
+          "finalCut": "原生无法实现——需要外部转录和手动剪切"
+        },
+        "pluginEcosystem": {
+          "label": "第三方插件选项",
+          "autoTrim": "独立应用——导出即可导入的FCPXML时间线",
+          "finalCut": "没有静音移除插件市场（不像Premiere的AutoCut或Resolve的内部工具）"
+        },
+        "multiClipWorkflow": {
+          "label": "多片段工作流程",
+          "autoTrim": "一次拖入所有片段，并行处理，统一的FCPXML",
+          "finalCut": "片段接片段，静音接静音，在时间线上手动组装"
+        },
+        "aiPrivacy": {
+          "label": "AI和隐私",
+          "autoTrim": "100%本地——AI在您的Mac上运行，文件永不离开您的机器",
+          "finalCut": "不适用——没有静音AI。云端替代方案需要上传您的素材"
+        },
+        "timeOn30min": {
+          "label": "清理30分钟素材所需时间",
+          "autoTrim": "约1分钟（并行处理）",
+          "finalCut": "约48分钟的手动刀片工作"
+        },
+        "pricing": {
+          "label": "静音移除的总成本",
+          "autoTrim": "免费试用，$149终身授权（发布价）",
+          "finalCut": "包含在FCP中（一次性$299.99）——但每个项目都要花费数小时的手动工作"
+        },
+        "bestFor": {
+          "label": "适合",
+          "autoTrim": "想在每个项目上节省时间的FCP编辑",
+          "finalCut": "享受刀片工作且时间无限的编辑"
+        }
+      }
+    },
+    "winner": {
+      "title": "缺失的Final Cut Pro静音移除工具",
+      "description": "与Premiere用户（拥有AutoCut和原生音频功能）或Resolve用户（内置静音检测）不同，Final Cut Pro编辑几乎没有自动静音移除的选项。AutoTrim用一个干净的独立工作流程填补了这一空白：拖入您的片段，获得可编辑的FCPXML，将时间花在创意部分上。"
+    },
+    "cta": {
+      "title": "准备好停止在Final Cut中手动剪切静音了吗？",
+      "button": "免费试用AutoTrim",
+      "subtext": "无需信用卡。直接将FCPXML导出到您的Final Cut Pro项目。"
     }
   }
 }
