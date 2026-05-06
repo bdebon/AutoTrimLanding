@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -28,11 +28,6 @@ export const metadata: Metadata = {
   authors: [{ name: "AutoTrim Team" }],
   creator: "AutoTrim",
   publisher: "AutoTrim",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   robots: {
     index: true,
     follow: true,
@@ -74,6 +69,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -93,33 +94,37 @@ export default function RootLayout({
         className={`${inter.variable} ${geistMono.variable} antialiased`}
       >
         {/* Meta Pixel - lazyOnload for better LCP */}
-        <Script
-          id="facebook-pixel"
-          strategy="lazyOnload"
-        >
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2240864149721547');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=2240864149721547&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <>
+            <Script
+              id="facebook-pixel"
+              strategy="lazyOnload"
+            >
+              {`
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${process.env.NEXT_PUBLIC_META_PIXEL_ID}');
+                fbq('track', 'PageView');
+              `}
+            </Script>
+            <noscript>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                height="1"
+                width="1"
+                style={{ display: 'none' }}
+                src={`https://www.facebook.com/tr?id=${process.env.NEXT_PUBLIC_META_PIXEL_ID}&ev=PageView&noscript=1`}
+                alt=""
+              />
+            </noscript>
+          </>
+        )}
 
         {/* Schema.org structured data */}
         <Script
@@ -186,20 +191,24 @@ export default function RootLayout({
         <Analytics />
 
         {/* Google Tag Manager - lazyOnload for better LCP */}
-        <Script
-          id="gtm-script"
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-MTPT8QGT"
-        />
-        <Script
-          id="gtm-init"
-          strategy="lazyOnload"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-          `}
-        </Script>
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <>
+            <Script
+              id="gtm-script"
+              strategy="lazyOnload"
+              src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            />
+            <Script
+              id="gtm-init"
+              strategy="lazyOnload"
+            >
+              {`
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
