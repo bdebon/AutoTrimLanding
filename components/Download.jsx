@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { Download as DownloadIcon, Monitor, Mail } from "lucide-react";
+import { Download as DownloadIcon, Monitor, Mail, ShieldCheck } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import { trackDownload } from '@/lib/tracking';
 import { useAttribution } from '@/hooks/useAttribution';
@@ -168,6 +168,20 @@ const DownloadContent = () => {
             )}
           </div>
         </div>
+
+        {os === "windows" && (
+          <div className="max-w-xl mx-auto mt-10 text-left bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-3">
+            <ShieldCheck className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <div>
+              <p className="font-semibold text-gray-900 mb-1">
+                {t('windowsNote.title')}
+              </p>
+              <p className="text-sm text-gray-600">
+                {t('windowsNote.description')}
+              </p>
+            </div>
+          </div>
+        )}
 
         <p className="text-sm text-gray-500 mt-6">
           {t('githubNote')}

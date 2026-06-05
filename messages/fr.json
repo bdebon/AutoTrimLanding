@@ -51,6 +51,10 @@
     "windows": "Télécharger pour Windows",
     "otherPlatform": "Autre plateforme :",
     "githubNote": "Tous les téléchargements proviennent de la dernière version GitHub.",
+    "windowsNote": {
+      "title": "Au premier lancement sur Windows",
+      "description": "AutoTrim est signé numériquement (éditeur : BDEBON). Windows peut afficher un avertissement SmartScreen le temps que l'application gagne en réputation. Cliquez sur « Informations complémentaires » puis « Exécuter quand même » — c'est sans risque."
+    },
     "buttons": {
       "macOS": "macOS",
       "windows": "Windows"

@@ -51,6 +51,10 @@
     "windows": "Download for Windows",
     "otherPlatform": "Other platform:",
     "githubNote": "All downloads are served from the latest GitHub release.",
+    "windowsNote": {
+      "title": "First launch on Windows",
+      "description": "AutoTrim is digitally signed (publisher: BDEBON). Windows may show a SmartScreen notice while the app builds up its reputation. Click “More info” then “Run anyway” — it's safe."
+    },
     "buttons": {
       "macOS": "macOS",
       "windows": "Windows"
