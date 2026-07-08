@@ -6,6 +6,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const locales = ['en', 'fr', 'es', 'zh'];
   const comparePages = ['timebolt', 'autocut', 'descript', 'final-cut-pro', 'premiere-pro'];
+  // English-only guides (canonical lives on /en)
+  const guidePages = [
+    'how-to-remove-silence-final-cut-pro',
+    'best-silence-remover-final-cut-pro',
+    'timebolt-alternative-mac',
+    'remove-filler-words-from-video',
+    'descript-alternative-final-cut-pro',
+  ];
 
   const entries: MetadataRoute.Sitemap = [
     {
@@ -33,6 +41,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     });
 
+    // Add pricing page for each locale
+    entries.push({
+      url: `${siteUrl}/${locale}/pricing`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    });
+
     // Add comparison pages for each locale
     comparePages.forEach(page => {
       entries.push({
@@ -41,6 +57,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'monthly',
         priority: 0.7,
       });
+    });
+  });
+
+  // English-only guides
+  entries.push({
+    url: `${siteUrl}/en/guides`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  });
+  guidePages.forEach(page => {
+    entries.push({
+      url: `${siteUrl}/en/guides/${page}`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
     });
   });
 

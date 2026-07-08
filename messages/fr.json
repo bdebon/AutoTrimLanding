@@ -588,8 +588,8 @@
     "title": "FAQ",
     "questions": {
       "0": {
-        "q": "AutoTrim fonctionne-t-il sur Mac, Windows, Linux ?",
-        "a": "Absolument. AutoTrim fonctionne partout grâce à Rust et Tauri."
+        "q": "AutoTrim fonctionne-t-il sur Mac et Windows ?",
+        "a": "Oui — AutoTrim tourne nativement sur macOS et Windows. Pas de version Linux pour le moment."
       },
       "1": {
         "q": "Est-ce compatible avec Final Cut, Premiere, Resolve ?",
@@ -719,6 +719,15 @@
     "cta": {
       "ready": "Prêt à récupérer votre temps ?",
       "button": "Essayer AutoTrim gratuitement"
+    },
+    "guides": {
+      "title": "Guides (EN)",
+      "removeSilenceFcp": "Supprimer les silences dans Final Cut Pro",
+      "bestSilenceRemoverFcp": "Meilleur silence remover pour FCP (2026)",
+      "timeboltAlternative": "Alternative à TimeBolt sur Mac",
+      "fillerWords": "Supprimer les mots de remplissage",
+      "descriptAlternative": "Alternative à Descript pour FCP",
+      "allGuides": "Tous les guides"
     }
   },
   "compareTimebolt": {

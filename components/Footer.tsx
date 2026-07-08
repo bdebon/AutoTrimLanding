@@ -27,7 +27,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-100 border-t border-gray-200 py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Logo and Copyright */}
           <div className="col-span-1 lg:col-span-2">
             <div className="mb-4">
@@ -164,6 +164,63 @@ const Footer = () => {
                   className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
                 >
                   {t("footer.comparisons.finalCut")}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Guides (English-only content) */}
+          <div>
+            <h3 className="font-semibold text-gray-900 mb-4">
+              {t("footer.guides.title")}
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/en/guides/how-to-remove-silence-final-cut-pro"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.removeSilenceFcp")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/en/guides/best-silence-remover-final-cut-pro"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.bestSilenceRemoverFcp")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/en/guides/timebolt-alternative-mac"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.timeboltAlternative")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/en/guides/remove-filler-words-from-video"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.fillerWords")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/en/guides/descript-alternative-final-cut-pro"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.descriptAlternative")}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/en/guides"
+                  className="text-gray-600 hover:text-primary-600 text-sm transition-colors"
+                >
+                  {t("footer.guides.allGuides")}
                 </Link>
               </li>
             </ul>

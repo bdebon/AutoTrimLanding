@@ -4,7 +4,6 @@ import {
   GuideShell,
   AnswerBox,
   H2,
-  H3,
   P,
   UL,
   StepList,

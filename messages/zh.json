@@ -588,8 +588,8 @@
     "title": "常见问题",
     "questions": {
       "0": {
-        "q": "AutoTrim在Mac、Windows、Linux上工作吗？",
-        "a": "绝对可以。AutoTrim借助Rust和Tauri在任何地方运行。"
+        "q": "AutoTrim 支持 Mac 和 Windows 吗?",
+        "a": "支持——AutoTrim 在 macOS 和 Windows 上原生运行。目前暂无 Linux 版本。"
       },
       "1": {
         "q": "它支持Final Cut、Premiere、Resolve吗？",
@@ -719,6 +719,15 @@
     "cta": {
       "ready": "准备夺回您的时间？",
       "button": "免费试用AutoTrim"
+    },
+    "guides": {
+      "title": "指南(英文)",
+      "removeSilenceFcp": "在 Final Cut Pro 中移除静音",
+      "bestSilenceRemoverFcp": "FCP 最佳静音移除工具(2026)",
+      "timeboltAlternative": "Mac 上的 TimeBolt 替代品",
+      "fillerWords": "自动移除口头语",
+      "descriptAlternative": "FCP 用户的 Descript 替代品",
+      "allGuides": "全部指南"
     }
   },
   "compareTimebolt": {
