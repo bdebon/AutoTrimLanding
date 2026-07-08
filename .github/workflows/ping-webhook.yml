@@ -1,0 +1,17 @@
+name: Ping AutoTrim webhook (keep Supabase awake)
+
+# Le plan gratuit Supabase met en pause les projets inactifs ~7 jours.
+# Ce ping bi-hebdomadaire garantit que l'edge function lemonsqueezy-webhook
+# (pont LemonSqueezy -> Customer.io) ne rate jamais un événement.
+
+on:
+  schedule:
+    - cron: "0 8 * * 1,4" # lundi et jeudi 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping edge function
+        run: curl -sf --max-time 30 https://gvvldbuvgbribbothphm.supabase.co/functions/v1/lemonsqueezy-webhook
