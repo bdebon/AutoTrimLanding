@@ -679,6 +679,11 @@
       "title": "Silence Remover para Final Cut Pro (2026) – AutoTrim | El plugin FCP que faltaba",
       "description": "Final Cut Pro no tiene eliminación de silencios integrada ni un marketplace de plugins para ello. AutoTrim llena el vacío — suelta tus clips, obtén una timeline FCPXML lista para importar. Prueba gratuita para Mac.",
       "keywords": "silence remover final cut pro, eliminación silencios final cut, eliminar muletillas final cut, plugin final cut silencios, autotrim final cut, fcpxml silencios"
+    },
+    "comparePremiere": {
+      "title": "Eliminar silencios en Premiere Pro automáticamente (2026) – AutoTrim",
+      "description": "La edición por texto de Premiere limpia una secuencia a la vez. AutoTrim elimina silencios y muletillas de todos tus clips en paralelo y exporta una timeline XML ensamblada. Prueba gratis para Mac y Windows.",
+      "keywords": "eliminar silencios premiere pro, quitar pausas premiere pro, eliminar muletillas premiere, autotrim vs premiere pro, corte automatico premiere pro"
     }
   },
   "footer": {
@@ -967,6 +972,68 @@
       "title": "¿Listo para dejar de cortar silencios a mano en Final Cut?",
       "button": "Prueba AutoTrim Gratis",
       "subtext": "No se requiere tarjeta de crédito. Exporta FCPXML directamente a tu proyecto de Final Cut Pro."
+    }
+  },
+  "comparePremiere": {
+    "title": "AutoTrim vs las herramientas integradas de Premiere Pro",
+    "subtitle": "Premiere Pro puede eliminar pausas con la edición basada en texto — una secuencia a la vez, tras la transcripción. AutoTrim limpia todos tus clips en paralelo antes de abrir Premiere y te entrega una única timeline XML ensamblada, lista para el montaje fino.",
+    "table": {
+      "headers": {
+        "feature": "Función",
+        "autoTrim": "AutoTrim",
+        "premiere": "Premiere Pro (nativo)"
+      },
+      "rows": {
+        "importWorkflow": {
+          "label": "Flujo de trabajo",
+          "autoTrim": "Arrastra y suelta todos tus clips a la vez — la limpieza ocurre antes de editar",
+          "premiere": "Importar, crear una secuencia, transcribir y luego limpiar dentro de la edición"
+        },
+        "processing": {
+          "label": "Procesamiento",
+          "autoTrim": "En paralelo — varios clips procesados al mismo tiempo",
+          "premiere": "Una secuencia a la vez"
+        },
+        "finalOutput": {
+          "label": "Resultado final",
+          "autoTrim": "Una sola timeline XML fusionada — todos los clips ya cortados y ensamblados",
+          "premiere": "Cortes aplicados a una secuencia que primero ensamblaste a mano"
+        },
+        "silenceRemoval": {
+          "label": "Eliminación de silencios",
+          "autoTrim": "Detección automática con umbral, espacio mínimo y márgenes ajustables",
+          "premiere": "Eliminación de pausas mediante edición basada en texto, dependiente de la transcripción"
+        },
+        "fillerWords": {
+          "label": "Muletillas (em, eh)",
+          "autoTrim": "Detectadas y eliminadas con transcripción de IA local — sin subir archivos",
+          "premiere": "Detección de muletillas disponible en la edición basada en texto"
+        },
+        "realWorldSpeed": {
+          "label": "Tiempo para limpiar 30 min de material",
+          "autoTrim": "Aproximadamente 1 minuto de procesamiento paralelo — 48× más rápido que cortar a mano",
+          "premiere": "Unos 48 minutos cortando a mano; la limpieza por texto es más rápida pero sigue siendo secuencia por secuencia"
+        },
+        "otherNles": {
+          "label": "Funciona fuera de Premiere",
+          "autoTrim": "También exporta FCPXML para Final Cut Pro y XML para DaVinci Resolve",
+          "premiere": "Solo Premiere"
+        },
+        "bestFor": {
+          "label": "Ideal para",
+          "autoTrim": "Editores con rodajes multi-clip recurrentes: talking-head, podcast, cursos",
+          "premiere": "Retoques en una secuencia ya ensamblada"
+        }
+      }
+    },
+    "winner": {
+      "title": "Deja que AutoTrim haga el primer corte — usa Premiere para editar",
+      "description": "La edición basada en texto de Premiere ayuda a limpiar una secuencia ya construida. Pero si cada vídeo empieza con una pila de clips, AutoTrim elimina silencios y muletillas de todos en paralelo y entrega a Premiere una única timeline ensamblada — alrededor del 96% del tiempo de limpieza ahorrado. No pierdes nada: el montaje fino sigue en Premiere."
+    },
+    "cta": {
+      "title": "¿Listo para saltarte el primer corte en Premiere?",
+      "button": "Prueba AutoTrim gratis",
+      "subtext": "Sin tarjeta de crédito. Exporta XML directamente a Premiere Pro."
     }
   }
 }

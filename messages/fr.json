@@ -679,6 +679,11 @@
       "title": "Silence Remover pour Final Cut Pro (2026) – AutoTrim | Le plugin FCP qui manquait",
       "description": "Final Cut Pro n'a pas de suppression de silence intégrée ni de marketplace de plugins pour ça. AutoTrim comble le vide — déposez vos clips, obtenez une timeline FCPXML prête à importer. Essai gratuit pour Mac.",
       "keywords": "silence remover final cut pro, suppression silence final cut, supprimer mots de remplissage final cut, plugin final cut silence, autotrim final cut, fcpxml silence"
+    },
+    "comparePremiere": {
+      "title": "Supprimer les silences dans Premiere Pro automatiquement (2026) – AutoTrim",
+      "description": "Le montage textuel de Premiere nettoie une séquence à la fois. AutoTrim supprime silences et hésitations de tous vos rushes en parallèle et exporte une timeline XML assemblée. Essai gratuit Mac & Windows.",
+      "keywords": "supprimer silences premiere pro, dérush automatique premiere, couper les blancs premiere pro, supprimer les euh premiere, autotrim vs premiere pro, dérush premiere pro"
     }
   },
   "footer": {
@@ -967,6 +972,68 @@
       "title": "Prêt à arrêter de couper les silences à la main dans Final Cut ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Exporte une FCPXML directement dans votre projet Final Cut Pro."
+    }
+  },
+  "comparePremiere": {
+    "title": "AutoTrim vs les outils intégrés de Premiere Pro",
+    "subtitle": "Premiere Pro peut supprimer les pauses via le montage basé sur le texte — une séquence à la fois, après transcription. AutoTrim nettoie tous vos rushes en parallèle avant même d'ouvrir Premiere, puis vous livre une timeline XML assemblée, prête pour le montage fin.",
+    "table": {
+      "headers": {
+        "feature": "Fonctionnalité",
+        "autoTrim": "AutoTrim",
+        "premiere": "Premiere Pro (natif)"
+      },
+      "rows": {
+        "importWorkflow": {
+          "label": "Workflow",
+          "autoTrim": "Glissez-déposez tous vos rushes d'un coup — le nettoyage se fait avant le montage",
+          "premiere": "Importer, créer une séquence, transcrire, puis nettoyer dans le montage"
+        },
+        "processing": {
+          "label": "Traitement",
+          "autoTrim": "En parallèle — plusieurs clips traités en même temps",
+          "premiere": "Une séquence à la fois"
+        },
+        "finalOutput": {
+          "label": "Résultat final",
+          "autoTrim": "Une seule timeline XML fusionnée — tous les clips déjà coupés et assemblés",
+          "premiere": "Coupes appliquées à une séquence que vous avez d'abord assemblée à la main"
+        },
+        "silenceRemoval": {
+          "label": "Suppression des silences",
+          "autoTrim": "Détection automatique avec seuil, gap minimum et marges ajustables",
+          "premiere": "Suppression des pauses via le montage basé sur le texte, dépendante de la transcription"
+        },
+        "fillerWords": {
+          "label": "Mots de remplissage (euh, ben)",
+          "autoTrim": "Détectés et supprimés par transcription IA locale — aucun upload",
+          "premiere": "Détection des mots de remplissage disponible dans le montage basé sur le texte"
+        },
+        "realWorldSpeed": {
+          "label": "Temps pour nettoyer 30 min de rushes",
+          "autoTrim": "Environ 1 minute de traitement parallèle — 48× plus rapide qu'une passe manuelle au rasoir",
+          "premiere": "Environ 48 minutes de coupe manuelle ; le nettoyage textuel va plus vite mais reste séquence par séquence"
+        },
+        "otherNles": {
+          "label": "Fonctionne hors de Premiere",
+          "autoTrim": "Exporte aussi du FCPXML pour Final Cut Pro et du XML pour DaVinci Resolve",
+          "premiere": "Premiere uniquement"
+        },
+        "bestFor": {
+          "label": "Idéal pour",
+          "autoTrim": "Les monteurs avec des tournages multi-clips récurrents : face caméra, podcast, formation",
+          "premiere": "Les retouches sur une séquence déjà assemblée"
+        }
+      }
+    },
+    "winner": {
+      "title": "Laissez AutoTrim faire le dérush — gardez Premiere pour le montage",
+      "description": "Le montage basé sur le texte de Premiere aide à nettoyer une séquence déjà construite. Mais si chaque vidéo commence par une pile de rushes, AutoTrim supprime silences et hésitations de tous vos clips en parallèle et livre à Premiere une seule timeline assemblée — environ 96% du temps de dérush économisé. Vous ne perdez rien : le montage fin se fait toujours dans Premiere."
+    },
+    "cta": {
+      "title": "Prêt à sauter l'étape du dérush dans Premiere ?",
+      "button": "Essayer AutoTrim gratuitement",
+      "subtext": "Sans carte bancaire. Export XML directement dans Premiere Pro."
     }
   }
 }

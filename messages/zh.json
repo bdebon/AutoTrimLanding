@@ -679,6 +679,11 @@
       "title": "Final Cut Pro静音移除工具 (2026) – AutoTrim | 缺失的FCP插件",
       "description": "Final Cut Pro没有内置的静音移除功能，也没有相关的插件市场。AutoTrim填补了这个空白——拖入您的片段，获得一个可直接导入的FCPXML时间线。Mac免费试用。",
       "keywords": "Final Cut Pro静音移除, final cut静音删除, final cut去除语气词, final cut插件静音, autotrim final cut, fcpxml静音"
+    },
+    "comparePremiere": {
+      "title": "自动移除 Premiere Pro 中的静音(2026)– AutoTrim",
+      "description": "Premiere 的文本剪辑一次只能清理一个序列。AutoTrim 并行移除所有素材的静音和口头语,并导出一条已组装的 XML 时间线。Mac 和 Windows 免费试用。",
+      "keywords": "premiere pro 移除静音, premiere pro 删除停顿, premiere 去除口头语, autotrim 对比 premiere pro, premiere 自动粗剪"
     }
   },
   "footer": {
@@ -967,6 +972,68 @@
       "title": "准备好停止在Final Cut中手动剪切静音了吗？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。直接将FCPXML导出到您的Final Cut Pro项目。"
+    }
+  },
+  "comparePremiere": {
+    "title": "AutoTrim 对比 Premiere Pro 内置工具",
+    "subtitle": "Premiere Pro 可以通过基于文本的剪辑删除停顿——但需要先转录，且一次只能处理一个序列。AutoTrim 在你打开 Premiere 之前就并行清理所有素材,并交付一条已组装好的 XML 时间线,直接进入精剪。",
+    "table": {
+      "headers": {
+        "feature": "功能",
+        "autoTrim": "AutoTrim",
+        "premiere": "Premiere Pro(内置)"
+      },
+      "rows": {
+        "importWorkflow": {
+          "label": "工作流程",
+          "autoTrim": "一次拖入所有素材——清理在剪辑之前完成",
+          "premiere": "导入、建序列、转录,然后在剪辑中清理"
+        },
+        "processing": {
+          "label": "处理方式",
+          "autoTrim": "并行处理——多个片段同时进行",
+          "premiere": "一次一个序列"
+        },
+        "finalOutput": {
+          "label": "最终输出",
+          "autoTrim": "一条合并的 XML 时间线——所有片段已剪好并组装完成",
+          "premiere": "剪辑应用于你先手动组装的序列"
+        },
+        "silenceRemoval": {
+          "label": "静音移除",
+          "autoTrim": "自动检测,阈值、最小间隔和前后余量均可调",
+          "premiere": "通过基于文本的剪辑删除停顿,依赖转录"
+        },
+        "fillerWords": {
+          "label": "口头语(嗯、呃)",
+          "autoTrim": "本地 AI 转录检测并移除——无需上传",
+          "premiere": "基于文本的剪辑提供口头语检测"
+        },
+        "realWorldSpeed": {
+          "label": "清理 30 分钟素材所需时间",
+          "autoTrim": "约 1 分钟并行处理——比手动剪切快 48 倍",
+          "premiere": "手动剪切约需 48 分钟;文本清理更快,但仍需逐个序列处理"
+        },
+        "otherNles": {
+          "label": "可在 Premiere 之外使用",
+          "autoTrim": "同时导出 FCPXML(Final Cut Pro)和 XML(DaVinci Resolve)",
+          "premiere": "仅限 Premiere"
+        },
+        "bestFor": {
+          "label": "最适合",
+          "autoTrim": "经常处理多片段口播、播客或课程素材的剪辑师",
+          "premiere": "对已组装序列做小修小补"
+        }
+      }
+    },
+    "winner": {
+      "title": "让 AutoTrim 完成粗剪——精剪留给 Premiere",
+      "description": "Premiere 的文本剪辑适合清理一条已经搭好的序列。但如果每条视频都从一堆素材开始,AutoTrim 可以并行移除所有片段的静音和口头语,并交给 Premiere 一条已组装的时间线——节省约 96% 的粗剪时间。你不会失去任何东西:精剪仍然在 Premiere 中完成。"
+    },
+    "cta": {
+      "title": "准备好跳过 Premiere 里的粗剪了吗?",
+      "button": "免费试用 AutoTrim",
+      "subtext": "无需信用卡。XML 直接导入 Premiere Pro。"
     }
   }
 }

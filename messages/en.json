@@ -679,6 +679,11 @@
       "title": "Silence Remover for Final Cut Pro (2026) – AutoTrim | The Missing FCP Tool",
       "description": "Final Cut Pro has no built-in silence removal and no plugin marketplace for it. AutoTrim fills the gap — drop your clips, get one FCPXML timeline ready to import. Free trial for Mac.",
       "keywords": "silence remover final cut pro, final cut pro silence removal, remove filler words final cut, final cut pro plugin silence, autotrim final cut, fcpxml silence removal"
+    },
+    "comparePremiere": {
+      "title": "Remove Silence in Premiere Pro Automatically (2026) – AutoTrim",
+      "description": "Premiere's text-based editing cleans one sequence at a time. AutoTrim removes silences and filler words from all your rushes in parallel and exports one assembled XML timeline. Free trial for Mac & Windows.",
+      "keywords": "remove silence premiere pro, premiere pro silence removal, delete pauses premiere pro, premiere pro remove filler words, batch silence removal, autotrim vs premiere pro, premiere pro rough cut automation"
     }
   },
   "footer": {
@@ -967,6 +972,68 @@
       "title": "Ready to stop cutting silences by hand in Final Cut?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. Exports FCPXML directly into your Final Cut Pro project."
+    }
+  },
+  "comparePremiere": {
+    "title": "AutoTrim vs Premiere Pro's Built-in Tools",
+    "subtitle": "Premiere Pro can delete pauses through text-based editing — one sequence at a time, after transcription. AutoTrim cleans all your rushes in parallel before you even open Premiere, then hands you one assembled XML timeline ready for the fine cut.",
+    "table": {
+      "headers": {
+        "feature": "Feature",
+        "autoTrim": "AutoTrim",
+        "premiere": "Premiere Pro (built-in)"
+      },
+      "rows": {
+        "importWorkflow": {
+          "label": "Workflow",
+          "autoTrim": "Drag & drop all your rushes at once — cleanup happens before the edit",
+          "premiere": "Import, build a sequence, transcribe, then clean up inside the edit"
+        },
+        "processing": {
+          "label": "Processing",
+          "autoTrim": "Parallel — several clips processed at the same time",
+          "premiere": "One sequence at a time"
+        },
+        "finalOutput": {
+          "label": "Final Output",
+          "autoTrim": "One merged XML timeline — every clip already cut and assembled",
+          "premiere": "Cuts applied to a sequence you first assembled by hand"
+        },
+        "silenceRemoval": {
+          "label": "Silence Removal",
+          "autoTrim": "Automatic detection with adjustable threshold, minimum gap and padding",
+          "premiere": "Pause deletion via text-based editing, tied to the transcript"
+        },
+        "fillerWords": {
+          "label": "Filler Words (um, uh)",
+          "autoTrim": "Detected and removed by on-device AI transcription — no upload",
+          "premiere": "Filler-word detection available in text-based editing"
+        },
+        "realWorldSpeed": {
+          "label": "Time to Clean 30 min of Footage",
+          "autoTrim": "About 1 minute of parallel processing — 48× faster than a manual razor pass",
+          "premiere": "About 48 minutes cutting manually; text-based cleanup is faster but still sequence by sequence"
+        },
+        "otherNles": {
+          "label": "Works Outside Premiere",
+          "autoTrim": "Also exports FCPXML for Final Cut Pro and XML for DaVinci Resolve",
+          "premiere": "Premiere only"
+        },
+        "bestFor": {
+          "label": "Best For",
+          "autoTrim": "Editors with recurring multi-clip talking-head, podcast or course footage",
+          "premiere": "Touch-ups on a single sequence you've already assembled"
+        }
+      }
+    },
+    "winner": {
+      "title": "Let AutoTrim Do the Rough Cut — Keep Premiere for the Edit",
+      "description": "Premiere's text-based editing helps clean one sequence you've already built. But if every video starts with a pile of rushes, AutoTrim removes silences and filler words from all of them in parallel and hands Premiere a single assembled timeline — about 96% of rough-cut time saved. You lose nothing: the fine cut still happens in Premiere."
+    },
+    "cta": {
+      "title": "Ready to skip the rough cut in Premiere?",
+      "button": "Try AutoTrim Free",
+      "subtext": "No credit card required. Exports XML straight into Premiere Pro."
     }
   }
 }
