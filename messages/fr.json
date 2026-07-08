@@ -791,6 +791,28 @@
       "title": "Prêt à travailler 48× plus vite ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Voyez la différence en minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "Quelle est la meilleure alternative à TimeBolt sur Mac ?",
+        "a": "AutoTrim est un outil de dérush conçu comme une alternative directe à TimeBolt sur Mac (et Windows) : il traite tous vos clips en parallèle au lieu d'un par un, et exporte une seule timeline fusionnée au lieu d'un XML par clip. Essai gratuit avec previews illimitées — vous ne payez que pour exporter (15 $/mois, 119 $/an ou 149 $ à vie)."
+      },
+      "1": {
+        "q": "Quelle est la principale différence entre AutoTrim et TimeBolt ?",
+        "a": "Le workflow. TimeBolt importe et traite un clip à la fois et exporte un XML par clip, que vous devez ensuite fusionner à la main dans votre logiciel de montage. AutoTrim prend tout le lot d'un coup, traite les clips en parallèle et exporte une seule timeline XML ou FCPXML déjà assemblée. Sur un tournage de six rushes, c'est la différence entre assembler six timelines à la main et en importer une seule."
+      },
+      "2": {
+        "q": "TimeBolt fusionne-t-il tous les clips en une seule timeline ?",
+        "a": "Non. TimeBolt exporte un fichier XML par clip, à fusionner manuellement dans Final Cut Pro, Premiere Pro ou Resolve. AutoTrim exporte une timeline fusionnée pour tout le lot, déjà dans l'ordre et prête à monter."
+      },
+      "3": {
+        "q": "AutoTrim est-il vraiment plus rapide que la coupe manuelle ?",
+        "a": "Sur un cas réel mesuré, nettoyer 30 minutes de rushes face caméra a pris environ 48 minutes en coupe manuelle au rasoir, contre environ 1 minute avec AutoTrim — environ 48× plus rapide, soit 96% du temps de dérush économisé."
+      },
+      "4": {
+        "q": "AutoTrim fonctionne-t-il avec Final Cut Pro ?",
+        "a": "Oui. AutoTrim exporte du FCPXML qui s'importe directement dans Final Cut Pro — un vrai plus, car FCP n'a ni suppression de silence intégrée ni marketplace de plugins. Il exporte aussi du XML pour Premiere Pro et DaVinci Resolve."
+      }
     }
   },
   "compareAutocut": {
@@ -848,6 +870,28 @@
       "title": "Prêt pour un montage plus rapide et plus simple ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Voyez la différence en minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "AutoCut fonctionne-t-il avec Final Cut Pro ?",
+        "a": "Non. AutoCut est un plugin pour Premiere Pro et DaVinci Resolve — il n'existe pas d'AutoCut pour Final Cut Pro, car FCP n'a pas de marketplace de plugins. AutoTrim est une app autonome : elle fonctionne avec Final Cut Pro en exportant une timeline FCPXML à importer directement dans votre projet."
+      },
+      "1": {
+        "q": "Quelle est la différence entre AutoTrim et AutoCut ?",
+        "a": "AutoCut est un plugin qui tourne dans Premiere Pro ou DaVinci Resolve. AutoTrim est une app desktop autonome qui nettoie vos rushes avant le montage : traitement de tous les clips en parallèle, suppression des silences et hésitations par IA locale, et export d'une timeline fusionnée pour Final Cut Pro, Premiere ou Resolve. Il propose aussi une licence à vie à 149 $ en paiement unique, plutôt qu'un abonnement obligatoire."
+      },
+      "2": {
+        "q": "Faut-il un abonnement pour utiliser AutoTrim ?",
+        "a": "Non. La version gratuite permet de traiter et prévisualiser sans limite. Pour exporter : 15 $/mois, 119 $/an, ou 149 $ une seule fois pour une licence à vie (prix de lancement, normal 279 $) — avec remboursement sous 14 jours."
+      },
+      "3": {
+        "q": "Mes rushes sont-ils envoyés dans le cloud ?",
+        "a": "Non. La transcription IA d'AutoTrim tourne entièrement sur votre machine. Rien n'est uploadé : ça fonctionne hors ligne et vos rushes clients restent confidentiels."
+      },
+      "4": {
+        "q": "Puis-je continuer à monter dans Premiere Pro avec AutoTrim ?",
+        "a": "Oui. AutoTrim ne gère que le dérush : il supprime silences et hésitations de vos rushes et exporte une timeline XML pour Premiere Pro (ou FCPXML pour Final Cut Pro, XML pour Resolve). Le montage fin se fait toujours dans votre logiciel, comme avant."
+      }
     }
   },
   "compareDescript": {
@@ -910,6 +954,28 @@
       "title": "Prêt pour la vitesse de niveau professionnel ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Expérimentez la différence en minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "Quelle est la meilleure alternative à Descript pour les monteurs vidéo ?",
+        "a": "Pour les monteurs qui veulent rester dans leur logiciel de montage, AutoTrim est l'alternative la plus proche : il supprime silences et mots de remplissage de tous vos clips en local, puis exporte une timeline fusionnée vers Final Cut Pro, Premiere Pro ou DaVinci Resolve. Descript remplace votre logiciel par son propre workflow cloud basé sur le texte ; AutoTrim s'insère dans le workflow que vous avez déjà."
+      },
+      "1": {
+        "q": "Peut-on utiliser Descript avec Final Cut Pro ?",
+        "a": "On peut exporter depuis Descript vers d'autres logiciels, mais le workflow impose d'uploader vos rushes dans le cloud de Descript, d'y faire le nettoyage, puis de faire l'aller-retour. AutoTrim tourne 100% en local et produit une timeline FCPXML native en une seule étape, sans aucun upload."
+      },
+      "2": {
+        "q": "AutoTrim upload-t-il mes rushes comme Descript ?",
+        "a": "Non. La transcription IA d'AutoTrim tourne entièrement sur votre machine — vos rushes ne quittent jamais votre ordinateur. C'est plus rapide sur les gros fichiers et vos contenus non publiés ou clients restent privés."
+      },
+      "3": {
+        "q": "AutoTrim est-il moins cher que Descript ?",
+        "a": "Descript est uniquement sur abonnement. AutoTrim propose une version gratuite (previews illimitées), plus 15 $/mois, 119 $/an et une licence à vie à 149 $ en paiement unique — vous pouvez payer une fois et oublier les frais récurrents. Remboursement sous 14 jours."
+      },
+      "4": {
+        "q": "Dois-je apprendre un nouveau logiciel pour utiliser AutoTrim ?",
+        "a": "Non. AutoTrim n'automatise que le dérush — la détection et la suppression des silences et hésitations. Vous importez la timeline obtenue dans Final Cut Pro, Premiere Pro ou Resolve et vous montez exactement comme d'habitude."
+      }
     }
   },
   "compareFinalCut": {
@@ -972,6 +1038,32 @@
       "title": "Prêt à arrêter de couper les silences à la main dans Final Cut ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Pas de carte de crédit requise. Exporte une FCPXML directement dans votre projet Final Cut Pro."
+    },
+    "faq": {
+      "0": {
+        "q": "Final Cut Pro a-t-il une suppression de silence intégrée ?",
+        "a": "Non. En 2026, Final Cut Pro n'a aucune fonction native pour détecter et supprimer les silences, et pas de marketplace de plugins pour en ajouter une. Les silences doivent être coupés à la main au rasoir — ou supprimés automatiquement avec une app autonome comme AutoTrim, qui exporte une timeline FCPXML directement réimportable dans FCP."
+      },
+      "1": {
+        "q": "Comment supprimer les silences dans Final Cut Pro automatiquement ?",
+        "a": "Avec un outil autonome qui traite vos clips avant FCP. Avec AutoTrim : glissez tous vos clips dans l'app, choisissez un preset (YouTube, Podcast ou Vlog) ou ajustez le seuil de silence et les marges, prévisualisez les coupes, puis exportez une timeline FCPXML et importez-la dans Final Cut Pro. Nettoyer 30 minutes de rushes prend environ 1 minute."
+      },
+      "2": {
+        "q": "Final Cut Pro peut-il supprimer les « euh » et hésitations ?",
+        "a": "Pas nativement — FCP n'a pas de montage basé sur la transcription. AutoTrim détecte les mots de remplissage et hésitations via transcription IA locale et peut les couper automatiquement. La fonction est encore expérimentale et les résultats varient selon la langue et la diction."
+      },
+      "3": {
+        "q": "Pourquoi n'existe-t-il pas de plugin de suppression de silence pour Final Cut Pro ?",
+        "a": "Final Cut Pro accepte les plugins d'effets (FxPlug), mais pas les plugins de workflow capables d'analyser les rushes et de couper votre timeline — c'est pourquoi des outils comme AutoCut existent pour Premiere Pro et DaVinci Resolve mais pas pour FCP. La solution établie est une app autonome qui génère une timeline FCPXML : exactement ce que fait AutoTrim."
+      },
+      "4": {
+        "q": "Combien de temps prend la coupe manuelle des silences dans Final Cut Pro ?",
+        "a": "Sur un cas réel mesuré : environ 48 minutes de travail au rasoir pour 30 minutes de rushes face caméra. AutoTrim a traité les mêmes rushes en environ 1 minute — environ 48× plus rapide, 96% du temps de dérush économisé."
+      },
+      "5": {
+        "q": "AutoTrim est-il une app Mac native ?",
+        "a": "Oui. AutoTrim tourne nativement sur macOS (et Windows) et a été pensé d'abord pour les monteurs Final Cut Pro. La version gratuite traite et prévisualise sans limite ; l'export nécessite une licence — 15 $/mois, 119 $/an ou 149 $ à vie."
+      }
     }
   },
   "comparePremiere": {
@@ -1034,6 +1126,65 @@
       "title": "Prêt à sauter l'étape du dérush dans Premiere ?",
       "button": "Essayer AutoTrim gratuitement",
       "subtext": "Sans carte bancaire. Export XML directement dans Premiere Pro."
+    },
+    "faq": {
+      "0": {
+        "q": "Premiere Pro peut-il supprimer les silences automatiquement ?",
+        "a": "Partiellement. Le montage basé sur le texte de Premiere Pro peut détecter et supprimer les pauses d'une séquence après transcription — mais une séquence à la fois, dans le montage. Pour un lot de rushes, un outil autonome comme AutoTrim supprime les silences de tous les clips en parallèle et exporte une timeline XML assemblée à importer dans Premiere."
+      },
+      "1": {
+        "q": "Quel est le moyen le plus rapide de supprimer les silences de plusieurs clips avant de monter dans Premiere ?",
+        "a": "Les traiter en lot hors de Premiere. AutoTrim prend tous vos rushes d'un coup, coupe silences et hésitations avec une IA locale, et exporte une seule timeline XML fusionnée. Nettoyer 30 minutes de rushes prend environ 1 minute, contre environ 48 minutes de coupe manuelle."
+      },
+      "2": {
+        "q": "AutoTrim remplace-t-il Premiere Pro ?",
+        "a": "Non. AutoTrim n'automatise que le dérush — la passe fastidieuse de coupe des silences. Le vrai montage se fait toujours dans Premiere Pro (ou Final Cut Pro, ou DaVinci Resolve) sur la timeline propre qu'AutoTrim vous livre."
+      },
+      "3": {
+        "q": "AutoTrim fonctionne-t-il hors ligne ?",
+        "a": "Oui. Tout le traitement, y compris la transcription IA, tourne en local sur votre machine. Aucun upload, aucune dépendance au cloud, et les rushes clients restent confidentiels."
+      },
+      "4": {
+        "q": "Combien coûte AutoTrim ?",
+        "a": "Il existe une version gratuite avec traitement et previews illimités. L'export nécessite une licence : 15 $/mois, 119 $/an, ou 149 $ en une fois pour un accès à vie (prix de lancement, normal 279 $). Remboursement sous 14 jours sur tous les plans."
+      }
     }
+  },
+  "compareShared": {
+    "atGlance": {
+      "title": "AutoTrim en bref",
+      "rows": {
+        "whatItIs": {
+          "label": "C'est quoi",
+          "value": "Un outil de dérush automatique pour monteurs vidéo. Déposez vos rushes bruts, récupérez une timeline propre et assemblée."
+        },
+        "worksWith": {
+          "label": "Compatible avec",
+          "value": "Final Cut Pro (FCPXML), Adobe Premiere Pro et DaVinci Resolve (XML). macOS et Windows."
+        },
+        "processing": {
+          "label": "Traitement",
+          "value": "Transcription IA 100% locale — vos rushes ne quittent jamais votre machine. Aucun upload, aucun cloud."
+        },
+        "speed": {
+          "label": "Vitesse",
+          "value": "Environ 1 minute pour nettoyer 30 minutes de rushes face caméra — environ 48× plus rapide que la coupe manuelle, 96% du temps de dérush économisé."
+        },
+        "output": {
+          "label": "Résultat",
+          "value": "Une seule timeline fusionnée et prête à monter pour tout le lot — pas un XML par clip."
+        },
+        "price": {
+          "label": "Prix",
+          "value": "Version gratuite (previews illimitées, export verrouillé) · 15 $/mois · 119 $/an · 149 $ à vie (prix de lancement, prix normal 279 $)."
+        },
+        "guarantee": {
+          "label": "Garantie",
+          "value": "Remboursement 14 jours. Chaque licence fonctionne sur 2 machines."
+        }
+      }
+    },
+    "faqTitle": "Questions fréquentes",
+    "relatedTitle": "Pour aller plus loin"
   }
 }

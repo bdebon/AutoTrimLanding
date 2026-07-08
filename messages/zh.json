@@ -791,6 +791,28 @@
       "title": "准备工作快48倍？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。几分钟内看到差异。"
+    },
+    "faq": {
+      "0": {
+        "q": "Mac 上最好的 TimeBolt 替代品是什么?",
+        "a": "AutoTrim 是专为 Mac(和 Windows)打造的 TimeBolt 替代品:并行处理所有片段而不是一次一个,导出一条合并的时间线而不是每个片段一个 XML。可免费试用、无限预览——只有导出时才需要付费(每月 $15、每年 $119 或终身 $149)。"
+      },
+      "1": {
+        "q": "AutoTrim 和 TimeBolt 的主要区别是什么?",
+        "a": "工作流程。TimeBolt 一次导入并处理一个片段,每个片段导出一个 XML,之后你必须在剪辑软件里手动合并。AutoTrim 一次接收整批素材,并行处理并导出一条已组装好的 XML 或 FCPXML 时间线。对于六个片段的拍摄,这就是手动拼六条时间线和导入一条的区别。"
+      },
+      "2": {
+        "q": "TimeBolt 会把所有片段合并成一条时间线吗?",
+        "a": "不会。TimeBolt 每个片段导出一个 XML 文件,你需要在 Final Cut Pro、Premiere Pro 或 Resolve 中手动合并。AutoTrim 为整批素材导出一条合并好的时间线,顺序已排好,可直接剪辑。"
+      },
+      "3": {
+        "q": "AutoTrim 比手动剪静音快多少?",
+        "a": "在实测案例中,清理 30 分钟口播素材手动剪切约需 48 分钟,AutoTrim 约需 1 分钟——快约 48 倍,节省 96% 的粗剪时间。"
+      },
+      "4": {
+        "q": "AutoTrim 支持 Final Cut Pro 吗?",
+        "a": "支持。AutoTrim 导出的 FCPXML 可直接导入 Final Cut Pro——这很关键,因为 FCP 没有内置静音移除功能,也没有插件市场。它还为 Premiere Pro 和 DaVinci Resolve 导出 XML。"
+      }
     }
   },
   "compareAutocut": {
@@ -848,6 +870,28 @@
       "title": "准备更快、更简单的编辑？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。几分钟内看到差异。"
+    },
+    "faq": {
+      "0": {
+        "q": "AutoCut 支持 Final Cut Pro 吗?",
+        "a": "不支持。AutoCut 是 Premiere Pro 和 DaVinci Resolve 的插件——不存在 Final Cut Pro 版 AutoCut,因为 FCP 没有插件市场。AutoTrim 是独立应用,因此可以配合 Final Cut Pro 使用:导出 FCPXML 时间线,直接导入你的项目。"
+      },
+      "1": {
+        "q": "AutoTrim 和 AutoCut 有什么区别?",
+        "a": "AutoCut 是运行在 Premiere Pro 或 DaVinci Resolve 内部的插件。AutoTrim 是独立桌面应用,在素材进入剪辑软件之前完成清理:并行处理所有片段,用本地 AI 移除静音和口头语,并导出一条合并时间线,支持 Final Cut Pro、Premiere 和 Resolve。它还提供 $149 一次性终身许可,而不是只有订阅。"
+      },
+      "2": {
+        "q": "使用 AutoTrim 需要订阅吗?",
+        "a": "不需要。免费版可无限处理和预览。导出时间线可选:每月 $15、每年 $119,或 $149 一次性终身许可(首发价,原价 $279)——附 14 天退款保证。"
+      },
+      "3": {
+        "q": "我的素材会上传到云端吗?",
+        "a": "不会。AutoTrim 的 AI 转录完全在你的电脑上运行。不上传任何内容,可离线使用,客户素材保持机密。"
+      },
+      "4": {
+        "q": "用了 AutoTrim 还能继续在 Premiere Pro 里剪辑吗?",
+        "a": "当然。AutoTrim 只负责粗剪:移除素材中的静音和口头语,并导出 XML 时间线给 Premiere Pro(FCPXML 给 Final Cut Pro,XML 给 Resolve)。精剪仍在你的剪辑软件中完成,和以前一样。"
+      }
     }
   },
   "compareDescript": {
@@ -910,6 +954,28 @@
       "title": "准备专业级速度？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。几分钟内体验差异。"
+    },
+    "faq": {
+      "0": {
+        "q": "对视频剪辑师来说,最好的 Descript 替代品是什么?",
+        "a": "对于想留在自己剪辑软件里的剪辑师,AutoTrim 是最接近的替代品:在本地移除所有片段的静音和口头语,然后导出一条合并时间线到 Final Cut Pro、Premiere Pro 或 DaVinci Resolve。Descript 用它自己的云端文本剪辑流程取代你的剪辑软件;AutoTrim 则融入你现有的工作流。"
+      },
+      "1": {
+        "q": "Descript 能配合 Final Cut Pro 使用吗?",
+        "a": "可以从 Descript 导出到其他剪辑软件,但流程需要先把素材上传到 Descript 云端,在那里剪辑,再往返导回。AutoTrim 100% 本地运行,一步生成原生 FCPXML 时间线,完全无需上传。"
+      },
+      "2": {
+        "q": "AutoTrim 会像 Descript 那样上传我的素材吗?",
+        "a": "不会。AutoTrim 的 AI 转录完全在本地运行——素材永远不离开你的电脑。大文件处理更快,未发布内容和客户素材保持私密。"
+      },
+      "3": {
+        "q": "AutoTrim 比 Descript 便宜吗?",
+        "a": "Descript 只有订阅制。AutoTrim 提供免费版(无限预览),以及每月 $15、每年 $119 和 $149 一次性终身许可——付一次钱,不再操心月费。附 14 天退款保证。"
+      },
+      "4": {
+        "q": "使用 AutoTrim 需要学习新的剪辑软件吗?",
+        "a": "不需要。AutoTrim 只自动化粗剪——检测并移除静音和口头语。你把生成的时间线导入 Final Cut Pro、Premiere Pro 或 Resolve,然后照常剪辑。"
+      }
     }
   },
   "compareFinalCut": {
@@ -972,6 +1038,32 @@
       "title": "准备好停止在Final Cut中手动剪切静音了吗？",
       "button": "免费试用AutoTrim",
       "subtext": "无需信用卡。直接将FCPXML导出到您的Final Cut Pro项目。"
+    },
+    "faq": {
+      "0": {
+        "q": "Final Cut Pro 有内置的静音移除功能吗?",
+        "a": "没有。截至 2026 年,Final Cut Pro 没有检测和移除静音的原生功能,也没有插件市场可以添加。静音只能用切割工具手动剪——或者用 AutoTrim 这样的独立应用自动移除,它导出的 FCPXML 时间线可直接导回 FCP。"
+      },
+      "1": {
+        "q": "如何在 Final Cut Pro 中自动移除静音?",
+        "a": "使用在素材进入 FCP 之前处理它们的独立工具。用 AutoTrim:把所有片段拖进应用,选择预设(YouTube、播客或 Vlog)或调整静音阈值和余量,预览剪切点,然后导出一条 FCPXML 时间线并导入 Final Cut Pro。清理 30 分钟素材约需 1 分钟。"
+      },
+      "2": {
+        "q": "Final Cut Pro 能移除\"嗯\"\"呃\"等口头语吗?",
+        "a": "原生不行——FCP 没有基于转录的剪辑。AutoTrim 通过本地 AI 转录检测口头语和停顿,并可自动剪掉。该功能仍处于实验阶段,效果因语言和口音而异。"
+      },
+      "3": {
+        "q": "为什么没有 Final Cut Pro 的静音移除插件?",
+        "a": "Final Cut Pro 支持特效插件(FxPlug),但不支持能分析素材并剪切时间线的工作流插件——这就是 AutoCut 这类工具只有 Premiere Pro 和 DaVinci Resolve 版本的原因。业内通行的解决方案是用独立应用生成 FCPXML 时间线,这正是 AutoTrim 的做法。"
+      },
+      "4": {
+        "q": "在 Final Cut Pro 中手动剪静音要花多长时间?",
+        "a": "实测案例:30 分钟口播素材约需 48 分钟的切割工具操作。AutoTrim 处理同样的素材约需 1 分钟——快约 48 倍,节省 96% 的粗剪时间。"
+      },
+      "5": {
+        "q": "AutoTrim 是原生 Mac 应用吗?",
+        "a": "是的。AutoTrim 在 macOS 上原生运行(也支持 Windows),主要为 Final Cut Pro 剪辑师打造。免费版可无限处理和预览;导出需要许可证——每月 $15、每年 $119 或终身 $149。"
+      }
     }
   },
   "comparePremiere": {
@@ -1034,6 +1126,65 @@
       "title": "准备好跳过 Premiere 里的粗剪了吗?",
       "button": "免费试用 AutoTrim",
       "subtext": "无需信用卡。XML 直接导入 Premiere Pro。"
+    },
+    "faq": {
+      "0": {
+        "q": "Premiere Pro 能自动移除静音吗?",
+        "a": "部分可以。Premiere Pro 的文本剪辑可以在转录后检测并删除序列中的停顿——但一次只能处理一个序列,且在剪辑内部进行。对于成批素材,AutoTrim 这样的独立工具可以并行移除所有片段的静音,并导出一条已组装的 XML 时间线导入 Premiere。"
+      },
+      "1": {
+        "q": "在 Premiere 剪辑前,批量移除多个片段静音最快的方法是什么?",
+        "a": "在 Premiere 之外批量处理。AutoTrim 一次接收所有素材,用本地 AI 剪掉静音和口头语,导出一条合并的 XML 时间线。清理 30 分钟素材约需 1 分钟,而手动剪切约需 48 分钟。"
+      },
+      "2": {
+        "q": "AutoTrim 会取代 Premiere Pro 吗?",
+        "a": "不会。AutoTrim 只自动化粗剪——那道繁琐的剪静音工序。真正的剪辑仍在 Premiere Pro(或 Final Cut Pro、DaVinci Resolve)中,基于 AutoTrim 交付的干净时间线进行。"
+      },
+      "3": {
+        "q": "AutoTrim 能离线使用吗?",
+        "a": "能。包括 AI 转录在内的所有处理都在本地运行。无上传、不依赖云端,客户素材保持机密。"
+      },
+      "4": {
+        "q": "AutoTrim 多少钱?",
+        "a": "免费版可无限处理和预览。导出需要许可证:每月 $15、每年 $119,或 $149 一次性终身使用(首发价,原价 $279)。所有方案均有 14 天退款保证。"
+      }
     }
+  },
+  "compareShared": {
+    "atGlance": {
+      "title": "AutoTrim 一览",
+      "rows": {
+        "whatItIs": {
+          "label": "是什么",
+          "value": "面向视频剪辑师的桌面静音移除工具。放入原始素材,得到一条干净、已组装好的时间线。"
+        },
+        "worksWith": {
+          "label": "兼容",
+          "value": "Final Cut Pro(FCPXML)、Adobe Premiere Pro 和 DaVinci Resolve(XML)。macOS 和 Windows。"
+        },
+        "processing": {
+          "label": "处理方式",
+          "value": "100% 本地 AI 转录——素材永远不离开你的电脑。无上传,无云端。"
+        },
+        "speed": {
+          "label": "速度",
+          "value": "清理 30 分钟口播素材约需 1 分钟——比手动剪切快约 48 倍,节省 96% 的粗剪时间。"
+        },
+        "output": {
+          "label": "输出",
+          "value": "整批素材合并为一条可直接剪辑的时间线——而不是每个片段一个 XML。"
+        },
+        "price": {
+          "label": "价格",
+          "value": "免费版(无限预览,导出需付费)· 每月 $15 · 每年 $119 · 终身 $149(首发价,原价 $279)。"
+        },
+        "guarantee": {
+          "label": "保障",
+          "value": "14 天退款保证。每个许可证可用于 2 台设备。"
+        }
+      }
+    },
+    "faqTitle": "常见问题",
+    "relatedTitle": "继续了解"
   }
 }

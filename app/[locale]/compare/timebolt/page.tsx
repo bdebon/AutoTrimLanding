@@ -1,48 +1,53 @@
-"use client";
-
-import Script from "next/script";
+import { getTranslations } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CompareTimebolt from "@/components/CompareTimebolt";
+import CompareExtras from "@/components/CompareExtras";
+import {
+  compareArticleJsonLd,
+  faqJsonLd,
+  breadcrumbJsonLd,
+  type FaqItem,
+} from "@/lib/seo";
 
-export default function CompareTimeboltPage() {
+export default async function CompareTimeboltPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "AutoTrim vs TimeBolt: The Ultimate Comparison",
-    description: "Detailed comparison between AutoTrim and TimeBolt for video editing. See why professionals are switching to AutoTrim for 48× faster workflow.",
-    author: {
-      "@type": "Person",
-      name: "Benjamin Code",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "AutoTrim",
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/assets/img/logo-autotrim.svg`,
-      },
-    },
-    datePublished: "2024-01-01",
-    dateModified: new Date().toISOString(),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteUrl}/compare/timebolt`,
-    },
-  };
+  const t = await getTranslations({ locale });
+  const faqItems = Object.values(
+    t.raw("compareTimebolt.faq") as Record<string, FaqItem>
+  );
+
+  const jsonLd = [
+    compareArticleJsonLd({
+      siteUrl,
+      slug: "timebolt",
+      headline: "AutoTrim vs TimeBolt: The Ultimate Comparison",
+      description:
+        "Detailed comparison between AutoTrim and TimeBolt for video editing. See why professionals are switching to AutoTrim for 48× faster workflow.",
+      datePublished: "2026-02-12",
+    }),
+    faqJsonLd(faqItems),
+    breadcrumbJsonLd(siteUrl, [
+      { name: "AutoTrim", path: `/${locale}` },
+      { name: t("compareTimebolt.title"), path: `/${locale}/compare/timebolt` },
+    ]),
+  ];
 
   return (
     <div className="min-h-screen">
-      <Script
-        id="ld-comparison"
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
       <main>
         <CompareTimebolt />
+        <CompareExtras locale={locale} slug="timebolt" faqItems={faqItems} />
       </main>
       <Footer />
     </div>

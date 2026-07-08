@@ -1,49 +1,60 @@
-"use client";
-
-import Script from "next/script";
+import { getTranslations } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CompareFinalCut from "@/components/CompareFinalCut";
+import CompareExtras from "@/components/CompareExtras";
+import {
+  compareArticleJsonLd,
+  faqJsonLd,
+  breadcrumbJsonLd,
+  type FaqItem,
+} from "@/lib/seo";
 
-export default function CompareFinalCutPage() {
+export default async function CompareFinalCutPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "AutoTrim for Final Cut Pro: The Missing Silence Remover",
-    description:
-      "Final Cut Pro has no native silence removal and no third-party plugin marketplace for it. AutoTrim fills the gap — drop your clips, get a ready-to-import FCPXML timeline.",
-    author: {
-      "@type": "Person",
-      name: "Benjamin Code",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "AutoTrim",
-      logo: {
-        "@type": "ImageObject",
-        url: `${siteUrl}/assets/img/logo-autotrim.svg`,
+  const t = await getTranslations({ locale });
+  const faqItems = Object.values(
+    t.raw("compareFinalCut.faq") as Record<string, FaqItem>
+  );
+
+  const jsonLd = [
+    compareArticleJsonLd({
+      siteUrl,
+      slug: "final-cut-pro",
+      headline: "AutoTrim for Final Cut Pro: The Missing Silence Remover",
+      description:
+        "Final Cut Pro has no native silence removal and no third-party plugin marketplace for it. AutoTrim fills the gap — drop your clips, get a ready-to-import FCPXML timeline.",
+      datePublished: "2026-04-24",
+    }),
+    faqJsonLd(faqItems),
+    breadcrumbJsonLd(siteUrl, [
+      { name: "AutoTrim", path: `/${locale}` },
+      {
+        name: t("compareFinalCut.title"),
+        path: `/${locale}/compare/final-cut-pro`,
       },
-    },
-    datePublished: "2024-01-01",
-    dateModified: new Date().toISOString(),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${siteUrl}/compare/final-cut-pro`,
-    },
-  };
+    ]),
+  ];
 
   return (
     <div className="min-h-screen">
-      <Script
-        id="ld-comparison"
+      <script
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
       <main>
         <CompareFinalCut />
+        <CompareExtras
+          locale={locale}
+          slug="final-cut-pro"
+          faqItems={faqItems}
+        />
       </main>
       <Footer />
     </div>

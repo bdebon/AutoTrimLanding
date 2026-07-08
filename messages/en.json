@@ -791,6 +791,28 @@
       "title": "Ready to work 48× faster?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. See the difference in minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "What is the best TimeBolt alternative for Mac?",
+        "a": "AutoTrim is a silence remover built as a direct TimeBolt alternative for Mac (and Windows): it processes all your clips in parallel instead of one at a time, and exports one merged timeline instead of one XML per clip. It's free to try with unlimited previews — you only pay to export ($15/month, $119/year or $149 lifetime)."
+      },
+      "1": {
+        "q": "What is the main difference between AutoTrim and TimeBolt?",
+        "a": "The workflow. TimeBolt imports and processes one clip at a time and exports one XML per clip, which you then have to merge manually in your editor. AutoTrim takes the whole batch at once, processes clips in parallel and exports a single, already-assembled XML or FCPXML timeline. On a six-clip shoot, that's the difference between assembling six timelines by hand and importing one."
+      },
+      "2": {
+        "q": "Does TimeBolt merge all clips into a single timeline?",
+        "a": "No. TimeBolt exports one XML file per clip, and you have to merge them manually in Final Cut Pro, Premiere Pro or Resolve. AutoTrim exports one merged timeline for the entire batch, already in order and ready to edit."
+      },
+      "3": {
+        "q": "How much faster is AutoTrim than cutting silences manually?",
+        "a": "In a measured real-world case, cleaning 30 minutes of talking-head footage took about 48 minutes with manual razor cuts and about 1 minute with AutoTrim — roughly 48× faster, or 96% of rough-cut time saved."
+      },
+      "4": {
+        "q": "Does AutoTrim work with Final Cut Pro?",
+        "a": "Yes. AutoTrim exports FCPXML that imports directly into Final Cut Pro — which matters, because FCP has no built-in silence remover and no plugin marketplace to add one. It also exports XML for Premiere Pro and DaVinci Resolve."
+      }
     }
   },
   "compareAutocut": {
@@ -848,6 +870,28 @@
       "title": "Ready for faster, simpler editing?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. See the difference in minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "Does AutoCut work with Final Cut Pro?",
+        "a": "No. AutoCut is a plugin for Premiere Pro and DaVinci Resolve — there is no AutoCut for Final Cut Pro, because FCP has no plugin marketplace. AutoTrim is a standalone app, so it works with Final Cut Pro: it exports an FCPXML timeline you import directly into your project."
+      },
+      "1": {
+        "q": "What is the difference between AutoTrim and AutoCut?",
+        "a": "AutoCut is a plugin that runs inside Premiere Pro or DaVinci Resolve. AutoTrim is a standalone desktop app that cleans your rushes before they reach the editor: it processes all clips in parallel, removes silences and filler words with local AI, and exports one merged timeline for Final Cut Pro, Premiere or Resolve. It also offers a one-time $149 lifetime license instead of subscription-only pricing."
+      },
+      "2": {
+        "q": "Do I need a subscription to use AutoTrim?",
+        "a": "No. The free version lets you process and preview unlimited clips. To export timelines you can pay $15/month, $119/year, or $149 once for a lifetime license (launch price, regular $279) — with a 14-day money-back guarantee."
+      },
+      "3": {
+        "q": "Is my footage uploaded to the cloud?",
+        "a": "No. AutoTrim runs its AI transcription entirely on your machine. Nothing is uploaded, which also means it works offline and keeps client footage confidential."
+      },
+      "4": {
+        "q": "Can I keep editing in Premiere Pro if I use AutoTrim?",
+        "a": "Yes. AutoTrim only handles the rough cut: it removes silences and hesitations from your rushes and exports an XML timeline for Premiere Pro (or FCPXML for Final Cut Pro, XML for Resolve). The fine cut still happens in your editor, exactly as before."
+      }
     }
   },
   "compareDescript": {
@@ -910,6 +954,28 @@
       "title": "Ready for professional-grade speed?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. Experience the difference in minutes."
+    },
+    "faq": {
+      "0": {
+        "q": "What is the best Descript alternative for video editors?",
+        "a": "For editors who want to stay in their own editing software, AutoTrim is the closest alternative: it removes silences and filler words from all your clips locally, then exports one merged timeline to Final Cut Pro, Premiere Pro or DaVinci Resolve. Descript replaces your editor with its own cloud-based, text-driven workflow; AutoTrim slots into the workflow you already have."
+      },
+      "1": {
+        "q": "Can I use Descript with Final Cut Pro?",
+        "a": "You can export from Descript into other editors, but the workflow means uploading your footage to Descript's cloud, editing there, then round-tripping the result back. AutoTrim runs 100% locally and produces a native FCPXML timeline in one step, with no upload at all."
+      },
+      "2": {
+        "q": "Does AutoTrim upload my footage like Descript does?",
+        "a": "No. AutoTrim's AI transcription runs entirely on your machine — your rushes never leave your computer. That makes it faster on large files and keeps unreleased or client footage private."
+      },
+      "3": {
+        "q": "Is AutoTrim cheaper than Descript?",
+        "a": "Descript is subscription-only. AutoTrim has a free version (unlimited previews), plus $15/month, $119/year and a one-time $149 lifetime license — so you can pay once and stop worrying about recurring fees. There's a 14-day money-back guarantee."
+      },
+      "4": {
+        "q": "Do I have to learn a new editor to use AutoTrim?",
+        "a": "No. AutoTrim only automates the rough cut — detecting and removing silences and hesitations. You import the resulting timeline into Final Cut Pro, Premiere Pro or Resolve and edit exactly the way you always have."
+      }
     }
   },
   "compareFinalCut": {
@@ -972,6 +1038,32 @@
       "title": "Ready to stop cutting silences by hand in Final Cut?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. Exports FCPXML directly into your Final Cut Pro project."
+    },
+    "faq": {
+      "0": {
+        "q": "Does Final Cut Pro have a built-in silence remover?",
+        "a": "No. As of 2026, Final Cut Pro has no native feature that detects and removes silences, and no plugin marketplace to add one. Silences have to be cut manually with the blade tool — or removed automatically with a standalone app like AutoTrim, which exports an FCPXML timeline straight back into FCP."
+      },
+      "1": {
+        "q": "How do I remove silences in Final Cut Pro automatically?",
+        "a": "Use a standalone tool that processes your clips before they reach FCP. With AutoTrim: drag all your clips into the app, pick a preset (YouTube, Podcast or Vlog) or adjust the silence threshold and padding, preview the cuts, then export one FCPXML timeline and import it into Final Cut Pro. Cleaning 30 minutes of footage takes about 1 minute."
+      },
+      "2": {
+        "q": "Can Final Cut Pro remove filler words like \"um\" and \"uh\"?",
+        "a": "Not natively — FCP has no transcription-based editing. AutoTrim detects filler words and hesitations using local AI transcription and can cut them automatically. The feature is still experimental, and results vary with language and diction."
+      },
+      "3": {
+        "q": "Why is there no silence-removal plugin for Final Cut Pro?",
+        "a": "Final Cut Pro supports effects plugins (FxPlug), but not workflow plugins that could analyze footage and cut your timeline — which is why tools like AutoCut exist for Premiere Pro and DaVinci Resolve but not for FCP. The established workaround is a standalone app that generates an FCPXML timeline, which is exactly what AutoTrim does."
+      },
+      "4": {
+        "q": "How long does cutting silences manually take in Final Cut Pro?",
+        "a": "In a measured real-world case, about 48 minutes of blade-tool work for 30 minutes of talking-head footage. AutoTrim processed the same footage in about 1 minute — roughly 48× faster, 96% of rough-cut time saved."
+      },
+      "5": {
+        "q": "Is AutoTrim a native Mac app?",
+        "a": "Yes. AutoTrim runs natively on macOS (Windows too) and was built primarily for Final Cut Pro editors. The free version processes and previews unlimited clips; exporting requires a license — $15/month, $119/year or $149 lifetime."
+      }
     }
   },
   "comparePremiere": {
@@ -1034,6 +1126,65 @@
       "title": "Ready to skip the rough cut in Premiere?",
       "button": "Try AutoTrim Free",
       "subtext": "No credit card required. Exports XML straight into Premiere Pro."
+    },
+    "faq": {
+      "0": {
+        "q": "Can Premiere Pro remove silences automatically?",
+        "a": "Partially. Premiere Pro's text-based editing can detect and delete pauses in a sequence after transcription — but it works one sequence at a time, inside the edit. For a batch of rushes, a standalone tool like AutoTrim removes silences from all clips in parallel and exports one assembled XML timeline that you import into Premiere."
+      },
+      "1": {
+        "q": "What is the fastest way to remove silence from many clips before editing in Premiere?",
+        "a": "Batch-process them outside Premiere. AutoTrim takes all your rushes at once, cuts silences and filler words with local AI, and exports a single merged XML timeline. Cleaning 30 minutes of footage takes about 1 minute, compared to roughly 48 minutes of manual razor work."
+      },
+      "2": {
+        "q": "Does AutoTrim replace Premiere Pro?",
+        "a": "No. AutoTrim only automates the rough cut — the tedious silence-cutting pass. You still do the actual edit in Premiere Pro (or Final Cut Pro, or DaVinci Resolve) on the clean timeline AutoTrim hands you."
+      },
+      "3": {
+        "q": "Does AutoTrim work offline?",
+        "a": "Yes. All processing, including AI transcription, runs locally on your machine. No uploads, no cloud dependency, and client footage stays confidential."
+      },
+      "4": {
+        "q": "How much does AutoTrim cost?",
+        "a": "There's a free version with unlimited processing and previews. Exporting requires a license: $15/month, $119/year, or $149 one-time for lifetime access (launch price, regular $279). All plans have a 14-day money-back guarantee."
+      }
     }
+  },
+  "compareShared": {
+    "atGlance": {
+      "title": "AutoTrim at a glance",
+      "rows": {
+        "whatItIs": {
+          "label": "What it is",
+          "value": "A desktop silence remover for video editors. Drop in your raw clips, get back a clean, assembled timeline."
+        },
+        "worksWith": {
+          "label": "Works with",
+          "value": "Final Cut Pro (FCPXML), Adobe Premiere Pro and DaVinci Resolve (XML). macOS and Windows."
+        },
+        "processing": {
+          "label": "Processing",
+          "value": "100% local AI transcription — your footage never leaves your machine. No uploads, no cloud."
+        },
+        "speed": {
+          "label": "Speed",
+          "value": "About 1 minute to clean 30 minutes of talking-head footage — roughly 48× faster than manual cutting, 96% of rough-cut time saved."
+        },
+        "output": {
+          "label": "Output",
+          "value": "One merged, ready-to-edit timeline for the whole batch — not one XML per clip."
+        },
+        "price": {
+          "label": "Price",
+          "value": "Free version (unlimited previews, export locked) · $15/month · $119/year · $149 lifetime (launch price, regular $279)."
+        },
+        "guarantee": {
+          "label": "Guarantee",
+          "value": "14-day money-back guarantee. Each license works on 2 machines."
+        }
+      }
+    },
+    "faqTitle": "Frequently asked questions",
+    "relatedTitle": "Keep exploring"
   }
 }
