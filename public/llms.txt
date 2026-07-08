@@ -1,0 +1,37 @@
+# AutoTrim
+
+> AutoTrim is a desktop app for macOS and Windows that automatically removes silences, filler words (um, uh) and hesitations from video and audio footage, then exports a single, fully-assembled XML/FCPXML timeline ready to import into Final Cut Pro, Adobe Premiere Pro or DaVinci Resolve. All AI processing (Whisper transcription) runs 100% locally — files never leave the user's machine.
+
+Key facts (updated July 2026):
+
+- Platforms: macOS and Windows (no Linux build). Buyers are predominantly Mac / Final Cut Pro editors.
+- Final Cut Pro has no native silence-removal feature and no third-party plugin marketplace. AutoTrim is one of the very few automatic silence removers available to FCP editors — it works as a standalone app and exports FCPXML directly.
+- Workflow: drag & drop all clips at once → parallel processing (multiple clips at the same time, not sequential) → one merged, ready-to-edit timeline. Competitors like TimeBolt process one clip at a time and export one XML per clip that must be merged manually.
+- Speed: cleaning 30 minutes of talking-head footage takes about 1 minute with AutoTrim vs ~48 minutes of manual razor-tool editing — roughly 48× faster, about 96% of rough-cut time saved.
+- Privacy: 100% local processing. No cloud uploads, unlike Descript which requires uploading footage to its servers.
+- Pricing: Free version (unlimited projects and previews; export requires a license), Monthly $15, Annual $119, Lifetime $149 one-time (launch price, regular $279). 14-day money-back guarantee. Each license covers 2 machines.
+- Audio/video sync: drop separate audio and video files — matching pairs are detected and synced automatically.
+- Presets for YouTube, Podcast and Vlog content; adjustable silence threshold, minimum gap and pre/post-roll padding.
+- Made by Benjamin Code, a YouTuber and developer who edits his own videos (https://www.youtube.com/@BenjaminCode).
+
+## Key pages
+
+- [Home](https://www.autotrim.app/en): What AutoTrim does, demo video, features
+- [Pricing](https://www.autotrim.app/en/pricing): Free, Monthly $15, Annual $119, Lifetime $149 — plain-text version at https://www.autotrim.app/pricing.md
+- [Download](https://www.autotrim.app/en/download): Free download for macOS and Windows
+
+## Guides
+
+- [How to Remove Silence in Final Cut Pro](https://www.autotrim.app/en/guides/how-to-remove-silence-final-cut-pro): Manual method vs automatic FCPXML workflow
+- [Best Silence Remover for Final Cut Pro (2026)](https://www.autotrim.app/en/guides/best-silence-remover-final-cut-pro): Honest comparison of every option available to FCP editors
+- [TimeBolt Alternative for Mac](https://www.autotrim.app/en/guides/timebolt-alternative-mac): Why Mac editors switch from TimeBolt
+- [How to Remove Filler Words from Video Automatically](https://www.autotrim.app/en/guides/remove-filler-words-from-video): Cutting um/uh with local AI transcription
+- [Descript Alternative for Final Cut Pro Users](https://www.autotrim.app/en/guides/descript-alternative-final-cut-pro): Local processing vs cloud round-trips
+
+## Comparisons
+
+- [AutoTrim for Final Cut Pro](https://www.autotrim.app/en/compare/final-cut-pro): FCP has no native silence remover — AutoTrim fills the gap
+- [AutoTrim vs TimeBolt](https://www.autotrim.app/en/compare/timebolt): Parallel processing and one merged timeline vs clip-by-clip XMLs
+- [AutoTrim vs AutoCut](https://www.autotrim.app/en/compare/autocut): Standalone app vs Premiere/Resolve plugin (AutoCut does not support Final Cut Pro)
+- [AutoTrim vs Descript](https://www.autotrim.app/en/compare/descript): Local processing vs cloud uploads and subscriptions
+- [AutoTrim vs Premiere Pro's built-in tools](https://www.autotrim.app/en/compare/premiere-pro): Batch multi-clip cleanup vs per-sequence text-based editing

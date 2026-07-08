@@ -149,14 +149,28 @@ export default function RootLayout({
                   "@type": "Offer",
                   "price": "0",
                   "priceCurrency": "USD",
-                  "description": "Free trial — process and preview your clips, pay only to export",
+                  "description": "Free version — unlimited processing and previews, pay only to export",
                   "availability": "https://schema.org/InStock"
                 },
                 {
                   "@type": "Offer",
-                  "price": "49",
+                  "price": "15",
                   "priceCurrency": "USD",
-                  "description": "Lifetime license — one-time payment, all future updates included",
+                  "description": "Monthly license — $15/month, cancel anytime",
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": "119",
+                  "priceCurrency": "USD",
+                  "description": "Annual license — $119/year",
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": "149",
+                  "priceCurrency": "USD",
+                  "description": "Lifetime license — one-time payment, all future updates included (launch price, regular $279)",
                   "availability": "https://schema.org/InStock"
                 }
               ],
