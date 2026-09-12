@@ -56,9 +56,8 @@ const WhyFaster = () => {
         </h2>
 
         {/* Comparison Table */}
-        <div
-          className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100"
-        >
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 min-w-[640px] sm:min-w-0">
           {/* Table Header */}
           <div className="grid grid-cols-3 bg-gradient-to-r from-gray-50 to-gray-100 border-b-2 border-gray-200">
             <div className="p-6 font-semibold text-gray-700">
@@ -100,6 +99,7 @@ const WhyFaster = () => {
               </div>
             </div>
           ))}
+          </div>
         </div>
 
         {/* CTA */}

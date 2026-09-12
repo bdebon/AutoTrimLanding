@@ -113,9 +113,10 @@ const VideoDemo = () => {
           <div className="relative max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={closeModal}
+              aria-label={t('closeVideo')}
               className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors"
             >
-              <X className="h-8 w-8" />
+              <X className="h-8 w-8" aria-hidden="true" />
             </button>
             <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
               <div className="aspect-video bg-black">
