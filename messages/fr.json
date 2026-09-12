@@ -12,7 +12,7 @@
     "titleLine1": "Arrêtez de perdre des heures",
     "titleLine2": "à couper les silences.",
     "subtitle": "Terminez votre montage en quelques secondes.",
-    "description": "AutoTrim supprime les silences, les mots de remplissage et les répétitions de tous vos clips en une fois — en les traitant en parallèle et en exportant une timeline propre et unique, prête à monter dans Final Cut Pro, Premiere ou Resolve.",
+    "description": "AutoTrim supprime les silences, les mots de remplissage et les répétitions de tous vos clips en une fois — en les traitant en parallèle et en exportant une timeline propre et unique, prête à monter dans Final Cut Pro, Premiere ou Resolve. Vous montez sur CapCut ? Récupérez des clips prêts à glisser.",
     "cta": {
       "main": "Essayer AutoTrim gratuitement",
       "secondary": "Voir la démo de 90s"
@@ -280,8 +280,8 @@
         "description": "Exportez une timeline propre ou des XML individuels — plus de pièces de puzzle."
       },
       "directRender": {
-        "title": "Export direct MP3 & Vidéo",
-        "description": "Pas besoin de timeline ? Rendez vos fichiers coupés directement en MP3 ou en vidéo."
+        "title": "Export MP4, MP3 ou clips pour CapCut",
+        "description": "Pas besoin de timeline ? Rendez votre derush directement en vidéo ou en MP3. Vous montez sur CapCut ? Exportez un dossier de clips numérotés à glisser dans votre projet : le montage est déjà dans l'ordre, chaque coupe reste éditable."
       },
       "localProcessing": {
         "title": "Traitement 100% local",
@@ -614,6 +614,10 @@
       "6": {
         "q": "AutoTrim supporte-t-il les fichiers audio ?",
         "a": "Oui ! AutoTrim fonctionne avec les fichiers vidéo et audio. Vous pouvez même déposer vidéo et audio séparément — s'ils correspondent, AutoTrim les synchronise automatiquement et exporte les deux alignés dans votre timeline."
+      },
+      "7": {
+        "q": "Est-ce que ça marche avec CapCut ?",
+        "a": "Oui. CapCut n'importe pas de timeline XML, alors AutoTrim exporte votre derush en clips numérotés (001, 002, 003…). Glissez le dossier dans CapCut : les clips s'enchaînent dans l'ordre et vous gardez la main sur chaque coupe. Vous pouvez aussi exporter un seul MP4 déjà nettoyé."
       }
     }
   },
@@ -648,8 +652,8 @@
   },
   "metadata": {
     "title": "AutoTrim – Supprimez les silences de vos vidéos automatiquement | Essai gratuit",
-    "description": "AutoTrim supprime les silences, mots de remplissage et hésitations de vos vidéos en quelques secondes. Déposez vos clips, récupérez une timeline propre pour Premiere, Final Cut ou Resolve. 100% local. Essai gratuit.",
-    "keywords": "supprimer silence vidéo, montage vidéo automatique, couper silences, autotrim, suppression silence, montage automatique, Final Cut Pro, Adobe Premiere, DaVinci Resolve, production vidéo, création contenu",
+    "description": "AutoTrim supprime les silences, mots de remplissage et hésitations de vos vidéos en quelques secondes. Déposez vos clips, récupérez une timeline propre pour Premiere, Final Cut ou Resolve, ou des clips pour CapCut. 100% local. Essai gratuit.",
+    "keywords": "supprimer silence vidéo, montage vidéo automatique, couper silences, autotrim, suppression silence, montage automatique, Final Cut Pro, Adobe Premiere, DaVinci Resolve, production vidéo, création contenu, CapCut, supprimer silences CapCut, dérush CapCut",
     "download": {
       "title": "Télécharger AutoTrim - Essai Gratuit | Suppression Automatique des Silences",
       "description": "Téléchargez AutoTrim pour macOS et commencez à couper les silences de vos vidéos instantanément. Essai gratuit disponible. Compatible avec Final Cut Pro, Adobe Premiere et DaVinci Resolve.",

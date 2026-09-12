@@ -12,7 +12,7 @@
     "titleLine1": "Deja de perder horas",
     "titleLine2": "recortando silencios.",
     "subtitle": "Completa tu edición en segundos.",
-    "description": "AutoTrim corta silencios, muletillas y repeticiones de todos tus clips a la vez — procesándolos en paralelo y exportando una línea de tiempo única y limpia lista para editar en Final Cut Pro, Premiere o Resolve.",
+    "description": "AutoTrim corta silencios, muletillas y repeticiones de todos tus clips a la vez — procesándolos en paralelo y exportando una línea de tiempo única y limpia lista para editar en Final Cut Pro, Premiere o Resolve. ¿Editas en CapCut? Obtén clips listos para arrastrar.",
     "cta": {
       "main": "Prueba AutoTrim gratis",
       "secondary": "Ver Demo de 90s"
@@ -280,8 +280,8 @@
         "description": "Exporta una línea de tiempo limpia o XMLs individuales — no más piezas de rompecabezas."
       },
       "directRender": {
-        "title": "Exportación Directa MP3 y Video",
-        "description": "¿No necesitas una línea de tiempo? Renderiza tus archivos recortados directamente a MP3 o video."
+        "title": "Exportación MP4, MP3 o clips para CapCut",
+        "description": "¿No necesitas una línea de tiempo? Renderiza tu edición recortada directamente a video o MP3. ¿Editas en CapCut? Exporta una carpeta de clips numerados y arrástrala a tu proyecto: el montaje ya está en orden y cada corte sigue siendo editable."
       },
       "localProcessing": {
         "title": "Procesamiento 100% Local",
@@ -614,6 +614,10 @@
       "6": {
         "q": "¿AutoTrim soporta archivos de audio?",
         "a": "¡Sí! AutoTrim funciona con archivos de video y audio. Incluso puedes soltar video y audio por separado — si coinciden, AutoTrim los sincroniza automáticamente y exporta ambos alineados en tu línea de tiempo."
+      },
+      "7": {
+        "q": "¿Funciona con CapCut?",
+        "a": "Sí. CapCut no importa líneas de tiempo XML, así que AutoTrim exporta tu edición en clips numerados (001, 002, 003…). Arrastra la carpeta a CapCut: los clips se encadenan en orden y mantienes el control de cada corte. También puedes exportar un único MP4 ya limpio."
       }
     }
   },
@@ -648,8 +652,8 @@
   },
   "metadata": {
     "title": "AutoTrim – Elimina silencios de tus videos automáticamente | Prueba gratuita",
-    "description": "AutoTrim elimina silencios, muletillas y vacilaciones de tus videos en segundos. Arrastra tus clips, obtén una timeline limpia para Premiere, Final Cut o Resolve. 100% local. Prueba gratis.",
-    "keywords": "eliminar silencio video, edición video automática, cortar silencios, autotrim, eliminación silencio, edición automática, Final Cut Pro, Adobe Premiere, DaVinci Resolve, producción video, creación contenido",
+    "description": "AutoTrim elimina silencios, muletillas y vacilaciones de tus videos en segundos. Arrastra tus clips, obtén una timeline limpia para Premiere, Final Cut o Resolve, o clips para CapCut. 100% local. Prueba gratis.",
+    "keywords": "eliminar silencio video, edición video automática, cortar silencios, autotrim, eliminación silencio, edición automática, Final Cut Pro, Adobe Premiere, DaVinci Resolve, producción video, creación contenido, CapCut, eliminar silencios CapCut",
     "download": {
       "title": "Descargar AutoTrim - Prueba Gratuita | Eliminación Automática de Silencios",
       "description": "Descarga AutoTrim para macOS y comienza a cortar silencios de tus videos al instante. Prueba gratuita disponible. Compatible con Final Cut Pro, Adobe Premiere y DaVinci Resolve.",

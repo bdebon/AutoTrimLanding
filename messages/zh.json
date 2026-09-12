@@ -12,7 +12,7 @@
     "titleLine1": "不再浪费数小时",
     "titleLine2": "修剪静音。",
     "subtitle": "几秒钟完成剪辑工作。",
-    "description": "AutoTrim一次性从所有视频片段中切除静音、填充词和重复内容——并行处理并导出单个干净的时间线，可直接在Final Cut Pro、Premiere或Resolve中编辑。",
+    "description": "AutoTrim一次性从所有视频片段中切除静音、填充词和重复内容——并行处理并导出单个干净的时间线，可直接在Final Cut Pro、Premiere或Resolve中编辑——或导出为可直接拖入CapCut的片段。",
     "cta": {
       "main": "免费试用AutoTrim",
       "secondary": "观看90秒演示"
@@ -280,8 +280,8 @@
         "description": "导出一个干净时间线或单独XML——不再有拼图块。"
       },
       "directRender": {
-        "title": "直接导出MP3和视频",
-        "description": "不需要时间线？直接将剪辑后的文件渲染为MP3或视频格式。"
+        "title": "直接导出MP4、MP3或CapCut片段",
+        "description": "不需要时间线？直接将剪辑结果渲染为视频或MP3。使用CapCut剪辑？导出一个按编号排列的片段文件夹，拖入项目即可：顺序已经排好，每个剪切点仍可编辑。"
       },
       "localProcessing": {
         "title": "100%本地处理",
@@ -614,6 +614,10 @@
       "6": {
         "q": "AutoTrim支持音频文件吗？",
         "a": "是的！AutoTrim可处理视频和音频文件。您甚至可以分别放置视频和音频——如果它们匹配，AutoTrim会自动同步它们，并在时间线中导出两者对齐。"
+      },
+      "7": {
+        "q": "支持CapCut吗？",
+        "a": "支持。CapCut无法导入XML时间线，所以AutoTrim会把剪辑结果导出为按编号排列的片段（001、002、003……）。把文件夹拖入CapCut：片段按顺序排列，每个剪切点仍由您掌控。您也可以导出一个已清理好的单个MP4。"
       }
     }
   },
@@ -648,8 +652,8 @@
   },
   "metadata": {
     "title": "AutoTrim – 自动删除视频静音 | 免费试用",
-    "description": "AutoTrim在几秒内删除视频中的静音、填充词和犹豫。拖放所有片段，获得一个干净的时间线，适用于Premiere、Final Cut或Resolve。100%本地处理。免费试用。",
-    "keywords": "删除视频静音, 自动视频编辑, 剪切静音, autotrim, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作",
+    "description": "AutoTrim在几秒内删除视频中的静音、填充词和犹豫。拖放所有片段，获得一个干净的时间线，适用于Premiere、Final Cut或Resolve，或导出CapCut片段。100%本地处理。免费试用。",
+    "keywords": "删除视频静音, 自动视频编辑, 剪切静音, autotrim, 静音删除, 自动编辑, Final Cut Pro, Adobe Premiere, DaVinci Resolve, 视频制作, 内容创作, CapCut, CapCut删除静音",
     "download": {
       "title": "下载AutoTrim - 免费试用 | 自动静音删除",
       "description": "下载适用于macOS的AutoTrim，立即开始剪切视频中的静音。提供免费试用。兼容Final Cut Pro、Adobe Premiere和DaVinci Resolve。",

@@ -110,6 +110,14 @@ export default function Home() {
           text: "Yes! AutoTrim works with both video and audio files. You can even drop video and audio separately — if they match, AutoTrim syncs them automatically and exports both aligned in your timeline.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Does AutoTrim work with CapCut?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. CapCut can't import XML timelines, so AutoTrim exports your trimmed edit as numbered clips (001, 002, 003…). Drop the folder into CapCut: the clips line up in order and every cut stays editable. You can also export a single, already-cleaned MP4.",
+        },
+      },
     ],
   };
   return (

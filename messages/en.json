@@ -12,7 +12,7 @@
     "titleLine1": "Stop wasting hours",
     "titleLine2": "trimming silence.",
     "subtitle": "Get your editing done in seconds.",
-    "description": "AutoTrim cuts silences, filler words, and repetition from all your clips at once — processing them in parallel and exporting a single, clean timeline ready to edit in Final Cut Pro, Premiere, or Resolve.",
+    "description": "AutoTrim cuts silences, filler words, and repetition from all your clips at once — processing them in parallel and exporting a single, clean timeline ready to edit in Final Cut Pro, Premiere, or Resolve. On CapCut? Get clips ready to drop in.",
     "cta": {
       "main": "Try AutoTrim for free",
       "secondary": "Watch a 90s Demo"
@@ -280,8 +280,8 @@
         "description": "Export one clean timeline or individual XMLs – no more puzzle pieces."
       },
       "directRender": {
-        "title": "Direct MP3 & Video Export",
-        "description": "Don't need a timeline? Render your trimmed files directly to MP3 or video format."
+        "title": "MP4, MP3 or CapCut-ready clips",
+        "description": "Don't need a timeline? Render your trimmed edit straight to video or MP3. Editing in CapCut? Export a folder of numbered clips and drop it into your project: the edit is already in order, and every cut stays editable."
       },
       "localProcessing": {
         "title": "100% Local Processing",
@@ -614,6 +614,10 @@
       "6": {
         "q": "Does AutoTrim support audio files?",
         "a": "Yes! AutoTrim works with both video and audio files. You can even drop video and audio separately — if they match, AutoTrim syncs them automatically and exports both aligned in your timeline."
+      },
+      "7": {
+        "q": "Does it work with CapCut?",
+        "a": "Yes. CapCut can't import XML timelines, so AutoTrim exports your trimmed edit as numbered clips (001, 002, 003…). Drop the folder into CapCut: the clips line up in order and you keep control of every cut. You can also export a single, already-cleaned MP4."
       }
     }
   },
@@ -648,8 +652,8 @@
   },
   "metadata": {
     "title": "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
-    "description": "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local, no cloud. Try free.",
-    "keywords": "auto trim, remove silence from video, automatic silence removal, cut filler words, video editing automation, trim silence video, autotrim, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation",
+    "description": "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve, or clips for CapCut. 100% local, no cloud. Try free.",
+    "keywords": "auto trim, remove silence from video, automatic silence removal, cut filler words, video editing automation, trim silence video, autotrim, Final Cut Pro, Adobe Premiere, DaVinci Resolve, video production, content creation, capcut silence remover, autotrim capcut, remove silence capcut",
     "download": {
       "title": "Download AutoTrim - Free Trial | Auto Trim Video Silence Removal",
       "description": "Download AutoTrim for macOS and Windows. Auto trim silence, filler words and hesitations from your videos instantly. Free trial available. Compatible with Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
