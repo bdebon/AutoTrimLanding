@@ -2,7 +2,11 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
-/** A fade-in on first view. Does nothing under prefers-reduced-motion (see globals.css). */
+/**
+ * A fade-in on first view. The content is rendered visible (server, crawlers,
+ * no JS); only an element still below the fold at mount is hidden, then revealed
+ * when it scrolls in. Nothing moves under prefers-reduced-motion (globals.css).
+ */
 export default function Reveal({
   children,
   className = "",
@@ -16,11 +20,10 @@ export default function Reveal({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      el.classList.add("is-visible");
-      return;
-    }
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return; // already on screen
+    el.classList.add("reveal");
     const io = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
@@ -37,7 +40,7 @@ export default function Reveal({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const Comp = Tag as any;
   return (
-    <Comp ref={ref} className={`reveal ${className}`}>
+    <Comp ref={ref} className={className}>
       {children}
     </Comp>
   );

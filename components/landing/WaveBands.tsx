@@ -71,7 +71,8 @@ export default function WaveBands({
     const noise = 0.75 + rand() * 0.5;
     const z = zoneAt(i);
     const h = z?.kind === "silence" ? 0.05 + rand() * 0.06 : z ? Math.max(0.3, env) : Math.max(0.08, env * noise);
-    heights.push(Math.min(1, h));
+    // Rounded so the server and the browser agree on every attribute (hydration).
+    heights.push(Math.round(Math.min(1, h) * 1000) / 1000);
   }
 
   const maxBar = wellH - 28;
@@ -114,12 +115,12 @@ export default function WaveBands({
       {/* Bars on top of the bands: accent when kept, noise floor when removed */}
       {heights.map((h, i) => {
         const z = zoneAt(i);
-        const bh = Math.max(3, h * maxBar);
+        const bh = Math.round(Math.max(3, h * maxBar) * 100) / 100;
         return (
           <rect
             key={i}
             x={left + i * pitch}
-            y={mid - bh / 2}
+            y={Math.round((mid - bh / 2) * 100) / 100}
             width={barW}
             height={bh}
             rx="2"

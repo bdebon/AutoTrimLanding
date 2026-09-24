@@ -21,7 +21,7 @@ type Props = {
 };
 
 const frame =
-  "relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-stage aspect-video";
+  "@container relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-stage aspect-video";
 
 /**
  * A capsule: a muted looping video that only plays while on screen.
@@ -115,19 +115,19 @@ export default function CapsuleVideo({
           />
         ) : (
           <div className="absolute inset-0 flex flex-col">
-            <div className="flex items-start justify-between p-5 sm:p-6">
-              <span className="font-ui text-[11px] font-semibold uppercase tracking-[0.12em] text-at-dim">
+            <div className="flex items-start justify-between p-[4cqi]">
+              <span className="font-ui text-[clamp(10px,1.6cqi,12px)] font-semibold uppercase tracking-[0.12em] text-at-dim">
                 {label}
               </span>
-              <span className="rounded-pill border border-at-border bg-at-chip px-3 py-1 font-ui text-[11.5px] text-at-dim">
+              <span className="rounded-pill border border-at-border bg-at-chip px-3 py-1 font-ui text-[clamp(10px,1.6cqi,12px)] text-at-dim">
                 {pendingLabel}
               </span>
             </div>
             <div className="flex flex-1 items-center px-2 sm:px-4">
               <WaveBands seed={name} />
             </div>
-            <figcaption className="p-5 sm:p-6">
-              <span className="font-display text-[22px] font-bold leading-tight text-at-text sm:text-[26px]">
+            <figcaption className="p-[4cqi] pt-0">
+              <span className="line-clamp-2 font-display text-[clamp(15px,3.6cqi,30px)] font-bold leading-tight text-at-text">
                 {title}
               </span>
             </figcaption>
