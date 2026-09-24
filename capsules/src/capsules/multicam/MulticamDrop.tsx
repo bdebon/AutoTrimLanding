@@ -8,8 +8,8 @@ import { color } from "../../tokens";
 import { groupClock, lanes, MULTICAM_PER_SECOND } from "./data";
 import type { MulticamCopy } from "./copy";
 
-/** The scene's own clock, in seconds from its start. */
-const T = {
+/** The scene's own clock, in seconds from its start (the hero's pace; capsule #3 passes its own). */
+export const DROP_TIMING = {
   multicamIn: { start: 0.0, duration: 0.5 },
   cardsFall: 0.1,
   cardsStagger: 0.06,
@@ -49,13 +49,26 @@ const BARS = 96;
  * lanes become one group card. The app's multicam fixtures. Set aside from the hero; kept
  * for the multicam capsule (CAPSULES.md #3). `time` is seconds from the scene's start.
  */
-export const MulticamDrop: React.FC<{ time: number; layout: MulticamLayout; width: number; height: number; copy: MulticamCopy }> = ({
+export type DropTiming = typeof DROP_TIMING;
+
+/** Where the group card sits, so a capsule can put things around it. */
+export const multicamGroupRect = (L: MulticamLayout, width: number, height: number) => {
+  const s = L.s;
+  const cs = L.portrait ? s * 0.78 : s;
+  const groupWidth = Math.min(L.contentWidth, 820 * cs);
+  const groupHeight = (GROUP_HEADER + lanes.length * GROUP_ROW + 16) * cs;
+  return { x: (width - groupWidth) / 2, y: L.portrait ? height * 0.36 : (height - groupHeight) / 2 + 40 * s, width: groupWidth, height: groupHeight, cs };
+};
+
+export const MulticamDrop: React.FC<{ time: number; layout: MulticamLayout; width: number; height: number; copy: MulticamCopy; timing?: DropTiming }> = ({
   time,
   layout: L,
   width,
   height,
   copy,
+  timing,
 }) => {
+  const T = timing ?? DROP_TIMING;
   const s = L.s;
   const start = T.cardsFall - 0.1;
   const out = ramp(time, T.groupOut.start, T.groupOut.duration, ease.in);

@@ -11,6 +11,9 @@ export type MulticamCopy = {
   mainAngle: string;
   /** Lanes in order: two mics, the main angle, the two other cameras. */
   rowNames: string[];
+  /** Capsule #3: its title and the one button of the group card. */
+  title: string;
+  processButton: string;
 };
 
 export const multicamFr: MulticamCopy = {
@@ -22,6 +25,8 @@ export const multicamFr: MulticamCopy = {
   mainSound: "Son principal",
   mainAngle: "Angle principal",
   rowNames: ["Micro Marc", "Micro Julie", "Cam A · large", "Cam B · Marc", "Cam C · Julie"],
+  title: "Trois caméras, deux micros, un drop.",
+  processButton: "Traiter le groupe",
 };
 
 export const multicamEn: MulticamCopy = {
@@ -33,4 +38,6 @@ export const multicamEn: MulticamCopy = {
   mainSound: "Main sound",
   mainAngle: "Main angle",
   rowNames: ["Marc’s mic", "Julie’s mic", "Cam A · wide", "Cam B · Marc", "Cam C · Julie"],
+  title: "Three cameras, two mics, one drop.",
+  processButton: "Process the group",
 };

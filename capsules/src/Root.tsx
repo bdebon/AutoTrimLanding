@@ -11,6 +11,31 @@ import { HERO_SECONDS } from "./capsules/hero/timeline";
 import { multicamEn, multicamFr } from "./capsules/multicam/copy";
 import { MulticamDraft } from "./capsules/multicam/MulticamDraft";
 import { MULTICAM_DROP_SECONDS } from "./capsules/multicam/MulticamDrop";
+import { Drop, DROP_SECONDS } from "./capsules/multicam/Drop";
+import { Mic, MIC_SECONDS } from "./capsules/mic/Mic";
+import { micEn, micFr } from "./capsules/mic/copy";
+import { Follow, FOLLOW_SECONDS } from "./capsules/follow/Follow";
+import { followEn, followFr } from "./capsules/follow/copy";
+import { Timeline, TIMELINE_SECONDS } from "./capsules/timeline/Timeline";
+import { timelineEn, timelineFr } from "./capsules/timeline/copy";
+import { Video, VIDEO_SECONDS } from "./capsules/video/Video";
+import { videoEn, videoFr } from "./capsules/video/copy";
+import { Preview, PREVIEW_SECONDS } from "./capsules/preview/Preview";
+import { previewEn, previewFr } from "./capsules/preview/copy";
+import { Local, LOCAL_SECONDS } from "./capsules/local/Local";
+import { localEn, localFr } from "./capsules/local/copy";
+
+/** The short landing capsules (CAPSULES.md #3 to #10), 1920×1080, one per language. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const shorts: { id: string; component: React.FC<any>; seconds: number; fr: unknown; en: unknown }[] = [
+  { id: "MulticamDrop", component: Drop, seconds: DROP_SECONDS, fr: multicamFr, en: multicamEn },
+  { id: "MulticamMic", component: Mic, seconds: MIC_SECONDS, fr: micFr, en: micEn },
+  { id: "MulticamFollow", component: Follow, seconds: FOLLOW_SECONDS, fr: followFr, en: followEn },
+  { id: "Timeline", component: Timeline, seconds: TIMELINE_SECONDS, fr: timelineFr, en: timelineEn },
+  { id: "Video", component: Video, seconds: VIDEO_SECONDS, fr: videoFr, en: videoEn },
+  { id: "Preview", component: Preview, seconds: PREVIEW_SECONDS, fr: previewFr, en: previewEn },
+  { id: "Local", component: Local, seconds: LOCAL_SECONDS, fr: localFr, en: localEn },
+];
 
 const FPS = 60;
 
@@ -26,6 +51,25 @@ const formats = [
 
 export const Root: React.FC = () => (
   <>
+    {shorts.flatMap(({ id, component, seconds, fr, en }) =>
+      (
+        [
+          ["fr", fr],
+          ["en", en],
+        ] as const
+      ).map(([lang, copy]) => (
+        <Composition
+          key={`${id}-${lang}`}
+          id={`${id}-${lang}`}
+          component={component}
+          defaultProps={copy as Record<string, unknown>}
+          durationInFrames={Math.ceil(seconds * FPS)}
+          fps={FPS}
+          width={1920}
+          height={1080}
+        />
+      ))
+    )}
     {/* Set aside from the hero, to build the multicam capsule (CAPSULES.md #3) from */}
     <Composition id="MulticamDrop-draft-fr" component={MulticamDraft} defaultProps={multicamFr} durationInFrames={Math.ceil(MULTICAM_DROP_SECONDS * FPS)} fps={FPS} width={1920} height={1080} />
     <Composition id="MulticamDrop-draft-en" component={MulticamDraft} defaultProps={multicamEn} durationInFrames={Math.ceil(MULTICAM_DROP_SECONDS * FPS)} fps={FPS} width={1920} height={1080} />

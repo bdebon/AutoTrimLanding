@@ -22,7 +22,7 @@ export const euhEn: EuhProps = {
   counterTo: "0:13",
   name: "AutoTrim",
   version: "2",
-  tagline: "Hesitations too. On your Mac.",
+  tagline: "Hesitations too. On your machine.",
   soundtrack: "",
   captions: [],
 };
