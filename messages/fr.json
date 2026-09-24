@@ -667,15 +667,14 @@
       "silences": "Silences",
       "hesitations": "Hésitations",
       "multicam": "Multicam",
-      "pricing": "Tarifs",
       "faq": "FAQ",
       "menuOpen": "Ouvrir le menu",
       "menuClose": "Fermer le menu"
     },
     "cta": {
       "download": "Télécharger AutoTrim",
-      "pricing": "Voir les tarifs",
-      "platforms": "macOS · Windows · tout en local"
+      "platforms": "macOS · Windows · tout en local",
+      "more": "Voir ce que ça fait"
     },
     "hero": {
       "eyebrow": "AutoTrim 2",

@@ -465,6 +465,7 @@ Réponses de Benjamin du 24 septembre, appliquées dans ce brief :
 | 7 | Langues des hésitations | CrisperWhisper 2, une dizaine de langues selon sa doc. **Liste exacte à confirmer** avant d'écrire la FAQ 7 et de promettre la même chose en es/zh. |
 | 8 | Ton Mac / ta machine | **Votre machine.** |
 | — | Répétitions | On n'en parle pas. |
+| — | Prix sur la home (24 sept., soir) | **Retirés** : section tarifs, bouton « Voir les tarifs » (hero et CTA final) et lien « Tarifs » du header. Avant la v2, cacher les prix avait été décidé parce que beaucoup de visiteurs quittaient la page avant d'avoir essayé l'app. `/pricing` reste joignable par le footer ; la section 4.9 devient le gabarit de `/pricing`. Le bouton secondaire du hero renvoie vers la suite de la page. |
 
 Reste à trancher avant la passe design : les montants et la date de la fenêtre de prix (4.9),
 l'accord de Georgia, la liste des langues.

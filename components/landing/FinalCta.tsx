@@ -17,9 +17,6 @@ export default function FinalCta({ locale }: { locale: string }) {
           <CtaLink href={`/${locale}/download`} location="final" type="download" className={btn.primary}>
             {t("cta.download")}
           </CtaLink>
-          <CtaLink href={`/${locale}/pricing`} location="final" type="pricing" className={btn.ghost}>
-            {t("cta.pricing")}
-          </CtaLink>
         </div>
         <p className="mt-4 font-ui text-[12.5px] text-at-dim">{t("cta.platforms")}</p>
       </div>

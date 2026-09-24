@@ -11,7 +11,6 @@ import Timeline from "@/components/landing/Timeline";
 import Preview from "@/components/landing/Preview";
 import Local from "@/components/landing/Local";
 import Testimonials from "@/components/landing/Testimonials";
-import Pricing from "@/components/landing/Pricing";
 import Faq, { type FaqEntry } from "@/components/landing/Faq";
 import FinalCta from "@/components/landing/FinalCta";
 
@@ -103,7 +102,8 @@ export default async function Home({ params }: Props) {
         <Preview locale={locale} />
         <Local locale={locale} />
         <Testimonials />
-        <Pricing locale={locale} />
+        {/* No prices on the home: visitors left before trying the app (Benjamin, 24 Sept 2026).
+            components/landing/Pricing.tsx is kept for the /pricing restyle. */}
         <Faq />
         <FinalCta locale={locale} />
       </main>

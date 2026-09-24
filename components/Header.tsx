@@ -27,7 +27,6 @@ const Header = () => {
     { href: `${home}#silences`, label: t('nav.silences') },
     { href: `${home}#hesitations`, label: t('nav.hesitations') },
     { href: `${home}#multicam`, label: t('nav.multicam') },
-    { href: `${home}/pricing`, label: t('nav.pricing') },
     { href: `${home}#faq`, label: t('nav.faq') },
   ];
 

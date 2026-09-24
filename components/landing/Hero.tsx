@@ -35,9 +35,9 @@ export default function Hero({ locale }: { locale: string }) {
             <CtaLink href={`/${locale}/download`} location="hero" type="download" className={btn.primary}>
               {t("cta.download")}
             </CtaLink>
-            <CtaLink href={`/${locale}/pricing`} location="hero" type="pricing" className={btn.ghost}>
-              {t("cta.pricing")}
-            </CtaLink>
+            <a href="#silences" className={btn.ghost}>
+              {t("cta.more")}
+            </a>
           </div>
           <p className="mt-4 font-ui text-[12.5px] text-at-dim">{t("cta.platforms")}</p>
         </div>
