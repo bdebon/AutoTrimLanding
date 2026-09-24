@@ -1,0 +1,201 @@
+/* AutoTrim — design tokens
+ * Source of truth for the 2026-09 redesign (design/redesign-2026-09/tokens.css is the
+ * designer's copy). Tailwind exposes these as `at-*` utilities, see tailwind.config.js.
+ * Dark only for now: a light theme would redefine this same block.
+ */
+
+/* Native controls (checkboxes, radios, selects, scrollbars) follow the dark theme. */
+:root {
+  color-scheme: dark;
+
+  /* ---- Grounds -------------------------------------------------------- */
+  --at-bg-app: #0A0A0B;        /* window ground, left rail */
+  --at-bg-panel: #0E0E10;      /* main pane */
+  --at-bg-card: #151312;       /* cards, inputs, pills */
+  --at-bg-card-hi: #1A1715;    /* raised / hover */
+  --at-bg-chip: #1E1B19;       /* neutral chips, icon tiles, avatars */
+  --at-bg-footer: #0B0B0C;     /* footer bar */
+  --at-bg-inset: #0A0908;      /* waveform wells */
+  --at-bg-stage: #070606;      /* video stage */
+
+  /* ---- Lines ---------------------------------------------------------- */
+  --at-line-hairline: #1C1917; /* structural separators: header, footer, rail */
+  --at-border: #262220;        /* card and control borders */
+  --at-border-hi: #35302C;     /* emphasised borders, dashed drop zones */
+
+  /* ---- Text ----------------------------------------------------------- */
+  --at-text: #F5F3F0;
+  --at-text-muted: #C6C1BA;    /* secondary, still fully readable */
+  --at-text-dim: #8E8A84;      /* labels, helper text — 5.4:1 on --at-bg-card */
+  --at-text-faint: #75706A;    /* tertiary notes only, never load-bearing */
+  --at-text-disabled: #6B655F;
+
+  /* ---- Accent --------------------------------------------------------- */
+  /* One accent for the whole app. Text on an accent fill is DARK, never
+   * white: white on #FF5B2E is 3.7:1 and fails. */
+  --at-accent: #FF5B2E;
+  --at-on-accent: #14100E;
+  --at-accent-surface: #1A120E;      /* selected card ground */
+  --at-accent-soft: #241611;         /* active nav, soft chips, icon tiles */
+  --at-accent-soft-strong: #2A1811;  /* icon tile on an accent surface */
+  --at-accent-soft-border: #4A2417;
+  --at-accent-soft-text: #BFA79C;    /* body text on an accent surface */
+
+  /* ---- Danger ---------------------------------------------------------- */
+  /* Not a second accent: only failed files and destructive confirmations. */
+  --at-danger: #F2665C;
+  --at-danger-soft: #2A1513;
+  --at-danger-soft-border: #4A211D;
+
+  /* ---- Timeline ------------------------------------------------------- */
+  /* THE RULE THAT MATTERS: kept vs removed is carried by the BAND behind the
+   * waveform, never by the bars. A silence has no bar — encoding "removed"
+   * on the bars means encoding it on a mark that is absent exactly where the
+   * state matters. Draw the band first, the bars on top of it.
+   *
+   * The removed band is LIGHTER than the well and hatched. The hatch is what
+   * survives colourblindness, greyscale and a compressed screenshot; the
+   * lightness is what makes it visible at a glance. Both are needed.
+   *
+   * Two band states only, kept and removed. A hesitation is a removed band with
+   * a 3px accent edge on top; it is told apart in the marker lane above. */
+  --at-wave-well: #131010;           /* the track itself, before any band */
+  --at-wave-kept-band: #150F0C;      /* kept: darker, clean, no texture */
+  --at-wave-kept-bar: var(--at-accent);
+  --at-wave-cut-band: #2A2522;       /* removed: lighter than the well */
+  --at-wave-cut-hatch: #3A332E;      /* stripe colour of the hatch */
+  --at-wave-cut-bar: #5A524C;        /* the noise floor left in a cut region */
+  --at-wave-raw-bar: #4A433E;        /* whole file during analysis: a shape, not a result yet */
+  --at-wave-min-band: 3px;           /* floor of every band and marker */
+  --at-ivory: #EDE3D6;               /* retake markers: told by their weight, not by a hue */
+  --at-playhead: #F5F3F0;            /* warm white, NOT accent: it sits on accent bars */
+  --at-mark-cut-bg: #2A2522;
+  --at-mark-cut-text: #B5ABA3;
+
+  /* ---- Tracks --------------------------------------------------------- */
+  --at-track: #262220;         /* progress bar ground */
+  --at-track-idle: #2A2724;    /* slider ground */
+  --at-thumb: #F5F3F0;         /* slider thumb */
+
+  /* ---- Radii ---------------------------------------------------------- */
+  --at-r-pill: 999px;          /* every button and chip */
+  --at-r-control: 11px;        /* icon buttons that are not round, inputs */
+  --at-r-tile: 12px;           /* icon tiles */
+  --at-r-card: 14px;
+  --at-r-card-lg: 16px;        /* hero blocks, emphasised rows */
+  --at-r-modal: 18px;
+  --at-r-inset: 9px;           /* waveform wells */
+
+  /* ---- Type ----------------------------------------------------------- */
+  --at-font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --at-font-ui: "Schibsted Grotesk Variable", "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+
+  --at-fs-hero: 38px;          /* result numbers, display weight 700 */
+  --at-fs-title: 24px;
+  --at-fs-header: 17px;        /* screen title */
+  --at-fs-stat: 19px;          /* stat card value */
+  --at-fs-body: 13.5px;
+  --at-fs-control: 12.5px;
+  --at-fs-helper: 11.5px;
+  --at-fs-eyebrow: 11px;       /* uppercase, letter-spacing .12em */
+
+  --at-ls-display: -0.025em;   /* display face is tightened, UI face is not */
+
+  /* ---- Metrics -------------------------------------------------------- */
+  --at-rail-w: 72px;
+  --at-topbar-h: 66px;
+  --at-footer-h: 74px;
+  --at-panel-w: 440px;         /* Customize slide-over */
+
+  --at-h-chip: 34px;           /* top-bar controls */
+  --at-h-button: 44px;
+  --at-h-cta: 48px;            /* primary action in a footer */
+
+  --at-pad-screen: 20px 24px;
+  --at-gap-card: 12px;
+  --at-gap-section: 16px;
+}
+
+/* Tabular figures are opt-in (`tabular-nums` utility), and kept for the display face:
+ * the tabular feature of the UI face also widens ":", "." and ",", which breaks
+ * timecodes ("0 : 21") and running text. */
+body {
+  font-family: var(--at-font-ui);
+  background: var(--at-bg-app);
+  color: var(--at-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Sliders: the track fill is per-instance (it encodes the value),
+ * the rest is shared. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  margin: 0;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--at-accent) 0 var(--fill, 0%),
+    var(--at-track-idle) var(--fill, 0%) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--at-thumb);
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--at-thumb);
+  cursor: pointer;
+}
+
+/* Checkboxes and radios stay native — accent-color is enough and keeps
+ * macOS keyboard behaviour. Do not rebuild them out of divs. */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--at-accent);
+}
+
+/* The player scrubber is a slider with a smaller thumb. */
+input[type="range"].at-scrubber::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+}
+input[type="range"].at-scrubber::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+}
+
+/* The removed-region hatch. One continuous pattern per band, never per
+ * column: a hatch restarted on every 4px column reads as noise. */
+.at-cut-band {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--at-wave-cut-hatch) 0 2px,
+    var(--at-wave-cut-band) 2px 6px
+  );
+}
+
+/* A hesitation cut is ~0.3 s. In a 24-minute file at fit-to-window that is a
+ * fraction of a pixel, so it renders as nothing at all. Every band and every
+ * marker therefore has a floor: below this it stops being to scale and just
+ * stays visible. */
+.at-cut-band,
+.at-cut-mark {
+  min-width: var(--at-wave-min-band);
+}
