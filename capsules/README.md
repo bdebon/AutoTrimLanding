@@ -233,7 +233,7 @@ The other capsules, with their storyboards, copy and what the kit needs for each
 
 ## Renders for the landing
 
-The landing plays the capsules from `public/capsules/<name>-<lang>.{mp4,webm,webp}` (the
+The landing plays the capsules from `public/capsules/<name>-<lang>.{mp4,webp}` (the
 4:5 formats are for social only). Render the compositions, then encode them for the web:
 
 ```bash
@@ -244,7 +244,7 @@ scripts/publish-landing.sh            # every capsule
 scripts/publish-landing.sh euh local  # or just some
 ```
 
-`publish-landing.sh` writes the H.264 MP4 (crf 21, faststart), the VP9 WebM and the WebP
+`publish-landing.sh` writes the H.264 MP4 (crf 21, faststart) and the WebP
 poster (frame chosen per capsule in the script) into `public/capsules/`. The landing names
 are `hero`, `euh`, `multicam-drop`, `multicam-mic`, `multicam-follow`, `timeline`, `video`,
 `preview`, `local`; the section each one plays in is in `design/landing-2026-09/BRIEF.md`.
