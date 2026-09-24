@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "./FacebookPixel";
 import PostHogProvider from "./PostHogProvider";
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/schibsted-grotesk";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  adjustFontFallback: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -82,15 +70,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://player.vimeo.com" />
-        <link rel="preconnect" href="https://i.vimeocdn.com" />
-        <link rel="preconnect" href="https://f.vimeocdn.com" />
         <link rel="dns-prefetch" href="https://github.com" />
-        <link rel="preload" href="/assets/img/logo-autotrim.svg" as="image" fetchPriority="high" />
       </head>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         {/* Meta Pixel - lazyOnload for better LCP */}
         <Script

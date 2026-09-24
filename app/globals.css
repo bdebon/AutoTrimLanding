@@ -1,17 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* The app's design tokens (design/tokens.css is a synced copy of the app's
+ * frontend/src/styles/tokens.css, never edited here). It sets the dark ground,
+ * the UI face and the `--at-*` variables the utilities below are built on. */
+@import "../design/tokens.css";
 
+/* Tailwind 4 theme: the same names as the app's `at-*` utilities.
+ * `bg-at-app`, `text-at-dim`, `border-at-border`, `rounded-card`, `font-display`… */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-geist-mono);
+  /* Grounds */
+  --color-at-app: var(--at-bg-app);
+  --color-at-panel: var(--at-bg-panel);
+  --color-at-card: var(--at-bg-card);
+  --color-at-card-hi: var(--at-bg-card-hi);
+  --color-at-chip: var(--at-bg-chip);
+  --color-at-footer: var(--at-bg-footer);
+  --color-at-inset: var(--at-bg-inset);
+  --color-at-stage: var(--at-bg-stage);
 
-  /* Custom brand colors mapped from Vite project */
+  /* Lines */
+  --color-at-hairline: var(--at-line-hairline);
+  --color-at-border: var(--at-border);
+  --color-at-border-hi: var(--at-border-hi);
+
+  /* Text */
+  --color-at-text: var(--at-text);
+  --color-at-muted: var(--at-text-muted);
+  --color-at-dim: var(--at-text-dim);
+  --color-at-faint: var(--at-text-faint);
+  --color-at-disabled: var(--at-text-disabled);
+
+  /* Accent (one accent; text on it is dark) */
+  --color-at-accent: var(--at-accent);
+  --color-at-on-accent: var(--at-on-accent);
+  --color-at-accent-surface: var(--at-accent-surface);
+  --color-at-accent-soft: var(--at-accent-soft);
+  --color-at-accent-soft-strong: var(--at-accent-soft-strong);
+  --color-at-accent-soft-border: var(--at-accent-soft-border);
+  --color-at-accent-soft-text: var(--at-accent-soft-text);
+
+  /* Danger */
+  --color-at-danger: var(--at-danger);
+
+  /* Timeline */
+  --color-at-wave-well: var(--at-wave-well);
+  --color-at-wave-kept-band: var(--at-wave-kept-band);
+  --color-at-wave-cut-band: var(--at-wave-cut-band);
+  --color-at-wave-cut-hatch: var(--at-wave-cut-hatch);
+  --color-at-wave-cut-bar: var(--at-wave-cut-bar);
+  --color-at-wave-raw-bar: var(--at-wave-raw-bar);
+  --color-at-ivory: var(--at-ivory);
+  --color-at-playhead: var(--at-playhead);
+
+  /* Tracks */
+  --color-at-track: var(--at-track);
+
+  /* Radii */
+  --radius-pill: var(--at-r-pill);
+  --radius-control: var(--at-r-control);
+  --radius-tile: var(--at-r-tile);
+  --radius-card: var(--at-r-card);
+  --radius-card-lg: var(--at-r-card-lg);
+  --radius-modal: var(--at-r-modal);
+  --radius-inset: var(--at-r-inset);
+
+  /* Type: display for titles and figures, UI for everything else */
+  --font-display: var(--at-font-display);
+  --font-ui: var(--at-font-ui);
+  --font-sans: var(--at-font-ui);
+
+  /* Legacy palette of the pages not yet restyled (compare, guides, download). */
   --color-gray-50: #FAFAFA;
   --color-gray-100: #F5F5F5;
   --color-gray-200: #E5E5E5;
@@ -47,29 +105,56 @@
   --color-secondary-900: #7C2D12;
 }
 
-/* Force light theme: disable automatic dark mode variables */
-/* If you want dark mode later, reintroduce a toggled class instead of prefers-color-scheme */
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  background: var(--at-bg-app);
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-} */
+}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 ::selection {
-  background: var(--color-primary-200);
-  color: var(--color-primary-900);
+  background: var(--at-accent);
+  color: var(--at-on-accent);
 }
 
-/* SEO: Ensure H1 is always visible for crawlers without JS */
-noscript h1[data-animate="hero-title"] {
-  visibility: visible !important;
-  opacity: 1 !important;
+/* Titles and figures: the display face, tightened, tabular figures opt-in. */
+.font-display {
+  letter-spacing: var(--at-ls-display);
+}
+
+/* Fade-in on scroll, only where it says something. Off with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Details/summary as a FAQ accordion, no JS needed. */
+details.faq-item > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details.faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item[open] .faq-plus {
+  transform: rotate(45deg);
+}
+.faq-plus {
+  transition: transform 0.25s ease;
 }
