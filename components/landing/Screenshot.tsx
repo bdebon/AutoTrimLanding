@@ -27,7 +27,7 @@ export default function Screenshot({
 }) {
   const t = useTranslations("landing.screenshot");
   const dir = path.join(process.cwd(), "public", "app");
-  const candidates = [`${name}-${lang}.png`, `${name}.png`, `${name}-${lang}.jpg`, `${name}.jpg`];
+  const candidates = [`${name}-${lang}.webp`, `${name}.webp`, `${name}-${lang}.png`, `${name}.png`, `${name}-${lang}.jpg`, `${name}.jpg`];
   const file = candidates.find((f) => fs.existsSync(path.join(dir, f)));
 
   if (file) {
