@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import CtaLink from "./CtaLink";
+import Sentences from "./Sentences";
 import TrackView from "./TrackView";
 import { btn, container } from "./ui";
 
@@ -10,7 +11,7 @@ export default function FinalCta({ locale }: { locale: string }) {
       <TrackView section="final" />
       <div className={`${container} text-center`}>
         <h2 className="font-display text-[36px] font-bold leading-[1.02] text-at-text sm:text-[48px] lg:text-[64px]">
-          {t("final.title")}
+          <Sentences text={t("final.title")} />
         </h2>
         <p className="mt-4 font-ui text-[17px] text-at-muted">{t("final.sub")}</p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

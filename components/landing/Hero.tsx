@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import Capsule from "./Capsule";
 import CtaLink from "./CtaLink";
+import Sentences from "./Sentences";
 import TrackView from "./TrackView";
 import { btn, body, capsuleLang, container, eyebrow } from "./ui";
 
@@ -13,7 +14,7 @@ export default function Hero({ locale }: { locale: string }) {
         <div className="mx-auto max-w-3xl text-center">
           <p className={eyebrow}>{t("hero.eyebrow")}</p>
           <h1 className="mt-5 font-display text-[40px] font-bold leading-[1.02] text-at-text sm:text-[56px] lg:text-[72px]">
-            {t("hero.title")}
+            <Sentences text={t("hero.title")} />
           </h1>
           <p className={`${body} mx-auto mt-6 max-w-2xl`}>{t("hero.body")}</p>
 
