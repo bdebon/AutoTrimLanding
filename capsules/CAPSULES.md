@@ -87,7 +87,9 @@ précalculé, pas des milliers de nœuds), une `FileCard` et une `GroupCard`, un
 
 ---
 
-## ☐ 3 · « Trois caméras, deux micros, un drop. » — 10 s
+## ☑ 3 · « Trois caméras, deux micros, un drop. » — 10 s
+
+Faite (`src/capsules/multicam/Drop.tsx`, sur la scène mise de côté) : 10 s, six fichiers, recalage, carte groupe, le bouton *Traiter le groupe* cliqué.
 
 **Message.** Le multicam sans explication : on lâche les fichiers, ils se rangent seuls.
 
@@ -109,7 +111,9 @@ fichiers des fixtures qui tombent, se recalent et deviennent un groupe), à repr
 
 ---
 
-## ☐ 4 · « Chaque micro, sa voix. » — 8 s
+## ☑ 4 · « Chaque micro, sa voix. » — 8 s
+
+Faite (`src/capsules/mic/`) : deux vraies pistes micro des fixtures, une lame qui rebondit sur la voix de l’autre, trois coupes là où les deux se taisent.
 
 **Message.** La règle « jamais deux voix » : on ne coupe que quand personne ne parle.
 
@@ -127,7 +131,9 @@ avec rebond), fermeture simultanée sur deux ondes.
 
 ---
 
-## ☐ 5 · « Le montage suit celui qui parle. » — 10 s
+## ☑ 5 · « Le montage suit celui qui parle. » — 10 s
+
+Faite (`src/capsules/follow/`) : mosaïque de trois angles (silhouettes, pas de visages), l’angle de celui qui parle plein cadre, le large quand les deux parlent, puis la timeline V1/V2/V3.
 
 **Message.** Le montage automatique multicam : l'angle change avec la voix.
 
@@ -158,7 +164,9 @@ la texture de l'onde change (fine et propre / grossière). Boucle.
 
 ---
 
-## ☐ 7 · « Votre timeline, pas notre export. » — 8 s
+## ☑ 7 · « Votre timeline, pas notre export. » — 8 s
+
+Faite (`src/capsules/timeline/`) : le bouton d’export se déplie, la timeline atterrit dans l’éditeur magnétique, un bord tiré de 4 images, lecture sur la jointure.
 
 **Message.** Contre l'objection n°1 : on ne perd pas la main.
 
@@ -174,7 +182,9 @@ curseur main.
 
 ---
 
-## ☐ 8 · « Ou juste la vidéo. » — 6 s
+## ☑ 8 · « Ou juste la vidéo. » — 6 s
+
+Faite (`src/capsules/video/`) : trois fichiers de la session, silences fermés ensemble, les trois MP4 tombent dans un ZIP qui se ferme.
 
 **Message.** Pour ceux qui ne montent pas : les MP4 montés, un par source.
 
@@ -187,7 +197,9 @@ MP4 qui tombent dans un ZIP qui se ferme, `Tournage · 22 sept.zip`. Boucle.
 
 ---
 
-## ☐ 9 · « Regarde avant d'exporter. » — 8 s
+## ☑ 9 · « Regardez avant d’exporter. » — 8 s
+
+Faite (`src/capsules/preview/`) : le fichier entier à trois états, la tête de lecture qui saute les bandes, puis le zoom sur une minute. Copie au vouvoiement.
 
 **Message.** La preview fluide et la timeline à trois états.
 
@@ -202,7 +214,9 @@ coupe apparaît. Légende : *Gardé, silence, hésitation. Zoome sur une minute.
 
 ---
 
-## ☐ 10 · « Tout se passe sur votre machine. » — 6 s
+## ☑ 10 · « Tout se passe sur votre machine. » — 6 s
+
+Faite (`src/capsules/local/`) : le Wi‑Fi s’éteint dans la barre de menus, l’analyse continue, *Aucun fichier envoyé. Jamais.*
 
 **Message.** Local, offline, rien n'est envoyé. Différenciant et sous-exploité.
 
