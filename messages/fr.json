@@ -722,7 +722,7 @@
     },
     "cta": {
       "ready": "Prêt à récupérer votre temps ?",
-      "button": "Essayer AutoTrim gratuitement"
+      "button": "Télécharger AutoTrim"
     },
     "guides": {
       "title": "Guides (EN)",
@@ -1199,5 +1199,288 @@
     },
     "faqTitle": "Questions fréquentes",
     "relatedTitle": "Pour aller plus loin"
+  },
+  "landing": {
+    "meta": {
+      "title": "AutoTrim 2 – Coupe les silences. Et les euh.",
+      "description": "AutoTrim retire les silences et les hésitations de vos rushes, sur votre machine, et vous rend une timeline Final Cut Pro, Premiere Pro ou DaVinci Resolve où chaque coupe reste à vous. Multicam : plusieurs caméras et micros se calent seuls. Gratuit pour essayer.",
+      "keywords": "supprimer silence vidéo, couper les euh, hésitations, dérush automatique, multicam, timeline Final Cut Pro, Premiere Pro, DaVinci Resolve, autotrim, montage automatique local",
+      "ogAlt": "AutoTrim 2 : une heure de rushes, 40 minutes à monter. 59:45 → 39:57, −33 %, 521 coupes."
+    },
+    "nav": {
+      "silences": "Silences",
+      "hesitations": "Hésitations",
+      "multicam": "Multicam",
+      "pricing": "Tarifs",
+      "faq": "FAQ",
+      "menuOpen": "Ouvrir le menu",
+      "menuClose": "Fermer le menu"
+    },
+    "cta": {
+      "download": "Télécharger AutoTrim",
+      "pricing": "Voir les tarifs",
+      "platforms": "macOS · Windows · tout en local"
+    },
+    "hero": {
+      "eyebrow": "AutoTrim 2",
+      "title": "Coupe les silences. Et les euh.",
+      "body": "AutoTrim lit vos rushes sur votre machine, retire les silences et les hésitations, et vous rend une timeline Final Cut Pro, Premiere Pro ou DaVinci Resolve où chaque coupe reste à vous. Plusieurs caméras et micros ? Ils se calent seuls.",
+      "proof": {
+        "before": "59:45",
+        "after": "39:57",
+        "shorter": "−33 %",
+        "cuts": "521 coupes",
+        "note": "une vraie heure de rushes"
+      },
+      "capsuleTitle": "Une heure de rushes. Trente secondes."
+    },
+    "silences": {
+      "eyebrow": "Les silences",
+      "title": "Les silences partent d'abord.",
+      "body": "Le seuil se règle tout seul sur chaque fichier. Une marge est gardée de chaque côté d'une phrase, pour que la coupe ne mange ni la première ni la dernière syllabe. Sur une heure de rushes face caméra, un tiers du temps est du silence.",
+      "proof": "Sur 2 500 heures de rushes traitées par AutoTrim, un tiers était du silence.",
+      "stats": [
+        {
+          "value": "2 500 h",
+          "label": "de rushes traitées"
+        },
+        {
+          "value": "33 %",
+          "label": "de silence, en médiane"
+        },
+        {
+          "value": "59:45 → 40:20",
+          "label": "l'heure réelle, silences seuls"
+        }
+      ],
+      "screenshot": "Capture A · l'écran de session terminé : cartes coupées, bandes hachurées, stat cards (05-complete)"
+    },
+    "hesitations": {
+      "eyebrow": "Nouveau dans la v2",
+      "title": "Euh.",
+      "body": "Un modèle entraîné à repérer les hésitations, pas une transcription détournée : il entend le « euh » qui traîne, le « hmm », le mot repris. Chaque hésitation est marquée sur la timeline, vous la voyez, vous l'écoutez, elle part. Le tout sur votre machine, sans rien envoyer.",
+      "proof": "123 hésitations retirées sur l'heure réelle",
+      "capsuleTitle": "Euh."
+    },
+    "multicam": {
+      "eyebrow": "Multicam",
+      "title": "Trois caméras, deux micros, un drop.",
+      "body": "Déposez tous les fichiers d'une prise. Ils se retrouvent par leur son et se calent à l'image près, même si une caméra a démarré en retard, s'est coupée en deux fichiers ou dérive. Un micro par personne : on ne coupe que quand personne ne parle, jamais deux voix à la fois, et le « euh » de l'un n'est retiré que si l'autre se tait. Le montage suit celui qui parle, plan large quand tout le monde parle.",
+      "capsules": {
+        "drop": "Trois caméras, deux micros, un drop.",
+        "mic": "Chaque micro, sa voix.",
+        "follow": "Le montage suit celui qui parle."
+      },
+      "truth": "La timeline exportée empile les angles : V1 pour l'angle principal, les autres au-dessus, une piste par micro, tous coupés aux mêmes instants. Dans Resolve, Final Cut et Premiere.",
+      "quote": "J'enregistre des épisodes de podcast de 2 à 3 heures avec plusieurs invités. AutoTrim me fait gagner au moins 2 heures de montage par épisode.",
+      "quoteName": "Theo Won",
+      "quoteRole": "Podcaster"
+    },
+    "timeline": {
+      "eyebrow": "Objection n° 1",
+      "title": "Votre timeline, pas notre export.",
+      "body": "Une timeline, tous vos fichiers bout à bout, dans Final Cut Pro, Premiere Pro ou DaVinci Resolve. Rien n'est effacé : chaque clip garde ses poignées, tirez un bord pour récupérer une respiration. AutoTrim ne monte pas à votre place, il prépare la coupe.",
+      "quote": "Rien n'est effacé : chaque clip garde ses poignées.",
+      "quoteSource": "Le menu d'export de l'app, mot pour mot.",
+      "nle": [
+        "Final Cut Pro",
+        "Premiere Pro",
+        "DaVinci Resolve"
+      ],
+      "capsuleTitle": "Votre timeline, pas notre export.",
+      "screenshot": "Capture B · le menu d'export ouvert sur Timeline · Final Cut Pro (05b-export-menu)"
+    },
+    "preview": {
+      "eyebrow": "Preview et MP4",
+      "title": "Regardez avant d'exporter.",
+      "body": "La lecture saute les coupes sans à-coup. La timeline montre trois états : gardé, silence, hésitation. Un doute ? Écoutez ce qui a été retiré, ajustez le seuil, relancez. Vous ne montez pas ? Prenez la vidéo déjà coupée, un MP4 par source, ou un clip par coupe.",
+      "legend": {
+        "kept": "Gardé",
+        "silence": "Silence",
+        "hesitation": "Hésitation"
+      },
+      "capsuleMain": "Regardez avant d'exporter.",
+      "capsuleSide": "Ou juste la vidéo.",
+      "quote": "Super intuitif, avec des previews qui aident beaucoup.",
+      "quoteName": "Izayi",
+      "quoteRole": "Monteur freelance",
+      "screenshot": "Capture C · la preview d'un fichier, timeline à trois états, compteur Coupé 19:25 (04-preview)"
+    },
+    "local": {
+      "eyebrow": "Local et privé",
+      "title": "Tout se passe sur votre machine.",
+      "body": "Aucun fichier envoyé, jamais. Les modèles sont téléchargés une fois, puis AutoTrim travaille hors ligne. Une heure de rushes en 4K ne transite nulle part : pas d'upload à attendre, pas de rushes clients sur un serveur.",
+      "capsuleTitle": "Tout se passe sur votre machine.",
+      "line": "Aucun fichier envoyé. Jamais.",
+      "quote": "Avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
+      "quoteName": "James",
+      "quoteRole": "Monteur Final Cut"
+    },
+    "testimonials": {
+      "eyebrow": "Ils montent avec",
+      "title": "Ce qu'en disent les monteurs.",
+      "items": {
+        "james": {
+          "text": "Je monte dans Final Cut à la main. J'ai essayé Descript et OpusClip, mais avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
+          "name": "James",
+          "role": "Monteur Final Cut"
+        },
+        "georgia": {
+          "text": "Honnêtement, ça m'a fait gagner des jours. Une vidéo de 4 h 45 montée en 2 heures pour 1 h de final.",
+          "name": "Georgia",
+          "role": "Créatrice"
+        },
+        "theo": {
+          "text": "J'enregistre des épisodes de podcast de 2 à 3 heures avec plusieurs invités. AutoTrim coupe tous les blancs automatiquement et me fait gagner au moins 2 heures de montage par épisode.",
+          "name": "Theo Won",
+          "role": "Podcaster"
+        },
+        "robin": {
+          "text": "J'ai essayé d'autres outils, mais aucun ne fonctionnait vraiment. Avec AutoTrim, l'UX est propre, ça fait exactement ce qu'on attend, sans fioritures. Au moins une heure gagnée sur chaque projet.",
+          "name": "Robin Servoisier",
+          "role": "Monteur pro"
+        },
+        "izayi": {
+          "text": "Ça rend tout le dérushage plus léger, et la vitesse est choquante : des gigaoctets en quelques secondes. Super intuitif, avec des previews qui aident beaucoup.",
+          "name": "Izayi",
+          "role": "Monteur freelance"
+        }
+      }
+    },
+    "pricing": {
+      "eyebrow": "Tarifs",
+      "title": "Gratuit pour essayer. Payant pour exporter.",
+      "subtitle": "Tout le traitement, sans limite de temps. Seul l'export de la timeline demande une licence.",
+      "free": {
+        "title": "Gratuit",
+        "price": "$0",
+        "period": "sans limite de temps",
+        "features": [
+          "Silences et hésitations",
+          "Multicam et preview",
+          "Projets et fichiers illimités"
+        ],
+        "limitation": "L'export demande une licence"
+      },
+      "monthly": {
+        "title": "Mensuel",
+        "price": "$15",
+        "period": "/ mois",
+        "billing": "Résiliable à tout moment",
+        "features": [
+          "Export timeline et MP4",
+          "Mises à jour incluses",
+          "2 machines"
+        ]
+      },
+      "annual": {
+        "title": "Annuel",
+        "price": "$119",
+        "period": "/ an",
+        "billing": "Soit $9,92 par mois",
+        "features": [
+          "Export timeline et MP4",
+          "1 an de mises à jour",
+          "2 machines"
+        ]
+      },
+      "lifetime": {
+        "title": "Licence à vie",
+        "price": "$149",
+        "period": "une fois",
+        "badge": "Prix de lancement",
+        "billing": "La v2 incluse, comme toutes les suivantes",
+        "features": [
+          "Export timeline et MP4",
+          "Mises à jour à vie",
+          "2 machines"
+        ]
+      },
+      "download": "Télécharger AutoTrim",
+      "buy": "Acheter la licence",
+      "common": [
+        "14 jours remboursés",
+        "2 machines par licence",
+        "Paiement par Lemon Squeezy"
+      ],
+      "allPlans": "Tous les détails sur la page tarifs"
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Les questions qu'on nous pose.",
+      "items": [
+        {
+          "q": "Mac et Windows ?",
+          "a": "Oui, les deux. Pas de version Linux."
+        },
+        {
+          "q": "Final Cut Pro, Premiere Pro, DaVinci Resolve ?",
+          "a": "Oui : FCPXML pour Final Cut Pro et Resolve, XML pour Premiere Pro. Une seule timeline, tous vos fichiers bout à bout, chaque clip avec ses poignées."
+        },
+        {
+          "q": "Mes fichiers quittent-ils mon ordinateur ?",
+          "a": "Non, jamais. Les modèles sont téléchargés une fois, puis tout se passe sur votre machine, même hors ligne."
+        },
+        {
+          "q": "Et si ça coupe trop ?",
+          "a": "La preview montre trois états, gardé, silence, hésitation, et les parties retirées s'écoutent. Ajustez le seuil, relancez le traitement, puis exportez : chaque coupe reste modifiable dans votre logiciel de montage."
+        },
+        {
+          "q": "Mon podcast a un micro par personne ?",
+          "a": "Oui. AutoTrim ne coupe que quand personne ne parle, jamais deux voix à la fois, et le « euh » de l'un n'est retiré que si l'autre se tait."
+        },
+        {
+          "q": "Plusieurs caméras ?",
+          "a": "Déposez tous les fichiers d'une prise : ils se calent à l'image près par leur son. La timeline empile les angles, et la preview montre le montage qui suit celui qui parle."
+        },
+        {
+          "q": "Dans quelles langues les hésitations sont-elles détectées ?",
+          "a": "Une dizaine de langues, dont le français et l'anglais. Les silences, eux, n'ont pas de langue."
+        },
+        {
+          "q": "Enregistrements d'écran (OBS, VLC, QuickTime), fréquence d'images variable ?",
+          "a": "Pris en charge. La durée réelle est conservée, la timeline tombe juste."
+        },
+        {
+          "q": "Pas de logiciel de montage, ou CapCut ?",
+          "a": "Prenez la vidéo déjà coupée, un MP4 par source. Pour CapCut, un clip numéroté par coupe, à glisser dans l'ordre."
+        },
+        {
+          "q": "Audio seul ?",
+          "a": "Oui, même traitement. Export en AAC ou en timeline."
+        },
+        {
+          "q": "Que comprend la version gratuite ?",
+          "a": "Tout, sans limite de temps : silences, hésitations, multicam, preview. Seul l'export demande une licence."
+        },
+        {
+          "q": "Combien de machines, et si ça ne me convient pas ?",
+          "a": "Deux machines par licence. Remboursé sous 14 jours, sans question."
+        }
+      ]
+    },
+    "final": {
+      "title": "Coupe les silences. Et les euh.",
+      "sub": "Gratuit pour essayer, sur votre machine."
+    },
+    "capsule": {
+      "label": "Capsule {number}",
+      "pending": "Capsule à venir",
+      "play": "Lire la capsule",
+      "pause": "Mettre en pause"
+    },
+    "screenshot": {
+      "pending": "Capture de l'app v2, à prendre sur la version livrée"
+    },
+    "footer": {
+      "tagline": "Coupe les silences. Et les euh. Sur votre machine.",
+      "legal": {
+        "terms": "Conditions",
+        "privacy": "Confidentialité",
+        "refund": "Remboursement",
+        "legal": "Mentions légales",
+        "contact": "Contact"
+      }
+    }
   }
 }
