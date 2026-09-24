@@ -708,7 +708,8 @@
           "label": "l'heure réelle, silences seuls"
         }
       ],
-      "screenshot": "Capture A · l'écran de session terminé : cartes coupées, bandes hachurées, stat cards (05-complete)"
+      "screenshot": "Capture A · l'écran de session terminé : cartes coupées, bandes hachurées, stat cards (05-complete)",
+      "screenshotAlt": "L'écran de session d'AutoTrim une fois le traitement terminé : trois rushes, leurs silences hachurés, les chiffres du récap."
     },
     "hesitations": {
       "eyebrow": "Nouveau dans la v2",

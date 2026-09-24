@@ -708,7 +708,8 @@
           "label": "the real hour, silences only"
         }
       ],
-      "screenshot": "Screenshot A · the finished session screen: cut cards, hatched bands, stat cards (05-complete)"
+      "screenshot": "Screenshot A · the finished session screen: cut cards, hatched bands, stat cards (05-complete)",
+      "screenshotAlt": "AutoTrim's session screen once processing is done: three rushes, their silences hatched, the recap figures."
     },
     "hesitations": {
       "eyebrow": "New in v2",

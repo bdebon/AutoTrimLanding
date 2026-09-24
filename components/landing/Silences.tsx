@@ -2,10 +2,11 @@ import { useTranslations } from "next-intl";
 import Section from "./Section";
 import Screenshot from "./Screenshot";
 import Reveal from "./Reveal";
+import { capsuleLang } from "./ui";
 
 type Stat = { value: string; label: string };
 
-export default function Silences() {
+export default function Silences({ locale }: { locale: string }) {
   const t = useTranslations("landing");
   const stats = t.raw("silences.stats") as Stat[];
   return (
@@ -29,7 +30,7 @@ export default function Silences() {
           </dl>
         </div>
         <Reveal className="lg:col-span-7">
-          <Screenshot label={t("silences.screenshot")} />
+          <Screenshot name="session" lang={capsuleLang(locale)} label={t("silences.screenshot")} alt={t("silences.screenshotAlt")} />
         </Reveal>
       </div>
     </Section>

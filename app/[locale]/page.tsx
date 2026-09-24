@@ -95,7 +95,7 @@ export default async function Home({ params }: Props) {
       <Header />
       <main>
         <Hero locale={locale} />
-        <Silences />
+        <Silences locale={locale} />
         <Hesitations locale={locale} />
         <Multicam locale={locale} />
         <Timeline locale={locale} />

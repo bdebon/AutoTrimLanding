@@ -1,20 +1,43 @@
+import fs from "node:fs";
+import path from "node:path";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 /**
- * A reserved slot for a screenshot of the packaged v2 app (brief §6, captures A–D).
- * Same ratio as the app window it will hold (about 1280×800 at 2×), so nothing
- * shifts when the image lands. No app UI is drawn here beyond the frame.
+ * A screenshot of the real app (brief §6, captures A–D). Looks for
+ * public/app/<name>-<lang>.png, then <name>.png; without a file, a reserved frame at the
+ * app window's ratio (about 1280×800 at 2×) so nothing shifts when the image lands.
  */
 export default function Screenshot({
+  name,
+  lang,
   label,
+  alt,
   ratio = "1280 / 800",
   className = "",
+  priority = false,
 }: {
+  name: string;
+  lang: "fr" | "en";
   label: string;
+  alt?: string;
   ratio?: string;
   className?: string;
+  priority?: boolean;
 }) {
   const t = useTranslations("landing.screenshot");
+  const dir = path.join(process.cwd(), "public", "app");
+  const candidates = [`${name}-${lang}.png`, `${name}.png`, `${name}-${lang}.jpg`, `${name}.jpg`];
+  const file = candidates.find((f) => fs.existsSync(path.join(dir, f)));
+
+  if (file) {
+    return (
+      <figure className={`relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-panel ${className}`} style={{ aspectRatio: ratio }}>
+        <Image src={`/app/${file}`} alt={alt ?? label} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-cover object-top" priority={priority} />
+      </figure>
+    );
+  }
+
   return (
     <figure
       className={`relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-panel ${className}`}

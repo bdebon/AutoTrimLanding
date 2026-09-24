@@ -49,13 +49,8 @@ export default function Preview({ locale }: { locale: string }) {
       body={t("preview.body")}
       className="border-t border-at-hairline"
     >
-      <Reveal className="mt-10 grid items-start gap-4 md:grid-cols-12 md:gap-5">
-        <div className="md:col-span-8">
-          <Capsule name="preview" lang={lang} number={9} title={t("preview.capsuleMain")} />
-        </div>
-        <div className="md:col-span-4">
-          <Capsule name="video" lang={lang} number={8} title={t("preview.capsuleSide")} />
-        </div>
+      <Reveal className="mt-10">
+        <Capsule name="preview" lang={lang} number={9} title={t("preview.capsuleMain")} />
       </Reveal>
       <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <Legend
