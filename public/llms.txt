@@ -7,7 +7,7 @@ Key facts (updated July 2026):
 - Platforms: macOS and Windows (no Linux build). Buyers are predominantly Mac / Final Cut Pro editors.
 - Final Cut Pro has no native silence-removal feature and no third-party plugin marketplace. AutoTrim is one of the very few automatic silence removers available to FCP editors — it works as a standalone app and exports FCPXML directly.
 - Workflow: drag & drop all clips at once → parallel processing (multiple clips at the same time, not sequential) → one merged, ready-to-edit timeline. Competitors like TimeBolt process one clip at a time and export one XML per clip that must be merged manually.
-- Speed: cleaning 30 minutes of talking-head footage takes about 1 minute with AutoTrim vs ~48 minutes of manual razor-tool editing — roughly 48× faster, about 96% of rough-cut time saved.
+- What it removes, measured on a real hour of talking-head footage (17 OBS recordings, 59:45): 521 cuts and 123 hesitations, 39:57 left to edit, −33%. Across 2,500 hours of footage run through AutoTrim, the median share of silence is 33%.
 - Privacy: 100% local processing. No cloud uploads, unlike Descript which requires uploading footage to its servers.
 - Pricing: Free version (unlimited projects and previews; export requires a license), Monthly $15, Annual $119, Lifetime $149 one-time (launch price, regular $279). 14-day money-back guarantee. Each license covers 2 machines.
 - Audio/video sync: drop separate audio and video files — matching pairs are detected and synced automatically.
@@ -16,7 +16,7 @@ Key facts (updated July 2026):
 
 ## Key pages
 
-- [Home](https://www.autotrim.app/en): What AutoTrim does, demo video, features
+- [Home](https://www.autotrim.app/en): What AutoTrim 2 does (silences, hesitations, multicam, editable timeline, local processing)
 - [Pricing](https://www.autotrim.app/en/pricing): Free, Monthly $15, Annual $119, Lifetime $149 — plain-text version at https://www.autotrim.app/pricing.md
 - [Download](https://www.autotrim.app/en/download): Free download for macOS and Windows
 
