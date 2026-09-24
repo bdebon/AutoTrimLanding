@@ -1,127 +1,86 @@
 import { Metadata } from "next";
 import Script from "next/script";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations } from "next-intl/server";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Hero from "@/components/Hero";
-import SocialProof from "@/components/SocialProof";
-import ProcessSteps from "@/components/ProcessSteps";
-import VideoDemo from "@/components/VideoDemo";
-import TimeSavings from "@/components/TimeSavings";
-import PerksGrid from "@/components/PerksGrid";
-import Testimonials from "@/components/Testimonials";
-import WhyFaster from "@/components/WhyFaster";
-import FAQ from "@/components/FAQ";
-import FinalCTA from "@/components/FinalCTA";
+import Hero from "@/components/landing/Hero";
+import Silences from "@/components/landing/Silences";
+import Hesitations from "@/components/landing/Hesitations";
+import Multicam from "@/components/landing/Multicam";
+import Timeline from "@/components/landing/Timeline";
+import Preview from "@/components/landing/Preview";
+import Local from "@/components/landing/Local";
+import Testimonials from "@/components/landing/Testimonials";
+import Pricing from "@/components/landing/Pricing";
+import Faq, { type FaqEntry } from "@/components/landing/Faq";
+import FinalCta from "@/components/landing/FinalCta";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
 
+const OG_IMAGE = "/og/autotrim-v2.jpg";
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata' });
+  const t = await getTranslations({ locale, namespace: "landing.meta" });
 
   const localeMap: Record<string, string> = {
-    'fr': 'fr_FR',
-    'es': 'es_ES',
-    'zh': 'zh_CN',
-    'en': 'en_US'
+    fr: "fr_FR",
+    es: "es_ES",
+    zh: "zh_CN",
+    en: "en_US",
   };
 
   return {
-    title: t('title'),
-    description: t('description'),
-    keywords: t('keywords'),
+    title: t("title"),
+    description: t("description"),
+    keywords: t("keywords"),
     openGraph: {
-      title: t('title'),
-      description: t('description'),
-      images: ["/assets/img/hero-screenshot.jpg"],
-      locale: localeMap[locale] || 'en_US',
+      title: t("title"),
+      description: t("description"),
+      images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: t("ogAlt") }],
+      locale: localeMap[locale] || "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [OG_IMAGE],
     },
   };
 }
 
-export default function Home() {
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "landing" });
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "AutoTrim",
     alternateName: "Auto Trim",
-    description:
-      "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve.",
-    image: [`${siteUrl}/assets/img/hero-screenshot.jpg`],
-    brand: {
-      "@type": "Brand",
-      name: "AutoTrim",
-    },
+    description: t("meta.description"),
+    image: [`${siteUrl}${OG_IMAGE}`],
+    brand: { "@type": "Brand", name: "AutoTrim" },
     url: siteUrl,
   };
+
+  // The same twelve questions as the FAQ section, in the page's language.
+  const faqItems = t.raw("faq.items") as FaqEntry[];
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Does AutoTrim work on Mac and Windows?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. AutoTrim runs on macOS and Windows thanks to Rust & Tauri.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does AutoTrim work with Final Cut Pro, Premiere, and DaVinci Resolve?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! AutoTrim exports XML/FCPXML timelines compatible with all major NLEs including Final Cut Pro, Adobe Premiere, and DaVinci Resolve.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do my files leave my computer?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. All processing happens locally on your device. No cloud uploads, no data leaving your machine.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can AutoTrim remove filler words and hesitations?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, AutoTrim can detect and remove filler words and hesitations using AI. This feature is available but still experimental — results may vary depending on language and diction.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I process multiple clips at once?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Parallel multi-clip processing is built-in. Drop all your clips at once and get one clean, assembled timeline — no need to process clips one by one.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does AutoTrim support audio files?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes! AutoTrim works with both video and audio files. You can even drop video and audio separately — if they match, AutoTrim syncs them automatically and exports both aligned in your timeline.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does AutoTrim work with CapCut?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. CapCut can't import XML timelines, so AutoTrim exports your trimmed edit as numbered clips (001, 002, 003…). Drop the folder into CapCut: the clips line up in order and every cut stays editable. You can also export a single, already-cleaned MP4.",
-        },
-      },
-    ],
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
   };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-at-app font-ui text-at-text">
       <Script
         id="ld-product"
         type="application/ld+json"
@@ -136,16 +95,17 @@ export default function Home() {
       />
       <Header />
       <main>
-        <Hero />
-        <SocialProof />
-        <VideoDemo />
-        <TimeSavings />
+        <Hero locale={locale} />
+        <Silences />
+        <Hesitations locale={locale} />
+        <Multicam locale={locale} />
+        <Timeline locale={locale} />
+        <Preview locale={locale} />
+        <Local locale={locale} />
         <Testimonials />
-        <ProcessSteps />
-        <WhyFaster />
-        <PerksGrid />
-        <FAQ />
-        <FinalCTA />
+        <Pricing locale={locale} />
+        <Faq />
+        <FinalCta locale={locale} />
       </main>
       <Footer />
     </div>
