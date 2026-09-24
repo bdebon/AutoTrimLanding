@@ -744,7 +744,8 @@
         "DaVinci Resolve"
       ],
       "capsuleTitle": "Your timeline, not our export.",
-      "screenshot": "Screenshot B · the export menu open on Timeline · Final Cut Pro (05b-export-menu)"
+      "screenshot": "Screenshot B · the export menu open on Timeline · Final Cut Pro (05b-export-menu)",
+      "screenshotAlt": "AutoTrim's export menu: one timeline for DaVinci Resolve, Final Cut Pro or Adobe Premiere Pro, or the files already edited."
     },
     "preview": {
       "eyebrow": "Preview and MP4",

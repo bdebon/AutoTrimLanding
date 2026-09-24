@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { OffthreadVideo, staticFile } from "remotion";
 import { Caption } from "../../components/Caption";
 import { CapsuleFrame } from "../../components/CapsuleFrame";
 import { Chip } from "../../components/Chip";
@@ -60,6 +61,9 @@ const Scene: React.FC<LocalCopy> = (copy) => {
   const live: WaveZone[] = zones.map((z) => ({ ...z, band: ramp(analysed, z.end, 0.9, ease.out) }));
 
   const shown = ramp(time, 0.25, 0.45);
+  const recW = Math.min(contentWidth, 440 * s);
+  const recH = recW * (1584 / 2400);
+  const recY = captionY + captionSize + 26 * s;
   const wifiOff = ramp(time, WIFI_OFF, 0.2);
   const wifiShake = Math.sin(Math.max(0, Math.min(1, (time - WIFI_OFF) / 0.25)) * Math.PI * 3) * (1 - ramp(time, WIFI_OFF, 0.3)) * 3 * s;
   const barH = 30 * s;
@@ -95,7 +99,26 @@ const Scene: React.FC<LocalCopy> = (copy) => {
 
       <Caption text={copy.title} x={width / 2} y={captionY + 8 * s} fontSize={captionSize} maxWidth={contentWidth} enter={ramp(time, 0.3, 0.5)} exit={ramp(time, LOCAL_SECONDS - 0.9, 0.35, ease.in)} />
 
-      {/* The file being analysed */}
+      {/* The real app analysing, when a screen recording is there; the drawn card otherwise */}
+      {copy.recording ? (
+        <div
+          style={{
+            position: "absolute",
+            left: (width - recW) / 2,
+            top: recY + (1 - shown) * 16 * s,
+            width: recW,
+            height: recH,
+            borderRadius: radius.cardLg * s,
+            overflow: "hidden",
+            border: `${s}px solid ${color.border}`,
+            boxShadow: `0 ${24 * s}px ${60 * s}px rgba(0,0,0,0.55)`,
+            opacity: shown,
+            background: color.bgPanel,
+          }}
+        >
+          <OffthreadVideo src={staticFile(copy.recording)} muted style={{ width: recW, height: recH, objectFit: "cover", display: "block" }} />
+        </div>
+      ) : (
       <div
         style={{
           position: "absolute",
@@ -132,8 +155,9 @@ const Scene: React.FC<LocalCopy> = (copy) => {
           <div style={{ width: `${progress * 100}%`, height: "100%", borderRadius: 2 * a, background: color.accent }} />
         </div>
       </div>
+      )}
 
-      <Caption text={copy.line} x={width / 2} y={height * 0.84} fontSize={24 * s} maxWidth={contentWidth} enter={ramp(time, LINE_IN, 0.5)} exit={ramp(time, LOCAL_SECONDS - 0.85, 0.35, ease.in)} />
+      <Caption text={copy.line} x={width / 2} y={height * 0.9} fontSize={24 * s} maxWidth={contentWidth} enter={ramp(time, LINE_IN, 0.5)} exit={ramp(time, LOCAL_SECONDS - 0.85, 0.35, ease.in)} />
     </div>
   );
 };

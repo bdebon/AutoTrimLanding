@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
-import Capsule from "./Capsule";
 import CtaLink from "./CtaLink";
 import Reveal from "./Reveal";
+import Screenshot from "./Screenshot";
 import Section from "./Section";
 import { btn, capsuleLang } from "./ui";
 
@@ -41,7 +41,8 @@ export default function Timeline({ locale }: { locale: string }) {
           </div>
         </div>
         <Reveal className="lg:col-span-7">
-          <Capsule name="timeline" lang={capsuleLang(locale)} number={7} title={t("timeline.capsuleTitle")} />
+          {/* The real export menu of the app (capture B); the drawn capsule #7 stays in the kit */}
+          <Screenshot name="export" lang={capsuleLang(locale)} label={t("timeline.screenshot")} alt={t("timeline.screenshotAlt")} />
         </Reveal>
       </div>
     </Section>
