@@ -13,6 +13,7 @@ export default function Screenshot({
   lang,
   label,
   alt,
+  /** The reserved frame's ratio; a real capture shows at its own ratio, nothing cropped. */
   ratio = "1280 / 800",
   className = "",
   priority = false,
@@ -32,8 +33,8 @@ export default function Screenshot({
 
   if (file) {
     return (
-      <figure className={`relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-panel ${className}`} style={{ aspectRatio: ratio }}>
-        <Image src={`/app/${file}`} alt={alt ?? label} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-cover object-top" priority={priority} />
+      <figure className={`relative w-full overflow-hidden rounded-card-lg border border-at-border bg-at-panel ${className}`} style={{ aspectRatio: "2400 / 1584" }}>
+        <Image src={`/app/${file}`} alt={alt ?? label} fill sizes="(min-width: 1024px) 700px, 100vw" className="object-cover object-right-bottom" priority={priority} />
       </figure>
     );
   }

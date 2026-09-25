@@ -3,9 +3,30 @@ import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "./FacebookPixel";
 import PostHogProvider from "./PostHogProvider";
-import "@fontsource-variable/bricolage-grotesque";
-import "@fontsource-variable/schibsted-grotesk";
+import localFont from "next/font/local";
 import "./globals.css";
+
+// The app's two variable families, self-hosted from the fontsource packages. next/font
+// preloads them and sizes the fallback face to their metrics, so nothing jumps when they land.
+const display = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-ext-wght-normal.woff2", style: "normal" },
+  ],
+  variable: "--font-display-next",
+  display: "swap",
+  weight: "200 800",
+});
+const ui = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-ext-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-italic.woff2", style: "italic" },
+  ],
+  variable: "--font-ui-next",
+  display: "swap",
+  weight: "400 900",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
@@ -74,7 +95,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="antialiased"
+        className={`${display.variable} ${ui.variable} antialiased`}
       >
         {/* Meta Pixel - lazyOnload for better LCP */}
         <Script
