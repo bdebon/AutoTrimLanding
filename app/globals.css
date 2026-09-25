@@ -170,8 +170,8 @@ details.faq-item[open] .faq-plus {
 /* Hero: the elements rise in once, staggered. Off with reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes hero-rise {
-    from { opacity: 0; transform: translateY(var(--dy, 14px)) scale(var(--from-scale, 1)); }
-    to { opacity: 1; transform: none; }
+    from { opacity: 0; transform: translate3d(0, var(--dy, 14px), 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
   }
   .hero-in {
     animation: hero-rise var(--dur, 0.8s) cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -179,13 +179,13 @@ details.faq-item[open] .faq-plus {
     will-change: transform, opacity;
   }
   @keyframes hero-accent {
-    0% { opacity: 0; transform: translateY(6px) scale(1.18); color: var(--at-text); }
-    60% { opacity: 1; transform: none; color: var(--at-text); }
-    100% { opacity: 1; transform: none; color: var(--at-accent); }
+    0% { opacity: 0; transform: translate3d(0, 6px, 0); color: var(--at-text); }
+    60% { opacity: 1; transform: translate3d(0, 0, 0); color: var(--at-text); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); color: var(--at-accent); }
   }
   .hero-accent {
     display: inline-block;
-    animation: hero-accent 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: hero-accent 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: var(--d, 0ms);
   }
   @keyframes hero-glow {

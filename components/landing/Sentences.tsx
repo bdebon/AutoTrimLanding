@@ -20,7 +20,7 @@ export default function Sentences({
         <span
           key={i}
           className={`block ${lineClassName}`}
-          style={lineDelays ? ({ "--d": `${lineDelays[i] ?? 0}ms`, "--dy": "26px", "--dur": "1.1s" } as CSSProperties) : undefined}
+          style={lineDelays ? ({ "--d": `${lineDelays[i] ?? 0}ms`, "--dy": "20px", "--dur": "0.7s" } as CSSProperties) : undefined}
         >
           {part}
         </span>
