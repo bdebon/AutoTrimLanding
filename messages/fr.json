@@ -669,7 +669,8 @@
       "multicam": "Multicam",
       "faq": "FAQ",
       "menuOpen": "Ouvrir le menu",
-      "menuClose": "Fermer le menu"
+      "menuClose": "Fermer le menu",
+      "difference": "Différences"
     },
     "cta": {
       "download": "Télécharger AutoTrim",
@@ -733,9 +734,9 @@
       "quoteRole": "Podcaster"
     },
     "timeline": {
-      "eyebrow": "Objection n° 1",
-      "title": "Votre timeline, pas notre export.",
-      "body": "Une timeline, tous vos fichiers bout à bout, dans Final Cut Pro, Premiere Pro ou DaVinci Resolve. Rien n'est effacé : chaque clip garde ses poignées, tirez un bord pour récupérer une respiration. AutoTrim ne monte pas à votre place, il prépare la coupe.",
+      "eyebrow": "La timeline",
+      "title": "Le dérushage est fait. Le montage est à vous.",
+      "body": "Déposez tous les rushes d'un tournage : AutoTrim les nettoie en même temps et vous rend une seule timeline, dans l'ordre, pour Final Cut Pro, Premiere Pro ou DaVinci Resolve. Pas une timeline par clip à recoller. Rien n'est effacé : chaque clip garde ses poignées, tirez un bord pour récupérer une respiration. AutoTrim fait la partie rébarbative, le dérushage ; vous gardez celle qui compte, le montage.",
       "quote": "Rien n'est effacé : chaque clip garde ses poignées.",
       "quoteSource": "Le menu d'export de l'app, mot pour mot.",
       "nle": [
@@ -766,9 +767,9 @@
     "local": {
       "eyebrow": "Local et privé",
       "title": "Tout se passe sur votre machine.",
-      "body": "Aucun fichier envoyé, jamais. Les modèles sont téléchargés une fois, puis AutoTrim travaille hors ligne. Une heure de rushes en 4K ne transite nulle part : pas d'upload à attendre, pas de rushes clients sur un serveur.",
+      "body": "Vos rushes ne quittent jamais votre disque. Pas d'upload, pas de serveur, pas de compte : les modèles se téléchargent une fois, puis AutoTrim travaille hors ligne, même sans connexion. Images sous NDA, projets clients, épisodes pas encore sortis : rien ne transite nulle part, et vous n'attendez jamais qu'une heure de 4K finisse de s'envoyer.",
       "capsuleTitle": "Tout se passe sur votre machine.",
-      "line": "Aucun fichier envoyé. Jamais.",
+      "line": "Hors ligne. Privé. Rien n'est envoyé.",
       "quote": "Avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
       "quoteName": "James",
       "quoteRole": "Monteur Final Cut"
@@ -938,6 +939,25 @@
         "legal": "Mentions légales",
         "contact": "Contact"
       }
+    },
+    "difference": {
+      "eyebrow": "Ce que les autres ne font pas",
+      "title": "Trois raisons de l'avoir choisi.",
+      "items": [
+        {
+          "title": "Tout en local",
+          "body": "Aucun fichier envoyé, jamais. Ça marche hors ligne, avec une mauvaise connexion, ou sous NDA."
+        },
+        {
+          "title": "Tous les clips d'un coup, une seule timeline",
+          "body": "Déposez le tournage entier : les fichiers sont traités ensemble et arrivent bout à bout dans une timeline. Pas une timeline par clip à recoller à la main."
+        },
+        {
+          "title": "À vous, pour de bon",
+          "body": "Payez une fois, gardez AutoTrim à vie, toutes les mises à jour comprises, sur deux machines. Pas d'abonnement qui tourne pendant que vous ne montez pas."
+        }
+      ],
+      "link": "Voir les licences"
     }
   }
 }

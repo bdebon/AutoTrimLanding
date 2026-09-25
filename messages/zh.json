@@ -669,7 +669,8 @@
       "multicam": "Multicam",
       "faq": "FAQ",
       "menuOpen": "Open menu",
-      "menuClose": "Close menu"
+      "menuClose": "Close menu",
+      "difference": "Why AutoTrim"
     },
     "cta": {
       "download": "Download AutoTrim",
@@ -733,9 +734,9 @@
       "quoteRole": "Podcaster"
     },
     "timeline": {
-      "eyebrow": "Objection no. 1",
-      "title": "Your timeline, not our export.",
-      "body": "One timeline, all your files end to end, in Final Cut Pro, Premiere Pro or DaVinci Resolve. Nothing is erased: every clip keeps its handles, drag an edge to bring a breath back. AutoTrim doesn't edit for you, it preps the cut.",
+      "eyebrow": "The timeline",
+      "title": "The rough cut is done. The edit is yours.",
+      "body": "Drop every rush of a shoot: AutoTrim cleans them all at once and hands back one timeline, in order, for Final Cut Pro, Premiere Pro or DaVinci Resolve. Not one timeline per clip to stitch back together. Nothing is erased: every clip keeps its handles, drag an edge to bring a breath back. AutoTrim does the tedious part, the rough cut; you keep the part that matters, the edit.",
       "quote": "Nothing is erased: every clip keeps its handles.",
       "quoteSource": "The app's export menu, word for word.",
       "nle": [
@@ -766,9 +767,9 @@
     "local": {
       "eyebrow": "Local and private",
       "title": "Everything happens on your machine.",
-      "body": "No file uploaded, ever. The models download once, then AutoTrim works offline. An hour of 4K footage goes nowhere: no upload to wait for, no client footage on a server.",
+      "body": "Your footage never leaves your drive. No upload, no server, no account: the models download once, then AutoTrim works offline, even with no connection at all. Footage under NDA, client projects, episodes not out yet: nothing goes anywhere, and you never wait for an hour of 4K to finish uploading.",
       "capsuleTitle": "Everything happens on your machine.",
-      "line": "No file uploaded. Ever.",
+      "line": "Offline. Private. Nothing uploaded.",
       "quote": "On my DSL connection the upload is a huge waste of time. AutoTrim saves me one to two hours per project.",
       "quoteName": "James",
       "quoteRole": "Final Cut editor"
@@ -938,6 +939,25 @@
         "legal": "Legal notice",
         "contact": "Contact"
       }
+    },
+    "difference": {
+      "eyebrow": "What the others don't do",
+      "title": "Three reasons people pick it.",
+      "items": [
+        {
+          "title": "Everything local",
+          "body": "No file uploaded, ever. It works offline, on a bad connection, or under NDA."
+        },
+        {
+          "title": "Every clip at once, one timeline",
+          "body": "Drop the whole shoot: the files are processed together and land end to end in one timeline. Not one timeline per clip to stitch back by hand."
+        },
+        {
+          "title": "Yours, for good",
+          "body": "Pay once, keep AutoTrim for life, every update included, on two machines. No subscription running while you're not editing."
+        }
+      ],
+      "link": "See the licences"
     }
   }
 }

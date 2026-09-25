@@ -27,6 +27,7 @@ const Header = () => {
     { href: `${home}#silences`, label: t('nav.silences') },
     { href: `${home}#hesitations`, label: t('nav.hesitations') },
     { href: `${home}#multicam`, label: t('nav.multicam') },
+    { href: `${home}#difference`, label: t('nav.difference') },
     { href: `${home}#faq`, label: t('nav.faq') },
   ];
 

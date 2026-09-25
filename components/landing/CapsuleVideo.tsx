@@ -66,7 +66,8 @@ export default function CapsuleVideo({
     }
     const io = new IntersectionObserver(
       (entries) => setInView(entries.some((e) => e.isIntersecting)),
-      { threshold: 0.2, rootMargin: "120px 0px" }
+      // Plays only once most of it is on screen, not as soon as an edge peeks in
+      { threshold: 0.55 }
     );
     io.observe(el);
     return () => io.disconnect();

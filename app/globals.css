@@ -158,3 +158,22 @@ details.faq-item[open] .faq-plus {
 .faq-plus {
   transition: transform 0.25s ease;
 }
+
+/* Hero: the elements rise in once, staggered. Off with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+  .hero-in {
+    animation: hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms);
+  }
+  @keyframes hero-glow {
+    from { opacity: 0; transform: translate(-50%, -40%) scale(0.85); }
+    to { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+  }
+  .hero-glow {
+    animation: hero-glow 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}

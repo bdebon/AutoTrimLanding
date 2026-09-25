@@ -10,6 +10,7 @@ import Multicam from "@/components/landing/Multicam";
 import Timeline from "@/components/landing/Timeline";
 import Preview from "@/components/landing/Preview";
 import Local from "@/components/landing/Local";
+import Difference from "@/components/landing/Difference";
 import Testimonials from "@/components/landing/Testimonials";
 import Faq, { type FaqEntry } from "@/components/landing/Faq";
 import FinalCta from "@/components/landing/FinalCta";
@@ -101,6 +102,7 @@ export default async function Home({ params }: Props) {
         <Timeline locale={locale} />
         <Preview locale={locale} />
         <Local locale={locale} />
+        <Difference locale={locale} />
         <Testimonials />
         {/* No prices on the home: visitors left before trying the app (Benjamin, 24 Sept 2026).
             components/landing/Pricing.tsx is kept for the /pricing restyle. */}
