@@ -105,10 +105,12 @@
   --color-secondary-900: #7C2D12;
 }
 
-/* The faces come from next/font (see app/layout.tsx); the tokens keep their names. */
-:root {
+/* The faces come from next/font (see app/layout.tsx), which defines its variables on <body>:
+ * the tokens are re-pointed there, not on :root, or var() would resolve to nothing. */
+body {
   --at-font-display: var(--font-display-next), "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
   --at-font-ui: var(--font-ui-next), "Schibsted Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--at-font-ui);
 }
 
 html {
