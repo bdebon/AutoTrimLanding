@@ -28,12 +28,10 @@ export default function Timeline({ locale }: { locale: string }) {
               </li>
             ))}
           </ul>
-          <figure className="mt-8 border-l-2 border-at-accent pl-5">
-            <blockquote className="font-display text-[22px] font-semibold leading-snug text-at-text sm:text-[24px]">
-              <p>{t("timeline.quote")}</p>
-            </blockquote>
-            <figcaption className="mt-2 font-ui text-[13.5px] text-at-dim">{t("timeline.quoteSource")}</figcaption>
-          </figure>
+          <div className="mt-8 border-l-2 border-at-accent pl-5">
+            <h3 className="font-display text-[22px] font-semibold leading-snug text-at-text sm:text-[24px]">{t("timeline.controlTitle")}</h3>
+            <p className="mt-3 font-ui text-[15.5px] leading-relaxed text-at-muted">{t("timeline.controlBody")}</p>
+          </div>
           <div className="mt-10">
             <CtaLink href={`/${locale}/download`} location="timeline" type="download" className={btn.ghost}>
               {t("cta.download")}

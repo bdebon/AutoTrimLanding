@@ -1,3 +1,5 @@
+import { socialImage } from "@/lib/social";
+import { localeAlternates } from "@/lib/seo";
 import { Metadata } from "next";
 import Script from "next/script";
 import { getTranslations } from "next-intl/server";
@@ -10,7 +12,6 @@ import Multicam from "@/components/landing/Multicam";
 import Timeline from "@/components/landing/Timeline";
 import Preview from "@/components/landing/Preview";
 import Local from "@/components/landing/Local";
-import Difference from "@/components/landing/Difference";
 import Testimonials from "@/components/landing/Testimonials";
 import Faq, { type FaqEntry } from "@/components/landing/Faq";
 import FinalCta from "@/components/landing/FinalCta";
@@ -19,10 +20,11 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-const OG_IMAGE = "/og/autotrim-v2.jpg";
+
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  const OG_IMAGE = socialImage(locale);
   const t = await getTranslations({ locale, namespace: "landing.meta" });
 
   const localeMap: Record<string, string> = {
@@ -36,7 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     keywords: t("keywords"),
+    alternates: localeAlternates(locale, ""),
     openGraph: {
+      url: `/${locale}`,
+      siteName: "AutoTrim",
+      type: "website",
       title: t("title"),
       description: t("description"),
       images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: t("ogAlt") }],
@@ -53,8 +59,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
+  const OG_IMAGE = socialImage(locale);
   const t = await getTranslations({ locale, namespace: "landing" });
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.autotrim.app";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -98,11 +105,10 @@ export default async function Home({ params }: Props) {
         <Hero locale={locale} />
         <Silences locale={locale} />
         <Hesitations locale={locale} />
-        <Multicam locale={locale} />
         <Timeline locale={locale} />
         <Preview locale={locale} />
+        <Multicam locale={locale} />
         <Local locale={locale} />
-        <Difference locale={locale} />
         <Testimonials />
         {/* No prices on the home: visitors left before trying the app (Benjamin, 24 Sept 2026).
             components/landing/Pricing.tsx is kept for the /pricing restyle. */}

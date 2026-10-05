@@ -57,7 +57,7 @@ export function compareArticleJsonLd(opts: {
       name: 'AutoTrim',
       logo: {
         '@type': 'ImageObject',
-        url: `${opts.siteUrl}/assets/img/logo-autotrim.svg`,
+        url: `${opts.siteUrl}/icon-512.png`,
       },
     },
     datePublished: opts.datePublished,

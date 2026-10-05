@@ -22,6 +22,32 @@
       "emailBody": "Salut ! Voici le lien pour télécharger AutoTrim sur ton ordinateur :\n\nhttps://autotrim.app/fr/download\n\nAutoTrim supprime automatiquement les silences, mots de remplissage et hésitations de tes vidéos.",
       "emailButton": "M'envoyer un rappel",
       "orVisit": "Ou visitez cette page depuis votre ordinateur :"
+    },
+    "experience": {
+      "title": "Votre prochain montage.",
+      "titleAccent": "Ça commence ici.",
+      "body": "Déposez vos rushes. Laissez AutoTrim retirer les silences et les hésitations. Découvrez ce qu’il reste à créer.",
+      "free": "Essai gratuit · Aucune carte bancaire",
+      "editors": "Retrouvez ensuite votre logiciel de montage.",
+      "windowStatus": "Traitement local",
+      "screenshotAlt": "AutoTrim : trois fichiers traités, les silences et hésitations repérés dans les formes d’onde, prêts à être exportés dans une seule timeline.",
+      "result": "312 coupes déjà faites.",
+      "resultNote": "Exemple de session · 3 fichiers",
+      "next": "Une fois installé, le plus simple commence.",
+      "steps": {
+        "drop": {
+          "title": "Déposez votre tournage.",
+          "body": "Un clip ou toute une session. Vos fichiers restent sur votre ordinateur."
+        },
+        "preview": {
+          "title": "Écoutez la différence.",
+          "body": "Prévisualisez les coupes et ajustez le rythme. L’essai est gratuit."
+        },
+        "edit": {
+          "title": "Passez au montage.",
+          "body": "Quand le résultat vous plaît, une licence vous permet d’exporter la timeline."
+        }
+      }
     }
   },
   "pricing": {
@@ -147,7 +173,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 AutoTrim. Créé avec ❤️ par Benjamin Code",
+    "copyright": "© {year} AutoTrim. Créé avec ❤️ par Benjamin Code",
     "links": {
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation",
@@ -661,7 +687,7 @@
       "title": "AutoTrim 2 – Coupe les silences. Et les euh.",
       "description": "AutoTrim retire les silences et les hésitations de vos rushes, sur votre machine, et vous rend une timeline Final Cut Pro, Premiere Pro ou DaVinci Resolve où chaque coupe reste à vous. Multicam : plusieurs caméras et micros se calent seuls. Gratuit pour essayer.",
       "keywords": "supprimer silence vidéo, couper les euh, hésitations, dérush automatique, multicam, timeline Final Cut Pro, Premiere Pro, DaVinci Resolve, autotrim, montage automatique local",
-      "ogAlt": "AutoTrim 2 : une heure de rushes, 40 minutes à monter. 59:45 → 39:57, −33 %, 521 coupes."
+      "ogAlt": "AutoTrim — Moins de coupes. Plus de création."
     },
     "nav": {
       "silences": "Silences",
@@ -670,7 +696,7 @@
       "faq": "FAQ",
       "menuOpen": "Ouvrir le menu",
       "menuClose": "Fermer le menu",
-      "difference": "Différences"
+      "timeline": "Votre montage"
     },
     "cta": {
       "download": "Télécharger AutoTrim",
@@ -680,7 +706,7 @@
     "hero": {
       "eyebrow": "AutoTrim 2",
       "title": "Coupe les silences. Et les euh.",
-      "body": "AutoTrim lit vos rushes sur votre machine, retire les silences et les hésitations, et vous rend une timeline Final Cut Pro, Premiere Pro ou DaVinci Resolve où chaque coupe reste à vous. Plusieurs caméras et micros ? Ils se calent seuls.",
+      "body": "Vos rushes, sans les silences ni les hésitations. Une timeline prête à monter dans Final Cut Pro, Premiere Pro ou DaVinci Resolve.",
       "proof": {
         "before": "59:45",
         "after": "39:57",
@@ -688,13 +714,32 @@
         "cuts": "521 coupes",
         "note": "une vraie heure de rushes"
       },
-      "capsuleTitle": "Une heure de rushes. Trente secondes."
+      "capsuleTitle": "Une heure de rushes. Trente secondes.",
+      "introLabel": "Moins de vide. Plus de vidéo.",
+      "ownership": "Chaque coupe reste à vous.",
+      "fullDemo": "Voir AutoTrim en action",
+      "demo": {
+        "label": "Du rush au montage",
+        "raw": "Un peu trop de blanc ?",
+        "silences": "Les silences partent.",
+        "hesitations": "Les « euh » aussi.",
+        "done": "Gardez le fil. Coupez le reste.",
+        "replay": "Rejouer",
+        "kicker": "Le rythme commence ici",
+        "silence": "silence",
+        "um": "euh",
+        "kept": "La parole reste",
+        "removed": "Le superflu part",
+        "illustration": "Extrait illustratif",
+        "ready": "Prêt à monter"
+      },
+      "freeTrial": "Gratuit à essayer"
     },
     "silences": {
       "eyebrow": "Les silences",
-      "title": "Les silences partent d'abord.",
-      "body": "Le seuil se règle tout seul sur chaque fichier. Une marge est gardée de chaque côté d'une phrase, pour que la coupe ne mange ni la première ni la dernière syllabe. Sur une heure de rushes face caméra, un tiers du temps est du silence.",
-      "proof": "Sur 2 500 heures de rushes traitées par AutoTrim, un tiers était du silence.",
+      "title": "Récupérez vos heures de montage.",
+      "body": "Face caméra, tuto ou formation : déposez tous vos rushes et laissez AutoTrim retirer les silences. Les fichiers se traitent en parallèle, avec une marge autour des phrases pour garder une parole naturelle.",
+      "proof": "33 % de silence en médiane, sur près de 2 500 heures de rushes analysées.",
       "stats": [
         {
           "value": "2 500 h",
@@ -715,30 +760,33 @@
     "hesitations": {
       "eyebrow": "Nouveau dans la v2",
       "title": "Euh.",
-      "body": "Un modèle entraîné à repérer les hésitations, pas une transcription détournée : il entend le « euh » qui traîne, le « hmm », le mot repris. Chaque hésitation est marquée sur la timeline, vous la voyez, vous l'écoutez, elle part. Le tout sur votre machine, sans rien envoyer.",
+      "body": "Vous avez le bon propos, avec quelques « euh » de trop. Activez le nettoyage des hésitations : AutoTrim les repère et les retire, directement sur votre machine. Écoutez le résultat dans la preview avant de passer au montage.",
       "proof": "123 hésitations retirées sur l'heure réelle",
       "capsuleTitle": "Euh."
     },
     "multicam": {
-      "eyebrow": "Multicam",
+      "eyebrow": "Aussi pour vos podcasts et interviews",
       "title": "Trois caméras, deux micros, un drop.",
-      "body": "Déposez tous les fichiers d'une prise. Ils se retrouvent par leur son et se calent à l'image près, même si une caméra a démarré en retard, s'est coupée en deux fichiers ou dérive. Un micro par personne : on ne coupe que quand personne ne parle, jamais deux voix à la fois, et le « euh » de l'un n'est retiré que si l'autre se tait. Le montage suit celui qui parle, plan large quand tout le monde parle.",
+      "body": "Un tournage multicam ou un podcast enregistré à distance : déposez vos fichiers. AutoTrim retrouve ceux qui vont ensemble, les synchronise et nettoie les blancs en tenant compte de toutes les voix.",
       "capsules": {
-        "drop": "Trois caméras, deux micros, un drop.",
-        "mic": "Chaque micro, sa voix.",
-        "follow": "Le montage suit celui qui parle."
+        "drop": "Les prises se retrouvent.",
+        "mic": "Une pause n’efface pas l’autre voix.",
+        "follow": "La preview suit la conversation."
       },
-      "truth": "La timeline exportée empile les angles : V1 pour l'angle principal, les autres au-dessus, une piste par micro, tous coupés aux mêmes instants. Dans Resolve, Final Cut et Premiere.",
+      "truth": "Au moment de monter, retrouvez tous vos angles et micros sur des pistes séparées, synchronisées et coupées ensemble. L’angle principal est actif ; les autres restent disponibles pour choisir vos plans.",
       "quote": "J'enregistre des épisodes de podcast de 2 à 3 heures avec plusieurs invités. AutoTrim me fait gagner au moins 2 heures de montage par épisode.",
       "quoteName": "Theo Won",
-      "quoteRole": "Podcaster"
+      "quoteRole": "Podcaster",
+      "details": {
+        "drop": "Son, durée, heure d’enregistrement, métadonnées : AutoTrim croise les indices pour retrouver les fichiers d’une même prise. Y compris les pistes isolées d’un podcast Riverside, où chaque piste ne contient que la voix d’un invité.",
+        "mic": "AutoTrim coupe quand personne ne parle. Le « euh » d’un invité reste si quelqu’un parle en même temps. Écoutez chaque micro seul pour vérifier.",
+        "follow": "Associez les caméras aux intervenants : la preview passe sur celui qui parle, ou au plan large quand plusieurs voix se croisent."
+      }
     },
     "timeline": {
       "eyebrow": "La timeline",
       "title": "Le dérushage est fait. Le montage est à vous.",
-      "body": "Déposez tous les rushes d'un tournage : AutoTrim les nettoie en même temps et vous rend une seule timeline, dans l'ordre, pour Final Cut Pro, Premiere Pro ou DaVinci Resolve. Pas une timeline par clip à recoller. Rien n'est effacé : chaque clip garde ses poignées, tirez un bord pour récupérer une respiration. AutoTrim fait la partie rébarbative, le dérushage ; vous gardez celle qui compte, le montage.",
-      "quote": "Rien n'est effacé : chaque clip garde ses poignées.",
-      "quoteSource": "Le menu d'export de l'app, mot pour mot.",
+      "body": "Tous les clips du tournage, nettoyés et assemblés dans une seule timeline. Ouvrez-la dans Final Cut Pro, Premiere Pro ou DaVinci Resolve et reprenez là où votre travail devient intéressant : choisir, raconter, monter.",
       "nle": [
         "Final Cut Pro",
         "Premiere Pro",
@@ -746,12 +794,14 @@
       ],
       "capsuleTitle": "Votre timeline, pas notre export.",
       "screenshot": "Capture B · le menu d'export ouvert sur Timeline · Final Cut Pro (05b-export-menu)",
-      "screenshotAlt": "Le menu d'export d'AutoTrim : une seule timeline pour DaVinci Resolve, Final Cut Pro ou Adobe Premiere Pro, ou les fichiers déjà montés."
+      "screenshotAlt": "Le menu d'export d'AutoTrim : une seule timeline pour DaVinci Resolve, Final Cut Pro ou Adobe Premiere Pro, ou les fichiers déjà montés.",
+      "controlTitle": "Une respiration à garder ? Récupérez-la.",
+      "controlBody": "Les fichiers d’origine restent intacts. Dans votre logiciel de montage, tirez le bord d’un clip pour retrouver une respiration ou ajuster une coupe."
     },
     "preview": {
-      "eyebrow": "Preview et MP4",
-      "title": "Regardez avant d'exporter.",
-      "body": "La lecture saute les coupes sans à-coup. La timeline montre trois états : gardé, silence, hésitation. Un doute ? Écoutez ce qui a été retiré, ajustez le seuil, relancez. Vous ne montez pas ? Prenez la vidéo déjà coupée, un MP4 par source, ou un clip par coupe.",
+      "eyebrow": "À votre rythme",
+      "title": "Écoutez le résultat. Gardez le dernier mot.",
+      "body": "Lancez la lecture pour entendre vos rushes sans les blancs. Zoomez sur une coupe, écoutez ce qui a été retiré, ajustez les réglages si vous préférez laisser respirer. Le traitement et la prévisualisation sont gratuits.",
       "legend": {
         "kept": "Gardé",
         "silence": "Silence",
@@ -762,14 +812,15 @@
       "quote": "Super intuitif, avec des previews qui aident beaucoup.",
       "quoteName": "Izayi",
       "quoteRole": "Monteur freelance",
-      "screenshot": "Capture C · la preview d'un fichier, timeline à trois états, compteur Coupé 19:25 (04-preview)"
+      "screenshot": "Capture C · la preview d'un fichier, timeline à trois états, compteur Coupé 19:25 (04-preview)",
+      "directExport": "Vous voulez simplement la vidéo nettoyée ? Exportez un MP4 par source. Pour continuer dans CapCut, récupérez les clips découpés, prêts à glisser dans l’ordre."
     },
     "local": {
       "eyebrow": "Local et privé",
-      "title": "Tout se passe sur votre machine.",
-      "body": "Vos rushes ne quittent jamais votre disque. Pas d'upload, pas de serveur, pas de compte : les modèles se téléchargent une fois, puis AutoTrim travaille hors ligne, même sans connexion. Images sous NDA, projets clients, épisodes pas encore sortis : rien ne transite nulle part, et vous n'attendez jamais qu'une heure de 4K finisse de s'envoyer.",
+      "title": "Vos rushes sont déjà au bon endroit.",
+      "body": "Sur votre disque. Déposez-les dans AutoTrim et commencez sans attendre un upload. Après le téléchargement initial des modèles, le nettoyage fonctionne hors ligne : vos projets clients et vos vidéos inédites restent sur votre machine.",
       "capsuleTitle": "Tout se passe sur votre machine.",
-      "line": "Hors ligne. Privé. Rien n'est envoyé.",
+      "line": "Pas d’upload. Pas d’attente liée à votre connexion.",
       "quote": "Avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
       "quoteName": "James",
       "quoteRole": "Monteur Final Cut"
@@ -889,7 +940,7 @@
         },
         {
           "q": "Plusieurs caméras ?",
-          "a": "Déposez tous les fichiers d'une prise : ils se calent à l'image près par leur son. La timeline empile les angles, et la preview montre le montage qui suit celui qui parle."
+          "a": "AutoTrim croise le son, les durées et les métadonnées d’enregistrement pour retrouver les fichiers d’une même prise. Un son commun permet de mesurer les décalages et la dérive entre appareils. Sans son commun, comme pour des pistes Riverside isolées, des heures de début et des durées concordantes permettent aussi de les regrouper. L’app signale les groupes à vérifier ; vous pouvez contrôler les angles en mosaïque, écouter chaque micro et ajuster la synchro. La preview peut suivre l’intervenant, et l’export conserve les angles et micros sur des pistes séparées, synchronisées et coupées ensemble."
         },
         {
           "q": "Dans quelles langues les hésitations sont-elles détectées ?",
@@ -918,8 +969,8 @@
       ]
     },
     "final": {
-      "title": "Coupe les silences. Et les euh.",
-      "sub": "Gratuit pour essayer, sur votre machine."
+      "title": "Prenez vos rushes. Voyez le temps gagné.",
+      "sub": "Déposez quelques fichiers et regardez le résultat dans AutoTrim. Le traitement et la prévisualisation sont gratuits."
     },
     "capsule": {
       "label": "Capsule {number}",
@@ -939,25 +990,6 @@
         "legal": "Mentions légales",
         "contact": "Contact"
       }
-    },
-    "difference": {
-      "eyebrow": "Ce que les autres ne font pas",
-      "title": "Trois raisons de l'avoir choisi.",
-      "items": [
-        {
-          "title": "Tout en local",
-          "body": "Aucun fichier envoyé, jamais. Ça marche hors ligne, avec une mauvaise connexion, ou sous NDA."
-        },
-        {
-          "title": "Tous les clips d'un coup, une seule timeline",
-          "body": "Déposez le tournage entier : les fichiers sont traités ensemble et arrivent bout à bout dans une timeline. Pas une timeline par clip à recoller à la main."
-        },
-        {
-          "title": "À vous, pour de bon",
-          "body": "Payez une fois, gardez AutoTrim à vie, toutes les mises à jour comprises, sur deux machines. Pas d'abonnement qui tourne pendant que vous ne montez pas."
-        }
-      ],
-      "link": "Voir les licences"
     }
   }
 }

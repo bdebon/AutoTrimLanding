@@ -1,15 +1,37 @@
 import React from "react";
+import type { Metadata } from "next";
+import LegalShell from "@/components/LegalShell";
+
+export const metadata: Metadata = {
+  title: "Legal Notice | AutoTrim",
+  description: "Publisher and company information for AutoTrim.",
+  alternates: { canonical: "/legal" },
+  openGraph: {
+    title: "Legal Notice | AutoTrim",
+    description: "Publisher and company information for AutoTrim.",
+    url: "/legal",
+    siteName: "AutoTrim",
+    images: [{ url: "/og/home-en.png", width: 1200, height: 630, alt: "AutoTrim" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Legal Notice | AutoTrim",
+    description: "Publisher and company information for AutoTrim.",
+    images: ["/og/home-en.png"],
+  },
+};
 
 export default function LegalPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <LegalShell>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Legal Notice</h1>
+        <h1 className="font-display text-4xl font-bold text-at-text mb-8">Legal Notice</h1>
 
-        <p className="text-gray-600 mb-8">Effective Date: January 2025</p>
+        <p className="text-at-muted mb-8">Effective Date: January 2025</p>
 
-        <div className="prose prose-lg max-w-none text-gray-600">
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Website Editor</h2>
+        <div className="prose prose-lg leading-relaxed max-w-none text-at-muted">
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Website Editor</h2>
 
           <div className="mb-6">
             <p className="mb-2"><strong>Company:</strong> bdebon SASU</p>
@@ -21,14 +43,14 @@ export default function LegalPage() {
             <p className="mb-2"><strong>VAT number:</strong> FR75831169644</p>
           </div>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Publication Director</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Publication Director</h2>
 
           <div className="mb-6">
             <p className="mb-2"><strong>Name:</strong> Benjamin Debon</p>
             <p className="mb-2"><strong>Email:</strong> b1jam1code@gmail.com</p>
           </div>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Hosting</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Hosting</h2>
 
           <div className="mb-6">
             <p className="mb-2">The website autotrim.app is hosted by:</p>
@@ -40,7 +62,7 @@ export default function LegalPage() {
             <p className="mb-2"><strong>GitHub</strong></p>
           </div>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Intellectual Property</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Intellectual Property</h2>
 
           <p className="mb-6">
             All content on this website, including text, images, graphics, and logos, is the exclusive property of bdebon SASU
@@ -48,13 +70,13 @@ export default function LegalPage() {
             is strictly prohibited.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Contact</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Contact</h2>
 
           <p className="mb-6">
             For any inquiries regarding this legal notice or the website, please contact us at b1jam1code@gmail.com.
           </p>
         </div>
       </div>
-    </div>
+    </LegalShell>
   );
 }

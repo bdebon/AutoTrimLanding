@@ -8,10 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "build:prod": "NODE_ENV=production next build",
-    "start:prod": "NODE_ENV=production next start"
+    "start:prod": "NODE_ENV=production next start",
+    "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@activetheory/split-text": "^1.1.2",
+    "@aws-sdk/client-s3": "^3.1146.0",
+    "@aws-sdk/s3-request-presigner": "^3.1146.0",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
     "@fontsource-variable/schibsted-grotesk": "^5.3.0",
     "@next/third-parties": "^15.5.5",
@@ -20,13 +23,13 @@
     "@vercel/analytics": "^1.5.0",
     "gsap": "^3.13.0",
     "lucide-react": "^0.539.0",
-    "next": "15.4.8",
+    "next": "^15.5.27",
     "next-intl": "^4.3.4",
     "posthog-js": "^1.155.0",
     "react": "19.1.4",
     "react-dom": "19.1.4",
     "react-intersection-observer": "^9.16.0",
-    "sharp": "^0.34.4",
+    "sharp": "^0.35.5",
     "three": "^0.179.1"
   },
   "devDependencies": {
@@ -36,7 +39,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.4.8",
+    "eslint-config-next": "^15.5.27",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

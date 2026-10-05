@@ -22,6 +22,32 @@
       "emailBody": "¡Hola! Aquí tienes el enlace para descargar AutoTrim en tu computadora:\n\nhttps://autotrim.app/es/download\n\nAutoTrim elimina automáticamente los silencios, muletillas y vacilaciones de tus videos.",
       "emailButton": "Enviarme un recordatorio",
       "orVisit": "O visita esta página desde tu computadora:"
+    },
+    "experience": {
+      "title": "Tu próximo montaje.",
+      "titleAccent": "Empieza aquí.",
+      "body": "Añade tus clips. Deja que AutoTrim elimine silencios y muletillas. Descubre lo que queda por crear.",
+      "free": "Prueba gratuita · Sin tarjeta de crédito",
+      "editors": "Después, continúa en tu editor de vídeo.",
+      "windowStatus": "Procesamiento local",
+      "screenshotAlt": "AutoTrim: tres archivos procesados con los cortes visibles en las formas de onda, listos para exportar en una sola línea de tiempo.",
+      "result": "312 cortes ya hechos.",
+      "resultNote": "Sesión de ejemplo · 3 archivos",
+      "next": "Una vez instalado, empieza lo fácil.",
+      "steps": {
+        "drop": {
+          "title": "Añade tus clips.",
+          "body": "Un clip o toda una sesión. Tus archivos se quedan en tu ordenador."
+        },
+        "preview": {
+          "title": "Escucha la diferencia.",
+          "body": "Previsualiza los cortes y ajusta el ritmo. La prueba es gratuita."
+        },
+        "edit": {
+          "title": "Empieza a editar.",
+          "body": "Cuando te guste el resultado, una licencia te permite exportar la línea de tiempo."
+        }
+      }
     }
   },
   "pricing": {
@@ -147,7 +173,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2024 AutoTrim. Construido con ❤️ por Benjamin Code",
+    "copyright": "© {year} AutoTrim. Construido con ❤️ por Benjamin Code",
     "links": {
       "privacy": "Política de Privacidad",
       "terms": "Términos de Servicio",
@@ -661,7 +687,7 @@
       "title": "AutoTrim 2 – Cuts the silences. And the ums.",
       "description": "AutoTrim takes the silences and hesitations out of your footage, on your machine, and hands back a Final Cut Pro, Premiere Pro or DaVinci Resolve timeline where every cut is still yours. Multicam: several cameras and mics line themselves up. Free to try.",
       "keywords": "remove silence from video, cut filler words, remove ums, hesitations, automatic rough cut, multicam sync, Final Cut Pro timeline, Premiere Pro, DaVinci Resolve, autotrim, local video editing",
-      "ogAlt": "AutoTrim 2: an hour of footage, 40 minutes to edit. 59:45 → 39:57, −33%, 521 cuts."
+      "ogAlt": "AutoTrim — Less cutting. More creating."
     },
     "nav": {
       "silences": "Silences",
@@ -670,7 +696,7 @@
       "faq": "FAQ",
       "menuOpen": "Open menu",
       "menuClose": "Close menu",
-      "difference": "Why AutoTrim"
+      "timeline": "Your edit"
     },
     "cta": {
       "download": "Download AutoTrim",
@@ -680,7 +706,7 @@
     "hero": {
       "eyebrow": "AutoTrim 2",
       "title": "Cuts the silences. And the ums.",
-      "body": "AutoTrim reads your footage on your machine, takes out the silences and the hesitations, and hands back a Final Cut Pro, Premiere Pro or DaVinci Resolve timeline where every cut is still yours. Several cameras and mics? They line themselves up.",
+      "body": "Your footage, without the silences or hesitations. One timeline, ready to edit in Final Cut Pro, Premiere Pro or DaVinci Resolve.",
       "proof": {
         "before": "59:45",
         "after": "39:57",
@@ -688,13 +714,32 @@
         "cuts": "521 cuts",
         "note": "a real hour of footage"
       },
-      "capsuleTitle": "An hour of footage. Thirty seconds."
+      "capsuleTitle": "An hour of footage. Thirty seconds.",
+      "introLabel": "Less waiting. More creating.",
+      "ownership": "Every cut is still yours.",
+      "fullDemo": "See AutoTrim in action",
+      "demo": {
+        "label": "From footage to edit",
+        "raw": "A little too much silence?",
+        "silences": "The silences go.",
+        "hesitations": "The ums go, too.",
+        "done": "Keep the flow. Cut the rest.",
+        "replay": "Replay",
+        "kicker": "Find your rhythm",
+        "silence": "silence",
+        "um": "um",
+        "kept": "Keep the speech",
+        "removed": "Remove the pauses",
+        "illustration": "Illustrative excerpt",
+        "ready": "Ready to edit"
+      },
+      "freeTrial": "Free to try"
     },
     "silences": {
       "eyebrow": "Silences",
-      "title": "Silences go first.",
-      "body": "The threshold sets itself for each file. A margin is kept on either side of a sentence, so a cut never clips the first or last syllable. On an hour of talking-head footage, a third of it is silence.",
-      "proof": "Across 2,500 hours of footage run through AutoTrim, a third was silence.",
+      "title": "Get your editing hours back.",
+      "body": "Talking head, tutorial or course: drop in all your footage and let AutoTrim remove the silences. Files are processed in parallel, with room around each sentence to keep the speech natural.",
+      "proof": "A median silence share of 33%, across nearly 2,500 hours of analyzed footage.",
       "stats": [
         {
           "value": "2,500 h",
@@ -715,30 +760,33 @@
     "hesitations": {
       "eyebrow": "New in v2",
       "title": "Um.",
-      "body": "A model trained to spot hesitations, not a transcript bent to the task: it hears the drawn-out \"uhh\", the \"hmm\", the word picked up again. Every hesitation is marked on the timeline, you see it, you hear it, it goes. All on your machine, nothing uploaded.",
+      "body": "You have something to say, with a few too many ums along the way. Turn on hesitation cleanup: AutoTrim finds and removes them, right on your machine. Listen to the preview before moving on to your edit.",
       "proof": "123 hesitations removed from the real hour",
       "capsuleTitle": "Um."
     },
     "multicam": {
-      "eyebrow": "Multicam",
+      "eyebrow": "For your podcasts and interviews, too",
       "title": "Three cameras, two mics, one drop.",
-      "body": "Drop every file of one take. They find each other by their sound and line up to the frame, even when a camera started late, split into two files or drifts. One mic per person: a cut only when nobody speaks, never two voices at once, and one person's \"um\" only goes if the other is silent. The edit follows who's talking, wide shot when everyone does.",
+      "body": "A multicamera shoot or a remotely recorded podcast: drop in your files. AutoTrim works out which ones belong together, syncs them and removes the pauses while listening to every voice.",
       "capsules": {
-        "drop": "Three cameras, two mics, one drop.",
-        "mic": "One mic per person.",
-        "follow": "The cut follows who's talking."
+        "drop": "The takes line up.",
+        "mic": "Keep every speaker’s voice.",
+        "follow": "The preview follows the conversation."
       },
-      "truth": "The exported timeline stacks the angles: V1 for the main angle, the others above it, one track per mic, all cut at the same instants. In Resolve, Final Cut and Premiere.",
+      "truth": "When you start editing, every angle and mic is on its own track, synced and cut together. The primary angle is active; the others are available for you to choose your shots.",
       "quote": "I record 2–3 hour podcast episodes with multiple guests. AutoTrim saves me at least 2 hours of editing per episode.",
       "quoteName": "Theo Won",
-      "quoteRole": "Podcaster"
+      "quoteRole": "Podcaster",
+      "details": {
+        "drop": "Sound, duration, recording time and metadata: AutoTrim combines the clues to find files from the same take. That includes isolated Riverside podcast tracks, where each track contains only one guest’s voice.",
+        "mic": "AutoTrim cuts when nobody speaks. One guest’s um stays if someone else is speaking at the same time. Listen to each mic on its own to check.",
+        "follow": "Match the cameras to the speakers: the preview switches to whoever is talking, or to the wide shot when voices overlap."
+      }
     },
     "timeline": {
       "eyebrow": "The timeline",
       "title": "The rough cut is done. The edit is yours.",
-      "body": "Drop every rush of a shoot: AutoTrim cleans them all at once and hands back one timeline, in order, for Final Cut Pro, Premiere Pro or DaVinci Resolve. Not one timeline per clip to stitch back together. Nothing is erased: every clip keeps its handles, drag an edge to bring a breath back. AutoTrim does the tedious part, the rough cut; you keep the part that matters, the edit.",
-      "quote": "Nothing is erased: every clip keeps its handles.",
-      "quoteSource": "The app's export menu, word for word.",
+      "body": "Every clip from your shoot, cleaned up and assembled in one timeline. Open it in Final Cut Pro, Premiere Pro or DaVinci Resolve and get to the part you enjoy: choosing shots, telling the story, editing.",
       "nle": [
         "Final Cut Pro",
         "Premiere Pro",
@@ -746,12 +794,14 @@
       ],
       "capsuleTitle": "Your timeline, not our export.",
       "screenshot": "Screenshot B · the export menu open on Timeline · Final Cut Pro (05b-export-menu)",
-      "screenshotAlt": "AutoTrim's export menu: one timeline for DaVinci Resolve, Final Cut Pro or Adobe Premiere Pro, or the files already edited."
+      "screenshotAlt": "AutoTrim's export menu: one timeline for DaVinci Resolve, Final Cut Pro or Adobe Premiere Pro, or the files already edited.",
+      "controlTitle": "Want that breath back? Keep it.",
+      "controlBody": "Your original files stay intact. In your editor, drag the edge of a clip to bring a breath back or adjust a cut."
     },
     "preview": {
-      "eyebrow": "Preview and MP4",
-      "title": "Watch before you export.",
-      "body": "Playback skips the cuts without a stutter. The timeline shows three states: kept, silence, hesitation. Not sure? Listen to what was removed, adjust the threshold, run again. Don't edit? Take the video already cut, one MP4 per source, or one clip per cut.",
+      "eyebrow": "Your pace, your call",
+      "title": "Hear the result. Have the final say.",
+      "body": "Press play to hear your footage without the pauses. Zoom in on a cut, listen to what was removed, and adjust the settings if you want more breathing room. Processing and previewing are free.",
       "legend": {
         "kept": "Kept",
         "silence": "Silence",
@@ -762,14 +812,15 @@
       "quote": "Super intuitive, with previews that help a lot.",
       "quoteName": "Izayi",
       "quoteRole": "Freelance editor",
-      "screenshot": "Screenshot C · a file's preview, three-state timeline, Cut 19:25 counter (04-preview)"
+      "screenshot": "Screenshot C · a file's preview, three-state timeline, Cut 19:25 counter (04-preview)",
+      "directExport": "Just want the cleaned-up video? Export an MP4 per source. To keep editing in CapCut, take the cut clips and drop them in order."
     },
     "local": {
       "eyebrow": "Local and private",
-      "title": "Everything happens on your machine.",
-      "body": "Your footage never leaves your drive. No upload, no server, no account: the models download once, then AutoTrim works offline, even with no connection at all. Footage under NDA, client projects, episodes not out yet: nothing goes anywhere, and you never wait for an hour of 4K to finish uploading.",
+      "title": "Your footage is already in the right place.",
+      "body": "On your drive. Drop it into AutoTrim and get started without waiting for an upload. After the initial model download, cleanup works offline: client projects and unreleased videos stay on your machine.",
       "capsuleTitle": "Everything happens on your machine.",
-      "line": "Offline. Private. Nothing uploaded.",
+      "line": "No upload. No waiting on your connection.",
       "quote": "On my DSL connection the upload is a huge waste of time. AutoTrim saves me one to two hours per project.",
       "quoteName": "James",
       "quoteRole": "Final Cut editor"
@@ -889,7 +940,7 @@
         },
         {
           "q": "Several cameras?",
-          "a": "Drop every file of one take: they line up to the frame by their sound. The timeline stacks the angles, and the preview shows the edit following who's talking."
+          "a": "AutoTrim combines sound, durations and recording metadata to find files from the same take. Shared sound lets it measure offsets and clock drift between devices. Without shared sound, as with isolated Riverside tracks, matching start times and durations can also bring the files together. The app flags groups that need checking; you can view the angles in a mosaic, listen to each mic and adjust the sync. The preview can follow the speaker, and export keeps angles and mics on separate tracks, synced and cut together."
         },
         {
           "q": "Which languages are hesitations detected in?",
@@ -918,8 +969,8 @@
       ]
     },
     "final": {
-      "title": "Cuts the silences. And the ums.",
-      "sub": "Free to try, on your machine."
+      "title": "Bring your footage. See the time you save.",
+      "sub": "Drop in a few files and watch the result in AutoTrim. Processing and previewing are free."
     },
     "capsule": {
       "label": "Capsule {number}",
@@ -939,25 +990,6 @@
         "legal": "Legal notice",
         "contact": "Contact"
       }
-    },
-    "difference": {
-      "eyebrow": "What the others don't do",
-      "title": "Three reasons people pick it.",
-      "items": [
-        {
-          "title": "Everything local",
-          "body": "No file uploaded, ever. It works offline, on a bad connection, or under NDA."
-        },
-        {
-          "title": "Every clip at once, one timeline",
-          "body": "Drop the whole shoot: the files are processed together and land end to end in one timeline. Not one timeline per clip to stitch back by hand."
-        },
-        {
-          "title": "Yours, for good",
-          "body": "Pay once, keep AutoTrim for life, every update included, on two machines. No subscription running while you're not editing."
-        }
-      ],
-      "link": "See the licences"
     }
   }
 }

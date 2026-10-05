@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/assets/img/hero-screenshot.jpg',
+        url: '/og/guide-how-to-remove-silence-final-cut-pro-en.png',
         width: 1200,
         height: 630,
         alt: 'AutoTrim removing silences from Final Cut Pro footage',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'How to Remove Silence in Final Cut Pro (2026)',
     description: DESCRIPTION,
-    images: ['/assets/img/hero-screenshot.jpg'],
+    images: ['/og/guide-how-to-remove-silence-final-cut-pro-en.png'],
   },
 };
 
@@ -85,7 +85,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autotrim.app';
 
   const jsonLd = [
     {
@@ -103,7 +103,7 @@ export default async function Page({
         name: 'AutoTrim',
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}/assets/img/logo-autotrim.svg`,
+          url: `${siteUrl}/icon-512.png`,
         },
       },
       datePublished: '2026-07-08',
@@ -176,7 +176,7 @@ export default async function Page({
             editors have two options: cut every silence manually with the blade
             tool (about 48 minutes of work for 30 minutes of talking-head
             footage), or process clips through a standalone tool like{' '}
-            <Link href={`/${locale}`} className="text-primary-600 hover:underline">
+            <Link href={`/${locale}`} className="text-at-accent hover:underline">
               AutoTrim
             </Link>{' '}
             that detects silences with local AI and exports a cleaned FCPXML

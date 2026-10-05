@@ -52,6 +52,7 @@ export default function Preview({ locale }: { locale: string }) {
       <Reveal className="mt-10">
         <Capsule name="preview" lang={lang} number={9} title={t("preview.capsuleMain")} />
       </Reveal>
+      <p className="mt-6 max-w-2xl font-ui text-[14px] leading-relaxed text-at-dim">{t("preview.directExport")}</p>
       <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
         <Legend
           kept={t("preview.legend.kept")}

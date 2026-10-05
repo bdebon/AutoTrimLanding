@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/assets/img/hero-screenshot.jpg',
+        url: '/og/guide-remove-filler-words-from-video-en.png',
         width: 1200,
         height: 630,
         alt: 'Automatic filler word removal from video',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Remove Filler Words from Video Automatically (2026)',
     description: DESCRIPTION,
-    images: ['/assets/img/hero-screenshot.jpg'],
+    images: ['/og/guide-remove-filler-words-from-video-en.png'],
   },
 };
 
@@ -85,7 +85,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autotrim.app';
 
   const jsonLd = [
     {
@@ -103,7 +103,7 @@ export default async function Page({
         name: 'AutoTrim',
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}/assets/img/logo-autotrim.svg`,
+          url: `${siteUrl}/icon-512.png`,
         },
       },
       datePublished: '2026-07-08',
@@ -172,7 +172,7 @@ export default async function Page({
             </strong>{' '}
             — it finds &quot;um&quot;, &quot;uh&quot; and hesitations in the transcript with
             timestamps and cuts those ranges. In 2026 the main options are{' '}
-            <Link href={`/${locale}`} className="text-primary-600 hover:underline">
+            <Link href={`/${locale}`} className="text-at-accent hover:underline">
               AutoTrim
             </Link>{' '}
             (local AI, exports to Final Cut Pro/Premiere/Resolve), Descript

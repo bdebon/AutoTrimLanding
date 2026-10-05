@@ -1,3 +1,5 @@
+import { socialImage } from "@/lib/social";
+import { localeAlternates } from "@/lib/seo";
 import { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
 import Header from "@/components/Header";
@@ -23,7 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('download.title'),
     description: t('download.description'),
     keywords: t('download.keywords'),
+    alternates: localeAlternates(locale, "/download"),
+    twitter: {
+      card: "summary_large_image",
+      title: t('download.title'),
+      description: t('download.description'),
+      images: [socialImage(locale, "download")],
+    },
     openGraph: {
+      url: `/${locale}/download`,
+      siteName: "AutoTrim",
+      type: "website",
+      images: [{ url: socialImage(locale, "download"), width: 1200, height: 630, alt: t('download.title') }],
       title: t('download.title'),
       description: t('download.description'),
       locale: localeMap[locale] || 'en_US',

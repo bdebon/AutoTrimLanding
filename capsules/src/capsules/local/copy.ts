@@ -5,8 +5,9 @@ export type LocalCopy = {
   analysing: string;
   file: string;
   wifiOff: string;
-  /** A screen recording of the real app analysing, in public/ (e.g. "recordings/local-fr.mp4"). Empty: the drawn card. */
+  /** A screen recording of the real app analysing, in public/ (e.g. "recordings/local-fr.mp4"). */
   recording: string;
+  continues: string;
 };
 
 export const localFr: LocalCopy = {
@@ -17,6 +18,7 @@ export const localFr: LocalCopy = {
   file: "2025-09-05_21-00-54.mp4",
   wifiOff: "Wi‑Fi désactivé",
   recording: "recordings/local-fr.mp4",
+  continues: "Le traitement continue.",
 };
 
 export const localEn: LocalCopy = {
@@ -27,4 +29,5 @@ export const localEn: LocalCopy = {
   file: "2025-09-05_21-00-54.mp4",
   wifiOff: "Wi‑Fi off",
   recording: "recordings/local-en.mp4",
+  continues: "Processing carries on.",
 };

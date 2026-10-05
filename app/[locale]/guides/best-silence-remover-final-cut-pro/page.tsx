@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/assets/img/hero-screenshot.jpg',
+        url: '/og/guide-best-silence-remover-final-cut-pro-en.png',
         width: 1200,
         height: 630,
         alt: 'Comparison of silence removers for Final Cut Pro',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Best Silence Remover for Final Cut Pro (2026)',
     description: DESCRIPTION,
-    images: ['/assets/img/hero-screenshot.jpg'],
+    images: ['/og/guide-best-silence-remover-final-cut-pro-en.png'],
   },
 };
 
@@ -84,7 +84,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autotrim.app';
 
   const jsonLd = [
     {
@@ -102,7 +102,7 @@ export default async function Page({
         name: 'AutoTrim',
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}/assets/img/logo-autotrim.svg`,
+          url: `${siteUrl}/icon-512.png`,
         },
       },
       datePublished: '2026-07-08',
@@ -257,7 +257,7 @@ export default async function Page({
           subscription. If you edit single long files (webinars, sermons,
           screen recordings) its workflow fits better than it does multi-clip
           shoots. See the full{' '}
-          <Link href={`/${locale}/compare/timebolt`} className="text-primary-600 hover:underline">
+          <Link href={`/${locale}/compare/timebolt`} className="text-at-accent hover:underline">
             AutoTrim vs TimeBolt comparison
           </Link>
           .
@@ -281,7 +281,7 @@ export default async function Page({
           your footage, pay a subscription, and move your edit out of Final Cut
           Pro. For editors who want to stay in FCP, the upload/edit/round-trip
           loop adds more friction than it removes. See the{' '}
-          <Link href={`/${locale}/compare/descript`} className="text-primary-600 hover:underline">
+          <Link href={`/${locale}/compare/descript`} className="text-at-accent hover:underline">
             AutoTrim vs Descript comparison
           </Link>
           .
@@ -296,7 +296,7 @@ export default async function Page({
           brutal at a weekly publishing cadence. Step-by-step in our{' '}
           <Link
             href="/en/guides/how-to-remove-silence-final-cut-pro"
-            className="text-primary-600 hover:underline"
+            className="text-at-accent hover:underline"
           >
             guide to removing silence in Final Cut Pro
           </Link>

@@ -128,7 +128,7 @@ const Footer = () => {
               <option value="zh">{t("footer.language.zh")}</option>
             </select>
           </div>
-          <p className="font-ui text-[13px] text-at-faint">{t("footer.copyright")}</p>
+          <p className="font-ui text-[13px] text-at-faint">{t("footer.copyright", { year: new Date().getFullYear() })}</p>
         </div>
       </div>
     </footer>

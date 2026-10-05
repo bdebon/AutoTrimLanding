@@ -14,7 +14,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/en/guides',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Video Editing Guides | AutoTrim',
+    description: DESCRIPTION,
+    images: ['/og/guides-en.png'],
+  },
   openGraph: {
+    images: [{ url: '/og/guides-en.png', width: 1200, height: 630, alt: 'AutoTrim video editing guides' }],
     title: 'Video Editing Guides – Silence Removal, Filler Words & Rough Cuts',
     description: DESCRIPTION,
     url: '/en/guides',
@@ -63,7 +70,7 @@ export default async function GuidesIndexPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autotrim.app';
 
   const jsonLd = [
     {
@@ -85,7 +92,7 @@ export default async function GuidesIndexPage({
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-at-app">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -93,10 +100,10 @@ export default async function GuidesIndexPage({
       <Header />
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="font-display text-4xl sm:text-5xl font-bold text-at-text mb-4">
             Video Editing Guides
           </h1>
-          <p className="text-xl text-gray-600 mb-12">
+          <p className="text-xl text-at-muted mb-12">
             Practical, no-fluff guides on silence removal, filler words and
             faster rough cuts — written by an editor who got tired of doing it
             by hand.
@@ -107,13 +114,13 @@ export default async function GuidesIndexPage({
               <Link
                 key={g.slug}
                 href={`/en/guides/${g.slug}`}
-                className="block rounded-2xl border border-gray-200 p-6 hover:border-primary-300 hover:shadow-lg transition-all duration-200 group"
+                className="block rounded-2xl border border-at-border p-6 hover:border-at-accent-soft-border hover:shadow-sm transition-all duration-200 group"
               >
-                <h2 className="text-2xl font-semibold text-gray-900 mb-2 group-hover:text-primary-700">
+                <h2 className="font-display text-2xl font-semibold text-at-text mb-2 group-hover:text-at-accent">
                   {g.title}
                 </h2>
-                <p className="text-gray-600 mb-3">{g.description}</p>
-                <span className="inline-flex items-center gap-1 text-primary-600 font-medium">
+                <p className="text-at-muted mb-3">{g.description}</p>
+                <span className="inline-flex items-center gap-1 text-at-accent font-medium">
                   Read the guide
                   <ArrowRight className="h-4 w-4" />
                 </span>
@@ -121,38 +128,38 @@ export default async function GuidesIndexPage({
             ))}
           </div>
 
-          <div className="mt-14 rounded-2xl border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+          <div className="mt-14 rounded-2xl border border-at-border p-6">
+            <h2 className="font-display text-xl font-semibold text-at-text mb-3">
               Tool comparisons
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <li>
-                <Link href={`/${locale}/compare/final-cut-pro`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/compare/final-cut-pro`} className="text-at-accent hover:underline">
                   AutoTrim vs Final Cut Pro built-in tools
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/compare/premiere-pro`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/compare/premiere-pro`} className="text-at-accent hover:underline">
                   AutoTrim vs Premiere Pro built-in tools
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/compare/timebolt`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/compare/timebolt`} className="text-at-accent hover:underline">
                   AutoTrim vs TimeBolt
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/compare/autocut`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/compare/autocut`} className="text-at-accent hover:underline">
                   AutoTrim vs AutoCut
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/compare/descript`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/compare/descript`} className="text-at-accent hover:underline">
                   AutoTrim vs Descript
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/pricing`} className="text-primary-600 hover:underline">
+                <Link href={`/${locale}/pricing`} className="text-at-accent hover:underline">
                   AutoTrim pricing
                 </Link>
               </li>
