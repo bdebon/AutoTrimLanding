@@ -16,7 +16,7 @@ export default async function CompareAutocutPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.autotrim.app";
   const t = await getTranslations({ locale });
   const faqItems = Object.values(
     t.raw("compareAutocut.faq") as Record<string, FaqItem>

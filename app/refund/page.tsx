@@ -1,19 +1,41 @@
 import React from "react";
+import type { Metadata } from "next";
+import LegalShell from "@/components/LegalShell";
+
+export const metadata: Metadata = {
+  title: "Refund Policy | AutoTrim",
+  description: "Information about refunds for AutoTrim licenses.",
+  alternates: { canonical: "/refund" },
+  openGraph: {
+    title: "Refund Policy | AutoTrim",
+    description: "Information about refunds for AutoTrim licenses.",
+    url: "/refund",
+    siteName: "AutoTrim",
+    images: [{ url: "/og/home-en.png", width: 1200, height: 630, alt: "AutoTrim" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Refund Policy | AutoTrim",
+    description: "Information about refunds for AutoTrim licenses.",
+    images: ["/og/home-en.png"],
+  },
+};
 
 export default function RefundPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <LegalShell>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Refund Policy</h1>
+        <h1 className="font-display text-4xl font-bold text-at-text mb-8">Refund Policy</h1>
 
-        <p className="text-gray-600 mb-8">Effective Date: January 2025</p>
+        <p className="text-at-muted mb-8">Effective Date: January 2025</p>
 
-        <div className="prose prose-lg max-w-none text-gray-600">
+        <div className="prose prose-lg leading-relaxed max-w-none text-at-muted">
           <p className="mb-6">
             We want you to feel confident when purchasing AutoTrim.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">14-Day Money-Back Guarantee</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">14-Day Money-Back Guarantee</h2>
 
           <ul className="list-disc list-inside mb-6">
             <li className="mb-3">
@@ -34,12 +56,12 @@ export default function RefundPage() {
             This policy does not affect your legal rights under applicable consumer protection laws.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Contact Us</h2>
+          <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">Contact Us</h2>
           <p className="mb-6">
             For any questions about refunds, please email us at b1jam1code@gmail.com.
           </p>
         </div>
       </div>
-    </div>
+    </LegalShell>
   );
 }

@@ -8,12 +8,15 @@
     "start": "next start",
     "lint": "next lint",
     "build:prod": "NODE_ENV=production next build",
-    "start:prod": "NODE_ENV=production next start"
+    "start:prod": "NODE_ENV=production next start",
+    "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@activetheory/split-text": "^1.1.2",
     "@aws-sdk/client-s3": "^3.1146.0",
     "@aws-sdk/s3-request-presigner": "^3.1146.0",
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/schibsted-grotesk": "^5.3.0",
     "@next/third-parties": "^15.5.5",
     "@react-three/drei": "^10.6.1",
     "@react-three/fiber": "^9.3.0",

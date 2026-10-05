@@ -1,26 +1,42 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import FacebookPixel from "./FacebookPixel";
 import PostHogProvider from "./PostHogProvider";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+// The app's two variable families, self-hosted from the fontsource packages. next/font
+// preloads them and sizes the fallback face to their metrics, so nothing jumps when they land.
+const display = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-ext-wght-normal.woff2", style: "normal" },
+  ],
+  variable: "--font-display-next",
   display: "swap",
-  preload: true,
-  adjustFontFallback: true,
+  weight: "200 800",
+});
+const ui = localFont({
+  src: [
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-ext-wght-normal.woff2", style: "normal" },
+    { path: "../node_modules/@fontsource-variable/schibsted-grotesk/files/schibsted-grotesk-latin-wght-italic.woff2", style: "italic" },
+  ],
+  variable: "--font-ui-next",
+  display: "swap",
+  weight: "400 900",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0B0B0B",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.autotrim.app"),
   title: "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
   description:
     "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local, no cloud. Try free.",
@@ -28,11 +44,15 @@ export const metadata: Metadata = {
   authors: [{ name: "AutoTrim Team" }],
   creator: "AutoTrim",
   publisher: "AutoTrim",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+  manifest: "/manifest.webmanifest",
   robots: {
     index: true,
     follow: true,
@@ -55,7 +75,7 @@ export const metadata: Metadata = {
     siteName: "AutoTrim",
     images: [
       {
-        url: "/assets/img/hero-screenshot.jpg",
+        url: "/og/home-en.png",
         width: 1200,
         height: 630,
         alt: "AutoTrim - Auto trim and remove silence from videos automatically",
@@ -69,7 +89,7 @@ export const metadata: Metadata = {
     title: "AutoTrim – Remove Silence from Videos Automatically | Free Trial",
     description:
       "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline. 100% local, no cloud. Try free.",
-    images: ["/assets/img/hero-screenshot.jpg"],
+    images: ["/og/home-en.png"],
     creator: "@autotrimapp",
   },
 };
@@ -82,15 +102,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://player.vimeo.com" />
-        <link rel="preconnect" href="https://i.vimeocdn.com" />
-        <link rel="preconnect" href="https://f.vimeocdn.com" />
         <link rel="dns-prefetch" href="https://github.com" />
-        <link rel="preload" href="/assets/img/logo-autotrim.svg" as="image" fetchPriority="high" />
       </head>
       <body
         suppressHydrationWarning
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
+        className={`${display.variable} ${ui.variable} antialiased`}
       >
         {/* Meta Pixel - lazyOnload for better LCP */}
         <Script
@@ -136,8 +152,7 @@ export default function RootLayout({
               "description": "AutoTrim removes silences, filler words and hesitations from your videos in seconds. Drop all your clips, get one clean timeline for Premiere, Final Cut or Resolve. 100% local processing.",
               "url": "https://www.autotrim.app",
               "downloadUrl": "https://www.autotrim.app/en/download",
-              "screenshot": "https://www.autotrim.app/assets/img/hero-screenshot.jpg",
-              "softwareVersion": "1.0",
+              "screenshot": "https://www.autotrim.app/app/session-en.webp",
               "datePublished": "2025-01-01",
               "author": {
                 "@type": "Person",

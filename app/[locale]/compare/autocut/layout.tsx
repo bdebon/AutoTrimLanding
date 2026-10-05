@@ -1,3 +1,4 @@
+import { socialImage } from "@/lib/social";
 import { Metadata } from "next";
 import { getTranslations } from 'next-intl/server';
 import { localeAlternates } from '@/lib/seo';
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: "AutoTrim",
       images: [
         {
-          url: "/assets/img/hero-screenshot.jpg",
+          url: socialImage(locale, "compare-autocut"),
           width: 1200,
           height: 630,
           alt: "AutoTrim vs AutoCut Comparison",
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: t('title'),
       description: t('description'),
-      images: ["/assets/img/hero-screenshot.jpg"],
+      images: [socialImage(locale, "compare-autocut")],
     },
   };
 }

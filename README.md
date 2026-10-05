@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AutoTrim landing
 
-## Getting Started
+The marketing home of [AutoTrim](https://autotrim.app): the site, its copy in four languages, the
+SEO guides and compare pages, the animated capsules and the design source the v2 landing is
+built from. The app itself lives in the `AutoTrim` repo next to this one.
 
-First, run the development server:
+Next 15 · React 19 · Tailwind 4 · next-intl (`en`, `fr`, `es`, `zh`) · PostHog, Meta Pixel and GTM.
+
+## Layout
+
+| Path | What it is |
+|---|---|
+| `app/[locale]/` | Pages: landing, `/download`, `/pricing`, `/guides/*`, `/compare/*` |
+| `components/` | Landing sections and compare pages |
+| `messages/{en,fr,es,zh}.json` | All copy, one namespace per section |
+| `public/pricing.md`, `public/llms.txt` | Plain-text pricing and site summary for LLMs |
+| `design/` | Design tokens, handoff notes and the v2 landing brief. The app is the source of truth: [`design/README.md`](design/README.md) |
+| `capsules/` | The Remotion project of the animated capsules: [`capsules/README.md`](capsules/README.md), storyboards in [`capsules/CAPSULES.md`](capsules/CAPSULES.md) |
+| `docs/tracking.md` | Analytics events |
+| `.agents/` | Marketing context, cold-email and lifecycle copy, lead lists (not published) |
+
+## Site
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Benjamin runs the server and the builds himself; agents do not (see `CLAUDE.md`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Capsules
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Short animated capsules of AutoTrim v2, drawn with the app's tokens. Separate `package.json`,
+nothing shared with the site.
 
-## Learn More
+```bash
+cd capsules
+npm install
+npx remotion studio                      # live preview, timeline and props panel
+npx remotion render Hero-fr out/hero-fr.mp4
+npx remotion render Hero-en out/hero-en.mp4
+npx remotion render Euh-fr out/euh-fr.mp4
+npx remotion render Euh-en out/euh-en.mp4
+npx remotion still Euh-fr out/frame.png --frame=225
+```
 
-To learn more about Next.js, take a look at the following resources:
+Every capsule exists in FR and EN, 1920×1080 (landing) and 1080×1350 (`-4x5`, social). Renders
+are H.264 yuv420p crf 16 (`capsules/remotion.config.ts`). The other capsules (#3 to #11) are
+storyboarded in `capsules/CAPSULES.md` and get a composition each as they are built.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Plan for the landing, not done yet:** each capsule the page uses is rendered three times into
+`public/capsules/` — an H.264 MP4, a WebM and a poster PNG (its first frame), FR and EN. The
+page plays them muted, looping, with the poster as placeholder; `es` and `zh` use the EN
+renders. Which capsule goes in which section is in
+[`design/landing-2026-09/BRIEF.md`](design/landing-2026-09/BRIEF.md). Do not render into
+`public/` before the design pass has fixed the sizes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Design
 
-## Deploy on Vercel
+`design/tokens.css` and `design/HANDOFF.md` are copies of the app's; refresh them with
+`./design/sync-design.sh`. The v2 landing brief and, later, its artboards are in
+`design/landing-2026-09/`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Commits
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`feat(landing): …`, `fix(seo): …`, `chore(landing): …`, in the style of the log.

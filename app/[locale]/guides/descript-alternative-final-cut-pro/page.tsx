@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/assets/img/hero-screenshot.jpg',
+        url: '/og/guide-descript-alternative-final-cut-pro-en.png',
         width: 1200,
         height: 630,
         alt: 'AutoTrim as a Descript alternative for Final Cut Pro editors',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Descript Alternative for Final Cut Pro Users (2026)',
     description: DESCRIPTION,
-    images: ['/assets/img/hero-screenshot.jpg'],
+    images: ['/og/guide-descript-alternative-final-cut-pro-en.png'],
   },
 };
 
@@ -79,7 +79,7 @@ export default async function Page({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.autotrim.app';
 
   const jsonLd = [
     {
@@ -97,7 +97,7 @@ export default async function Page({
         name: 'AutoTrim',
         logo: {
           '@type': 'ImageObject',
-          url: `${siteUrl}/assets/img/logo-autotrim.svg`,
+          url: `${siteUrl}/icon-512.png`,
         },
       },
       datePublished: '2026-07-08',

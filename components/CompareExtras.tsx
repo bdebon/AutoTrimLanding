@@ -47,25 +47,25 @@ export default async function CompareExtras({
   const relatedCompare = COMPARE_SLUGS.filter((c) => c.slug !== slug);
 
   return (
-    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-at-app py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* At a glance — consistent fact block across all compare pages */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
             {t('compareShared.atGlance.title')}
           </h2>
-          <div className="rounded-2xl border border-gray-200 overflow-hidden">
+          <div className="rounded-2xl border border-at-border overflow-hidden">
             <table className="w-full text-left">
               <tbody>
                 {factKeys.map((key, i) => (
-                  <tr key={key} className={i % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                  <tr key={key} className={i % 2 === 0 ? 'bg-at-panel' : 'bg-at-card'}>
                     <th
                       scope="row"
-                      className="p-4 align-top text-sm font-semibold text-gray-700 w-1/3"
+                      className="p-4 align-top text-sm font-semibold text-at-muted w-1/3"
                     >
                       {t(`compareShared.atGlance.rows.${key}.label`)}
                     </th>
-                    <td className="p-4 text-sm text-gray-600">
+                    <td className="p-4 text-sm text-at-muted">
                       {t(`compareShared.atGlance.rows.${key}.value`)}
                     </td>
                   </tr>
@@ -77,14 +77,14 @@ export default async function CompareExtras({
 
         {/* FAQ */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
             {t('compareShared.faqTitle')}
           </h2>
-          <div className="divide-y divide-gray-200">
+          <div className="divide-y divide-at-border">
             {faqItems.map((item, i) => (
               <div key={i} className="py-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.q}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.a}</p>
+                <h3 className="font-display text-lg font-semibold text-at-text mb-2">{item.q}</h3>
+                <p className="text-at-muted leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
@@ -92,7 +92,7 @@ export default async function CompareExtras({
 
         {/* Internal links */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <h2 className="font-display text-2xl font-bold text-at-text mb-6">
             {t('compareShared.relatedTitle')}
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -100,7 +100,7 @@ export default async function CompareExtras({
               <li key={g.href}>
                 <Link
                   href={g.href}
-                  className="text-primary-600 hover:text-primary-700 hover:underline"
+                  className="text-at-accent hover:text-at-accent hover:underline"
                 >
                   {g.label}
                 </Link>
@@ -110,7 +110,7 @@ export default async function CompareExtras({
               <li key={c.slug}>
                 <Link
                   href={`/${locale}/compare/${c.slug}`}
-                  className="text-primary-600 hover:text-primary-700 hover:underline"
+                  className="text-at-accent hover:text-at-accent hover:underline"
                 >
                   {t(`footer.comparisons.${c.footerKey}`)}
                 </Link>
@@ -119,7 +119,7 @@ export default async function CompareExtras({
             <li>
               <Link
                 href={`/${locale}/pricing`}
-                className="text-primary-600 hover:text-primary-700 hover:underline"
+                className="text-at-accent hover:text-at-accent hover:underline"
               >
                 {t('footer.resources.pricing')}
               </Link>

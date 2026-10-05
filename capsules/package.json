@@ -1,0 +1,30 @@
+{
+  "name": "autotrim-capsules",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Animated marketing capsules for AutoTrim, made with Remotion",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render",
+    "still": "remotion still",
+    "envelope": "node scripts/extract-envelope.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/schibsted-grotesk": "^5.3.0",
+    "@remotion/cli": "4.0.527",
+    "@remotion/layout-utils": "4.0.527",
+    "@remotion/motion-blur": "^4.0.527",
+    "@remotion/zod-types": "4.0.527",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "4.0.527",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

@@ -1,118 +1,105 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import Logo from '@/components/landing/Logo';
+import { btn } from '@/components/landing/ui';
 import { trackEvent } from '@/lib/tracking';
 
 const Header = () => {
-  const t = useTranslations();
+  const t = useTranslations('landing');
   const pathname = usePathname();
   const currentLocale = pathname.split('/')[1] || 'en';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const home = `/${currentLocale}`;
   const navLinks = [
-    { href: '/#features', label: t('nav.features') },
-    { href: '/#how-it-works', label: t('nav.howItWorks') },
-    { href: '/#faq', label: t('nav.faq') },
+    { href: `${home}#silences`, label: t('nav.silences') },
+    { href: `${home}#hesitations`, label: t('nav.hesitations') },
+    { href: `${home}#timeline`, label: t('nav.timeline') },
+    { href: `${home}#multicam`, label: t('nav.multicam') },
+    { href: `${home}#faq`, label: t('nav.faq') },
   ];
+
+  const link =
+    'rounded-pill px-3 py-2 font-ui text-[14px] font-medium text-at-muted transition-colors hover:text-at-text';
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 ${
-        isScrolled 
-          ? 'bg-white/80 backdrop-blur-xl shadow-sm' 
-          : 'bg-transparent'
-      } transition-all duration-300`}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        isScrolled || isMobileMenuOpen
+          ? 'border-at-hairline bg-at-app/85 backdrop-blur-xl'
+          : 'border-transparent bg-transparent'
+      }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2">
-              <Image
-                src="/assets/img/logo-autotrim.svg"
-                alt="AutoTrim"
-                className="h-8 w-auto"
-                width={120}
-                height={32}
-                priority
-                fetchPriority="high"
-              />
-            </Link>
-          </div>
+      <nav className="mx-auto flex h-[66px] w-full max-w-[1200px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Logo href={home} />
 
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <Link
-                href={`/${currentLocale}/download`}
-                onClick={() => trackEvent('cta_clicked', { location: 'header', type: 'download' })}
-                className="ml-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-sm font-medium"
-              >
-                {t('nav.downloadBeta')}
-              </Link>
-            </div>
-          </div>
-
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
-              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
-          </div>
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((l) => (
+            <a key={l.href} href={l.href} className={link}>
+              {l.label}
+            </a>
+          ))}
+          <Link
+            href={`${home}/download`}
+            onClick={() => trackEvent('cta_clicked', { location: 'header', type: 'download' })}
+            className={`${btn.primary} ml-3 h-10! px-5! text-[14px]!`}
+          >
+            {t('cta.download')}
+          </Link>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+          className="flex h-10 w-10 items-center justify-center rounded-pill border border-at-border bg-at-chip text-at-text md:hidden"
+          aria-label={isMobileMenuOpen ? t('nav.menuClose') : t('nav.menuOpen')}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            {isMobileMenuOpen ? (
+              <path d="M3 3l12 12M15 3L3 15" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            ) : (
+              <path d="M2 4.5h14M2 9h14M2 13.5h14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+            )}
+          </svg>
+        </button>
       </nav>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-gray-700 hover:text-gray-900 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-            <Link
-              href={`/${currentLocale}/download`}
-              className="block px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 text-base font-medium text-center"
-              onClick={() => { trackEvent('cta_clicked', { location: 'header', type: 'download' }); setIsMobileMenuOpen(false); }}
+        <div id="mobile-menu" className="border-t border-at-hairline bg-at-app px-4 pb-6 pt-2 md:hidden">
+          {navLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="block rounded-control px-3 py-3 font-ui text-[16px] font-medium text-at-text hover:bg-at-card"
+              onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('nav.downloadBeta')}
-            </Link>
-          </div>
+              {l.label}
+            </a>
+          ))}
+          <Link
+            href={`${home}/download`}
+            className={`${btn.primary} mt-3 w-full`}
+            onClick={() => {
+              trackEvent('cta_clicked', { location: 'header', type: 'download' });
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            {t('cta.download')}
+          </Link>
         </div>
       )}
     </header>

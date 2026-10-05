@@ -1,224 +1,132 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
-import { Download as DownloadIcon, Monitor, Mail, ShieldCheck } from "lucide-react";
-import { useTranslations } from 'next-intl';
-import { trackDownload } from '@/lib/tracking';
-import { useAttribution } from '@/hooks/useAttribution';
+import Image from "next/image";
+import { ArrowDown, ArrowUpRight, Check, Mail, ShieldCheck } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { trackDownload } from "@/lib/tracking";
+import { useAttribution } from "@/hooks/useAttribution";
+import { PulseTile } from "./landing/Logo";
 
-// Simple OS detection from user agent
 function detectOS() {
-  if (typeof window === 'undefined') return "mac"; // Default to mac for SSR
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
-  // Mobile detection first
-  if (/android/i.test(ua)) return "mobile";
-  if (/iPhone|iPad|iPod/i.test(ua)) return "mobile";
-  if (/windows phone/i.test(ua)) return "mobile";
+  const ua = navigator.userAgent || navigator.vendor || "";
+  if (/android|iPhone|iPad|iPod|windows phone/i.test(ua)) return "mobile";
+  if (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1) return "mobile";
   if (/win/i.test(ua)) return "windows";
   if (/macintosh|mac os x/i.test(ua)) return "mac";
-  // No Linux distribution supported for now
-  if (/linux/i.test(ua)) return "unknown";
   return "unknown";
 }
 
 const assetLinks = {
-  // Final artifact names as confirmed by the user
   mac: "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim.dmg",
-  windows:
-    "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim-Setup.msi",
+  windows: "https://github.com/bdebon/AutoTrimReleases/releases/download/latest/AutoTrim-Setup.msi",
 };
 
-// Inner component that uses hooks requiring Suspense
-const DownloadContent = () => {
-  const t = useTranslations('download');
-  const { copyAttributionToClipboard } = useAttribution();
-
-  // Start with a sensible default (mac is most common) to show content immediately
-  const [os, setOs] = useState("mac");
-  useEffect(() => {
-    setOs(detectOS());
-  }, []);
-
-  // Handle download click: copy attribution to clipboard, then track
-  const handleDownloadClick = async (platform) => {
-    // Copy attribution code to clipboard BEFORE initiating download
-    await copyAttributionToClipboard();
-
-    // Track the download event
-    trackDownload({
-      platform: platform,
-      downloadLink: platform === 'mac' ? assetLinks.mac : assetLinks.windows,
-      location: 'download_page'
-    });
-  };
-
-  const primaryHref =
-    os === "mac" ? assetLinks.mac : os === "windows" ? assetLinks.windows : "#";
-  const primaryLabel =
-    os === "mac"
-      ? t('macOS')
-      : os === "windows"
-      ? t('windows')
-      : t('chooseOS');
-
-  // Mobile: show desktop-only message
-  if (os === "mobile") {
-    return (
-      <section
-        id="download"
-        className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-4 flex justify-center">
-            <Monitor className="h-12 w-12 text-gray-900" aria-hidden="true" />
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {t('title')}
-          </h1>
-          <p className="text-lg text-gray-600 mb-4">
-            {t('mobile.desktopOnly')}
-          </p>
-
-          <div className="max-w-md mx-auto mt-8 bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-            <Mail className="h-8 w-8 text-primary-500 mx-auto mb-3" aria-hidden="true" />
-            <p className="text-gray-700 font-medium mb-4">
-              {t('mobile.sendReminder')}
-            </p>
-            <a
-              href={`mailto:?subject=${encodeURIComponent(t('mobile.emailSubject'))}&body=${encodeURIComponent(t('mobile.emailBody'))}`}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg"
-            >
-              <Mail className="h-5 w-5" />
-              <span>{t('mobile.emailButton')}</span>
-            </a>
-          </div>
-
-          <div className="mt-8 flex flex-col items-center gap-2 text-sm text-gray-500">
-            <p>{t('mobile.orVisit')}</p>
-            <code className="bg-gray-100 px-3 py-1 rounded-lg text-primary-600 font-mono">
-              autotrim.app
-            </code>
-          </div>
-        </div>
-      </section>
-    );
-  }
+/** The same composition is rendered during Suspense, without replacing the product with a skeleton. */
+function DownloadView({ os = "mac", onDownload }) {
+  const t = useTranslations("download");
+  const locale = useLocale();
+  const primary = os === "windows" ? "windows" : "mac";
+  const secondary = primary === "mac" ? "windows" : "mac";
+  const isMobile = os === "mobile";
+  const platformLabel = (platform) => t(platform === "mac" ? "macOS" : "windows");
 
   return (
-    <section
-      id="download"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
-    >
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-4 flex justify-center">
-          <DownloadIcon className="h-12 w-12 text-gray-900" aria-hidden="true" />
-        </div>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          {t('title')}
-        </h1>
-        <p className="text-lg text-gray-600 mb-8">
-          {t('subtitle')}
-        </p>
+    <section id="download" className="download-page">
+      <div className="download-composition">
+        <div className="download-copy">
+          <div className="download-brand">
+            <PulseTile size={44} />
+            <div><span>AutoTrim</span><small>macOS & Windows</small></div>
+          </div>
+          <h1>{t("experience.title")}<br /><span>{t("experience.titleAccent")}</span></h1>
+          <p className="download-intro">{t("experience.body")}</p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href={primaryHref}
-            onClick={() => handleDownloadClick(os)}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-200 shadow-lg"
-          >
-            <DownloadIcon className="h-5 w-5" />
-            <span>{primaryLabel}</span>
-          </a>
-
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <span className="hidden sm:inline">{t('otherPlatform')}</span>
-            {os === "mac" ? (
-              <a
-                href={assetLinks.windows}
-                onClick={() => handleDownloadClick('windows')}
-                className="underline hover:no-underline"
-              >
-                {t('buttons.windows')}
-              </a>
-            ) : os === "windows" ? (
-              <a
-                href={assetLinks.mac}
-                onClick={() => handleDownloadClick('mac')}
-                className="underline hover:no-underline"
-              >
-                {t('buttons.macOS')}
-              </a>
+          <div className="download-actions">
+            {isMobile ? (
+              <>
+                <p className="download-device-note">{t("mobile.desktopOnly")}</p>
+                <a className="download-primary" href={`mailto:?subject=${encodeURIComponent(t("mobile.emailSubject"))}&body=${encodeURIComponent(t("mobile.emailBody"))}`}>
+                  <Mail size={19} aria-hidden="true" />{t("mobile.emailButton")}
+                </a>
+              </>
             ) : (
               <>
-                <a
-                  href={assetLinks.mac}
-                  onClick={() => handleDownloadClick('mac')}
-                  className="underline hover:no-underline"
-                >
-                  {t('buttons.macOS')}
+                {os === "unknown" && <p className="download-device-note">{t("chooseOS")}</p>}
+                <a className="download-primary" href={assetLinks[primary]} onClick={() => onDownload?.(primary)}>
+                  <ArrowDown size={19} aria-hidden="true" />{platformLabel(primary)}
                 </a>
-                <span>·</span>
-                <a
-                  href={assetLinks.windows}
-                  onClick={() => handleDownloadClick('windows')}
-                  className="underline hover:no-underline"
-                >
-                  {t('buttons.windows')}
+                <p className="download-free"><Check size={14} aria-hidden="true" />{t("experience.free")}</p>
+                <a className="download-alternative" href={assetLinks[secondary]} onClick={() => onDownload?.(secondary)}>
+                  {platformLabel(secondary)}<ArrowUpRight size={14} aria-hidden="true" />
                 </a>
               </>
             )}
           </div>
-        </div>
 
-        {os === "windows" && (
-          <div className="max-w-xl mx-auto mt-10 text-left bg-blue-50 border border-blue-100 rounded-2xl p-5 flex gap-3">
-            <ShieldCheck className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" aria-hidden="true" />
-            <div>
-              <p className="font-semibold text-gray-900 mb-1">
-                {t('windowsNote.title')}
-              </p>
-              <p className="text-sm text-gray-600">
-                {t('windowsNote.description')}
-              </p>
-            </div>
+          <div className="download-editors">
+            <p>{t("experience.editors")}</p>
+            <span>Final Cut Pro</span><span>Premiere Pro</span><span>DaVinci Resolve</span>
           </div>
-        )}
+          {os === "windows" && (
+            <details className="download-windows-note">
+              <summary><ShieldCheck size={16} aria-hidden="true" />{t("windowsNote.title")}</summary>
+              <p>{t("windowsNote.description")}</p>
+            </details>
+          )}
+        </div>
 
-        <p className="text-sm text-gray-500 mt-6">
-          {t('githubNote')}
-        </p>
+        <figure className="download-product">
+          <div className="download-window">
+            <div className="download-window-bar" aria-hidden="true">
+              <span className="download-window-dots"><i /><i /><i /></span>
+              <span>AutoTrim</span><span className="download-window-status"><i />{t("experience.windowStatus")}</span>
+            </div>
+            <Image
+              src={`/app/session-${locale === "fr" ? "fr" : "en"}.webp`}
+              width={2400}
+              height={1584}
+              priority
+              sizes="(min-width: 1280px) 790px, (min-width: 1024px) 65vw, (min-width: 640px) 90vw, 620px"
+              alt={t("experience.screenshotAlt")}
+              className="download-app-image"
+            />
+          </div>
+          <figcaption className="download-result">
+            <span className="download-result-check"><Check size={20} aria-hidden="true" /></span>
+            <div><strong>{t("experience.result")}</strong><span>{t("experience.resultNote")}</span></div>
+            <span className="download-result-time">23:44 <span>→</span> <b>15:35</b></span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div className="download-start">
+        <p className="download-start-label">{t("experience.next")}</p>
+        <ol>
+          {["drop", "preview", "edit"].map((step, index) => (
+            <li key={step}>
+              <span className="download-step-number">0{index + 1}</span>
+              <div><h2>{t(`experience.steps.${step}.title`)}</h2><p>{t(`experience.steps.${step}.body`)}</p></div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
-};
+}
 
-// Wrapper component with Suspense for useSearchParams
-const Download = () => {
-  return (
-    <Suspense fallback={<DownloadFallback />}>
-      <DownloadContent />
-    </Suspense>
-  );
-};
+function DownloadContent() {
+  const { copyAttributionToClipboard } = useAttribution();
+  const [os, setOs] = useState("mac");
+  useEffect(() => { setOs(detectOS()); }, []);
 
-// Fallback component while loading
-const DownloadFallback = () => {
-  return (
-    <section
-      id="download"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50"
-    >
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="mb-4 flex justify-center">
-          <DownloadIcon className="h-12 w-12 text-gray-900" aria-hidden="true" />
-        </div>
-        <div className="h-10 bg-gray-200 rounded w-64 mx-auto mb-4 animate-pulse" />
-        <div className="h-6 bg-gray-200 rounded w-96 mx-auto mb-8 animate-pulse" />
-        <div className="flex justify-center">
-          <div className="h-14 bg-gray-200 rounded-xl w-48 animate-pulse" />
-        </div>
-      </div>
-    </section>
-  );
-};
+  const handleDownloadClick = async (platform) => {
+    await copyAttributionToClipboard();
+    trackDownload({ platform, downloadLink: assetLinks[platform], location: "download_page" });
+  };
 
-export default Download;
+  return <DownloadView os={os} onDownload={handleDownloadClick} />;
+}
+
+export default function Download() {
+  return <Suspense fallback={<DownloadView />}><DownloadContent /></Suspense>;
+}
