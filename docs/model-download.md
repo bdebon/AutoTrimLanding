@@ -17,8 +17,8 @@ obtain a link, and anyone holding a link can use it until it expires. Do not des
 licence authentication, DRM, or prevention of copying downloaded weights. Keeping R2 private
 avoids a permanent public object URL; it does not make the issuance endpoint authenticated.
 
-Before enabling the endpoint in production, configure Vercel Firewall to rate-limit the exact
-path `/api/model-download` by source IP, e.g. 30 requests per 60 seconds with a 429 response.
+Vercel Firewall limits the exact path `/api/model-download` by source IP to 30 requests per
+60 seconds with a 429 response. This rule was published and verified on 2026-10-05.
 Do not use a browser challenge, as the native installer cannot complete one. A per-process
 JavaScript counter would not enforce a reliable limit across Vercel instances.
 
@@ -37,7 +37,8 @@ landing's `public/` directory.
 
 ## Vercel environment
 
-Configure these server-only variables for Production and the trusted integration Preview:
+These server-only variables are configured as Secrets for Production only. Preview builds
+intentionally have no R2 access. Test a staged production deployment before promoting it:
 
 | Variable | Value |
 | --- | --- |
@@ -82,3 +83,8 @@ does not, an unsigned direct object request fails, and a streamed full download 
 and SHA-256 above. Check a Range request returns 206 and a tampered signature is rejected.
 The landing repository's local instructions leave server/build commands to Benjamin; the
 checks above do not launch a development server.
+
+Verified on 2026-10-05 against a staged production deployment: manifest 200, Range 206,
+unsigned object 400, altered signature 403, full download 264,464,826 bytes with the pinned
+SHA-256. Vercel cloud build, type checking and linting passed. Desktop first-launch and
+upgrade flows still require an app release test; the client integration is in AutoTrim PR #89.
