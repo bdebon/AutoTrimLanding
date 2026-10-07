@@ -821,7 +821,7 @@
       "body": "Sur votre disque. Déposez-les dans AutoTrim et commencez sans attendre un upload. Après le téléchargement initial des modèles, le nettoyage fonctionne hors ligne : vos projets clients et vos vidéos inédites restent sur votre machine.",
       "capsuleTitle": "Tout se passe sur votre machine.",
       "line": "Pas d’upload. Pas d’attente liée à votre connexion.",
-      "quote": "Avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
+      "quote": "Avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner au moins une à deux heures sur un projet type.",
       "quoteName": "James",
       "quoteRole": "Monteur Final Cut"
     },
@@ -829,15 +829,20 @@
       "eyebrow": "Ils montent avec",
       "title": "Ce qu'en disent les monteurs.",
       "items": {
+        "vince": {
+          "text": "AutoTrim me fait gagner 2 à 6 heures sur chaque dérush. Si vous êtes un créateur solo qui tourne plus qu'il ne publie, AutoTrim est rentabilisé dès le premier projet.",
+          "name": "Vince",
+          "role": "Développeur de jeux indé, Katana Works"
+        },
         "james": {
-          "text": "Je monte dans Final Cut à la main. J'ai essayé Descript et OpusClip, mais avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner une à deux heures par projet.",
+          "text": "Je monte dans Final Cut à la main. J'ai essayé Descript et OpusClip, mais avec ma connexion DSL, l'upload est une énorme perte de temps. AutoTrim me fait gagner au moins une à deux heures sur un projet type.",
           "name": "James",
           "role": "Monteur Final Cut"
         },
         "georgia": {
-          "text": "Honnêtement, ça m'a fait gagner des jours. Une vidéo de 4 h 45 montée en 2 heures pour 1 h de final.",
-          "name": "Georgia",
-          "role": "Créatrice"
+          "text": "Concrètement, ça m'a fait gagner des jours dans mon workflow. J'ai monté une vidéo de 4 h 45 en 2 heures, pour un résultat d'un peu plus d'une heure.",
+          "name": "Georgia Debney",
+          "role": "Vidéaste, Dib Dab Digital"
         },
         "theo": {
           "text": "J'enregistre des épisodes de podcast de 2 à 3 heures avec plusieurs invités. AutoTrim coupe tous les blancs automatiquement et me fait gagner au moins 2 heures de montage par épisode.",

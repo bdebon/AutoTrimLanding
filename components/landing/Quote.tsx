@@ -6,12 +6,14 @@ export default function Quote({
   name,
   role,
   avatar,
+  href,
   compact = false,
 }: {
   text: string;
   name: string;
   role?: string;
   avatar?: string | null;
+  href?: string;
   compact?: boolean;
 }) {
   return (
@@ -43,7 +45,18 @@ export default function Quote({
           </span>
         )}
         <span className="flex flex-col">
-          <span className="font-ui text-[14px] font-semibold text-at-text">{name}</span>
+          {href ? (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener"
+              className="font-ui text-[14px] font-semibold text-at-text underline decoration-at-hairline underline-offset-4 hover:decoration-at-text"
+            >
+              {name}
+            </a>
+          ) : (
+            <span className="font-ui text-[14px] font-semibold text-at-text">{name}</span>
+          )}
           {role && <span className="font-ui text-[12.5px] text-at-dim">{role}</span>}
         </span>
       </figcaption>

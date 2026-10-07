@@ -821,7 +821,7 @@
       "body": "On your drive. Drop it into AutoTrim and get started without waiting for an upload. After the initial model download, cleanup works offline: client projects and unreleased videos stay on your machine.",
       "capsuleTitle": "Everything happens on your machine.",
       "line": "No upload. No waiting on your connection.",
-      "quote": "On my DSL connection the upload is a huge waste of time. AutoTrim saves me one to two hours per project.",
+      "quote": "On my DSL connection the upload is a huge waste of time. AutoTrim saves me at least one to two hours on a typical project.",
       "quoteName": "James",
       "quoteRole": "Final Cut editor"
     },
@@ -829,15 +829,20 @@
       "eyebrow": "They edit with it",
       "title": "What editors say.",
       "items": {
+        "vince": {
+          "text": "AutoTrim cuts 2 to 6 hours off every rough cut for me. If you're a solo creator who shoots more than you publish, AutoTrim pays for itself in the first project.",
+          "name": "Vince",
+          "role": "Indie game developer, Katana Works"
+        },
         "james": {
-          "text": "I edit in Final Cut by hand. I tried Descript and OpusClip, but on my DSL connection the upload is a huge waste of time. AutoTrim saves me one to two hours per project.",
+          "text": "I edit in Final Cut by hand. I tried Descript and OpusClip, but on my DSL connection the upload is a huge waste of time. AutoTrim saves me at least one to two hours on a typical project.",
           "name": "James",
           "role": "Final Cut editor"
         },
         "georgia": {
-          "text": "Realistically it saved me days. A 4 h 45 video edited in 2 hours, for 1 hour of final.",
-          "name": "Georgia",
-          "role": "Creator"
+          "text": "Realistically, it saved me days in my workflow. I edited a 4 hour 45 minute video in 2 hours; the end product was just over an hour long.",
+          "name": "Georgia Debney",
+          "role": "Creator, Dib Dab Digital"
         },
         "theo": {
           "text": "I record 2–3 hour podcast episodes with multiple guests. AutoTrim cuts out all the dead air automatically and saves me at least 2 hours of editing per episode.",
