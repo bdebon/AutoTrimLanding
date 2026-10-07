@@ -1,6 +1,8 @@
-# Pont LemonSqueezy → Customer.io (AutoTrim)
+# Pont LemonSqueezy → Customer.io + PostHog (AutoTrim)
 
-*Mis en place le 8 juillet 2026. Testé de bout en bout (achat simulé signé → profil + event dans CIO → 200).*
+*Mis en place le 8 juillet 2026 (Customer.io), étendu le 7 octobre 2026 (PostHog). Testé de bout en bout : achat simulé signé → profil et événements dans Customer.io, événement `purchase_test` dans PostHog.*
+
+Code source : `supabase/functions/lemonsqueezy-webhook/index.ts`.
 
 ## Architecture
 ```
@@ -11,7 +13,8 @@ LemonSqueezy (store AutoTrim 211235)
           (projet Supabase "autotrim", ref gvvldbuvgbribbothphm, eu-west-3, plan free 0€)
           ├─ vérifie la signature HMAC-SHA256 (X-Signature)
           ├─ filtre produits AutoTrim uniquement (637169 Perpetual, 637170 Subscription)
-          └─ pousse vers Customer.io EU (track-eu.customer.io), workspace AutoTrim 225012
+          ├─ pousse vers Customer.io EU (track-eu.customer.io), workspace AutoTrim 225012
+          └─ pousse les événements de revenu vers PostHog (us.i.posthog.com), projet 218035
 ```
 
 ## Taxonomie Customer.io (workspace 225012)
@@ -22,17 +25,20 @@ LemonSqueezy (store AutoTrim 211235)
 - `subscription_cancelled` — props : `variant_name`, `ends_at` (aussi déclenché par subscription_expired)
 - `subscription_payment_success` / `subscription_payment_failed` — props : `total_usd`
 
-**Routage langue** : pays de la carte (si LS_API_KEY renseignée dans la fonction — pas encore fait, fallback actuel : TLD email .fr/.be → fr, sinon en).
+**Routage langue** : pays de la carte (si LS_API_KEY renseignée — pas encore fait, fallback actuel : TLD email .fr/.be → fr, sinon en).
+
+## Taxonomie PostHog (projet 218035)
+- `purchase` — à chaque commande. `distinct_id` = `visitor_id` des données du checkout s'il est présent (lien landing ou app avec attribution), sinon l'email de l'acheteur. Props : `revenue` (hors taxes, USD), `total_usd`, `license_type`, `product_name`, `variant_name`, `order_id`, `attribution` (`visitor_id` | `email_only`), `utm_*` du checkout. Pose `email`, `license_type`, `first_name` sur la personne, et `first_purchase_at` une seule fois.
+- `subscription_renewed` — à chaque renouvellement (pas le premier paiement, déjà compté par `purchase`). `distinct_id` = email.
+- `subscription_cancelled` — `distinct_id` = email.
+- Les commandes LemonSqueezy en mode test produisent `purchase_test` / `*_test` et ne touchent pas Customer.io.
+
+Limite actuelle : les achats faits depuis l'app n'ont pas de `visitor_id` (le bouton « Acheter » ouvre la boutique sans attribution), donc ils tombent sur une personne identifiée par l'email, séparée de la personne qui a utilisé l'app. Correctif côté app : ajouter `checkout[custom][visitor_id]` au lien d'achat, et poser l'email sur la personne PostHog à l'activation de licence.
 
 ## Secrets
-- Credentials CIO Tracking (Site ID + API key) et secret de signature LS : **inline dans le code de la fonction** (v1 pragmatique — clé tracking = ingest-only, risque faible). Durcissement possible plus tard via `supabase secrets set`.
-- Le code déployé est visible dans le dashboard Supabase → Edge Functions → lemonsqueezy-webhook.
-- ⚠️ La constante `LS_API_KEY` est vide : la renseigner (clé API LemonSqueezy) améliorera le routage langue via le pays du client.
+- La version déployée contient encore les credentials en dur (Customer.io tracking Site ID + API key, secret de signature LemonSqueezy).
+- La version du repo les lit dans l'environnement de la fonction, parce que **ce repo est public** : ne jamais y écrire leurs valeurs. Pour déployer la version du repo : Dashboard Supabase → Edge Functions → Secrets → ajouter `CIO_SITE_ID`, `CIO_API_KEY`, `LS_SIGNING_SECRET` (et `LS_API_KEY` si besoin), puis redéployer.
+- La clé PostHog `phc_…` est la clé publique du projet (la même que dans l'app et la landing) : elle ne permet que d'envoyer des événements.
 
 ## Keep-alive
 `.github/workflows/ping-webhook.yml` — ping lundi + jeudi (le plan free Supabase pause les projets inactifs ~7 j).
-
-## À faire avant activation des campagnes CIO
-1. Vérifier le domaine d'envoi `getautotrim.app` dans CIO (Settings → Email → domains) — enregistrements DNS à ajouter dans Cloudflare.
-2. Review + activation des 6 campagnes draft (post-achat FR/EN, upgrade lifetime J+30 FR/EN, exit survey FR/EN).
-3. Optionnel : backfill des ~100 clients historiques (import CSV depuis LemonSqueezy avec attributs language/license_type).
