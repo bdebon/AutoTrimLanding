@@ -4,20 +4,10 @@ import { useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import posthog from "posthog-js";
 import { CHECKOUT_URLS } from "@/lib/checkout";
+import { captureAttribution, readAttribution, type AttributionData } from "@/lib/attribution";
 
-// Attribution data structure matching what the app expects
-export interface AttributionData {
-  s?: string; // utm_source
-  m?: string; // utm_medium
-  c?: string; // utm_campaign
-  t?: string; // utm_content
-  k?: string; // utm_term
-  v?: string; // visitor_id (PostHog distinct_id)
-  r?: string; // referrer
-  ts: number; // timestamp
-}
+export type { AttributionData } from "@/lib/attribution";
 
-const STORAGE_KEY = "autotrim_attribution";
 const ATTRIBUTION_PREFIX = "ATR:";
 
 /**
@@ -29,47 +19,15 @@ export function useAttribution() {
   const searchParams = useSearchParams();
   const hasInitialized = useRef(false);
 
-  // Capture and store attribution data on mount
+  // The root layout already captured the landing page (app/PostHogProvider.tsx); this
+  // covers a client-side navigation that carries UTMs.
   useEffect(() => {
     if (hasInitialized.current) return;
     hasInitialized.current = true;
-
-    const utmSource = searchParams.get("utm_source");
-    const utmMedium = searchParams.get("utm_medium");
-    const utmCampaign = searchParams.get("utm_campaign");
-    const utmContent = searchParams.get("utm_content");
-    const utmTerm = searchParams.get("utm_term");
-
-    // Only store if we have at least one UTM param or it's the first visit
-    const hasUtmParams = utmSource || utmMedium || utmCampaign || utmContent || utmTerm;
-    const existingData = getStoredAttribution();
-
-    // Update attribution data if we have new UTM params
-    if (hasUtmParams || !existingData) {
-      const attributionData: AttributionData = {
-        ts: Date.now(),
-      };
-
-      if (utmSource) attributionData.s = utmSource;
-      if (utmMedium) attributionData.m = utmMedium;
-      if (utmCampaign) attributionData.c = utmCampaign;
-      if (utmContent) attributionData.t = utmContent;
-      if (utmTerm) attributionData.k = utmTerm;
-
-      // Capture referrer on first visit
-      if (typeof document !== "undefined" && document.referrer) {
-        try {
-          const referrerUrl = new URL(document.referrer);
-          // Only store external referrers
-          if (referrerUrl.hostname !== window.location.hostname) {
-            attributionData.r = document.referrer;
-          }
-        } catch {
-          // Invalid referrer URL, skip it
-        }
-      }
-
-      storeAttribution(attributionData);
+    try {
+      captureAttribution(searchParams.toString(), document.referrer, window.location.hostname, localStorage);
+    } catch {
+      // localStorage unavailable
     }
   }, [searchParams]);
 
@@ -162,30 +120,12 @@ export function useAttribution() {
   };
 }
 
-// Helper functions for localStorage
-
 function getStoredAttribution(): AttributionData | null {
   if (typeof window === "undefined") return null;
-
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      return JSON.parse(stored) as AttributionData;
-    }
+    return readAttribution(localStorage);
   } catch {
-    // Invalid JSON, return null
-  }
-
-  return null;
-}
-
-function storeAttribution(data: AttributionData): void {
-  if (typeof window === "undefined") return;
-
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch {
-    // localStorage might be full or disabled
+    return null;
   }
 }
 
