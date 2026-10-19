@@ -66,6 +66,31 @@ export function useAttribution() {
   }, []);
 
   /**
+   * Records the click on the server too, for an app whose first launch finds no code in
+   * the clipboard (something else was copied meanwhile): see lib/download-handoff.ts.
+   * Fire and forget.
+   */
+  const recordDownloadHandoff = useCallback((): void => {
+    if (typeof posthog === "undefined" || !posthog.__loaded) return;
+    const visitorId = posthog.get_distinct_id();
+    if (!visitorId) return;
+    const attribution = getStoredAttribution();
+    fetch("/api/download-handoff", {
+      method: "POST",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitor_id: visitorId,
+        utm_source: attribution?.s,
+        utm_medium: attribution?.m,
+        utm_campaign: attribution?.c,
+        utm_content: attribution?.t,
+        utm_term: attribution?.k,
+      }),
+    }).catch(() => {});
+  }, []);
+
+  /**
    * Get the current attribution data (without copying to clipboard)
    */
   const getAttributionData = useCallback((): AttributionData | null => {
@@ -115,6 +140,7 @@ export function useAttribution() {
 
   return {
     copyAttributionToClipboard,
+    recordDownloadHandoff,
     getAttributionData,
     buildLemonSqueezyUrl,
   };

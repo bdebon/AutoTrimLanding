@@ -63,6 +63,14 @@ export default function PrivacyPage() {
             customers discover and use AutoTrim.
           </p>
           <p className="mb-6">
+            To link the download to the app, the Download button copies a short code to your clipboard, which the app
+            reads on its first launch. In case something else was copied meanwhile, the click is also recorded on our
+            server with your visitor identifier and campaign, under a keyed hash of your network (your IP address
+            itself is never stored). If the app finds no code on its first launch, it asks our server from the same
+            network: when exactly one visitor clicked Download from that network in the previous 3 hours, the app takes
+            that visitor&rsquo;s identifier. These records are deleted as soon as they are used, and after 24 hours.
+          </p>
+          <p className="mb-6">
             You can turn usage statistics off at any time in the app, under Preferences, &ldquo;Share usage
             statistics&rdquo;.
           </p>
