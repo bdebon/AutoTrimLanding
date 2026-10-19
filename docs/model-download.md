@@ -30,6 +30,8 @@ JavaScript counter would not enforce a reliable limit across Vercel instances.
 - Size: **264,464,826 bytes** (252.21 MiB).
 - SHA-256: `a633abddd59a628e189df8ea835e1475f5350129fc63ddb25d1df9f43742948f`.
 - Attribution: **CrisperWhisper by nyra health**.
+- The bucket also holds the installer's FFmpeg mirror under `deps/deps-v1/`, signed with the
+  same key: see [ffmpeg-mirror.md](ffmpeg-mirror.md). Leave those objects in place.
 
 Keep the object immutable. New weights require a new versioned object key and an app update
 with the new pinned size/checksum. Never upload model weights into this Git repository or the
