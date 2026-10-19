@@ -58,8 +58,9 @@ export default function PrivacyPage() {
             The AutoTrim app sends usage statistics to PostHog: features used, processing figures (such as the number and
             length of clips), errors, app version, operating system, your IP address and the approximate location derived
             from it, and a random install identifier. When you download
-            the app from the Website, this identifier is linked to your Website visit. If you activate a license, the
-            license email is linked to these statistics, so we can see how customers discover and use AutoTrim.
+            the app from the Website, this identifier is linked to your Website visit. If you buy a license from the app
+            or activate one, the purchase and the license email are linked to these statistics, so we can see how
+            customers discover and use AutoTrim.
           </p>
           <p className="mb-6">
             You can turn usage statistics off at any time in the app, under Preferences, &ldquo;Share usage
