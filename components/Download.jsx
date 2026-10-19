@@ -115,11 +115,12 @@ function DownloadView({ os = "mac", onDownload }) {
 }
 
 function DownloadContent() {
-  const { copyAttributionToClipboard } = useAttribution();
+  const { copyAttributionToClipboard, recordDownloadHandoff } = useAttribution();
   const [os, setOs] = useState("mac");
   useEffect(() => { setOs(detectOS()); }, []);
 
   const handleDownloadClick = async (platform) => {
+    recordDownloadHandoff();
     await copyAttributionToClipboard();
     trackDownload({ platform, downloadLink: assetLinks[platform], location: "download_page" });
   };
