@@ -13,6 +13,7 @@ import {
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { useAttribution } from "@/hooks/useAttribution";
+import { checkoutUrlFor } from "@/lib/checkout";
 import { trackEvent } from "@/lib/tracking";
 import posthog from "posthog-js";
 
@@ -25,12 +26,17 @@ const PricingContent = () => {
   const currentLocale = pathname.split('/')[1] || 'en';
   const { buildLemonSqueezyUrl } = useAttribution();
   const rootRef = useRef(null);
-  const [checkoutUrl, setCheckoutUrl] = useState("https://autotrim.lemonsqueezy.com/");
+  // One product checkout per plan (the store page would drop the attribution).
+  const [checkoutUrls, setCheckoutUrls] = useState({});
 
   // Attribution reads browser storage; resolve it after hydration so SSR and the
   // first client render agree while preserving the attributed checkout link.
   useEffect(() => {
-    setCheckoutUrl(buildLemonSqueezyUrl());
+    setCheckoutUrls({
+      monthly: buildLemonSqueezyUrl(checkoutUrlFor("monthly")),
+      annual: buildLemonSqueezyUrl(checkoutUrlFor("annual")),
+      lifetime: buildLemonSqueezyUrl(checkoutUrlFor("lifetime")),
+    });
   }, [buildLemonSqueezyUrl]);
 
   const freePlan = {
@@ -287,8 +293,12 @@ const PricingContent = () => {
                   >
                     {t("pricing.alreadyTried")}{" "}
                     <a
-                      href={checkoutUrl}
-                      onClick={() => trackEvent("pricing_cta_clicked", { plan: plan.id, action: "buy_license" })}
+                      href={checkoutUrls[plan.id] || checkoutUrlFor(plan.id)}
+                      onClick={(e) => {
+                        // Rebuild at click time: PostHog may not have loaded yet when the effect ran
+                        e.currentTarget.href = buildLemonSqueezyUrl(checkoutUrlFor(plan.id));
+                        trackEvent("pricing_cta_clicked", { plan: plan.id, action: "buy_license" });
+                      }}
                       className="text-at-accent underline hover:no-underline"
                     >
                       {t("pricing.buyLicense")}

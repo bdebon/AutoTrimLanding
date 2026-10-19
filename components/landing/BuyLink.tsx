@@ -2,21 +2,25 @@
 
 import { Suspense, useEffect, useState, type ReactNode } from "react";
 import { useAttribution } from "@/hooks/useAttribution";
+import { checkoutUrlFor } from "@/lib/checkout";
 import { trackEvent } from "@/lib/tracking";
-
-const BASE_URL = "https://autotrim.lemonsqueezy.com/";
 
 function BuyLinkInner({ plan, className, children }: { plan: string; className?: string; children: ReactNode }) {
   const { buildLemonSqueezyUrl } = useAttribution();
+  const base = checkoutUrlFor(plan);
   // The attribution lives in localStorage: resolve it after hydration so the
   // server and the client render the same href.
-  const [href, setHref] = useState(BASE_URL);
-  useEffect(() => setHref(buildLemonSqueezyUrl()), [buildLemonSqueezyUrl]);
+  const [href, setHref] = useState(base);
+  useEffect(() => setHref(buildLemonSqueezyUrl(base)), [buildLemonSqueezyUrl, base]);
   return (
     <a
       href={href}
       className={className}
-      onClick={() => trackEvent("cta_clicked", { location: "pricing", type: "buy", plan })}
+      onClick={(e) => {
+        // Rebuild at click time: PostHog may not have loaded yet when the effect ran
+        e.currentTarget.href = buildLemonSqueezyUrl(base);
+        trackEvent("cta_clicked", { location: "pricing", type: "buy", plan });
+      }}
     >
       {children}
     </a>
@@ -28,7 +32,7 @@ export default function BuyLink(props: { plan: string; className?: string; child
   return (
     <Suspense
       fallback={
-        <a href={BASE_URL} className={props.className}>
+        <a href={checkoutUrlFor(props.plan)} className={props.className}>
           {props.children}
         </a>
       }
