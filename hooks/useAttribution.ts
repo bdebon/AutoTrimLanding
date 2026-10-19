@@ -3,6 +3,7 @@
 import { useEffect, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import posthog from "posthog-js";
+import { CHECKOUT_URLS } from "@/lib/checkout";
 
 // Attribution data structure matching what the app expects
 export interface AttributionData {
@@ -125,21 +126,21 @@ export function useAttribution() {
   }, []);
 
   /**
-   * Build LemonSqueezy checkout URL with UTM params
+   * Build a LemonSqueezy checkout URL carrying the visitor id and UTM params.
+   * The base must be a product checkout (see lib/checkout.ts): the store page
+   * drops query params, so custom data only survives on a checkout link.
    */
   const buildLemonSqueezyUrl = useCallback(
-    (baseUrl: string = "https://autotrim.lemonsqueezy.com/"): string => {
+    (baseUrl: string = CHECKOUT_URLS.subscription): string => {
       const attribution = getStoredAttribution();
-      if (!attribution) return baseUrl;
-
       const url = new URL(baseUrl);
 
       // Add UTM params as checkout custom data
-      if (attribution.s) url.searchParams.set("checkout[custom][utm_source]", attribution.s);
-      if (attribution.m) url.searchParams.set("checkout[custom][utm_medium]", attribution.m);
-      if (attribution.c) url.searchParams.set("checkout[custom][utm_campaign]", attribution.c);
-      if (attribution.t) url.searchParams.set("checkout[custom][utm_content]", attribution.t);
-      if (attribution.k) url.searchParams.set("checkout[custom][utm_term]", attribution.k);
+      if (attribution?.s) url.searchParams.set("checkout[custom][utm_source]", attribution.s);
+      if (attribution?.m) url.searchParams.set("checkout[custom][utm_medium]", attribution.m);
+      if (attribution?.c) url.searchParams.set("checkout[custom][utm_campaign]", attribution.c);
+      if (attribution?.t) url.searchParams.set("checkout[custom][utm_content]", attribution.t);
+      if (attribution?.k) url.searchParams.set("checkout[custom][utm_term]", attribution.k);
 
       // Add visitor ID for cross-platform attribution
       if (typeof posthog !== "undefined" && posthog.__loaded) {
