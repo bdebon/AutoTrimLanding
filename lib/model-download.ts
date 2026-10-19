@@ -23,7 +23,15 @@ function required(env: NodeJS.ProcessEnv, key: string): string {
   return value;
 }
 
-export async function issueModelDownload(
+/** An object of the private bucket, served under its own file name. */
+export type PrivateObject = { key: string; file: string; contentType: string };
+
+/**
+ * A one-hour link to an object of the private bucket. The FFmpeg mirror
+ * (lib/deps-download.ts) signs its archives here too, with the same read-only key.
+ */
+export async function signPrivateObject(
+  object: PrivateObject,
   env: NodeJS.ProcessEnv = process.env,
   now = new Date(),
 ): Promise<Download> {
@@ -44,9 +52,9 @@ export async function issueModelDownload(
   try {
     const url = await getSignedUrl(client, new GetObjectCommand({
       Bucket: bucket,
-      Key: MODEL.key,
-      ResponseContentType: 'application/octet-stream',
-      ResponseContentDisposition: `attachment; filename="${MODEL.file}"`,
+      Key: object.key,
+      ResponseContentType: object.contentType,
+      ResponseContentDisposition: `attachment; filename="${object.file}"`,
       ResponseCacheControl: 'private, no-store',
     }), { expiresIn: DOWNLOAD_TTL_SECONDS, signingDate: now });
     return {
@@ -56,6 +64,14 @@ export async function issueModelDownload(
   } finally {
     client.destroy();
   }
+}
+
+export async function issueModelDownload(
+  env: NodeJS.ProcessEnv = process.env,
+  now = new Date(),
+): Promise<Download> {
+  return signPrivateObject(
+    { key: MODEL.key, file: MODEL.file, contentType: 'application/octet-stream' }, env, now);
 }
 
 const RESPONSE_HEADERS = {
