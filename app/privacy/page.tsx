@@ -48,15 +48,16 @@ export default function PrivacyPage() {
           <h3 className="font-display text-xl font-semibold text-at-text mt-6 mb-3">Website Analytics</h3>
           <p className="mb-6">
             We use PostHog to understand how visitors find and use the Website: pages viewed, the site or campaign that
-            referred you (including UTM parameters), device and browser type, and approximate location derived from your
-            IP address. PostHog stores a random identifier in your browser (cookie and local storage) and may record how
+            referred you (including UTM parameters), device and browser type, your IP address and the approximate location
+            derived from it. PostHog stores a random identifier in your browser (cookie and local storage) and may record how
             you navigate the Website (session replay).
           </p>
 
           <h3 className="font-display text-xl font-semibold text-at-text mt-6 mb-3">App Usage Statistics</h3>
           <p className="mb-6">
             The AutoTrim app sends usage statistics to PostHog: features used, processing figures (such as the number and
-            length of clips), errors, app version, operating system and a random install identifier. When you download
+            length of clips), errors, app version, operating system, your IP address and the approximate location derived
+            from it, and a random install identifier. When you download
             the app from the Website, this identifier is linked to your Website visit. If you activate a license, the
             license email is linked to these statistics, so we can see how customers discover and use AutoTrim.
           </p>
