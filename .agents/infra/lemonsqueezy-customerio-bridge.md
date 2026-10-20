@@ -31,6 +31,7 @@ LemonSqueezy (store AutoTrim 211235)
 - `purchase` — à chaque commande. `distinct_id` = `visitor_id` des données du checkout s'il est présent (lien landing ou app avec attribution), sinon l'email de l'acheteur. Props : `revenue` (hors taxes, USD), `total_usd`, `license_type`, `product_name`, `variant_name`, `order_id`, `attribution` (`visitor_id` | `email_only`), `utm_*` du checkout. Pose `email`, `license_type`, `first_name` sur la personne, et `first_purchase_at` une seule fois.
 - `subscription_renewed` — à chaque renouvellement (pas le premier paiement, déjà compté par `purchase`). `distinct_id` = email.
 - `subscription_cancelled` — `distinct_id` = email.
+- Tous ces événements portent `$geoip_disable: true` : envoyés depuis les serveurs de Supabase, PostHog les localisait aux États-Unis (Columbus). Le pays de l'acheteur passe par `buyer_country` (sur `purchase`, seulement si `LS_API_KEY` est renseignée).
 - Les commandes LemonSqueezy en mode test produisent `purchase_test` / `*_test` et ne touchent pas Customer.io.
 
 Limite actuelle : les achats faits depuis l'app n'ont pas de `visitor_id` (le bouton « Acheter » ouvre la boutique sans attribution), donc ils tombent sur une personne identifiée par l'email, séparée de la personne qui a utilisé l'app. Correctif côté app : ajouter `checkout[custom][visitor_id]` au lien d'achat, et poser l'email sur la personne PostHog à l'activation de licence.

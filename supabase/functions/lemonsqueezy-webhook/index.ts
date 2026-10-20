@@ -35,12 +35,20 @@ async function cio(path: string, method: string, body: unknown): Promise<boolean
   return res.ok;
 }
 
+// These events leave from Supabase's servers: PostHog would locate them there (US,
+// Columbus), not where the buyer is. The buyer's country comes from LemonSqueezy instead.
 async function posthog(event: string, distinctId: string, properties: Record<string, unknown>): Promise<boolean> {
   try {
     const res = await fetch(POSTHOG_CAPTURE, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ api_key: POSTHOG_KEY, event, distinct_id: distinctId, properties, timestamp: new Date().toISOString() }),
+      body: JSON.stringify({
+        api_key: POSTHOG_KEY,
+        event,
+        distinct_id: distinctId,
+        properties: { ...properties, $geoip_disable: true },
+        timestamp: new Date().toISOString(),
+      }),
     });
     if (!res.ok) console.error("PostHog error", res.status, event, await res.text());
     return res.ok;
@@ -126,6 +134,7 @@ Deno.serve(async (req: Request) => {
       variant_name: item.variant_name ?? "",
       order_id: payload?.data?.id ?? "",
       attribution: visitorId ? "visitor_id" : "email_only",
+      ...(country ? { buyer_country: country } : {}),
       ...utm,
       $set: { email, license_type: lt, ...(firstName ? { first_name: firstName } : {}) },
       $set_once: { first_purchase_at: new Date().toISOString(), first_license_type: lt },
