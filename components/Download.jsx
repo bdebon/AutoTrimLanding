@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Check, Mail, ShieldCheck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -112,6 +112,69 @@ function DownloadView({ os = "mac", onDownload }) {
   );
 }
 
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const TURNSTILE_SCRIPT = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+function loadTurnstile() {
+  if (window.turnstile) return Promise.resolve(window.turnstile);
+  if (!window.__autotrimTurnstile) {
+    window.__autotrimTurnstile = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = TURNSTILE_SCRIPT;
+      script.async = true;
+      script.onload = () => (window.turnstile ? resolve(window.turnstile) : reject(new Error("turnstile")));
+      script.onerror = () => { window.__autotrimTurnstile = null; reject(new Error("turnstile")); };
+      document.head.appendChild(script);
+    });
+  }
+  return window.__autotrimTurnstile;
+}
+
+/**
+ * Cloudflare Turnstile, run only when the form is sent: invisible unless Cloudflare has a
+ * doubt, then it shows its check in place. Each token serves once.
+ */
+function useTurnstile(locale) {
+  const container = useRef(null);
+  const widget = useRef(null);
+  const pending = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!TURNSTILE_SITE_KEY) return;
+    loadTurnstile().then((turnstile) => {
+      if (cancelled || !container.current || widget.current !== null) return;
+      widget.current = turnstile.render(container.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        execution: "execute",
+        appearance: "interaction-only",
+        language: locale,
+        callback: (token) => pending.current?.resolve(token),
+        "error-callback": () => pending.current?.reject(new Error("turnstile")),
+        "timeout-callback": () => pending.current?.reject(new Error("turnstile")),
+      });
+    }).catch(() => {});
+    return () => {
+      cancelled = true;
+      if (widget.current !== null) window.turnstile?.remove(widget.current);
+      widget.current = null;
+    };
+  }, [locale]);
+
+  const getToken = () => new Promise((resolve, reject) => {
+    if (!window.turnstile || widget.current === null) return reject(new Error("turnstile"));
+    const timer = setTimeout(() => reject(new Error("turnstile")), 30000);
+    pending.current = {
+      resolve: (token) => { clearTimeout(timer); resolve(token); },
+      reject: (error) => { clearTimeout(timer); reject(error); },
+    };
+    window.turnstile.reset(widget.current);
+    window.turnstile.execute(widget.current);
+  });
+
+  return { container, getToken };
+}
+
 /**
  * On a phone, the visitor leaves their email and gets the download link to open on their
  * computer (lib/download-link.ts). The link keeps the campaign of this visit.
@@ -124,6 +187,7 @@ function MobileLinkForm() {
   const [marketing, setMarketing] = useState(false);
   const [website, setWebsite] = useState("");
   const [status, setStatus] = useState("idle");
+  const { container, getToken } = useTurnstile(locale);
 
   const submit = async (event) => {
     event.preventDefault();
@@ -137,10 +201,11 @@ function MobileLinkForm() {
       utm_term: attribution?.k,
     };
     try {
+      const turnstile = await getToken();
       const res = await fetch("/api/download-link", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, locale, marketing, website, ...utm }),
+        body: JSON.stringify({ email, locale, marketing, website, turnstile, ...utm }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("sent");
@@ -175,6 +240,7 @@ function MobileLinkForm() {
       />
       {/* Hidden from people: only a bot fills it */}
       <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={website} onChange={(e) => setWebsite(e.target.value)} className="absolute -left-[9999px] h-px w-px opacity-0" />
+      <div ref={container} className="mt-3 empty:hidden" />
       <button type="submit" disabled={status === "sending"} className="download-primary mt-3 w-full disabled:opacity-60">
         <Mail size={19} aria-hidden="true" />{status === "sending" ? t("sending") : t("submit")}
       </button>

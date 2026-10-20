@@ -7,9 +7,15 @@
 // purchase are still credited to it (lib/attribution.ts). No visitor id travels: the phone
 // and the computer stay two people in PostHog.
 //
-// Needs CIO_SITE_ID and CIO_API_KEY (Customer.io tracking credentials) in the environment.
+// Bots are stopped by Cloudflare Turnstile: the form gets a token when it is sent, and the
+// request is refused unless Cloudflare confirms it. A hidden field catches the crudest ones.
+//
+// Needs CIO_SITE_ID and CIO_API_KEY (Customer.io tracking credentials) and
+// TURNSTILE_SECRET_KEY in the environment; NEXT_PUBLIC_TURNSTILE_SITE_KEY for the form.
 
-const MAX_BODY_BYTES = 2048;
+// A Turnstile token alone can take 2048 characters
+const MAX_BODY_BYTES = 4096;
+const TURNSTILE_VERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const CIO_TRACK = 'https://track-eu.customer.io/api/v1';
 const SITE_URL = 'https://autotrim.app';
 const LOCALES = ['en', 'fr', 'es', 'zh'] as const;
@@ -21,10 +27,13 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 type Locale = (typeof LOCALES)[number];
 type Utm = Partial<Record<(typeof UTM_KEYS)[number], string>>;
 
-export type LinkRequest = { email: string; locale: Locale; marketing: boolean; utm: Utm };
+export type LinkRequest = { email: string; locale: Locale; marketing: boolean; utm: Utm; turnstile: string };
 
 /** A send to Customer.io's Track API: true when it accepted it. */
 export type CioSend = (path: string, method: 'PUT' | 'POST', body: unknown) => Promise<boolean>;
+
+/** Whether Cloudflare confirms this Turnstile token. */
+export type TurnstileVerify = (token: string, ip: string | null) => Promise<boolean>;
 
 const RESPONSE_HEADERS = { 'Cache-Control': 'no-store' };
 
@@ -46,7 +55,8 @@ export function parseLinkRequest(body: unknown): LinkRequest | { bot: true } | n
     const value = input[key];
     if (typeof value === 'string' && UTM_VALUE.test(value)) utm[key] = value;
   }
-  return { email, locale, marketing: input.marketing === true, utm };
+  const turnstile = typeof input.turnstile === 'string' && input.turnstile.length <= 2048 ? input.turnstile : '';
+  return { email, locale, marketing: input.marketing === true, utm, turnstile };
 }
 
 /** The desktop download page, carrying the visit's campaign, or marking the email as the source. */
@@ -76,7 +86,22 @@ export function cioTrackSender(siteId: string, apiKey: string): CioSend {
   };
 }
 
-type Options = { send?: CioSend | null; now?: () => Date };
+export function turnstileVerifier(secret: string): TurnstileVerify {
+  return async (token, ip) => {
+    try {
+      const form = new URLSearchParams({ secret, response: token });
+      if (ip) form.set('remoteip', ip);
+      const res = await fetch(TURNSTILE_VERIFY, { method: 'POST', body: form });
+      const result = (await res.json()) as { success?: boolean };
+      return result.success === true;
+    } catch {
+      console.error('AutoTrim download link: Turnstile unreachable');
+      return false;
+    }
+  };
+}
+
+type Options = { send?: CioSend | null; verify?: TurnstileVerify | null; now?: () => Date };
 
 /** POST /api/download-link, sent by the mobile Download page. */
 export function createLinkHandler(options: Options = {}) {
@@ -94,11 +119,14 @@ export function createLinkHandler(options: Options = {}) {
     if (!parsed) return respond(400);
     if ('bot' in parsed) return respond(204);
 
+    const verify = options.verify !== undefined ? options.verify : defaultVerifier();
     const send = options.send !== undefined ? options.send : defaultSender();
-    if (!send) {
-      console.error('AutoTrim download link: CIO_SITE_ID or CIO_API_KEY missing');
+    if (!verify || !send) {
+      console.error('AutoTrim download link: TURNSTILE_SECRET_KEY, CIO_SITE_ID or CIO_API_KEY missing');
       return respond(503);
     }
+    const ip = request.headers.get('x-real-ip') ?? request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null;
+    if (!parsed.turnstile || !(await verify(parsed.turnstile, ip))) return respond(403);
     const { email, locale, marketing, utm } = parsed;
     const id = `/customers/${encodeURIComponent(email)}`;
     const now = Math.floor((options.now?.() ?? new Date()).getTime() / 1000);
@@ -116,6 +144,11 @@ export function createLinkHandler(options: Options = {}) {
     });
     return respond(sent ? 204 : 503);
   };
+}
+
+function defaultVerifier(): TurnstileVerify | null {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+  return secret ? turnstileVerifier(secret) : null;
 }
 
 function defaultSender(): CioSend | null {
