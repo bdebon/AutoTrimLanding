@@ -3,7 +3,7 @@ import React, { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Check, Mail, ShieldCheck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { trackDownload } from "@/lib/tracking";
+import { trackDownload, trackEvent, trackMetaEvent } from "@/lib/tracking";
 import { useAttribution } from "@/hooks/useAttribution";
 import { PulseTile } from "./landing/Logo";
 
@@ -44,10 +44,8 @@ function DownloadView({ os = "mac", onDownload }) {
           <div className="download-actions">
             {isMobile ? (
               <>
-                <p className="download-device-note">{t("mobile.desktopOnly")}</p>
-                <a className="download-primary" href={`mailto:?subject=${encodeURIComponent(t("mobile.emailSubject"))}&body=${encodeURIComponent(t("mobile.emailBody"))}`}>
-                  <Mail size={19} aria-hidden="true" />{t("mobile.emailButton")}
-                </a>
+                <p className="download-device-note">{t("mobile.desktopOnly")} {t("mobile.linkIntro")}</p>
+                <MobileLinkForm />
               </>
             ) : (
               <>
@@ -111,6 +109,82 @@ function DownloadView({ os = "mac", onDownload }) {
         </ol>
       </div>
     </section>
+  );
+}
+
+/**
+ * On a phone, the visitor leaves their email and gets the download link to open on their
+ * computer (lib/download-link.ts). The link keeps the campaign of this visit.
+ */
+function MobileLinkForm() {
+  const t = useTranslations("download.mobile");
+  const locale = useLocale();
+  const { getAttributionData } = useAttribution();
+  const [email, setEmail] = useState("");
+  const [marketing, setMarketing] = useState(false);
+  const [website, setWebsite] = useState("");
+  const [status, setStatus] = useState("idle");
+
+  const submit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    const attribution = getAttributionData();
+    const utm = {
+      utm_source: attribution?.s,
+      utm_medium: attribution?.m,
+      utm_campaign: attribution?.c,
+      utm_content: attribution?.t,
+      utm_term: attribution?.k,
+    };
+    try {
+      const res = await fetch("/api/download-link", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, locale, marketing, website, ...utm }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("sent");
+      trackEvent("download_link_requested", { locale, marketing, has_campaign: Boolean(utm.utm_source || utm.utm_campaign) });
+      trackMetaEvent("Lead", { content_name: "AutoTrim Download Link", location: "download_page_mobile" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  if (status === "sent") {
+    return (
+      <p className="download-device-note" role="status">
+        <Check size={16} aria-hidden="true" className="mr-1.5 inline text-at-accent" />{t("sent")}
+      </p>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className="max-w-[420px]">
+      <label htmlFor="download-link-email" className="sr-only">{t("emailLabel")}</label>
+      <input
+        id="download-link-email"
+        type="email"
+        inputMode="email"
+        autoComplete="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder={t("emailPlaceholder")}
+        className="h-14 w-full rounded-pill border border-at-border-hi bg-at-card px-5 font-ui text-[16px] text-at-text placeholder:text-at-faint focus:border-at-accent focus:outline-none"
+      />
+      {/* Hidden from people: only a bot fills it */}
+      <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={website} onChange={(e) => setWebsite(e.target.value)} className="absolute -left-[9999px] h-px w-px opacity-0" />
+      <button type="submit" disabled={status === "sending"} className="download-primary mt-3 w-full disabled:opacity-60">
+        <Mail size={19} aria-hidden="true" />{status === "sending" ? t("sending") : t("submit")}
+      </button>
+      <label className="mt-4 flex cursor-pointer items-start gap-2.5 font-ui text-[13px] leading-[1.45] text-at-muted">
+        <input type="checkbox" checked={marketing} onChange={(e) => setMarketing(e.target.checked)} className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--at-accent)]" />
+        {t("marketing")}
+      </label>
+      {status === "error" && <p className="mt-3 font-ui text-[13px] text-at-danger" role="alert">{t("error")}</p>}
+      <p className="mt-3 font-ui text-[12px] leading-[1.45] text-at-dim">{t("privacyNote")}</p>
+    </form>
   );
 }
 

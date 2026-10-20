@@ -18,10 +18,16 @@
     "mobile": {
       "desktopOnly": "AutoTrim es una aplicación de escritorio para macOS y Windows. No está disponible en dispositivos móviles.",
       "sendReminder": "Envíate un recordatorio para descargar AutoTrim en tu computadora:",
-      "emailSubject": "Descargar AutoTrim en tu computadora",
-      "emailBody": "¡Hola! Aquí tienes el enlace para descargar AutoTrim en tu computadora:\n\nhttps://autotrim.app/es/download\n\nAutoTrim elimina automáticamente los silencios, muletillas y vacilaciones de tus videos.",
-      "emailButton": "Enviarme un recordatorio",
-      "orVisit": "O visita esta página desde tu computadora:"
+      "orVisit": "O visita esta página desde tu computadora:",
+      "linkIntro": "Déjanos tu correo y te enviamos el enlace para abrirlo en tu ordenador.",
+      "emailLabel": "Tu correo",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "submit": "Recibir el enlace",
+      "sending": "Enviando…",
+      "sent": "Enviado. Abre el correo en tu ordenador para descargar AutoTrim.",
+      "error": "No ha funcionado. Revisa la dirección e inténtalo de nuevo.",
+      "marketing": "Envíame también novedades y consejos de AutoTrim",
+      "privacyNote": "Tu dirección solo se usa para enviarte este enlace, y las novedades si marcaste la casilla."
     },
     "experience": {
       "title": "Tu próximo montaje.",
