@@ -5,15 +5,21 @@ import { useSearchParams } from "next/navigation";
 import posthog from "posthog-js";
 import { CHECKOUT_URLS } from "@/lib/checkout";
 import { captureAttribution, readAttribution, type AttributionData } from "@/lib/attribution";
+import { attributionStorage } from "@/lib/attribution-storage";
+import { analyticsAllowed } from "@/lib/consent";
 
 export type { AttributionData } from "@/lib/attribution";
 
 const ATTRIBUTION_PREFIX = "ATR:";
+// What posthog-js reports as the distinct id in cookieless mode
+const COOKIELESS_DISTINCT_ID = "$posthog_cookieless";
 
 /**
  * Hook to manage marketing attribution tracking.
  * Captures UTM parameters and PostHog visitor ID, stores them in localStorage,
  * and provides a function to copy the attribution code to clipboard.
+ * Without consent to analytics (lib/consent.ts), the visitor id is never handed on: the app
+ * and the checkout only get the campaign, and nothing is stored (lib/attribution-storage.ts).
  */
 export function useAttribution() {
   const searchParams = useSearchParams();
@@ -25,9 +31,9 @@ export function useAttribution() {
     if (hasInitialized.current) return;
     hasInitialized.current = true;
     try {
-      captureAttribution(searchParams.toString(), document.referrer, window.location.hostname, localStorage);
+      captureAttribution(searchParams.toString(), document.referrer, window.location.hostname, attributionStorage());
     } catch {
-      // localStorage unavailable
+      // storage unavailable
     }
   }, [searchParams]);
 
@@ -40,13 +46,8 @@ export function useAttribution() {
     try {
       const attributionData = getStoredAttribution() || { ts: Date.now() };
 
-      // Get PostHog visitor ID if available
-      if (typeof posthog !== "undefined" && posthog.__loaded) {
-        const distinctId = posthog.get_distinct_id();
-        if (distinctId) {
-          attributionData.v = distinctId;
-        }
-      }
+      const distinctId = visitorId();
+      if (distinctId) attributionData.v = distinctId;
 
       // Update timestamp to current time
       attributionData.ts = Date.now();
@@ -71,16 +72,15 @@ export function useAttribution() {
    * Fire and forget.
    */
   const recordDownloadHandoff = useCallback((): void => {
-    if (typeof posthog === "undefined" || !posthog.__loaded) return;
-    const visitorId = posthog.get_distinct_id();
-    if (!visitorId) return;
+    const distinctId = visitorId();
+    if (!distinctId) return;
     const attribution = getStoredAttribution();
     fetch("/api/download-handoff", {
       method: "POST",
       keepalive: true,
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        visitor_id: visitorId,
+        visitor_id: distinctId,
         utm_source: attribution?.s,
         utm_medium: attribution?.m,
         utm_campaign: attribution?.c,
@@ -97,13 +97,8 @@ export function useAttribution() {
     const data = getStoredAttribution();
     if (!data) return null;
 
-    // Add PostHog visitor ID if available
-    if (typeof posthog !== "undefined" && posthog.__loaded) {
-      const distinctId = posthog.get_distinct_id();
-      if (distinctId) {
-        data.v = distinctId;
-      }
-    }
+    const distinctId = visitorId();
+    if (distinctId) data.v = distinctId;
 
     return data;
   }, []);
@@ -126,12 +121,8 @@ export function useAttribution() {
       if (attribution?.k) url.searchParams.set("checkout[custom][utm_term]", attribution.k);
 
       // Add visitor ID for cross-platform attribution
-      if (typeof posthog !== "undefined" && posthog.__loaded) {
-        const distinctId = posthog.get_distinct_id();
-        if (distinctId) {
-          url.searchParams.set("checkout[custom][visitor_id]", distinctId);
-        }
-      }
+      const distinctId = visitorId();
+      if (distinctId) url.searchParams.set("checkout[custom][visitor_id]", distinctId);
 
       return url.toString();
     },
@@ -149,10 +140,18 @@ export function useAttribution() {
 function getStoredAttribution(): AttributionData | null {
   if (typeof window === "undefined") return null;
   try {
-    return readAttribution(localStorage);
+    return readAttribution(attributionStorage());
   } catch {
     return null;
   }
+}
+
+/** The PostHog visitor id, only with consent to analytics, and never the cookieless placeholder. */
+function visitorId(): string | null {
+  if (!analyticsAllowed() || typeof posthog === "undefined" || !posthog.__loaded) return null;
+  if (posthog.get_explicit_consent_status() === "denied") return null;
+  const distinctId = posthog.get_distinct_id();
+  return distinctId && distinctId !== COOKIELESS_DISTINCT_ID ? distinctId : null;
 }
 
 export default useAttribution;
