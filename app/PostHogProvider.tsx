@@ -64,6 +64,14 @@ function applyAnalyticsConsent(): void {
     }
   } else if (status !== "denied") {
     posthog.opt_out_capturing();
+    // A first page load starts a session before the switch, and leaves its window id behind
+    try {
+      Object.keys(sessionStorage)
+        .filter((key) => key.startsWith(`ph_${POSTHOG_KEY}`))
+        .forEach((key) => sessionStorage.removeItem(key));
+    } catch {
+      // sessionStorage unavailable
+    }
   }
 }
 

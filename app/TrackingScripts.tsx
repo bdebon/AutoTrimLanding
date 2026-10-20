@@ -8,8 +8,10 @@ import { allows, getConsentState, subscribeConsent } from "@/lib/consent";
 const META_PIXEL_ID = "2240864149721547";
 const GTM_ID = "GTM-MTPT8QGT";
 
-// The cookies these tags set on our domain, erased when consent to ads is withdrawn
-const AD_COOKIES = ["_fbp", "_fbc"];
+// What these tags leave on our domain (Meta, and the Google Ads tag inside the GTM
+// container), erased when consent to ads is withdrawn
+const AD_COOKIES = ["_fbp", "_fbc", "_gcl_au"];
+const AD_STORAGE_KEYS = ["_gcl_ls"];
 
 /**
  * The Meta Pixel and Google Tag Manager, only with consent to ads (lib/consent.ts).
@@ -34,6 +36,11 @@ export default function TrackingScripts() {
     for (const name of AD_COOKIES) {
       document.cookie = `${name}=; Max-Age=0; path=/`;
       document.cookie = `${name}=; Max-Age=0; path=/; domain=.${domain}`;
+    }
+    try {
+      AD_STORAGE_KEYS.forEach((key) => localStorage.removeItem(key));
+    } catch {
+      // localStorage unavailable
     }
     window.location.reload();
   }, [ads]);
