@@ -49,8 +49,25 @@ export default function PrivacyPage() {
           <p className="mb-6">
             We use PostHog to understand how visitors find and use the Website: pages viewed, the site or campaign that
             referred you (including UTM parameters), device and browser type, your IP address and the approximate location
-            derived from it. PostHog stores a random identifier in your browser (cookie and local storage) and may record how
-            you navigate the Website (session replay).
+            derived from it. With your consent, PostHog stores a random identifier in your browser (cookie and local
+            storage), may record how you navigate the Website (session replay), and links your visit to the app you
+            download and to a purchase. Without it, PostHog only counts your visits: no cookie, nothing stored in your
+            browser, and no session replay.
+          </p>
+
+          <h3 className="font-display text-xl font-semibold text-at-text mt-6 mb-3">Cookies and Advertising Tags</h3>
+          <p className="mb-6">
+            Visitors from the European Union, the European Economic Area, the United Kingdom and Switzerland are asked
+            first, and nothing that tracks them runs before they answer. Two choices are offered separately: audience
+            measurement (PostHog, as described above) and advertising. With consent to advertising, the Website loads
+            the Meta Pixel, which tells Meta (Meta Platforms Ireland) which pages you view and when you click Download,
+            so we can measure our ads and show them to people likely to need AutoTrim, and Google Tag Manager. Meta sets
+            its own cookies (_fbp, _fbc). Elsewhere these tools run by default.
+          </p>
+          <p className="mb-6">
+            Wherever you are, you can change your choice at any time with the &ldquo;Cookies&rdquo; link at the bottom of
+            every page. Your choice is kept in your browser for 6 months, then asked again. Vercel Web Analytics also
+            counts page views, without cookies.
           </p>
 
           <h3 className="font-display text-xl font-semibold text-at-text mt-6 mb-3">App Usage Statistics</h3>
@@ -64,7 +81,8 @@ export default function PrivacyPage() {
           </p>
           <p className="mb-6">
             To link the download to the app, the Download button copies a short code to your clipboard, which the app
-            reads on its first launch. In case something else was copied meanwhile, the click is also recorded on our
+            reads on its first launch. Without consent to audience measurement, the code only carries the campaign that
+            brought you, not your visitor identifier, and nothing below is recorded. In case something else was copied meanwhile, the click is also recorded on our
             server with your visitor identifier and campaign, under a keyed hash of your network (your IP address
             itself is never stored). If the app finds no code on its first launch, it asks our server from the same
             network: when exactly one visitor clicked Download from that network in the previous 3 hours, the app takes
@@ -95,15 +113,17 @@ export default function PrivacyPage() {
             <li className="mb-2">To communicate important updates, product improvements and offers.</li>
           </ul>
           <p className="mb-6">
-            Under the GDPR, we rely on the performance of our contract with you to deliver your license, and on our
-            legitimate interest to measure and improve the Website and Software and to email our customers. You can
-            object at any time.
+            Under the GDPR, we rely on the performance of our contract with you to deliver your license, on your consent
+            for the Website&apos;s analytics cookies and advertising tags, and on our legitimate interest to measure and
+            improve the Software and to email our customers. You can withdraw your consent or object at any time.
           </p>
 
           <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">4. Service Providers</h2>
           <p className="mb-6">
             We share data only with the providers that run the service: LemonSqueezy (payments and licenses), PostHog
-            (analytics), Customer.io (email), Supabase (processing purchase notifications) and Vercel (website hosting).
+            (analytics), Customer.io (email), Supabase (processing purchase notifications), Vercel (website hosting and
+            cookieless page counts), and, with your consent to advertising, Meta (ad measurement) and Google (Tag
+            Manager).
             Some of them process data in the United States, under the safeguards provided in their data processing
             agreements, such as the European Commission&apos;s standard contractual clauses. We do not sell your data.
           </p>

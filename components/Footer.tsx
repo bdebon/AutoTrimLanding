@@ -6,6 +6,7 @@ import Link from "next/link";
 import Logo from "@/components/landing/Logo";
 import { btn } from "@/components/landing/ui";
 import { trackEvent } from "@/lib/tracking";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
 
 const Footer = () => {
   const t = useTranslations();
@@ -102,6 +103,7 @@ const Footer = () => {
               {legalLinks.map((l) => (
                 <li key={l.href}><Link href={l.href} className={link}>{l.label}</Link></li>
               ))}
+              <li><CookieSettingsButton label={t("landing.footer.legal.cookies")} className={link} /></li>
               <li><a href="mailto:b1jam1code@gmail.com" className={link}>{t("landing.footer.legal.contact")}</a></li>
             </ul>
           </div>

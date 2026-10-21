@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
-import FacebookPixel from "./FacebookPixel";
+import TrackingScripts from "./TrackingScripts";
+import ConsentBanner from "./ConsentBanner";
 import PostHogProvider from "./PostHogProvider";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -108,35 +109,6 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${display.variable} ${ui.variable} antialiased`}
       >
-        {/* Meta Pixel - lazyOnload for better LCP */}
-        <Script
-          id="facebook-pixel"
-          strategy="lazyOnload"
-        >
-          {`
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2240864149721547');
-            fbq('track', 'PageView');
-          `}
-        </Script>
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            height="1"
-            width="1"
-            style={{ display: 'none' }}
-            src="https://www.facebook.com/tr?id=2240864149721547&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
-
         {/* Schema.org structured data */}
         <Script
           id="schema-org"
@@ -208,27 +180,13 @@ export default function RootLayout({
           }}
         />
 
-        <FacebookPixel />
         <PostHogProvider>
           {children}
         </PostHogProvider>
         <Analytics />
-
-        {/* Google Tag Manager - lazyOnload for better LCP */}
-        <Script
-          id="gtm-script"
-          strategy="lazyOnload"
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-MTPT8QGT"
-        />
-        <Script
-          id="gtm-init"
-          strategy="lazyOnload"
-        >
-          {`
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-          `}
-        </Script>
+        {/* Meta Pixel and Google Tag Manager, only with consent (lib/consent.ts) */}
+        <TrackingScripts />
+        <ConsentBanner />
       </body>
     </html>
   );

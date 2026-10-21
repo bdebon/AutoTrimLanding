@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./landing/Logo";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 /** The legal routes live outside the locale provider; keep their navigation standalone. */
 export default function LegalShell({ children }: { children: React.ReactNode }) {
@@ -15,6 +16,7 @@ export default function LegalShell({ children }: { children: React.ReactNode }) 
       <footer className="border-t border-at-border py-8">
         <nav aria-label="Legal" className="mx-auto flex max-w-4xl flex-wrap gap-x-6 gap-y-3 px-4 text-sm text-at-muted sm:px-6 lg:px-8">
           <Link href="/terms">Terms</Link><Link href="/privacy">Privacy</Link><Link href="/refund">Refunds</Link><Link href="/legal">Legal notice</Link>
+          <CookieSettingsButton label="Cookies" />
         </nav>
       </footer>
     </div>
