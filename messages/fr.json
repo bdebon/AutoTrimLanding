@@ -18,10 +18,16 @@
     "mobile": {
       "desktopOnly": "AutoTrim est une application de bureau pour macOS et Windows. Elle n'est pas disponible sur mobile.",
       "sendReminder": "Envoyez-vous un rappel pour télécharger AutoTrim sur votre ordinateur :",
-      "emailSubject": "Télécharger AutoTrim sur ton ordinateur",
-      "emailBody": "Salut ! Voici le lien pour télécharger AutoTrim sur ton ordinateur :\n\nhttps://autotrim.app/fr/download\n\nAutoTrim supprime automatiquement les silences, mots de remplissage et hésitations de tes vidéos.",
-      "emailButton": "M'envoyer un rappel",
-      "orVisit": "Ou visitez cette page depuis votre ordinateur :"
+      "orVisit": "Ou visitez cette page depuis votre ordinateur :",
+      "linkIntro": "Laissez votre email : on vous envoie le lien à ouvrir sur votre ordinateur.",
+      "emailLabel": "Votre email",
+      "emailPlaceholder": "vous@exemple.com",
+      "submit": "Recevoir le lien",
+      "sending": "Envoi…",
+      "sent": "C’est envoyé. Ouvrez l’email sur votre ordinateur pour télécharger AutoTrim.",
+      "error": "Ça n’a pas marché. Vérifiez l’adresse et réessayez.",
+      "marketing": "Envoyez-moi aussi les nouveautés et astuces d’AutoTrim",
+      "privacyNote": "Votre adresse ne sert qu’à vous envoyer ce lien, et les nouveautés si vous avez coché la case."
     },
     "experience": {
       "title": "Votre prochain montage.",

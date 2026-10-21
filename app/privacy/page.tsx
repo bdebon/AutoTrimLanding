@@ -98,6 +98,12 @@ export default function PrivacyPage() {
             We use Customer.io to send customers emails about their license, product updates and offers. Every email has
             an unsubscribe link.
           </p>
+          <p className="mb-6">
+            On a phone, you can leave your email to receive the download link on your computer. We keep that address in
+            Customer.io, with the campaign that brought you, and only send you that link, unless you also ask for news
+            and tips with the box below the form. To keep bots from sending it in a loop, the form is checked by
+            Cloudflare Turnstile, which looks at signals from your browser and network when you send it.
+          </p>
 
           <h2 className="font-display text-2xl font-semibold text-at-text mt-8 mb-4">2. Information We Do Not Collect</h2>
           <p className="mb-6">
