@@ -37,8 +37,9 @@ LemonSqueezy (store AutoTrim 211235)
 Limite actuelle : les achats faits depuis l'app n'ont pas de `visitor_id` (le bouton « Acheter » ouvre la boutique sans attribution), donc ils tombent sur une personne identifiée par l'email, séparée de la personne qui a utilisé l'app. Correctif côté app : ajouter `checkout[custom][visitor_id]` au lien d'achat, et poser l'email sur la personne PostHog à l'activation de licence.
 
 ## Secrets
-- La version déployée contient encore les credentials en dur (Customer.io tracking Site ID + API key, secret de signature LemonSqueezy).
-- La version du repo les lit dans l'environnement de la fonction, parce que **ce repo est public** : ne jamais y écrire leurs valeurs. Pour déployer la version du repo : Dashboard Supabase → Edge Functions → Secrets → ajouter `CIO_SITE_ID`, `CIO_API_KEY`, `LS_SIGNING_SECRET` (et `LS_API_KEY` si besoin), puis redéployer.
+- Depuis le 21 octobre 2026, la version déployée est celle du repo (fonction version 4) : elle lit `CIO_SITE_ID`, `CIO_API_KEY` et `LS_SIGNING_SECRET` dans les secrets de la fonction (Dashboard Supabase → Edge Functions → Secrets). Les clés qui étaient écrites en dur dans l'ancienne version déployée y ont été déplacées. `LS_API_KEY` n'est pas encore renseignée : sans elle, pas de pays de l'acheteur (`buyer_country`) ni de routage de langue par pays.
+- **Ce repo est public** : ne jamais y écrire leurs valeurs.
+- Déployer : `npx supabase@latest functions deploy lemonsqueezy-webhook --project-ref gvvldbuvgbribbothphm --no-verify-jwt --use-api`, depuis la racine du repo (après `npx supabase@latest login`). `--no-verify-jwt` est indispensable : LemonSqueezy appelle sans JWT.
 - La clé PostHog `phc_…` est la clé publique du projet (la même que dans l'app et la landing) : elle ne permet que d'envoyer des événements.
 
 ## Keep-alive
