@@ -54,11 +54,11 @@ const AUTO_STEPS = [
 const FAQ = [
   {
     q: '¿Final Cut Pro tiene una función para eliminar silencios?',
-    a: 'No. En 2026, Final Cut Pro no tiene ninguna función nativa que detecte y elimine silencios, ni un marketplace de plugins de flujo de trabajo de terceros para añadirla (los plugins de FCP son efectos FxPlug). Los silencios se cortan a mano con la herramienta Cuchilla o con una app de escritorio como AutoTrim, que exporta una línea de tiempo FCPXML limpia de vuelta a Final Cut Pro.',
+    a: 'No. En 2026, Final Cut Pro no tiene ninguna función nativa que detecte y elimine silencios. Algunos efectos de terceros detectan silencios dentro de Final Cut Pro. AutoTrim, en cambio, trabaja antes de la edición: procesa toda la grabación a la vez, elimina las muletillas además de los silencios, sincroniza las tomas multicámara y exporta una sola línea de tiempo FCPXML ensamblada, todo en tu equipo. Si no, queda cortar a mano con la herramienta Cuchilla.',
   },
   {
     q: '¿Puedo procesar todos los clips de una grabación a la vez?',
-    a: 'Dentro de Final Cut Pro, no. Con AutoTrim, sí: sueltas todo tu material de una vez, los archivos se procesan en paralelo y recibes una sola línea de tiempo FCPXML con cada clip ya limpio y en orden.',
+    a: 'Final Cut Pro no lo hace de forma nativa. Con AutoTrim, sí: sueltas todo tu material de una vez, los archivos se procesan en paralelo y recibes una sola línea de tiempo FCPXML con cada clip ya limpio y en orden.',
   },
   {
     q: '¿AutoTrim también quita los «eh» y los «em»?',
@@ -87,17 +87,16 @@ function Body({ locale }: { locale: string }) {
     <>
       <AnswerBox lang="es">
         <p>
-          <strong>Final Cut Pro no puede eliminar silencios automáticamente.</strong>{' '}
-          No tiene una función nativa ni un marketplace de plugins de flujo de
-          trabajo de terceros para añadirla. A los editores de FCP les quedan
-          dos opciones: cortar cada silencio a mano con la herramienta
-          Cuchilla, o pasar su material por una app de escritorio como{' '}
+          <strong>Final Cut Pro no tiene una función nativa para eliminar silencios.</strong>{' '}
+          Puedes cortar cada silencio a mano con la herramienta Cuchilla, usar
+          alguno de los efectos de terceros que detectan silencios dentro de
+          Final Cut Pro o pasar tu material por una app de escritorio como{' '}
           <Link href={`/${locale}`} className="text-at-accent hover:underline">
             AutoTrim
-          </Link>
-          , que elimina los silencios y las muletillas en tu equipo y te
-          devuelve una sola línea de tiempo FCPXML, ya ensamblada, para Final
-          Cut Pro.
+          </Link>{' '}
+          antes de editar: elimina los silencios y las muletillas de toda la
+          grabación a la vez, en tu equipo, y te devuelve una sola línea de
+          tiempo FCPXML ensamblada para Final Cut Pro.
         </p>
       </AnswerBox>
 
@@ -105,18 +104,18 @@ function Body({ locale }: { locale: string }) {
       <P>
         En Premiere Pro, la edición basada en texto permite eliminar pausas.
         DaVinci Resolve tiene detección de silencios integrada. Final Cut Pro
-        no tiene ninguna de las dos cosas y, a diferencia de Premiere o
-        Resolve, no hay plugins de flujo de trabajo de terceros que llenen ese
-        hueco. FCP admite plugins de efectos (FxPlug), pero no pueden analizar
-        tu material ni cortar tu línea de tiempo. Por eso AutoCut existe para
-        Premiere y Resolve, pero no para Final Cut Pro.
+        no tiene ninguna de las dos cosas. Sus plugins son efectos FxPlug, no
+        extensiones de flujo de trabajo; por eso AutoCut existe para Premiere
+        y Resolve, pero no para Final Cut Pro. Aun así, algunos efectos de
+        terceros detectan silencios dentro de Final Cut Pro.
       </P>
       <P>
-        La consecuencia: durante años, la respuesta a «¿cómo elimino los
-        silencios en FCP?» ha sido «a mano». La solución que de verdad
-        funciona es quitar los silencios <em>antes</em> de que el material
-        llegue a Final Cut Pro e importar el resultado como una línea de
-        tiempo FCPXML.
+        Durante años, la respuesta a «¿cómo elimino los silencios en FCP?» ha
+        sido «a mano». La otra vía es quitar los silencios <em>antes</em> de
+        que el material llegue a Final Cut Pro: AutoTrim procesa toda la
+        grabación a la vez, elimina las muletillas además de los silencios,
+        sincroniza las tomas multicámara y te devuelve una sola línea de
+        tiempo FCPXML ensamblada, todo en tu equipo.
       </P>
 
       <H2 id="manual-method">Método 1: cortar los silencios a mano (gratis, pero lento)</H2>

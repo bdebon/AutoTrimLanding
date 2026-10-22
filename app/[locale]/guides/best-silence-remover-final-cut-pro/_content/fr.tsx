@@ -22,8 +22,8 @@ const FAQ = [
     a: 'La seule méthode entièrement gratuite est la coupe à la main avec l’outil Lame. AutoTrim est gratuit à l’essai, avec des previews illimitées sur vos propres rushes, mais l’export de la timeline demande une licence (15 $/mois, 119 $/an ou 149 $ à vie).',
   },
   {
-    q: 'Pourquoi n’y a-t-il pas de plugin pour supprimer les silences dans Final Cut Pro ?',
-    a: 'Final Cut Pro accepte des plugins d’effets (FxPlug), mais pas de plugins de workflow capables d’analyser les rushes et de couper la timeline. C’est pour ça qu’AutoCut existe pour Premiere Pro et DaVinci Resolve, mais pas pour FCP. Toutes les vraies solutions pour Final Cut sont des applications à part qui génèrent une timeline FCPXML.',
+    q: 'Existe-t-il un plugin pour supprimer les silences dans Final Cut Pro ?',
+    a: 'Final Cut Pro n’a pas de suppression native des silences, et ses plugins sont des effets FxPlug, pas des extensions de workflow : c’est pour ça qu’AutoCut existe pour Premiere Pro et DaVinci Resolve, mais pas pour FCP. Quelques effets tiers savent détecter les silences dans Final Cut Pro. AutoTrim travaille avant le montage : il traite tout le tournage d’un coup, retire les hésitations en plus des silences, synchronise les prises multicam et exporte une seule timeline FCPXML assemblée, le tout sur votre machine.',
   },
   {
     q: 'TimeBolt fonctionne-t-il avec Final Cut Pro ?',
@@ -68,7 +68,9 @@ function Body({ locale }: { locale: string }) {
         des silences, l’endroit où vos rushes sont traités (en local ou dans
         le cloud) et le modèle de prix. Chaque outil cité ici propose un essai
         ou une version gratuite : testez avec vos propres rushes avant de
-        payer quoi que ce soit.
+        payer quoi que ce soit. Quelques effets tiers savent aussi détecter
+        les silences dans Final Cut Pro ; ce comparatif porte sur les outils
+        qui nettoient vos rushes en dehors de l’app.
       </P>
 
       <H2 id="comparison-table">Les options en un coup d’œil</H2>
@@ -253,7 +255,7 @@ const content: BestGuide = {
     'meilleur logiciel couper les silences final cut pro, supprimer les silences final cut pro, plugin silence final cut pro, outil dérush automatique, alternative timebolt mac, autotrim vs timebolt vs recut',
   ogAlt: 'Comparatif des outils pour couper les silences dans Final Cut Pro',
   subtitle:
-    'FCP n’a pas de fonction pour supprimer les silences, ni de marketplace de plugins de workflow tiers : toutes les vraies options vivent en dehors de l’app. Voici l’état du marché, défauts de chaque outil compris.',
+    'FCP n’a pas de fonction native pour supprimer les silences. Quelques effets tiers savent les détecter dans Final Cut Pro, mais les outils qui nettoient tout un tournage travaillent en dehors de l’app. Voici l’état du marché, défauts de chaque outil compris.',
   updated: '22 octobre 2026',
   datePublished: '2026-10-22',
   dateModified: '2026-10-22',

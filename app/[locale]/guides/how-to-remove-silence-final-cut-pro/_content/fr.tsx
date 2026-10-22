@@ -54,11 +54,11 @@ const AUTO_STEPS = [
 const FAQ = [
   {
     q: 'Final Cut Pro a-t-il une fonction pour supprimer les silences ?',
-    a: 'Non. En 2026, Final Cut Pro n’a aucune fonction native qui détecte et supprime les silences, ni de marketplace de plugins de workflow tiers pour en ajouter une (les plugins FCP sont des effets FxPlug). Il faut couper les silences à la main avec l’outil Lame, ou passer par une application comme AutoTrim, qui exporte une timeline FCPXML nettoyée vers Final Cut Pro.',
+    a: 'Non. En 2026, Final Cut Pro n’a aucune fonction native qui détecte et supprime les silences. Quelques effets tiers savent détecter les silences dans Final Cut Pro. AutoTrim, lui, travaille avant le montage : il traite tout le tournage d’un coup, retire les hésitations en plus des silences, synchronise les prises multicam et exporte une seule timeline FCPXML assemblée, le tout sur votre machine. Sinon, il reste la coupe à la main avec l’outil Lame.',
   },
   {
     q: 'Peut-on traiter tous les clips d’un tournage d’un coup ?',
-    a: 'Pas dans Final Cut Pro. Avec AutoTrim, oui : vous déposez tous vos rushes en une fois, les fichiers sont traités en parallèle et vous récupérez une seule timeline FCPXML, avec chaque clip déjà nettoyé et dans l’ordre.',
+    a: 'Pas nativement dans Final Cut Pro. Avec AutoTrim, oui : vous déposez tous vos rushes en une fois, les fichiers sont traités en parallèle et vous récupérez une seule timeline FCPXML, avec chaque clip déjà nettoyé et dans l’ordre.',
   },
   {
     q: 'AutoTrim enlève-t-il aussi les « euh » ?',
@@ -87,17 +87,17 @@ function Body({ locale }: { locale: string }) {
     <>
       <AnswerBox lang="fr">
         <p>
-          <strong>Final Cut Pro ne sait pas supprimer les silences automatiquement.</strong>{' '}
-          Il n’a pas de fonction native pour ça, ni de marketplace de plugins
-          de workflow tiers pour en ajouter une. Les monteurs FCP ont donc deux
-          options : couper chaque silence à la main avec l’outil Lame, ou
-          passer leurs rushes dans une application comme{' '}
+          <strong>Final Cut Pro n’a pas de fonction native pour supprimer les silences.</strong>{' '}
+          Vous pouvez couper chaque silence à la main avec l’outil Lame,
+          utiliser l’un des quelques effets tiers qui savent détecter les
+          silences dans Final Cut Pro, ou passer vos rushes dans une
+          application comme{' '}
           <Link href={`/${locale}`} className="text-at-accent hover:underline">
             AutoTrim
-          </Link>
-          , qui retire les silences et les hésitations sur votre machine et
-          vous rend une seule timeline FCPXML, déjà assemblée, pour Final Cut
-          Pro.
+          </Link>{' '}
+          avant le montage : elle retire les silences et les hésitations de
+          tout le tournage d’un coup, sur votre machine, et vous rend une
+          seule timeline FCPXML assemblée pour Final Cut Pro.
         </p>
       </AnswerBox>
 
@@ -105,18 +105,18 @@ function Body({ locale }: { locale: string }) {
       <P>
         Dans Premiere Pro, le montage basé sur le texte permet de supprimer les
         pauses. DaVinci Resolve intègre une détection des silences. Final Cut
-        Pro n’a ni l’un ni l’autre, et contrairement à Premiere ou Resolve, il
-        n’existe pas de plugins de workflow tiers pour combler ce manque. FCP
-        accepte des plugins d’effets (FxPlug), mais ils ne peuvent ni analyser
-        vos rushes ni couper votre timeline. C’est pour ça qu’AutoCut existe
-        pour Premiere et Resolve, mais pas pour Final Cut Pro.
+        Pro n’a ni l’un ni l’autre. Ses plugins sont des effets FxPlug, pas
+        des extensions de workflow : c’est pour ça qu’AutoCut existe pour
+        Premiere et Resolve, mais pas pour Final Cut Pro. Quelques effets
+        tiers savent tout de même détecter les silences dans Final Cut Pro.
       </P>
       <P>
-        Résultat : pendant des années, la réponse à « comment supprimer les
-        silences dans FCP ? » a été « à la main ». La méthode qui marche
-        vraiment consiste à faire le dérush <em>avant</em> que les rushes
-        n’arrivent dans Final Cut Pro, puis à importer le résultat sous forme
-        de timeline FCPXML.
+        Pendant des années, la réponse à « comment supprimer les silences
+        dans FCP ? » a été « à la main ». L’autre voie consiste à faire le
+        dérush <em>avant</em> que les rushes n’arrivent dans Final Cut Pro :
+        AutoTrim prend tout le tournage d’un coup, retire les hésitations en
+        plus des silences, synchronise les prises multicam et vous rend une
+        seule timeline FCPXML assemblée, le tout sur votre machine.
       </P>
 
       <H2 id="manual-method">Méthode 1 : couper les silences à la main (gratuit, mais long)</H2>

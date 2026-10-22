@@ -172,7 +172,7 @@ export default async function Page({
         <H2 id="why-local">Why local processing matters for pros</H2>
         <UL
           items={[
-            <><strong>Speed on real files.</strong> No upload step: gigabytes of rushes start processing the second you drop them. About 1 minute for 30 minutes of footage.</>,
+            <><strong>Speed on real files.</strong> No upload step: gigabytes of rushes start processing the second you drop them.</>,
             <><strong>Client confidentiality.</strong> Unreleased and NDA footage never leaves your machine — nothing to disclose, nothing to leak.</>,
             <><strong>Offline work.</strong> Planes, locations, bad hotel Wi-Fi: the AI runs on your hardware.</>,
             <><strong>No recurring dependency.</strong> With the $149 lifetime license, the tool keeps working whether or not you keep paying anyone.</>,

@@ -69,7 +69,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: 'Does AutoTrim work with Final Cut Pro, Premiere and Resolve?',
-    a: 'Yes — it exports FCPXML for Final Cut Pro and XML for Premiere Pro and DaVinci Resolve. For Final Cut Pro editors this matters twice: FCP has no native silence remover and no plugin marketplace, so standalone tools are the only automatic option.',
+    a: 'Yes — it exports FCPXML for Final Cut Pro and XML for Premiere Pro and DaVinci Resolve. For Final Cut Pro editors this matters twice: FCP has no native silence remover, and while a few third-party effects can detect silence inside Final Cut Pro, cleaning up a whole shoot into one assembled timeline takes a standalone tool.',
   },
 ];
 
