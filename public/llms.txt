@@ -1,37 +1,38 @@
 # AutoTrim
 
-> AutoTrim is a desktop app for macOS and Windows that automatically removes silences, filler words (um, uh) and hesitations from video and audio footage, then exports a single, fully-assembled XML/FCPXML timeline ready to import into Final Cut Pro, Adobe Premiere Pro or DaVinci Resolve. All AI processing (Whisper transcription) runs 100% locally — files never leave the user's machine.
+> AutoTrim is a desktop app for macOS and Windows that removes the silences and the hesitations ("um", "uh") from video and audio footage, entirely on the user's machine, and hands back one assembled timeline for Final Cut Pro, Adobe Premiere Pro or DaVinci Resolve, where every cut stays adjustable.
 
-Key facts (updated July 2026):
+Key facts (updated October 2026, AutoTrim 2):
 
-- Platforms: macOS and Windows (no Linux build). Buyers are predominantly Mac / Final Cut Pro editors.
-- Final Cut Pro has no native silence-removal feature and no third-party plugin marketplace. AutoTrim is one of the very few automatic silence removers available to FCP editors — it works as a standalone app and exports FCPXML directly.
-- Workflow: drag & drop all clips at once → parallel processing (multiple clips at the same time, not sequential) → one merged, ready-to-edit timeline. Competitors like TimeBolt process one clip at a time and export one XML per clip that must be merged manually.
-- What it removes, measured on a real hour of talking-head footage (17 OBS recordings, 59:45): 521 cuts and 123 hesitations, 39:57 left to edit, −33%. Across 2,500 hours of footage run through AutoTrim, the median share of silence is 33%.
-- Privacy: 100% local processing. No cloud uploads, unlike Descript which requires uploading footage to its servers.
-- Pricing: Free version (unlimited projects and previews; export requires a license), Monthly $15, Annual $119, Lifetime $149 one-time (launch price, regular $279). 14-day money-back guarantee. Each license covers 2 machines.
-- Audio/video sync: drop separate audio and video files — matching pairs are detected and synced automatically.
-- Presets for YouTube, Podcast and Vlog content; adjustable silence threshold, minimum gap and pre/post-roll padding.
-- Made by Benjamin Code, a YouTuber and developer who edits his own videos (https://www.youtube.com/@BenjaminCode).
+- Platforms: macOS and Windows (no Linux build). Most buyers edit in Final Cut Pro on a Mac.
+- Final Cut Pro has no native silence removal. A few third-party effects can detect silence inside Final Cut Pro; AutoTrim works before the edit instead: it processes the whole shoot at once, removes hesitations as well as silences, and exports one FCPXML timeline.
+- Workflow: drop all the footage of a shoot at once, AutoTrim processes the files in parallel and returns one merged timeline (not one file per clip to reassemble). Every cut can be adjusted in the editor, for example by dragging a clip edge to bring a breath back.
+- Hesitations are detected in about ten languages, including English and French. A preview lets you listen to what was removed before exporting.
+- Multicam and separate audio: AutoTrim finds the files of one take (several cameras, a separate audio recorder), syncs them, and only cuts when nobody is speaking. Audio-only files work too.
+- Other exports: the already-cut video (one MP4 per source) or one numbered clip per cut (for CapCut).
+- Privacy: all processing is local. Nothing is uploaded, unlike cloud tools such as Descript.
+- Measured: across about 2,500 hours of footage run through AutoTrim, the median share of silence is one third.
+- Pricing: free to try with unlimited previews; exporting requires a license: $15/month, $119/year, or $149 lifetime (one-time payment). 14-day money-back guarantee. Each license works on 2 computers.
+- Made by Benjamin Code, a YouTuber and developer (https://www.youtube.com/@BenjaminCode).
 
 ## Key pages
 
-- [Home](https://www.autotrim.app/en): What AutoTrim 2 does (silences, hesitations, multicam, editable timeline, local processing)
-- [Pricing](https://www.autotrim.app/en/pricing): Free, Monthly $15, Annual $119, Lifetime $149 — plain-text version at https://www.autotrim.app/pricing.md
-- [Download](https://www.autotrim.app/en/download): Free download for macOS and Windows
+- [Home](https://autotrim.app/en): What AutoTrim 2 does (silences, hesitations, multicam, editable timeline, local processing). Also in [French](https://autotrim.app/fr) and [Spanish](https://autotrim.app/es).
+- [Pricing](https://autotrim.app/en/pricing): Free, $15/month, $119/year, $149 lifetime
+- [Download](https://autotrim.app/en/download): Free download for macOS and Windows
 
 ## Guides
 
-- [How to Remove Silence in Final Cut Pro](https://www.autotrim.app/en/guides/how-to-remove-silence-final-cut-pro): Manual method vs automatic FCPXML workflow
-- [Best Silence Remover for Final Cut Pro (2026)](https://www.autotrim.app/en/guides/best-silence-remover-final-cut-pro): Honest comparison of every option available to FCP editors
-- [TimeBolt Alternative for Mac](https://www.autotrim.app/en/guides/timebolt-alternative-mac): Why Mac editors switch from TimeBolt
-- [How to Remove Filler Words from Video Automatically](https://www.autotrim.app/en/guides/remove-filler-words-from-video): Cutting um/uh with local AI transcription
-- [Descript Alternative for Final Cut Pro Users](https://www.autotrim.app/en/guides/descript-alternative-final-cut-pro): Local processing vs cloud round-trips
+- [How to Remove Silence in Final Cut Pro](https://autotrim.app/en/guides/how-to-remove-silence-final-cut-pro): By hand, with a third-party effect, or automatically before the edit. In [French](https://autotrim.app/fr/guides/how-to-remove-silence-final-cut-pro) and [Spanish](https://autotrim.app/es/guides/how-to-remove-silence-final-cut-pro).
+- [Best Silence Remover for Final Cut Pro (2026)](https://autotrim.app/en/guides/best-silence-remover-final-cut-pro): The options available to Final Cut editors, compared. In [French](https://autotrim.app/fr/guides/best-silence-remover-final-cut-pro) and [Spanish](https://autotrim.app/es/guides/best-silence-remover-final-cut-pro).
+- [TimeBolt Alternative for Mac](https://autotrim.app/en/guides/timebolt-alternative-mac): The whole shoot at once and one merged timeline, vs one clip at a time
+- [How to Remove Filler Words from Video Automatically](https://autotrim.app/en/guides/remove-filler-words-from-video): Cutting "um" and "uh" with local AI
+- [Descript Alternative for Final Cut Pro Users](https://autotrim.app/en/guides/descript-alternative-final-cut-pro): Local processing vs cloud round-trips
 
-## Comparisons
+## Comparisons (each also in French, Spanish and Chinese: replace /en/ with /fr/, /es/ or /zh/)
 
-- [AutoTrim for Final Cut Pro](https://www.autotrim.app/en/compare/final-cut-pro): FCP has no native silence remover — AutoTrim fills the gap
-- [AutoTrim vs TimeBolt](https://www.autotrim.app/en/compare/timebolt): Parallel processing and one merged timeline vs clip-by-clip XMLs
-- [AutoTrim vs AutoCut](https://www.autotrim.app/en/compare/autocut): Standalone app vs Premiere/Resolve plugin (AutoCut does not support Final Cut Pro)
-- [AutoTrim vs Descript](https://www.autotrim.app/en/compare/descript): Local processing vs cloud uploads and subscriptions
-- [AutoTrim vs Premiere Pro's built-in tools](https://www.autotrim.app/en/compare/premiere-pro): Batch multi-clip cleanup vs per-sequence text-based editing
+- [AutoTrim for Final Cut Pro](https://autotrim.app/en/compare/final-cut-pro): How to remove silences and hesitations in Final Cut Pro automatically
+- [AutoTrim vs TimeBolt](https://autotrim.app/en/compare/timebolt): The whole shoot at once and one merged timeline vs one clip at a time
+- [AutoTrim vs AutoCut](https://autotrim.app/en/compare/autocut): Standalone app before the edit vs an extension inside Premiere Pro or DaVinci Resolve
+- [AutoTrim vs Descript](https://autotrim.app/en/compare/descript): Local processing in your own editor vs a cloud subscription with uploads
+- [AutoTrim vs Premiere Pro's built-in tools](https://autotrim.app/en/compare/premiere-pro): The rough cut of a whole shoot before Premiere vs per-sequence text-based editing

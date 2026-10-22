@@ -26,11 +26,11 @@ export default async function ComparePremierePage({
     compareArticleJsonLd({
       siteUrl,
       slug: "premiere-pro",
-      headline:
-        "AutoTrim vs Premiere Pro's Built-in Tools: Automatic Silence Removal Compared",
-      description:
-        "Premiere Pro's text-based editing cleans pauses one sequence at a time. AutoTrim removes silences and filler words from all your rushes in parallel and exports one assembled XML timeline ready for the fine cut.",
+      headline: t("comparePremiere.title"),
+      description: t("metadata.comparePremiere.description"),
       datePublished: "2026-07-08",
+      dateModified: "2026-10-22",
+      locale,
     }),
     faqJsonLd(faqItems),
     breadcrumbJsonLd(siteUrl, [

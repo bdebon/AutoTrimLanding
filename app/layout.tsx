@@ -163,7 +163,7 @@ export default async function RootLayout({
                   "@type": "Offer",
                   "price": "149",
                   "priceCurrency": "USD",
-                  "description": "Lifetime license — one-time payment, all future updates included (launch price, regular $279)",
+                  "description": "Lifetime license — one-time payment, all future updates included",
                   "availability": "https://schema.org/InStock"
                 }
               ],
