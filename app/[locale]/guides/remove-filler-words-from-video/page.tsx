@@ -18,7 +18,7 @@ const TITLE = 'How to Remove Filler Words (Um, Uh) from Video Automatically';
 const DESCRIPTION =
   'Filler words are found by transcribing your footage, not by analyzing volume. How automatic um/uh removal works in 2026, which tools do it (AutoTrim, Descript, Premiere Pro), and how to keep the cuts from sounding robotic.';
 const SLUG = 'remove-filler-words-from-video';
-const UPDATED = 'July 8, 2026';
+const UPDATED = 'October 22, 2026';
 
 export const metadata: Metadata = {
   title: 'How to Remove Filler Words (Um, Uh) from Video Automatically (2026)',
@@ -67,7 +67,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: 'How accurate is automatic filler-word removal?',
-    a: 'Good enough to save real time, not good enough to skip the preview. Accuracy depends on language, diction and audio quality. AutoTrim marks its filler-word removal as experimental — preview the cuts before exporting, especially for non-English footage.',
+    a: 'Good enough to save real time, not good enough to skip the preview. Accuracy depends on language, diction and audio quality. AutoTrim detects hesitations in about ten languages, including English and French — preview the cuts before exporting, especially on fast talkers.',
   },
   {
     q: 'Should I remove every single "um"?',
@@ -107,7 +107,7 @@ export default async function Page({
         },
       },
       datePublished: '2026-07-08',
-      dateModified: '2026-07-08',
+      dateModified: '2026-10-22',
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': `${siteUrl}/en/guides/${SLUG}`,
@@ -135,7 +135,7 @@ export default async function Page({
         {
           '@type': 'HowToStep',
           name: 'Preview the detected cuts',
-          text: 'Review what will be removed — filler-word detection is experimental and accuracy varies with language and diction.',
+          text: 'Review what will be removed — accuracy varies with language, diction and audio quality.',
         },
         {
           '@type': 'HowToStep',
@@ -241,7 +241,7 @@ export default async function Page({
             },
             {
               name: 'Preview the cuts',
-              text: 'Filler-word detection is experimental — check the cuts, especially on fast talkers and non-English footage.',
+              text: 'Check the cuts in the preview, especially on fast talkers and noisy recordings.',
             },
             {
               name: 'Export one merged timeline',

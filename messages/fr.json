@@ -213,12 +213,12 @@
       "button": "Télécharger AutoTrim"
     },
     "guides": {
-      "title": "Guides (EN)",
+      "title": "Guides",
       "removeSilenceFcp": "Supprimer les silences dans Final Cut Pro",
-      "bestSilenceRemoverFcp": "Meilleur silence remover pour FCP (2026)",
-      "timeboltAlternative": "Alternative à TimeBolt sur Mac",
-      "fillerWords": "Supprimer les mots de remplissage",
-      "descriptAlternative": "Alternative à Descript pour FCP",
+      "bestSilenceRemoverFcp": "Meilleur logiciel pour couper les silences dans FCP",
+      "timeboltAlternative": "Alternative à TimeBolt sur Mac (EN)",
+      "fillerWords": "Supprimer les mots de remplissage (EN)",
+      "descriptAlternative": "Alternative à Descript pour FCP (EN)",
       "allGuides": "Tous les guides"
     }
   },
