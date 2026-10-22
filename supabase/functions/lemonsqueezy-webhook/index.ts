@@ -3,17 +3,26 @@
 // pushes the person and events to Customer.io (EU) and the revenue events to PostHog.
 // GET / responds "ok" — used by the keep-alive ping.
 //
+// Purchases made with consent to ads are also reported to Meta (meta.ts).
+//
 // Secrets come from the Supabase function environment (Dashboard → Edge Functions → Secrets):
-// CIO_SITE_ID, CIO_API_KEY, LS_SIGNING_SECRET, optional LS_API_KEY. This repository is public:
-// never write their values here.
+// CIO_SITE_ID, CIO_API_KEY, LS_SIGNING_SECRET, optional LS_API_KEY, and for Meta META_PIXEL_ID,
+// META_CAPI_TOKEN and optional META_TEST_EVENT_CODE. This repository is public: never write
+// their values here.
 
 import { Buffer } from "node:buffer";
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { reportPurchase, type MetaConfig } from "./meta.ts";
 
 const CIO_SITE_ID = Deno.env.get("CIO_SITE_ID") ?? "";
 const CIO_API_KEY = Deno.env.get("CIO_API_KEY") ?? "";
 const LS_SIGNING_SECRET = Deno.env.get("LS_SIGNING_SECRET") ?? "";
 const LS_API_KEY = Deno.env.get("LS_API_KEY") ?? ""; // optional — enables country lookup for language routing
+const META: MetaConfig = {
+  pixelId: Deno.env.get("META_PIXEL_ID") ?? "",
+  token: Deno.env.get("META_CAPI_TOKEN") ?? "",
+  testEventCode: Deno.env.get("META_TEST_EVENT_CODE") ?? "",
+};
 // Public project token (same as in the app and the landing): capture only.
 const POSTHOG_KEY = "phc_7yAkO5ws3adg6Bc2jvfeh0rM4pVBmsE7xxMZ46l7A1l";
 const POSTHOG_CAPTURE = "https://us.i.posthog.com/i/v0/e/";
@@ -120,6 +129,24 @@ Deno.serve(async (req: Request) => {
     const lt = licenseType(item.product_id, item.variant_name ?? "");
     const totalUsd = (attrs.total_usd ?? attrs.total ?? 0) / 100;
     const subtotalUsd = (attrs.subtotal_usd ?? attrs.subtotal ?? 0) / 100;
+    // What was cashed before tax: unlike the subtotal, it is net of discounts
+    const netRevenueUsd = totalUsd - (attrs.tax_usd ?? attrs.tax ?? 0) / 100;
+    const orderId = String(payload?.data?.id ?? "");
+
+    const meta = await reportPurchase(
+      {
+        orderId,
+        createdAt: attrs.created_at ? new Date(attrs.created_at) : new Date(),
+        value: netRevenueUsd,
+        currency: "USD",
+        email,
+        country,
+        contentName: lt,
+      },
+      custom,
+      META,
+      testMode,
+    );
 
     // The checkout carries the visitor's PostHog id when the buy link added it;
     // otherwise the purchase lands on a person keyed by the buyer's email.
@@ -128,19 +155,21 @@ Deno.serve(async (req: Request) => {
     for (const k of UTM_KEYS) if (typeof custom[k] === "string" && custom[k]) utm[k] = custom[k];
     await posthog(testMode ? "purchase_test" : "purchase", visitorId || email, {
       revenue: subtotalUsd,
+      net_revenue_usd: netRevenueUsd,
       total_usd: totalUsd,
       license_type: lt,
       product_name: item.product_name ?? "",
       variant_name: item.variant_name ?? "",
-      order_id: payload?.data?.id ?? "",
+      order_id: orderId,
       attribution: visitorId ? "visitor_id" : "email_only",
+      meta_capi: meta,
       ...(country ? { buyer_country: country } : {}),
       ...utm,
       $set: { email, license_type: lt, ...(firstName ? { first_name: firstName } : {}) },
       $set_once: { first_purchase_at: new Date().toISOString(), first_license_type: lt },
     });
 
-    if (testMode) return new Response("ok purchase (test mode, Customer.io skipped)");
+    if (testMode) return new Response(`ok purchase (test mode, Customer.io skipped, Meta: ${meta})`);
 
     await cio(`/customers/${encodeURIComponent(email)}`, "PUT", {
       email,
@@ -152,9 +181,9 @@ Deno.serve(async (req: Request) => {
     });
     await cio(`/customers/${encodeURIComponent(email)}/events`, "POST", {
       name: "purchase",
-      data: { license_type: lt, product_name: item.product_name ?? "", variant_name: item.variant_name ?? "", total_usd: totalUsd, order_id: payload?.data?.id ?? "" },
+      data: { license_type: lt, product_name: item.product_name ?? "", variant_name: item.variant_name ?? "", total_usd: totalUsd, order_id: orderId },
     });
-    return new Response("ok purchase");
+    return new Response(`ok purchase (Meta: ${meta})`);
   }
 
   if (eventName === "subscription_cancelled" || eventName === "subscription_expired") {
@@ -185,10 +214,12 @@ Deno.serve(async (req: Request) => {
     if (!email) return new Response("ignored (no email)");
     const totalUsd = (attrs.total_usd ?? attrs.total ?? 0) / 100;
     const subtotalUsd = (attrs.subtotal_usd ?? attrs.subtotal ?? 0) / 100;
+    const netRevenueUsd = totalUsd - (attrs.tax_usd ?? attrs.tax ?? 0) / 100;
     // The first payment of a subscription is already counted by order_created.
     if (eventName === "subscription_payment_success" && attrs.billing_reason !== "initial") {
       await posthog(testMode ? "subscription_renewed_test" : "subscription_renewed", email, {
         revenue: subtotalUsd,
+        net_revenue_usd: netRevenueUsd,
         total_usd: totalUsd,
         billing_reason: attrs.billing_reason ?? "",
         $set: { email },
