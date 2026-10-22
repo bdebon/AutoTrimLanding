@@ -100,11 +100,11 @@
       },
       "lifetime": {
         "title": "Lifetime License",
-        "originalPrice": "$279",
+        "originalPrice": "",
         "price": "$149",
         "period": "one-time",
         "badge": "Best Value",
-        "earlyBird": "Early bird special",
+        "earlyBird": "Pay once, keep it forever",
         "features": [
           "Unlimited projects",
           "Unlimited clips",
@@ -972,7 +972,7 @@
         "title": "Lifetime",
         "price": "$149",
         "period": "one-time",
-        "badge": "Launch price",
+        "badge": "One-time payment",
         "billing": "v2 included, like every update after it",
         "features": [
           "Timeline and MP4 export",

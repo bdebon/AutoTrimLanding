@@ -100,11 +100,11 @@
       },
       "lifetime": {
         "title": "Licence à vie",
-        "originalPrice": "$279",
+        "originalPrice": "",
         "price": "$149",
         "period": "une fois",
         "badge": "Meilleure valeur",
-        "earlyBird": "Offre de lancement",
+        "earlyBird": "Payez une fois, gardez-le pour toujours",
         "features": [
           "Projets illimités",
           "Clips illimités",
@@ -972,7 +972,7 @@
         "title": "Licence à vie",
         "price": "$149",
         "period": "une fois",
-        "badge": "Prix de lancement",
+        "badge": "Paiement unique",
         "billing": "La v2 incluse, comme toutes les suivantes",
         "features": [
           "Export timeline et MP4",

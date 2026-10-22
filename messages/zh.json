@@ -100,11 +100,11 @@
       },
       "lifetime": {
         "title": "终身许可",
-        "originalPrice": "$279",
+        "originalPrice": "",
         "price": "$149",
         "period": "一次性",
         "badge": "最佳价值",
-        "earlyBird": "早鸟特惠",
+        "earlyBird": "一次付费，永久使用",
         "features": [
           "无限项目",
           "无限片段",
@@ -972,7 +972,7 @@
         "title": "Lifetime",
         "price": "$149",
         "period": "one-time",
-        "badge": "Launch price",
+        "badge": "一次性付费",
         "billing": "v2 included, like every update after it",
         "features": [
           "Timeline and MP4 export",
