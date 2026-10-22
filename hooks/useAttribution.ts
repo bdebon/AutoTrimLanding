@@ -50,6 +50,12 @@ export function useAttribution() {
       const distinctId = visitorId();
       if (distinctId) attributionData.v = distinctId;
 
+      // With consent to ads, what the app needs to report a purchase made from it to Meta
+      const meta = metaData();
+      if (meta.ads_consent) attributionData.a = 1;
+      if (meta.fbc) attributionData.fc = meta.fbc;
+      if (meta.fbp) attributionData.fp = meta.fbp;
+
       // Update timestamp to current time
       attributionData.ts = Date.now();
 

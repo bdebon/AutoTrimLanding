@@ -70,8 +70,10 @@ export default function PrivacyPage() {
             reported to Meta, so we can tell which ads lead to sales. The checkout link carries Meta&rsquo;s identifiers
             from your browser (_fbc, _fbp), your browser type and the page you bought from. Once the payment goes
             through, our server sends Meta the order: its number, amount and currency, your email address and country
-            in hashed form (SHA-256), and these identifiers. Without consent to advertising, nothing about your purchase
-            is sent to Meta.
+            in hashed form (SHA-256), and these identifiers. When you download the app with that consent, the code it
+            reads on its first launch carries the consent and Meta&rsquo;s identifiers too, so a purchase made from the
+            app within 90 days is reported the same way, unless you turned usage statistics off in the app. Without
+            consent to advertising, nothing about your purchase is sent to Meta.
           </p>
           <p className="mb-6">
             Wherever you are, you can change your choice at any time with the &ldquo;Cookies&rdquo; link at the bottom of

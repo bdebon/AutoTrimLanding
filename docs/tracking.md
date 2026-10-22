@@ -57,6 +57,11 @@ copy of the click (`autotrim_fbc` in localStorage, `lib/meta-click.ts`), erased 
 cookies when ads are turned off. Where visitors are asked first, the click waits in memory until
 they accept ads.
 
+The code the Download button copies for the app carries the same with consent to ads (`a: 1`,
+`fc`, `fp` in `lib/attribution.ts`), so the app's own buy links can add `ads_consent`, `fbc` and
+`fbp` (AutoTrim `frontend/src/services/checkout.ts`), for 90 days after the download and only with
+the app's usage statistics on. The network fallback (`docs/download-handoff.md`) does not carry them.
+
 ## Tagging a campaign
 
 Every ad, email or partner link to the site carries UTMs. The site keeps the last ones it saw
