@@ -11,7 +11,7 @@ territories elsewhere) are asked first. Two purposes, chosen separately, kept 6 
 | Purpose | Tools | Without consent |
 | --- | --- | --- |
 | Audience measurement | PostHog with its cookie: links the visit to the app download and the purchase | PostHog counts visits in cookieless mode; the Download code carries only the campaign; no visitor id in the handoff record or the checkout |
-| Advertising | Meta Pixel `2240864149721547`, Google Tag Manager `GTM-MTPT8QGT`; the purchase reported to Meta | Not loaded at all; the checkout carries nothing for Meta, so the purchase is not reported |
+| Advertising | Meta Pixel `1498365729008861` (Autonomous Intelligence Limited), Google Tag Manager `GTM-MTPT8QGT`; the purchase reported to Meta | Not loaded at all; the checkout carries nothing for Meta, so the purchase is not reported |
 
 Elsewhere both run by default. The footer's "Cookies" link reopens the choices everywhere.
 Vercel Web Analytics is cookieless and always on.

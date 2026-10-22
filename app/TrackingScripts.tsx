@@ -6,7 +6,8 @@ import { usePathname } from "next/navigation";
 import { allows, getConsentState, subscribeConsent } from "@/lib/consent";
 import { adClickFrom, storeAdClick, FBC_STORAGE_KEY, type AdClick } from "@/lib/meta-click";
 
-const META_PIXEL_ID = "2240864149721547";
+// The pixel of the Autonomous Intelligence Limited business portfolio (until 2026-10: 2240864149721547)
+const META_PIXEL_ID = "1498365729008861";
 const GTM_ID = "GTM-MTPT8QGT";
 
 // What these tags leave on our domain (Meta, and the Google Ads tag inside the GTM
