@@ -698,11 +698,11 @@
     "nav": {
       "silences": "Silencios",
       "hesitations": "Titubeos",
-      "multicam": "Multicámara",
+      "multicam": "Multicam",
       "faq": "Preguntas",
       "menuOpen": "Abrir el menú",
       "menuClose": "Cerrar el menú",
-      "timeline": "Tu edición"
+      "timeline": "Edición"
     },
     "cta": {
       "download": "Descargar AutoTrim",
