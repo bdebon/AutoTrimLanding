@@ -4,14 +4,15 @@ import { useEffect, useRef, useSyncExternalStore } from "react";
 import Script from "next/script";
 import { usePathname } from "next/navigation";
 import { allows, getConsentState, subscribeConsent } from "@/lib/consent";
+import { adClickFrom, storeAdClick, FBC_STORAGE_KEY, type AdClick } from "@/lib/meta-click";
 
 const META_PIXEL_ID = "2240864149721547";
 const GTM_ID = "GTM-MTPT8QGT";
 
 // What these tags leave on our domain (Meta, and the Google Ads tag inside the GTM
-// container), erased when consent to ads is withdrawn
+// container), and our copy of the Meta ad click, erased when consent to ads is withdrawn
 const AD_COOKIES = ["_fbp", "_fbc", "_gcl_au"];
-const AD_STORAGE_KEYS = ["_gcl_ls"];
+const AD_STORAGE_KEYS = ["_gcl_ls", FBC_STORAGE_KEY];
 
 /**
  * The Meta Pixel and Google Tag Manager, only with consent to ads (lib/consent.ts).
@@ -24,6 +25,20 @@ export default function TrackingScripts() {
   const pathname = usePathname();
   const loaded = useRef(false);
   const trackedPath = useRef<string | null>(null);
+  const adClick = useRef<AdClick | null | undefined>(undefined);
+
+  // The Meta ad click this page was opened with, kept for the checkout (lib/meta-click.ts).
+  // Where visitors are asked first, it waits in memory until they accept ads.
+  useEffect(() => {
+    if (adClick.current === undefined) adClick.current = adClickFrom(window.location.search);
+    if (!ads || !adClick.current) return;
+    try {
+      storeAdClick(adClick.current, localStorage);
+    } catch {
+      // localStorage unavailable
+    }
+    adClick.current = null;
+  }, [ads]);
 
   useEffect(() => {
     if (ads) {

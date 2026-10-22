@@ -62,7 +62,16 @@ export default function PrivacyPage() {
             measurement (PostHog, as described above) and advertising. With consent to advertising, the Website loads
             the Meta Pixel, which tells Meta (Meta Platforms Ireland) which pages you view and when you click Download,
             so we can measure our ads and show them to people likely to need AutoTrim, and Google Tag Manager. Meta sets
-            its own cookies (_fbp, _fbc). Elsewhere these tools run by default.
+            its own cookies (_fbp, _fbc), and the Website keeps a copy of the ad click identifier in your browser for 90
+            days. Elsewhere these tools run by default.
+          </p>
+          <p className="mb-6">
+            With that same consent (or, outside these regions, unless you turned advertising off), a purchase is also
+            reported to Meta, so we can tell which ads lead to sales. The checkout link carries Meta&rsquo;s identifiers
+            from your browser (_fbc, _fbp), your browser type and the page you bought from. Once the payment goes
+            through, our server sends Meta the order: its number, amount and currency, your email address and country
+            in hashed form (SHA-256), and these identifiers. Without consent to advertising, nothing about your purchase
+            is sent to Meta.
           </p>
           <p className="mb-6">
             Wherever you are, you can change your choice at any time with the &ldquo;Cookies&rdquo; link at the bottom of
@@ -128,8 +137,8 @@ export default function PrivacyPage() {
           <p className="mb-6">
             We share data only with the providers that run the service: LemonSqueezy (payments and licenses), PostHog
             (analytics), Customer.io (email), Supabase (processing purchase notifications), Vercel (website hosting and
-            cookieless page counts), and, with your consent to advertising, Meta (ad measurement) and Google (Tag
-            Manager).
+            cookieless page counts), and, with your consent to advertising, Meta (ad measurement, including the
+            purchases made after visiting the Website) and Google (Tag Manager).
             Some of them process data in the United States, under the safeguards provided in their data processing
             agreements, such as the European Commission&apos;s standard contractual clauses. We do not sell your data.
           </p>

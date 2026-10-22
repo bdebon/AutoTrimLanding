@@ -6,7 +6,8 @@ import posthog from "posthog-js";
 import { CHECKOUT_URLS } from "@/lib/checkout";
 import { captureAttribution, readAttribution, type AttributionData } from "@/lib/attribution";
 import { attributionStorage } from "@/lib/attribution-storage";
-import { analyticsAllowed } from "@/lib/consent";
+import { adsAllowed, analyticsAllowed } from "@/lib/consent";
+import { metaCheckoutData } from "@/lib/meta-click";
 
 export type { AttributionData } from "@/lib/attribution";
 
@@ -104,7 +105,8 @@ export function useAttribution() {
   }, []);
 
   /**
-   * Build a LemonSqueezy checkout URL carrying the visitor id and UTM params.
+   * Build a LemonSqueezy checkout URL carrying the visitor id, UTM params and, with consent
+   * to ads, Meta's click ids.
    * The base must be a product checkout (see lib/checkout.ts): the store page
    * drops query params, so custom data only survives on a checkout link.
    */
@@ -123,6 +125,9 @@ export function useAttribution() {
       // Add visitor ID for cross-platform attribution
       const distinctId = visitorId();
       if (distinctId) url.searchParams.set("checkout[custom][visitor_id]", distinctId);
+
+      // With consent to ads, what Meta needs to tie the purchase to the ad (lib/meta-click.ts)
+      for (const [key, value] of Object.entries(metaData())) url.searchParams.set(`checkout[custom][${key}]`, value);
 
       return url.toString();
     },
@@ -144,6 +149,23 @@ function getStoredAttribution(): AttributionData | null {
   } catch {
     return null;
   }
+}
+
+function metaData(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  let storage: Storage | null = null;
+  try {
+    storage = localStorage;
+  } catch {
+    // localStorage unavailable
+  }
+  return metaCheckoutData({
+    adsAllowed: adsAllowed(),
+    cookies: document.cookie,
+    storage,
+    userAgent: navigator.userAgent,
+    page: window.location.origin + window.location.pathname,
+  });
 }
 
 /** The PostHog visitor id, only with consent to analytics, and never the cookieless placeholder. */
