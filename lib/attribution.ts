@@ -12,6 +12,10 @@ export interface AttributionData {
   t?: string; // utm_content
   k?: string; // utm_term
   v?: string; // visitor_id (PostHog distinct_id), added when the code is copied
+  // Added when the code is copied, with consent to ads only (lib/meta-click.ts):
+  a?: 1; // consent to ads
+  fc?: string; // the Meta ad click (fbc)
+  fp?: string; // the Meta browser id (fbp)
   r?: string; // external referrer
   ts: number; // timestamp
 }
