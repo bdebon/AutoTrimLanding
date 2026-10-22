@@ -16,7 +16,7 @@ const TITLE = 'Descript Alternative for Final Cut Pro Users';
 const DESCRIPTION =
   "Descript's silence and filler-word cleanup is great — if you accept cloud uploads, a subscription, and leaving your editor. AutoTrim does the same cleanup locally and hands Final Cut Pro one merged FCPXML timeline. Honest comparison for FCP editors.";
 const SLUG = 'descript-alternative-final-cut-pro';
-const UPDATED = 'July 8, 2026';
+const UPDATED = 'October 22, 2026';
 
 export const metadata: Metadata = {
   title: 'Descript Alternative for Final Cut Pro Users (2026) – AutoTrim',
@@ -101,7 +101,7 @@ export default async function Page({
         },
       },
       datePublished: '2026-07-08',
-      dateModified: '2026-07-08',
+      dateModified: '2026-10-22',
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': `${siteUrl}/en/guides/${SLUG}`,
@@ -162,7 +162,7 @@ export default async function Page({
             ['Where footage is processed', '100% on your machine', "Descript's cloud (upload required)"],
             ['Final Cut Pro integration', 'Native FCPXML export, one merged timeline', 'Export round-trips'],
             ['Silence removal', 'Yes — batch, parallel, adjustable', 'Yes — inside its editor'],
-            ['Filler words (um, uh)', 'Yes — local AI (experimental)', 'Yes'],
+            ['Filler words (um, uh)', 'Yes — on your machine, in about ten languages', 'Yes'],
             ['Text-based editing', 'No — by design', 'Yes, its core workflow'],
             ['Works offline', 'Yes', 'Limited — cloud-first'],
             ['Pricing', 'Free version · $15/mo · $119/yr · $149 lifetime', 'Subscription only'],
