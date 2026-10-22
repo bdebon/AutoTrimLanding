@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import type { FaqItem } from '@/lib/seo';
+import { guideHref, type GuideSlug } from '@/lib/guides';
 
 const COMPARE_SLUGS: { slug: string; footerKey: string }[] = [
   { slug: 'final-cut-pro', footerKey: 'finalCut' },
@@ -10,11 +11,12 @@ const COMPARE_SLUGS: { slug: string; footerKey: string }[] = [
   { slug: 'descript', footerKey: 'descript' },
 ];
 
-// English-only guides (canonical /en URLs)
-const GUIDE_LINKS: { href: string; label: string }[] = [
-  { href: '/en/guides/how-to-remove-silence-final-cut-pro', label: 'How to Remove Silence in Final Cut Pro' },
-  { href: '/en/guides/best-silence-remover-final-cut-pro', label: 'Best Silence Remover for Final Cut Pro (2026)' },
-  { href: '/en/guides/remove-filler-words-from-video', label: 'How to Remove Filler Words from Video Automatically' },
+// Each guide in the reader's language when it exists, English otherwise
+// (the footer labels flag the English-only ones)
+const GUIDE_LINKS: { slug: GuideSlug; footerKey: string }[] = [
+  { slug: 'how-to-remove-silence-final-cut-pro', footerKey: 'removeSilenceFcp' },
+  { slug: 'best-silence-remover-final-cut-pro', footerKey: 'bestSilenceRemoverFcp' },
+  { slug: 'remove-filler-words-from-video', footerKey: 'fillerWords' },
 ];
 
 /**
@@ -120,12 +122,12 @@ export default async function CompareExtras({
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {GUIDE_LINKS.map((g) => (
-              <li key={g.href}>
+              <li key={g.slug}>
                 <Link
-                  href={g.href}
+                  href={guideHref(locale, g.slug)}
                   className="text-at-accent hover:text-at-accent hover:underline"
                 >
-                  {g.label}
+                  {t(`footer.guides.${g.footerKey}`)}
                 </Link>
               </li>
             ))}
