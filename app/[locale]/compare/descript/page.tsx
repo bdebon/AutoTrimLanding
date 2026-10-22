@@ -26,10 +26,11 @@ export default async function CompareDescriptPage({
     compareArticleJsonLd({
       siteUrl,
       slug: "descript",
-      headline: "AutoTrim vs Descript: Speed & Control vs All-in-One Cloud",
-      description:
-        "Detailed comparison between AutoTrim and Descript. See why AutoTrim's lightning-fast local processing beats Descript's cloud-based complexity for professional video editing.",
+      headline: t("compareDescript.title"),
+      description: t("metadata.compareDescript.description"),
       datePublished: "2026-02-12",
+      dateModified: "2026-10-22",
+      locale,
     }),
     faqJsonLd(faqItems),
     breadcrumbJsonLd(siteUrl, [

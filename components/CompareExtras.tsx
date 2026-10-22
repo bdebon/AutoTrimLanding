@@ -19,9 +19,9 @@ const GUIDE_LINKS: { href: string; label: string }[] = [
 
 /**
  * Server-rendered extra sections for the /compare pages:
- * "at a glance" fact table, FAQ (paired with FAQPage JSON-LD emitted by the
- * page) and internal links. Fully static HTML so AI crawlers that don't
- * execute JavaScript can read every claim.
+ * "at a glance" fact table, what editors say, FAQ (paired with FAQPage
+ * JSON-LD emitted by the page) and internal links. Fully static HTML so AI
+ * crawlers that don't execute JavaScript can read every claim.
  */
 export default async function CompareExtras({
   locale,
@@ -36,13 +36,18 @@ export default async function CompareExtras({
 
   const factKeys = [
     'whatItIs',
+    'removes',
     'worksWith',
+    'input',
+    'multicam',
     'processing',
-    'speed',
     'output',
+    'preview',
+    'proof',
     'price',
     'guarantee',
   ] as const;
+  const testimonials = t.raw('compareShared.testimonials.items') as string[];
 
   const relatedCompare = COMPARE_SLUGS.filter((c) => c.slug !== slug);
 
@@ -51,9 +56,10 @@ export default async function CompareExtras({
       <div className="max-w-4xl mx-auto">
         {/* At a glance — consistent fact block across all compare pages */}
         <div className="mb-16">
-          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-2">
             {t('compareShared.atGlance.title')}
           </h2>
+          <p className="text-sm text-at-dim mb-6">{t('compareShared.updated')}</p>
           <div className="rounded-2xl border border-at-border overflow-hidden">
             <table className="w-full text-left">
               <tbody>
@@ -73,6 +79,23 @@ export default async function CompareExtras({
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* What editors say */}
+        <div className="mb-16">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
+            {t('compareShared.testimonials.title')}
+          </h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {testimonials.map((quote, i) => (
+              <li
+                key={i}
+                className="rounded-2xl border border-at-border bg-at-panel p-5 text-at-muted leading-relaxed"
+              >
+                {quote}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* FAQ */}

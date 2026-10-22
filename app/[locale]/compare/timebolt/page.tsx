@@ -26,10 +26,11 @@ export default async function CompareTimeboltPage({
     compareArticleJsonLd({
       siteUrl,
       slug: "timebolt",
-      headline: "AutoTrim vs TimeBolt: The Ultimate Comparison",
-      description:
-        "Detailed comparison between AutoTrim and TimeBolt for video editing. See why professionals are switching to AutoTrim for 48× faster workflow.",
+      headline: t("compareTimebolt.title"),
+      description: t("metadata.compareTimebolt.description"),
       datePublished: "2026-02-12",
+      dateModified: "2026-10-22",
+      locale,
     }),
     faqJsonLd(faqItems),
     breadcrumbJsonLd(siteUrl, [

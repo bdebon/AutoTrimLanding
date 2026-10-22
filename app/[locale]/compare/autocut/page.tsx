@@ -26,10 +26,11 @@ export default async function CompareAutocutPage({
     compareArticleJsonLd({
       siteUrl,
       slug: "autocut",
-      headline: "AutoTrim vs AutoCut: Standalone Speed vs Plugin Complexity",
-      description:
-        "Detailed comparison between AutoTrim and AutoCut. See why AutoTrim's standalone approach with local AI processing beats AutoCut's plugin limitations.",
+      headline: t("compareAutocut.title"),
+      description: t("metadata.compareAutocut.description"),
       datePublished: "2026-02-12",
+      dateModified: "2026-10-22",
+      locale,
     }),
     faqJsonLd(faqItems),
     breadcrumbJsonLd(siteUrl, [
