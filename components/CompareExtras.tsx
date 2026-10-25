@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import type { FaqItem } from '@/lib/seo';
+import { guideHref, type GuideSlug } from '@/lib/guides';
 
 const COMPARE_SLUGS: { slug: string; footerKey: string }[] = [
   { slug: 'final-cut-pro', footerKey: 'finalCut' },
@@ -10,18 +11,19 @@ const COMPARE_SLUGS: { slug: string; footerKey: string }[] = [
   { slug: 'descript', footerKey: 'descript' },
 ];
 
-// English-only guides (canonical /en URLs)
-const GUIDE_LINKS: { href: string; label: string }[] = [
-  { href: '/en/guides/how-to-remove-silence-final-cut-pro', label: 'How to Remove Silence in Final Cut Pro' },
-  { href: '/en/guides/best-silence-remover-final-cut-pro', label: 'Best Silence Remover for Final Cut Pro (2026)' },
-  { href: '/en/guides/remove-filler-words-from-video', label: 'How to Remove Filler Words from Video Automatically' },
+// Each guide in the reader's language when it exists, English otherwise
+// (the footer labels flag the English-only ones)
+const GUIDE_LINKS: { slug: GuideSlug; footerKey: string }[] = [
+  { slug: 'how-to-remove-silence-final-cut-pro', footerKey: 'removeSilenceFcp' },
+  { slug: 'best-silence-remover-final-cut-pro', footerKey: 'bestSilenceRemoverFcp' },
+  { slug: 'remove-filler-words-from-video', footerKey: 'fillerWords' },
 ];
 
 /**
  * Server-rendered extra sections for the /compare pages:
- * "at a glance" fact table, FAQ (paired with FAQPage JSON-LD emitted by the
- * page) and internal links. Fully static HTML so AI crawlers that don't
- * execute JavaScript can read every claim.
+ * "at a glance" fact table, what editors say, FAQ (paired with FAQPage
+ * JSON-LD emitted by the page) and internal links. Fully static HTML so AI
+ * crawlers that don't execute JavaScript can read every claim.
  */
 export default async function CompareExtras({
   locale,
@@ -36,13 +38,18 @@ export default async function CompareExtras({
 
   const factKeys = [
     'whatItIs',
+    'removes',
     'worksWith',
+    'input',
+    'multicam',
     'processing',
-    'speed',
     'output',
+    'preview',
+    'proof',
     'price',
     'guarantee',
   ] as const;
+  const testimonials = t.raw('compareShared.testimonials.items') as string[];
 
   const relatedCompare = COMPARE_SLUGS.filter((c) => c.slug !== slug);
 
@@ -51,9 +58,10 @@ export default async function CompareExtras({
       <div className="max-w-4xl mx-auto">
         {/* At a glance — consistent fact block across all compare pages */}
         <div className="mb-16">
-          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-2">
             {t('compareShared.atGlance.title')}
           </h2>
+          <p className="text-sm text-at-dim mb-6">{t('compareShared.updated')}</p>
           <div className="rounded-2xl border border-at-border overflow-hidden">
             <table className="w-full text-left">
               <tbody>
@@ -73,6 +81,23 @@ export default async function CompareExtras({
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* What editors say */}
+        <div className="mb-16">
+          <h2 className="font-display text-3xl font-bold text-at-text mb-6">
+            {t('compareShared.testimonials.title')}
+          </h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {testimonials.map((quote, i) => (
+              <li
+                key={i}
+                className="rounded-2xl border border-at-border bg-at-panel p-5 text-at-muted leading-relaxed"
+              >
+                {quote}
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* FAQ */}
@@ -97,12 +122,12 @@ export default async function CompareExtras({
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {GUIDE_LINKS.map((g) => (
-              <li key={g.href}>
+              <li key={g.slug}>
                 <Link
-                  href={g.href}
+                  href={guideHref(locale, g.slug)}
                   className="text-at-accent hover:text-at-accent hover:underline"
                 >
-                  {g.label}
+                  {t(`footer.guides.${g.footerKey}`)}
                 </Link>
               </li>
             ))}

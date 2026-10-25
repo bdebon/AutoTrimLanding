@@ -41,12 +41,18 @@ export function compareArticleJsonLd(opts: {
   headline: string;
   description: string;
   datePublished: string;
+  /** Last real content update; defaults to the build date. */
+  dateModified?: string;
+  /** Page locale; defaults to English. */
+  locale?: string;
 }) {
+  const locale = opts.locale || 'en';
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: opts.headline,
     description: opts.description,
+    inLanguage: locale,
     author: {
       '@type': 'Person',
       name: 'Benjamin Code',
@@ -61,10 +67,10 @@ export function compareArticleJsonLd(opts: {
       },
     },
     datePublished: opts.datePublished,
-    dateModified: new Date().toISOString(),
+    dateModified: opts.dateModified || new Date().toISOString(),
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${opts.siteUrl}/en/compare/${opts.slug}`,
+      '@id': `${opts.siteUrl}/${locale}/compare/${opts.slug}`,
     },
   };
 }

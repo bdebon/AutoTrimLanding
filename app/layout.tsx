@@ -5,6 +5,7 @@ import TrackingScripts from "./TrackingScripts";
 import ConsentBanner from "./ConsentBanner";
 import PostHogProvider from "./PostHogProvider";
 import localFont from "next/font/local";
+import { getLocale } from "next-intl/server";
 import "./globals.css";
 
 // The app's two variable families, self-hosted from the fontsource packages. next/font
@@ -95,13 +96,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The page's language follows the active locale: the next-intl middleware passes it
+  // to every /[locale] request. Pages outside [locale] (/legal, /privacy, /terms,
+  // /refund) never go through it, so i18n/request.ts falls back to "en" for them.
+  const locale = await getLocale();
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link rel="dns-prefetch" href="https://github.com" />
       </head>
@@ -157,7 +163,7 @@ export default function RootLayout({
                   "@type": "Offer",
                   "price": "149",
                   "priceCurrency": "USD",
-                  "description": "Lifetime license — one-time payment, all future updates included (launch price, regular $279)",
+                  "description": "Lifetime license — one-time payment, all future updates included",
                   "availability": "https://schema.org/InStock"
                 }
               ],

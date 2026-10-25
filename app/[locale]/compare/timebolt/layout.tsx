@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: socialImage(locale, "compare-timebolt"),
           width: 1200,
           height: 630,
-          alt: "AutoTrim vs TimeBolt Comparison",
+          alt: t("ogAlt"),
         },
       ],
       locale: localeMap[locale] || 'en_US',

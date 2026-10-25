@@ -7,6 +7,7 @@ import Logo from "@/components/landing/Logo";
 import { btn } from "@/components/landing/ui";
 import { trackEvent } from "@/lib/tracking";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
+import { guideHref, guidesIndexHref } from "@/lib/guides";
 
 const Footer = () => {
   const t = useTranslations();
@@ -83,16 +84,16 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Guides (English-only content) */}
+          {/* Guides: the reader's language when it exists, English otherwise (lib/guides.ts) */}
           <div>
             <h3 className={heading}>{t("footer.guides.title")}</h3>
             <ul className="mt-4 space-y-2.5">
-              <li><Link href="/en/guides/how-to-remove-silence-final-cut-pro" className={link}>{t("footer.guides.removeSilenceFcp")}</Link></li>
-              <li><Link href="/en/guides/best-silence-remover-final-cut-pro" className={link}>{t("footer.guides.bestSilenceRemoverFcp")}</Link></li>
-              <li><Link href="/en/guides/timebolt-alternative-mac" className={link}>{t("footer.guides.timeboltAlternative")}</Link></li>
-              <li><Link href="/en/guides/remove-filler-words-from-video" className={link}>{t("footer.guides.fillerWords")}</Link></li>
-              <li><Link href="/en/guides/descript-alternative-final-cut-pro" className={link}>{t("footer.guides.descriptAlternative")}</Link></li>
-              <li><Link href="/en/guides" className={link}>{t("footer.guides.allGuides")}</Link></li>
+              <li><Link href={guideHref(currentLocale, "how-to-remove-silence-final-cut-pro")} className={link}>{t("footer.guides.removeSilenceFcp")}</Link></li>
+              <li><Link href={guideHref(currentLocale, "best-silence-remover-final-cut-pro")} className={link}>{t("footer.guides.bestSilenceRemoverFcp")}</Link></li>
+              <li><Link href={guideHref(currentLocale, "timebolt-alternative-mac")} className={link}>{t("footer.guides.timeboltAlternative")}</Link></li>
+              <li><Link href={guideHref(currentLocale, "remove-filler-words-from-video")} className={link}>{t("footer.guides.fillerWords")}</Link></li>
+              <li><Link href={guideHref(currentLocale, "descript-alternative-final-cut-pro")} className={link}>{t("footer.guides.descriptAlternative")}</Link></li>
+              <li><Link href={guidesIndexHref(currentLocale)} className={link}>{t("footer.guides.allGuides")}</Link></li>
             </ul>
           </div>
 

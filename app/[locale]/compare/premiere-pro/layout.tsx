@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: socialImage(locale, "compare-premiere-pro"),
           width: 1200,
           height: 630,
-          alt: "AutoTrim vs Premiere Pro built-in tools comparison",
+          alt: t("ogAlt"),
         },
       ],
       locale: localeMap[locale] || 'en_US',

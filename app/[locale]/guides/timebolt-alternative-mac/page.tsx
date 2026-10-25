@@ -16,7 +16,7 @@ const TITLE = 'TimeBolt Alternative for Mac: Why Editors Switch to AutoTrim';
 const DESCRIPTION =
   'Looking for a TimeBolt alternative on Mac? AutoTrim processes all clips in parallel and exports one merged timeline instead of one XML per clip — with local AI and a $149 lifetime license. An honest side-by-side, including what TimeBolt still does better.';
 const SLUG = 'timebolt-alternative-mac';
-const UPDATED = 'July 8, 2026';
+const UPDATED = 'October 22, 2026';
 
 export const metadata: Metadata = {
   title: 'TimeBolt Alternative for Mac (2026) – AutoTrim, Honestly Compared',
@@ -65,11 +65,11 @@ const FAQ: FaqItem[] = [
   },
   {
     q: 'Can I try AutoTrim before paying?',
-    a: 'Yes. The free version processes and previews unlimited clips with no time limit. A license is only needed to export the timeline: $15/month, $119/year, or $149 one-time lifetime (launch price, regular $279), with a 14-day money-back guarantee.',
+    a: 'Yes. The free version processes and previews unlimited clips with no time limit. A license is only needed to export the timeline: $15/month, $119/year, or $149 one-time lifetime, with a 14-day money-back guarantee.',
   },
   {
     q: 'Does AutoTrim work with Final Cut Pro, Premiere and Resolve?',
-    a: 'Yes — it exports FCPXML for Final Cut Pro and XML for Premiere Pro and DaVinci Resolve. For Final Cut Pro editors this matters twice: FCP has no native silence remover and no plugin marketplace, so standalone tools are the only automatic option.',
+    a: 'Yes — it exports FCPXML for Final Cut Pro and XML for Premiere Pro and DaVinci Resolve. For Final Cut Pro editors this matters twice: FCP has no native silence remover, and while a few third-party effects can detect silence inside Final Cut Pro, cleaning up a whole shoot into one assembled timeline takes a standalone tool.',
   },
 ];
 
@@ -101,7 +101,7 @@ export default async function Page({
         },
       },
       datePublished: '2026-07-08',
-      dateModified: '2026-07-08',
+      dateModified: '2026-10-22',
       mainEntityOfPage: {
         '@type': 'WebPage',
         '@id': `${siteUrl}/en/guides/${SLUG}`,
@@ -153,8 +153,8 @@ export default async function Page({
             <>
               <strong>Sequential processing.</strong> Clips go through one at a
               time, so total wait grows linearly with every rush you shot.
-              AutoTrim runs several clips simultaneously — around 1 minute for
-              30 minutes of footage, roughly 48× faster than cutting manually.
+              AutoTrim processes several clips simultaneously, so you drop in
+              the whole shoot at once.
             </>,
             <>
               <strong>Subscription for AI features.</strong> TimeBolt&apos;s
@@ -173,7 +173,7 @@ export default async function Page({
             ['Import', 'All clips at once (drag & drop)', 'One clip at a time'],
             ['Processing', 'Parallel, local AI', 'Sequential'],
             ['Output', 'One merged XML/FCPXML timeline', 'One XML per clip — manual merge'],
-            ['Filler words (um, uh)', 'Local AI transcription (experimental)', 'AI features require subscription'],
+            ['Filler words (um, uh)', 'On your machine, in about ten languages including English and French', 'AI features require subscription'],
             ['Extras (zooms, jump cuts)', 'None — by design, the edit stays in your NLE', 'Punch-in zoom, jump cuts, fast-forward'],
             ['Platforms', 'macOS & Windows', 'macOS & Windows'],
             ['Pricing', 'Free version · $15/mo · $119/yr · $149 lifetime', 'Paid license, subscription for AI features'],

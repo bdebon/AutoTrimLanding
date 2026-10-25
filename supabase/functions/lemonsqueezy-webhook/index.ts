@@ -3,21 +3,23 @@
 // pushes the person and events to Customer.io (EU) and the revenue events to PostHog.
 // GET / responds "ok" — used by the keep-alive ping.
 //
+// A lifetime purchase cancels the buyer's subscription (lifetime-switch.ts).
 // Purchases made with consent to ads are also reported to Meta (meta.ts).
 //
 // Secrets come from the Supabase function environment (Dashboard → Edge Functions → Secrets):
-// CIO_SITE_ID, CIO_API_KEY, LS_SIGNING_SECRET, optional LS_API_KEY, and for Meta META_PIXEL_ID,
-// META_CAPI_TOKEN and optional META_TEST_EVENT_CODE. This repository is public: never write
-// their values here.
+// CIO_SITE_ID, CIO_API_KEY, LS_SIGNING_SECRET, LS_API_KEY (without it, a lifetime purchase does
+// not cancel the subscription), and for Meta META_PIXEL_ID, META_CAPI_TOKEN and optional
+// META_TEST_EVENT_CODE. This repository is public: never write their values here.
 
 import { Buffer } from "node:buffer";
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { cancelSubscriptionsOf, ownsLifetime } from "./lifetime-switch.ts";
 import { reportPurchase, type MetaConfig } from "./meta.ts";
 
 const CIO_SITE_ID = Deno.env.get("CIO_SITE_ID") ?? "";
 const CIO_API_KEY = Deno.env.get("CIO_API_KEY") ?? "";
 const LS_SIGNING_SECRET = Deno.env.get("LS_SIGNING_SECRET") ?? "";
-const LS_API_KEY = Deno.env.get("LS_API_KEY") ?? ""; // optional — enables country lookup for language routing
+const LS_API_KEY = Deno.env.get("LS_API_KEY") ?? ""; // subscription cancel on lifetime purchase, country lookup
 const META: MetaConfig = {
   pixelId: Deno.env.get("META_PIXEL_ID") ?? "",
   token: Deno.env.get("META_CAPI_TOKEN") ?? "",
@@ -183,6 +185,21 @@ Deno.serve(async (req: Request) => {
       name: "purchase",
       data: { license_type: lt, product_name: item.product_name ?? "", variant_name: item.variant_name ?? "", total_usd: totalUsd, order_id: orderId },
     });
+
+    // A subscriber who buys the lifetime license is never charged again
+    if (lt === "lifetime" && attrs.status === "paid") {
+      const cancelled = await cancelSubscriptionsOf(attrs.user_email ?? "", LS_API_KEY);
+      if (cancelled.length) {
+        await posthog("subscription_switched_to_lifetime", visitorId || email, {
+          subscriptions_cancelled: cancelled.length,
+          variant_name: cancelled[0].variantName,
+          ends_at: cancelled[0].endsAt,
+          order_id: orderId,
+          $set: { email, subscription_status: "none" },
+        });
+        return new Response(`ok purchase (Meta: ${meta}, ${cancelled.length} subscription cancelled)`);
+      }
+    }
     return new Response(`ok purchase (Meta: ${meta})`);
   }
 
@@ -190,6 +207,10 @@ Deno.serve(async (req: Request) => {
     if (attrs.product_id !== 637170) return new Response("ignored (other product)");
     const email = (attrs.user_email ?? "").toLowerCase();
     if (!email) return new Response("ignored (no email)");
+    // Ended by the lifetime license (see order_created): not a departure, so no exit survey
+    if (!testMode && (await ownsLifetime(attrs.user_email, LS_API_KEY))) {
+      return new Response("ignored (replaced by the lifetime license)");
+    }
     await posthog(testMode ? "subscription_cancelled_test" : "subscription_cancelled", email, {
       variant_name: attrs.variant_name ?? "",
       ends_at: attrs.ends_at ?? "",

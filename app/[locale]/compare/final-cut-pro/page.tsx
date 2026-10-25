@@ -26,10 +26,11 @@ export default async function CompareFinalCutPage({
     compareArticleJsonLd({
       siteUrl,
       slug: "final-cut-pro",
-      headline: "AutoTrim for Final Cut Pro: The Missing Silence Remover",
-      description:
-        "Final Cut Pro has no native silence removal and no third-party plugin marketplace for it. AutoTrim fills the gap — drop your clips, get a ready-to-import FCPXML timeline.",
+      headline: t("compareFinalCut.title"),
+      description: t("metadata.compareFinalCut.description"),
       datePublished: "2026-04-24",
+      dateModified: "2026-10-22",
+      locale,
     }),
     faqJsonLd(faqItems),
     breadcrumbJsonLd(siteUrl, [
