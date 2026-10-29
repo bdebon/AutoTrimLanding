@@ -202,7 +202,7 @@ export default async function Page({
               'Locally on your machine',
               'One merged FCPXML/XML timeline',
               'Yes — native FCPXML export',
-              'Free version · $15/mo · $119/yr · $149 lifetime',
+              'Free version · $19/mo · $149/yr · $249 lifetime',
             ],
             [
               <strong key="d">Descript</strong>,

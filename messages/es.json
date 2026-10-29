@@ -74,7 +74,7 @@
       },
       "monthly": {
         "title": "Mensual",
-        "price": "$15",
+        "price": "$19",
         "period": "/mes",
         "billing": "Facturado mensualmente",
         "features": [
@@ -87,7 +87,7 @@
       },
       "annual": {
         "title": "Anual",
-        "price": "$119",
+        "price": "$149",
         "period": "/año",
         "billing": "Facturado anualmente",
         "features": [
@@ -101,7 +101,7 @@
       "lifetime": {
         "title": "Licencia de Por Vida",
         "originalPrice": "",
-        "price": "$149",
+        "price": "$249",
         "period": "una vez",
         "badge": "Mejor Valor",
         "earlyBird": "Pagas una vez y es tuyo para siempre",
@@ -269,7 +269,7 @@
         },
         "pricing": {
           "label": "Precio",
-          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)",
+          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)",
           "timebolt": "Licencia de pago tras una prueba gratuita; consulta los precios actuales en el sitio de TimeBolt"
         },
         "bestFor": {
@@ -311,7 +311,7 @@
       },
       "5": {
         "q": "¿Cuánto cuesta AutoTrim?",
-        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
+        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
       }
     }
   },
@@ -357,7 +357,7 @@
         },
         "pricing": {
           "label": "Precio",
-          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)",
+          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)",
           "autocut": "Suscripción mensual o anual"
         },
         "bestFor": {
@@ -387,7 +387,7 @@
       },
       "2": {
         "q": "¿Necesito una suscripción para usar AutoTrim?",
-        "a": "No. Gratis para probar, con vistas previas ilimitadas. Para exportar, elige 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único). Tienes una garantía de devolución de 14 días."
+        "a": "No. Gratis para probar, con vistas previas ilimitadas. Para exportar, elige 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único). Tienes una garantía de devolución de 14 días."
       },
       "3": {
         "q": "¿Se sube mi material a internet?",
@@ -441,7 +441,7 @@
         },
         "pricing": {
           "label": "Precio",
-          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)",
+          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)",
           "descript": "Planes de suscripción"
         },
         "bestFor": {
@@ -475,7 +475,7 @@
       },
       "3": {
         "q": "¿Cómo se comparan los precios de AutoTrim y Descript?",
-        "a": "Descript se vende por suscripción. AutoTrim es gratis para probar con vistas previas ilimitadas y, para exportar, pagas 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único), con una garantía de devolución de 14 días."
+        "a": "Descript se vende por suscripción. AutoTrim es gratis para probar con vistas previas ilimitadas y, para exportar, pagas 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único), con una garantía de devolución de 14 días."
       },
       "4": {
         "q": "¿Tengo que aprender un editor nuevo?",
@@ -539,7 +539,7 @@
         },
         "pricing": {
           "label": "Precio",
-          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)",
+          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)",
           "finalCut": "Incluido en Final Cut Pro; lo que pagas es el tiempo que pasas cortando a mano"
         },
         "bestFor": {
@@ -589,7 +589,7 @@
       },
       "7": {
         "q": "¿Cuánto cuesta AutoTrim?",
-        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
+        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
       },
       "8": {
         "q": "¿Cuánto tiempo de edición ahorra?",
@@ -639,7 +639,7 @@
         },
         "pricing": {
           "label": "Precio",
-          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)",
+          "autoTrim": "Gratis para probar, con vistas previas ilimitadas. Exportación: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)",
           "premiere": "Incluido en tu suscripción de Premiere Pro"
         },
         "bestFor": {
@@ -685,7 +685,7 @@
       },
       "6": {
         "q": "¿Cuánto cuesta AutoTrim?",
-        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
+        "a": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único). Cada licencia funciona en 2 equipos y tienes una garantía de devolución de 14 días."
       }
     }
   },
@@ -731,7 +731,7 @@
         },
         "price": {
           "label": "Precio",
-          "value": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 15 USD al mes, 119 USD al año o 149 USD de por vida (pago único)."
+          "value": "Gratis para probar, con vistas previas ilimitadas. Para exportar necesitas una licencia: 19 USD al mes, 149 USD al año o 249 USD de por vida (pago único)."
         },
         "guarantee": {
           "label": "Garantía",
@@ -948,7 +948,7 @@
       },
       "monthly": {
         "title": "Mensual",
-        "price": "$15",
+        "price": "$19",
         "period": "/ mes",
         "billing": "Cancela cuando quieras",
         "features": [
@@ -959,9 +959,9 @@
       },
       "annual": {
         "title": "Anual",
-        "price": "$119",
+        "price": "$149",
         "period": "/ año",
-        "billing": "Equivale a $9.92 al mes",
+        "billing": "Equivale a $12.42 al mes",
         "features": [
           "Exportación de línea de tiempo y MP4",
           "1 año de actualizaciones",
@@ -970,7 +970,7 @@
       },
       "lifetime": {
         "title": "De por vida",
-        "price": "$149",
+        "price": "$249",
         "period": "pago único",
         "badge": "Pago único",
         "billing": "Incluye la v2 y todas las actualizaciones que vengan después",

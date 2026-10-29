@@ -147,21 +147,21 @@ export default async function RootLayout({
                 },
                 {
                   "@type": "Offer",
-                  "price": "15",
+                  "price": "19",
                   "priceCurrency": "USD",
-                  "description": "Monthly license — $15/month, cancel anytime",
-                  "availability": "https://schema.org/InStock"
-                },
-                {
-                  "@type": "Offer",
-                  "price": "119",
-                  "priceCurrency": "USD",
-                  "description": "Annual license — $119/year",
+                  "description": "Monthly license — $19/month, cancel anytime",
                   "availability": "https://schema.org/InStock"
                 },
                 {
                   "@type": "Offer",
                   "price": "149",
+                  "priceCurrency": "USD",
+                  "description": "Annual license — $149/year",
+                  "availability": "https://schema.org/InStock"
+                },
+                {
+                  "@type": "Offer",
+                  "price": "249",
                   "priceCurrency": "USD",
                   "description": "Lifetime license — one-time payment, all future updates included",
                   "availability": "https://schema.org/InStock"

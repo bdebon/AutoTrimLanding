@@ -12,13 +12,13 @@ Key facts (updated October 2026, AutoTrim 2):
 - Other exports: the already-cut video (one MP4 per source) or one numbered clip per cut (for CapCut).
 - Privacy: all processing is local. Nothing is uploaded, unlike cloud tools such as Descript.
 - Measured: across about 2,500 hours of footage run through AutoTrim, the median share of silence is one third.
-- Pricing: free to try with unlimited previews; exporting requires a license: $15/month, $119/year, or $149 lifetime (one-time payment). 14-day money-back guarantee. Each license works on 2 computers.
+- Pricing: free to try with unlimited previews; exporting requires a license: $19/month, $149/year, or $249 lifetime (one-time payment). 14-day money-back guarantee. Each license works on 2 computers.
 - Made by Benjamin Code, a YouTuber and developer (https://www.youtube.com/@BenjaminCode).
 
 ## Key pages
 
 - [Home](https://autotrim.app/en): What AutoTrim 2 does (silences, hesitations, multicam, editable timeline, local processing). Also in [French](https://autotrim.app/fr) and [Spanish](https://autotrim.app/es).
-- [Pricing](https://autotrim.app/en/pricing): Free, $15/month, $119/year, $149 lifetime
+- [Pricing](https://autotrim.app/en/pricing): Free, $19/month, $149/year, $249 lifetime
 - [Download](https://autotrim.app/en/download): Free download for macOS and Windows
 
 ## Guides

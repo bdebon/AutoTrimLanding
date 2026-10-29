@@ -18,7 +18,7 @@ const FAQ = [
   },
   {
     q: 'Is there a completely free silence remover for Final Cut Pro?',
-    a: 'The only fully free method is cutting silences by hand with the blade tool. AutoTrim is free to try, with unlimited previews on your own footage, but exporting the timeline needs a license ($15/month, $119/year or $149 lifetime).',
+    a: 'The only fully free method is cutting silences by hand with the blade tool. AutoTrim is free to try, with unlimited previews on your own footage, but exporting the timeline needs a license ($19/month, $149/year or $249 lifetime).',
   },
   {
     q: 'Is there a silence-removal plugin for Final Cut Pro?',
@@ -77,7 +77,7 @@ function Body({ locale }: { locale: string }) {
             'One assembled FCPXML timeline',
             'All the footage at once, one output',
             'Local — nothing uploaded',
-            'Free to try · $15/mo · $119/yr · $149 lifetime',
+            'Free to try · $19/mo · $149/yr · $249 lifetime',
           ],
           [
             <strong key="t">2. TimeBolt</strong>,
@@ -126,7 +126,7 @@ function Body({ locale }: { locale: string }) {
           <>Multicam: it finds the files of one take (several cameras, a separate audio recorder), syncs them and only cuts when nobody speaks.</>,
           <>A preview to hear what was removed before you export. Audio-only files work too.</>,
           <>Local processing — nothing uploaded, client footage stays private.</>,
-          <>Free to try with unlimited previews; export needs a license: $15/mo, $119/yr or $149 lifetime. 14-day money-back guarantee.</>,
+          <>Free to try with unlimited previews; export needs a license: $19/mo, $149/yr or $249 lifetime. 14-day money-back guarantee.</>,
         ]}
       />
       <P>

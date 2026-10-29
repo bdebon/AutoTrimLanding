@@ -14,7 +14,7 @@ import { faqJsonLd, breadcrumbJsonLd, type FaqItem } from '@/lib/seo';
 
 const TITLE = 'TimeBolt Alternative for Mac: Why Editors Switch to AutoTrim';
 const DESCRIPTION =
-  'Looking for a TimeBolt alternative on Mac? AutoTrim processes all clips in parallel and exports one merged timeline instead of one XML per clip — with local AI and a $149 lifetime license. An honest side-by-side, including what TimeBolt still does better.';
+  'Looking for a TimeBolt alternative on Mac? AutoTrim processes all clips in parallel and exports one merged timeline instead of one XML per clip — with local AI and a $249 lifetime license. An honest side-by-side, including what TimeBolt still does better.';
 const SLUG = 'timebolt-alternative-mac';
 const UPDATED = 'October 22, 2026';
 
@@ -65,7 +65,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: 'Can I try AutoTrim before paying?',
-    a: 'Yes. The free version processes and previews unlimited clips with no time limit. A license is only needed to export the timeline: $15/month, $119/year, or $149 one-time lifetime, with a 14-day money-back guarantee.',
+    a: 'Yes. The free version processes and previews unlimited clips with no time limit. A license is only needed to export the timeline: $19/month, $149/year, or $249 one-time lifetime, with a 14-day money-back guarantee.',
   },
   {
     q: 'Does AutoTrim work with Final Cut Pro, Premiere and Resolve?',
@@ -136,7 +136,7 @@ export default async function Page({
             clips are processed <strong>in parallel</strong> (not one at a
             time), and the output is <strong>one merged XML/FCPXML timeline</strong>{' '}
             (not one XML per clip to reassemble by hand). Processing is 100%
-            local, and there&apos;s a $149 lifetime license instead of a
+            local, and there&apos;s a $249 lifetime license instead of a
             subscription for AI features.
           </p>
         </AnswerBox>
@@ -161,7 +161,7 @@ export default async function Page({
               AI-powered options require ongoing fees. AutoTrim&apos;s AI
               (transcription-based silence and filler-word detection) runs
               locally at no extra cost, and the Lifetime license is a one-time
-              $149.
+              $249.
             </>,
           ]}
         />
@@ -176,7 +176,7 @@ export default async function Page({
             ['Filler words (um, uh)', 'On your machine, in about ten languages including English and French', 'AI features require subscription'],
             ['Extras (zooms, jump cuts)', 'None — by design, the edit stays in your NLE', 'Punch-in zoom, jump cuts, fast-forward'],
             ['Platforms', 'macOS & Windows', 'macOS & Windows'],
-            ['Pricing', 'Free version · $15/mo · $119/yr · $149 lifetime', 'Paid license, subscription for AI features'],
+            ['Pricing', 'Free version · $19/mo · $149/yr · $249 lifetime', 'Paid license, subscription for AI features'],
           ]}
         />
 

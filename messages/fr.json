@@ -74,7 +74,7 @@
       },
       "monthly": {
         "title": "Mensuel",
-        "price": "$15",
+        "price": "$19",
         "period": "/mois",
         "billing": "Facturé mensuellement",
         "features": [
@@ -87,7 +87,7 @@
       },
       "annual": {
         "title": "Annuel",
-        "price": "$119",
+        "price": "$149",
         "period": "/an",
         "billing": "Facturé annuellement",
         "features": [
@@ -101,7 +101,7 @@
       "lifetime": {
         "title": "Licence à vie",
         "originalPrice": "",
-        "price": "$149",
+        "price": "$249",
         "period": "une fois",
         "badge": "Meilleure valeur",
         "earlyBird": "Payez une fois, gardez-le pour toujours",
@@ -269,7 +269,7 @@
         },
         "pricing": {
           "label": "Prix",
-          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)",
+          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)",
           "timebolt": "Licence payante après un essai gratuit ; voir le site de TimeBolt pour les prix actuels"
         },
         "bestFor": {
@@ -311,7 +311,7 @@
       },
       "5": {
         "q": "Combien coûte AutoTrim ?",
-        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
+        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
       }
     }
   },
@@ -357,7 +357,7 @@
         },
         "pricing": {
           "label": "Prix",
-          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)",
+          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)",
           "autocut": "Abonnement mensuel ou annuel"
         },
         "bestFor": {
@@ -387,7 +387,7 @@
       },
       "2": {
         "q": "Faut-il un abonnement pour utiliser AutoTrim ?",
-        "a": "Non. Gratuit à l'essai, avec des previews illimitées. Pour exporter, choisissez 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique). Garantie satisfait ou remboursé de 14 jours."
+        "a": "Non. Gratuit à l'essai, avec des previews illimitées. Pour exporter, choisissez 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique). Garantie satisfait ou remboursé de 14 jours."
       },
       "3": {
         "q": "Mes rushes sont-ils envoyés en ligne ?",
@@ -441,7 +441,7 @@
         },
         "pricing": {
           "label": "Prix",
-          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)",
+          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)",
           "descript": "Formules par abonnement"
         },
         "bestFor": {
@@ -475,7 +475,7 @@
       },
       "3": {
         "q": "Comment se comparent les prix d'AutoTrim et de Descript ?",
-        "a": "Descript est vendu par abonnement. AutoTrim est gratuit à l'essai avec des previews illimitées ; pour exporter, vous payez 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique), avec une garantie satisfait ou remboursé de 14 jours."
+        "a": "Descript est vendu par abonnement. AutoTrim est gratuit à l'essai avec des previews illimitées ; pour exporter, vous payez 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique), avec une garantie satisfait ou remboursé de 14 jours."
       },
       "4": {
         "q": "Faut-il apprendre un nouveau logiciel ?",
@@ -539,7 +539,7 @@
         },
         "pricing": {
           "label": "Prix",
-          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)",
+          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)",
           "finalCut": "Inclus dans Final Cut Pro ; le coût, c'est le temps passé à couper à la main"
         },
         "bestFor": {
@@ -589,7 +589,7 @@
       },
       "7": {
         "q": "Combien coûte AutoTrim ?",
-        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
+        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
       },
       "8": {
         "q": "Combien de temps de montage cela fait-il gagner ?",
@@ -639,7 +639,7 @@
         },
         "pricing": {
           "label": "Prix",
-          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)",
+          "autoTrim": "Gratuit à l'essai, avec des previews illimitées. Export : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)",
           "premiere": "Inclus dans votre abonnement Premiere Pro"
         },
         "bestFor": {
@@ -685,7 +685,7 @@
       },
       "6": {
         "q": "Combien coûte AutoTrim ?",
-        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
+        "a": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique). Chaque licence fonctionne sur 2 ordinateurs, avec une garantie satisfait ou remboursé de 14 jours."
       }
     }
   },
@@ -731,7 +731,7 @@
         },
         "price": {
           "label": "Prix",
-          "value": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 15 $/mois, 119 $/an ou 149 $ à vie (paiement unique)."
+          "value": "Gratuit à l'essai, avec des previews illimitées. L'export nécessite une licence : 19 $/mois, 149 $/an ou 249 $ à vie (paiement unique)."
         },
         "guarantee": {
           "label": "Garantie",
@@ -948,7 +948,7 @@
       },
       "monthly": {
         "title": "Mensuel",
-        "price": "$15",
+        "price": "$19",
         "period": "/ mois",
         "billing": "Résiliable à tout moment",
         "features": [
@@ -959,9 +959,9 @@
       },
       "annual": {
         "title": "Annuel",
-        "price": "$119",
+        "price": "$149",
         "period": "/ an",
-        "billing": "Soit $9,92 par mois",
+        "billing": "Soit $12,42 par mois",
         "features": [
           "Export timeline et MP4",
           "1 an de mises à jour",
@@ -970,7 +970,7 @@
       },
       "lifetime": {
         "title": "Licence à vie",
-        "price": "$149",
+        "price": "$249",
         "period": "une fois",
         "badge": "Paiement unique",
         "billing": "La v2 incluse, comme toutes les suivantes",

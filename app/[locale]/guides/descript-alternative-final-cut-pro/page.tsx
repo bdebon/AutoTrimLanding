@@ -65,7 +65,7 @@ const FAQ: FaqItem[] = [
   },
   {
     q: 'Is AutoTrim cheaper than Descript?',
-    a: 'Descript is subscription-only. AutoTrim has a free version (unlimited processing and previews), then $15/month, $119/year, or a one-time $149 lifetime license — pay once and stop. All paid plans have a 14-day money-back guarantee.',
+    a: 'Descript is subscription-only. AutoTrim has a free version (unlimited processing and previews), then $19/month, $149/year, or a one-time $249 lifetime license — pay once and stop. All paid plans have a 14-day money-back guarantee.',
   },
   {
     q: 'When is Descript still the better choice?',
@@ -136,7 +136,7 @@ export default async function Page({
             : it removes silences and filler words from all your clips using AI
             that runs locally on your Mac, then exports{' '}
             <strong>one merged FCPXML timeline</strong> straight into FCP. No
-            uploads, no subscription required ($149 lifetime option), no
+            uploads, no subscription required ($249 lifetime option), no
             switching editors. Descript remains the better pick if you want
             text-document-style editing and an all-in-one production suite.
           </p>
@@ -165,7 +165,7 @@ export default async function Page({
             ['Filler words (um, uh)', 'Yes — on your machine, in about ten languages', 'Yes'],
             ['Text-based editing', 'No — by design', 'Yes, its core workflow'],
             ['Works offline', 'Yes', 'Limited — cloud-first'],
-            ['Pricing', 'Free version · $15/mo · $119/yr · $149 lifetime', 'Subscription only'],
+            ['Pricing', 'Free version · $19/mo · $149/yr · $249 lifetime', 'Subscription only'],
           ]}
         />
 
@@ -175,7 +175,7 @@ export default async function Page({
             <><strong>Speed on real files.</strong> No upload step: gigabytes of rushes start processing the second you drop them.</>,
             <><strong>Client confidentiality.</strong> Unreleased and NDA footage never leaves your machine — nothing to disclose, nothing to leak.</>,
             <><strong>Offline work.</strong> Planes, locations, bad hotel Wi-Fi: the AI runs on your hardware.</>,
-            <><strong>No recurring dependency.</strong> With the $149 lifetime license, the tool keeps working whether or not you keep paying anyone.</>,
+            <><strong>No recurring dependency.</strong> With the $249 lifetime license, the tool keeps working whether or not you keep paying anyone.</>,
           ]}
         />
 

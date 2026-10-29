@@ -69,7 +69,7 @@ const FAQ = [
   },
   {
     q: 'How much does AutoTrim cost?',
-    a: 'It is free to try, with unlimited previews. Exporting the timeline needs a license: $15/month, $119/year, or $149 one-time for lifetime access. There is a 14-day money-back guarantee.',
+    a: 'It is free to try, with unlimited previews. Exporting the timeline needs a license: $19/month, $149/year, or $249 one-time for lifetime access. There is a 14-day money-back guarantee.',
   },
   {
     q: 'What if I filmed with several cameras or recorded audio separately?',
@@ -152,7 +152,7 @@ function Body({ locale }: { locale: string }) {
           ['Multicam', 'Sync angles and audio yourself', 'Files of one take found and synced; cuts only when nobody speaks'],
           ['Hesitations (um, uh)', 'Find and cut by ear', 'Detected in about ten languages, including English and French'],
           ['Control', 'Total', 'Preview before export; every cut stays adjustable in FCP'],
-          ['Cost', 'Free (your time)', 'Free to try · $15/mo · $119/yr · $149 lifetime'],
+          ['Cost', 'Free (your time)', 'Free to try · $19/mo · $149/yr · $249 lifetime'],
           ['Privacy', 'Local', 'Local — nothing uploaded'],
         ]}
       />
