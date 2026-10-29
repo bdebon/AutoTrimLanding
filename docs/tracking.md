@@ -33,7 +33,7 @@ is kept), `hooks/useAttribution.ts` (what is handed to the app and the checkout)
 | Every page | `$pageview` | `PageView` | (container) |
 | Download click | `download_clicked` | `Lead` | `download_click` |
 | Consent saved | `consent_saved` (`analytics`, `ads`) | | |
-| Purchase (LemonSqueezy webhook) | `purchase` | | |
+| Purchase (LemonSqueezy webhook) | `purchase` | `Purchase`, from the webhook (Conversions API), with consent to ads | |
 
 Download clicks go through `trackDownload` in `lib/tracking.ts`; the purchase is recorded by
 `supabase/functions/lemonsqueezy-webhook`, under the visitor id the checkout carried.
@@ -71,3 +71,10 @@ utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_conten
 In PostHog (project 218035), break `purchase` down by `utm_source` / `utm_campaign`, or start
 from `$pageview` with `utm_source = meta` and follow the persons. `attribution = visitor_id` on a
 purchase means the visit, the app and the purchase are on one person.
+
+## Purchases reported to Meta
+
+The checkout is on LemonSqueezy, where the pixel does not run, so the webhook reports the
+purchase to Meta itself (`supabase/functions/lemonsqueezy-webhook/meta.ts`), only when the
+checkout carried `ads_consent`. The `meta_capi` property of `purchase` says whether it went
+(`sent`) or why not. Setup and testing: `.agents/infra/lemonsqueezy-customerio-bridge.md`.
