@@ -74,7 +74,7 @@
       },
       "monthly": {
         "title": "Monthly",
-        "price": "$15",
+        "price": "$19",
         "period": "/month",
         "billing": "Billed monthly",
         "features": [
@@ -87,7 +87,7 @@
       },
       "annual": {
         "title": "Annual",
-        "price": "$119",
+        "price": "$149",
         "period": "/year",
         "billing": "Billed yearly",
         "features": [
@@ -101,7 +101,7 @@
       "lifetime": {
         "title": "Lifetime License",
         "originalPrice": "",
-        "price": "$149",
+        "price": "$249",
         "period": "one-time",
         "badge": "Best Value",
         "earlyBird": "Pay once, keep it forever",
@@ -269,7 +269,7 @@
         },
         "pricing": {
           "label": "Price",
-          "autoTrim": "Free to try, with unlimited previews. Export: $15/month, $119/year or $149 lifetime (one-time payment)",
+          "autoTrim": "Free to try, with unlimited previews. Export: $19/month, $149/year or $249 lifetime (one-time payment)",
           "timebolt": "Paid license after a free trial; see TimeBolt's site for current prices"
         },
         "bestFor": {
@@ -311,7 +311,7 @@
       },
       "5": {
         "q": "How much does AutoTrim cost?",
-        "a": "Free to try, with unlimited previews. Exporting needs a license: $15/month, $119/year or $149 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
+        "a": "Free to try, with unlimited previews. Exporting needs a license: $19/month, $149/year or $249 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
       }
     }
   },
@@ -357,7 +357,7 @@
         },
         "pricing": {
           "label": "Price",
-          "autoTrim": "Free to try, with unlimited previews. Export: $15/month, $119/year or $149 lifetime (one-time payment)",
+          "autoTrim": "Free to try, with unlimited previews. Export: $19/month, $149/year or $249 lifetime (one-time payment)",
           "autocut": "Subscription, billed monthly or yearly"
         },
         "bestFor": {
@@ -387,7 +387,7 @@
       },
       "2": {
         "q": "Do I need a subscription to use AutoTrim?",
-        "a": "No. Free to try, with unlimited previews. To export, choose $15/month, $119/year or $149 lifetime (one-time payment). There is a 14-day money-back guarantee."
+        "a": "No. Free to try, with unlimited previews. To export, choose $19/month, $149/year or $249 lifetime (one-time payment). There is a 14-day money-back guarantee."
       },
       "3": {
         "q": "Is my footage uploaded?",
@@ -441,7 +441,7 @@
         },
         "pricing": {
           "label": "Price",
-          "autoTrim": "Free to try, with unlimited previews. Export: $15/month, $119/year or $149 lifetime (one-time payment)",
+          "autoTrim": "Free to try, with unlimited previews. Export: $19/month, $149/year or $249 lifetime (one-time payment)",
           "descript": "Subscription plans"
         },
         "bestFor": {
@@ -475,7 +475,7 @@
       },
       "3": {
         "q": "How does AutoTrim's pricing compare with Descript?",
-        "a": "Descript is sold by subscription. AutoTrim is free to try with unlimited previews; to export, you pay $15/month, $119/year or $149 lifetime (one-time payment), with a 14-day money-back guarantee."
+        "a": "Descript is sold by subscription. AutoTrim is free to try with unlimited previews; to export, you pay $19/month, $149/year or $249 lifetime (one-time payment), with a 14-day money-back guarantee."
       },
       "4": {
         "q": "Do I have to learn a new editor?",
@@ -539,7 +539,7 @@
         },
         "pricing": {
           "label": "Price",
-          "autoTrim": "Free to try, with unlimited previews. Export: $15/month, $119/year or $149 lifetime (one-time payment)",
+          "autoTrim": "Free to try, with unlimited previews. Export: $19/month, $149/year or $249 lifetime (one-time payment)",
           "finalCut": "Included with Final Cut Pro; the cost is the time spent cutting by hand"
         },
         "bestFor": {
@@ -589,7 +589,7 @@
       },
       "7": {
         "q": "How much does AutoTrim cost?",
-        "a": "Free to try, with unlimited previews. Exporting needs a license: $15/month, $119/year or $149 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
+        "a": "Free to try, with unlimited previews. Exporting needs a license: $19/month, $149/year or $249 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
       },
       "8": {
         "q": "How much editing time does it save?",
@@ -639,7 +639,7 @@
         },
         "pricing": {
           "label": "Price",
-          "autoTrim": "Free to try, with unlimited previews. Export: $15/month, $119/year or $149 lifetime (one-time payment)",
+          "autoTrim": "Free to try, with unlimited previews. Export: $19/month, $149/year or $249 lifetime (one-time payment)",
           "premiere": "Included in your Premiere Pro subscription"
         },
         "bestFor": {
@@ -685,7 +685,7 @@
       },
       "6": {
         "q": "How much does AutoTrim cost?",
-        "a": "Free to try, with unlimited previews. Exporting needs a license: $15/month, $119/year or $149 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
+        "a": "Free to try, with unlimited previews. Exporting needs a license: $19/month, $149/year or $249 lifetime (one-time payment). Each license works on 2 computers, and there is a 14-day money-back guarantee."
       }
     }
   },
@@ -731,7 +731,7 @@
         },
         "price": {
           "label": "Price",
-          "value": "Free to try, with unlimited previews. Export needs a license: $15/month, $119/year or $149 lifetime (one-time payment)."
+          "value": "Free to try, with unlimited previews. Export needs a license: $19/month, $149/year or $249 lifetime (one-time payment)."
         },
         "guarantee": {
           "label": "Guarantee",
@@ -948,7 +948,7 @@
       },
       "monthly": {
         "title": "Monthly",
-        "price": "$15",
+        "price": "$19",
         "period": "/ month",
         "billing": "Cancel anytime",
         "features": [
@@ -959,9 +959,9 @@
       },
       "annual": {
         "title": "Annual",
-        "price": "$119",
+        "price": "$149",
         "period": "/ year",
-        "billing": "That's $9.92 a month",
+        "billing": "That's $12.42 a month",
         "features": [
           "Timeline and MP4 export",
           "1 year of updates",
@@ -970,7 +970,7 @@
       },
       "lifetime": {
         "title": "Lifetime",
-        "price": "$149",
+        "price": "$249",
         "period": "one-time",
         "badge": "One-time payment",
         "billing": "v2 included, like every update after it",

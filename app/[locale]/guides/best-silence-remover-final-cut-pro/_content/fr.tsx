@@ -19,7 +19,7 @@ const FAQ = [
   },
   {
     q: 'Existe-t-il un outil entièrement gratuit pour couper les silences dans Final Cut Pro ?',
-    a: 'La seule méthode entièrement gratuite est la coupe à la main avec l’outil Lame. AutoTrim est gratuit à l’essai, avec des previews illimitées sur vos propres rushes, mais l’export de la timeline demande une licence (15 $/mois, 119 $/an ou 149 $ à vie).',
+    a: 'La seule méthode entièrement gratuite est la coupe à la main avec l’outil Lame. AutoTrim est gratuit à l’essai, avec des previews illimitées sur vos propres rushes, mais l’export de la timeline demande une licence (19 $/mois, 149 $/an ou 249 $ à vie).',
   },
   {
     q: 'Existe-t-il un plugin pour supprimer les silences dans Final Cut Pro ?',
@@ -82,7 +82,7 @@ function Body({ locale }: { locale: string }) {
             'Une seule timeline FCPXML assemblée',
             'Tous les rushes d’un coup, une seule sortie',
             'Local : rien n’est envoyé en ligne',
-            'Gratuit à l’essai · 15 $/mois · 119 $/an · 149 $ à vie',
+            'Gratuit à l’essai · 19 $/mois · 149 $/an · 249 $ à vie',
           ],
           [
             <strong key="t">2. TimeBolt</strong>,
@@ -132,7 +132,7 @@ function Body({ locale }: { locale: string }) {
           <>Multicam : il retrouve les fichiers d’une même prise (plusieurs caméras, un enregistreur audio séparé), les synchronise et ne coupe que quand personne ne parle.</>,
           <>Une preview pour écouter ce qui a été retiré avant d’exporter. Les fichiers audio seuls fonctionnent aussi.</>,
           <>Traitement local : rien n’est envoyé en ligne, les rushes de vos clients restent privés.</>,
-          <>Gratuit à l’essai avec previews illimitées ; l’export demande une licence à 15 $/mois, 119 $/an ou 149 $ à vie. Remboursé sous 14 jours.</>,
+          <>Gratuit à l’essai avec previews illimitées ; l’export demande une licence à 19 $/mois, 149 $/an ou 249 $ à vie. Remboursé sous 14 jours.</>,
         ]}
       />
       <P>

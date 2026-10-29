@@ -70,7 +70,7 @@ const FAQ = [
   },
   {
     q: '¿Cuánto cuesta AutoTrim?',
-    a: 'Puedes probarlo gratis, con vistas previas ilimitadas. Exportar la línea de tiempo requiere una licencia: 15 USD al mes, 119 USD al año o 149 USD en un solo pago, de por vida. Tienes 14 días de garantía de devolución.',
+    a: 'Puedes probarlo gratis, con vistas previas ilimitadas. Exportar la línea de tiempo requiere una licencia: 19 USD al mes, 149 USD al año o 249 USD en un solo pago, de por vida. Tienes 14 días de garantía de devolución.',
   },
   {
     q: '¿Y si grabo con varias cámaras o grabo el audio por separado?',
@@ -153,7 +153,7 @@ function Body({ locale }: { locale: string }) {
           ['Multicámara', 'Sincronizas tú los ángulos y el audio', 'Archivos de una misma toma encontrados y sincronizados; solo corta cuando nadie habla'],
           ['Muletillas («eh», «em»)', 'Buscarlas y cortarlas a oído', 'Detectadas en unos diez idiomas, entre ellos el español'],
           ['Control', 'Total', 'Vista previa antes de exportar; cada corte sigue siendo ajustable en FCP'],
-          ['Precio', 'Gratis (salvo tu tiempo)', 'Prueba gratis · 15 USD/mes · 119 USD/año · 149 USD de por vida'],
+          ['Precio', 'Gratis (salvo tu tiempo)', 'Prueba gratis · 19 USD/mes · 149 USD/año · 249 USD de por vida'],
           ['Privacidad', 'Local', 'Local: no se sube nada'],
         ]}
       />

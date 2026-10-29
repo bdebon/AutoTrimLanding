@@ -2,7 +2,7 @@
 
 AutoTrim is a desktop silence remover for video editors (macOS and Windows). It removes silences and filler words from all your clips at once and exports one merged XML/FCPXML timeline for Final Cut Pro, Adobe Premiere Pro or DaVinci Resolve. All processing is 100% local.
 
-Last updated: July 2026. Live pricing page: https://www.autotrim.app/en/pricing
+Last updated: October 2026. Live pricing page: https://www.autotrim.app/en/pricing
 
 ## Free
 
@@ -13,19 +13,19 @@ Last updated: July 2026. Live pricing page: https://www.autotrim.app/en/pricing
 
 ## Monthly
 
-- Price: $15/month
+- Price: $19/month
 - Everything in Free, plus timeline export (XML/FCPXML)
 - Monthly updates, priority export queue
 - Cancel anytime
 
 ## Annual
 
-- Price: $119/year (~$9.92/month)
+- Price: $149/year (~$12.42/month)
 - Everything in Monthly, billed yearly
 
 ## Lifetime
 
-- Price: $149 one-time (launch price; regular price $279)
+- Price: $249 one-time
 - Pay once, keep it forever, all future updates included
 - No subscription
 

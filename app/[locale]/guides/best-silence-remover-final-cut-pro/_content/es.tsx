@@ -19,7 +19,7 @@ const FAQ = [
   },
   {
     q: '¿Hay alguna forma totalmente gratis de eliminar silencios en Final Cut Pro?',
-    a: 'El único método totalmente gratis es cortar los silencios a mano con la herramienta Cuchilla. AutoTrim se puede probar gratis, con vistas previas ilimitadas de tu propio material, pero exportar la línea de tiempo requiere una licencia (15 USD/mes, 119 USD/año o 149 USD de por vida).',
+    a: 'El único método totalmente gratis es cortar los silencios a mano con la herramienta Cuchilla. AutoTrim se puede probar gratis, con vistas previas ilimitadas de tu propio material, pero exportar la línea de tiempo requiere una licencia (19 USD/mes, 149 USD/año o 249 USD de por vida).',
   },
   {
     q: '¿Hay algún plugin para eliminar silencios en Final Cut Pro?',
@@ -82,7 +82,7 @@ function Body({ locale }: { locale: string }) {
             'Una sola línea de tiempo FCPXML ensamblada',
             'Todo el material a la vez, una sola salida',
             'Local: no se sube nada',
-            'Prueba gratis · 15 USD/mes · 119 USD/año · 149 USD de por vida',
+            'Prueba gratis · 19 USD/mes · 149 USD/año · 249 USD de por vida',
           ],
           [
             <strong key="t">2. TimeBolt</strong>,
@@ -132,7 +132,7 @@ function Body({ locale }: { locale: string }) {
           <>Multicámara: encuentra los archivos de una misma toma (varias cámaras, una grabadora de audio aparte), los sincroniza y solo corta cuando nadie habla.</>,
           <>Una vista previa para escuchar lo eliminado antes de exportar. También funciona con archivos de solo audio.</>,
           <>Procesamiento local: no se sube nada y el material de tus clientes sigue siendo privado.</>,
-          <>Prueba gratis con vistas previas ilimitadas; exportar requiere licencia: 15 USD/mes, 119 USD/año o 149 USD de por vida. Garantía de devolución de 14 días.</>,
+          <>Prueba gratis con vistas previas ilimitadas; exportar requiere licencia: 19 USD/mes, 149 USD/año o 249 USD de por vida. Garantía de devolución de 14 días.</>,
         ]}
       />
       <P>

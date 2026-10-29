@@ -70,7 +70,7 @@ const FAQ = [
   },
   {
     q: 'Combien coûte AutoTrim ?',
-    a: 'L’essai est gratuit, avec des previews illimitées. L’export de la timeline demande une licence : 15 $/mois, 119 $/an, ou 149 $ en une fois pour une licence à vie. La licence est remboursée sous 14 jours si l’outil ne vous convient pas.',
+    a: 'L’essai est gratuit, avec des previews illimitées. L’export de la timeline demande une licence : 19 $/mois, 149 $/an, ou 249 $ en une fois pour une licence à vie. La licence est remboursée sous 14 jours si l’outil ne vous convient pas.',
   },
   {
     q: 'Et si j’ai filmé avec plusieurs caméras ou enregistré le son à part ?',
@@ -154,7 +154,7 @@ function Body({ locale }: { locale: string }) {
           ['Multicam', 'Synchro des angles et du son à faire vous-même', 'Fichiers d’une même prise retrouvés et synchronisés ; coupe seulement quand personne ne parle'],
           ['Hésitations (« euh »)', 'À repérer et couper à l’oreille', 'Détectées dans une dizaine de langues, dont le français et l’anglais'],
           ['Contrôle', 'Total', 'Preview avant export ; chaque coupe reste ajustable dans FCP'],
-          ['Prix', 'Gratuit (hors votre temps)', 'Gratuit à l’essai · 15 $/mois · 119 $/an · 149 $ à vie'],
+          ['Prix', 'Gratuit (hors votre temps)', 'Gratuit à l’essai · 19 $/mois · 149 $/an · 249 $ à vie'],
           ['Confidentialité', 'Local', 'Local : rien n’est envoyé en ligne'],
         ]}
       />
