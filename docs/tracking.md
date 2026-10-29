@@ -11,7 +11,7 @@ territories elsewhere) are asked first. Two purposes, chosen separately, kept 6 
 | Purpose | Tools | Without consent |
 | --- | --- | --- |
 | Audience measurement | PostHog with its cookie: links the visit to the app download and the purchase | PostHog counts visits in cookieless mode; the Download code carries only the campaign; no visitor id in the handoff record or the checkout |
-| Advertising | Meta Pixel `2240864149721547`, Google Tag Manager `GTM-MTPT8QGT` | Not loaded at all |
+| Advertising | Meta Pixel `1498365729008861` (Autonomous Intelligence Limited), Google Tag Manager `GTM-MTPT8QGT`; the purchase reported to Meta | Not loaded at all; the checkout carries nothing for Meta, so the purchase is not reported |
 
 Elsewhere both run by default. The footer's "Cookies" link reopens the choices everywhere.
 Vercel Web Analytics is cookieless and always on.
@@ -37,6 +37,30 @@ is kept), `hooks/useAttribution.ts` (what is handed to the app and the checkout)
 
 Download clicks go through `trackDownload` in `lib/tracking.ts`; the purchase is recorded by
 `supabase/functions/lemonsqueezy-webhook`, under the visitor id the checkout carried.
+
+## What the checkout carries
+
+Buy links rebuild their address at click time (`buildLemonSqueezyUrl` in `hooks/useAttribution.ts`),
+so they carry what the page knows at that moment, as `checkout[custom][…]`:
+
+| Field | When | What |
+| --- | --- | --- |
+| `utm_source` … `utm_term` | always, if the visit had a campaign | the last campaign seen |
+| `visitor_id` | with consent to audience measurement | the PostHog visitor id |
+| `ads_consent` | with consent to ads (always, outside Europe, unless turned off) | `1` |
+| `fbc` | same, after a click on a Meta ad in the last 90 days | the ad click, `fb.1.<ms>.<fbclid>` |
+| `fbp` | same, once the pixel has loaded | the `_fbp` browser id |
+| `ua`, `page` | same | the browser's user agent and the page of the buy link: Meta requires both |
+
+`fbclid` reaches only the page an ad opens, and the pixel loads late, so the site keeps its own
+copy of the click (`autotrim_fbc` in localStorage, `lib/meta-click.ts`), erased with the pixel's
+cookies when ads are turned off. Where visitors are asked first, the click waits in memory until
+they accept ads.
+
+The code the Download button copies for the app carries the same with consent to ads (`a: 1`,
+`fc`, `fp` in `lib/attribution.ts`), so the app's own buy links can add `ads_consent`, `fbc` and
+`fbp` (AutoTrim `frontend/src/services/checkout.ts`), for 90 days after the download and only with
+the app's usage statistics on. The network fallback (`docs/download-handoff.md`) does not carry them.
 
 ## Tagging a campaign
 
